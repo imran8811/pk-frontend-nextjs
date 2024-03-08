@@ -18,7 +18,7 @@ const Header: FC = () => {
     }
   }, [router])
 
-  const adminLogout = (e) => {
+  const adminLogout = (e:any) => {
     e.preventDefault();
     axios.post(ADMIN_LOGOUT).then(res => {
       if(res.data.type === 'success') {
