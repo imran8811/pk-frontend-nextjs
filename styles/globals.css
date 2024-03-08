@@ -1,0 +1,28 @@
+@font-face {
+	font-family: 'latoregular';
+	src: url('../public/fonts/lato-regular-webfont.woff2') format('woff2'),
+	url('../public/fonts/lato-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+body {
+	min-width: 320px;
+	background:#fff;
+	font-family: 'latoregular';
+	font-size:16px;
+	line-height:24px;
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: 100%;
+	color: #333333;
+}
+ul {
+  list-style:none;
+  margin: 0;
+  padding: 0;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}

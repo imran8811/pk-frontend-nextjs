@@ -1,0 +1,31 @@
+.contactWrap {
+	box-shadow: 0px 0px 10px #999;
+	-moz-box-shadow: 0px 0px 10px #999;
+	-webkit-box-shadow: 0px 0px 10px #999;
+	border-radius: 10px;
+}
+.contactWrap .sidebar {
+	display: inline-block;
+	vertical-align: top;
+	width: 48%;
+	padding: 20px 0 0 50px;
+}
+.contactWrap .sidebar ul li {
+  margin: 0 0 30px;
+}
+.contactWrap ul li span {
+  float: left;
+  width: 60%;
+}
+.contactWrap ul li span:first-child {width: 37%;}
+.pageTitle{
+	display: block;
+	text-align: center;
+	font-size: 25px;
+	line-height: 30px;
+	color: #2d639e;
+	margin: 20px 0;
+}
+.mapOuter {
+  height: 600px;
+}

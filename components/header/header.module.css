@@ -1,0 +1,25 @@
+.mainMenu {
+	padding: 10px;
+	overflow: hidden;
+	display: block;
+}
+.mainMenu ul {
+	list-style: none;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+}
+.mainMenu ul li {
+	background: url(/images/separator.png) no-repeat 0 50%;
+	vertical-align: middle;
+	display: inline-block;
+	padding: 0 0 0 20px;
+	margin: 0 0 0 20px;
+	text-transform:capitalize;
+}
+.mainMenu ul li:hover a{ text-decoration:none; }
+.mainMenu ul li:first-child {
+	background: none;
+	margin: 0;
+	padding: 0;
+}
