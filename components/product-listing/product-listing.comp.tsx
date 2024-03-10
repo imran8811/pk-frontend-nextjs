@@ -3,17 +3,17 @@ import styles from './product-listing.module.css'
 import axios from "axios"
 import { GET_PRODUCTS_LISTING, basePath } from "../../endpoints"
 import { Product } from "../../models"
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/navigation";
 import { IProductListing } from "../../models/productListing.model"
 
 const ProductListing : FC<IProductListing> = ({category, type, numberOfRecords}) => {
   const [productListing, setProductListing] = useState<Product[]>();
-  const { isReady } = useRouter();
+  // const { isReady } = useRouter();
 
   useEffect(() => {
-    if(!isReady) {return}
+    // if(!isReady) {return}
     getProductsListing()
-  }, [isReady])
+  })
 
   const getProductsListing = () => {
     axios.get(`${GET_PRODUCTS_LISTING}?category=${category}&type=${type}&numberOfRecords=${numberOfRecords}`).then(res => {

@@ -5,18 +5,21 @@ import cls from 'classnames'
 
 const Footer: FC = () => {
   return (
-    <footer className={cls(styles.footer)}>
+    <>
+    <footer className="footer">
       <div className="container">
         <div className="mb-3 text-center">
           <Nav></Nav>
         </div>
-        <ul className={styles.socialNetwork}>
-          <li><a href="https://www.facebook.com/pkapparel2" target="_blank" rel="noreferrer">facebook</a></li>
-          <li className={styles.linkedin}><a href="https://www.linkedin.com/company/pkapparel" rel="noreferrer" target="_blank">Linkedin</a></li>
+        <ul className="social-network">
+          <li><a href="https://www.facebook.com/pkapparel1" target="_blank" rel="noreferrer">facebook</a></li>
+          <li className="instagram"><a href="https://www.instagram.com/pkapparel_official" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li className="linkedin"><a href="https://www.linkedin.com/company/pkapparel" target="_blank" rel="noreferrer">Linkedin</a></li>
         </ul>
-        <p className="text-center text-white pb-3 mb-0"><strong>&nbsp;&copy;&nbsp;PK Apparel | All Rights Reserved 2022</strong></p>
+        <p className="text-center text-white pb-3 mb-0"><strong>&nbsp;&copy;&nbsp;PK Apparel | All Rights Reserved 2024</strong></p>
       </div>
     </footer>
+  </>
   )
 }
 

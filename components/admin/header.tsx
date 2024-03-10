@@ -33,21 +33,19 @@ const Header: FC = () => {
     <header className='col-lg-12'>
       <div className='row'>
         <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-          <Link href="/">
-            <a className="navbar-brand">
-              <img src="/images/logo.jpg" alt="logo" width={227} height={71} title="PK Apparel Home" />
-            </a>
+          <Link href="/" className="navbar-brand">
+            <img src="/images/logo.jpg" alt="logo" width={227} height={71} title="PK Apparel Home" />
           </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <Link href="/admin/products"><a className="nav-item nav-link">Products</a></Link>
-              <Link href="/admin/products"><a className="nav-item nav-link">Add product</a></Link>
-              <Link href="/admin/products"><a className="nav-item nav-link">Create User</a></Link>
-              <Link href="/admin/products"><a className="nav-item nav-link">Login</a></Link>
-              <Link href="/admin/products"><a className="nav-item nav-link" onClick={(e) => adminLogout(e)}>Logout</a></Link>
+              <Link href="/admin/products" className="nav-item nav-link">Products</Link>
+              <Link href="/admin/add-products" className="nav-item nav-link">Add product</Link>
+              <Link href="/admin/create-user" className="nav-item nav-link">Create User</Link>
+              <Link href="/admin/login" className="nav-item nav-link">Login</Link>
+              <Link href="/admin/logout" onClick={(e) => adminLogout(e)} className="nav-item nav-link">Logout</Link>
             </div>
           </div>
         </nav>

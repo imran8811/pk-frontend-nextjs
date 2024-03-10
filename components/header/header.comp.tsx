@@ -1,10 +1,9 @@
-import type { NextPage } from 'next'
 import Link from 'next/link'
-import styles from '../header/header.module.css'
 import Nav from '../nav/nav.comp'
 import Script from 'next/script'
+import styles from '../header/header.module.css'
 
-const Header: NextPage = () => {
+export default function Header() {
   return (
     <>
       <Script async src="https://www.googletagmanager.com/gtag/js?id=G-TTX4WPE230"></Script>
@@ -21,7 +20,7 @@ const Header: NextPage = () => {
       <header className='row border-bottom border-info mb-4'>
         <div className="col-lg-4 pt-3">
           <Link href="/">
-            <img src="/images/logo.jpg" alt="logo" width={227} height={71} title="PK Apparel Home" />
+            <img src="/images/logo.jpg" alt="logo" width={227} height={46} title="PK Apparel Home" />
           </Link>
         </div>
         <div className='col-lg-8 mt-4 text-end'>
@@ -30,5 +29,3 @@ const Header: NextPage = () => {
       </header>
     </>
 )}
-
-export default Header;

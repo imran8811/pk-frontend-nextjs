@@ -5,7 +5,7 @@ import Tagline from '../tagline/tagline.comp'
 import ProductListing from '../product-listing/product-listing.comp'
 import { ITaglineProps } from '../../models'
 
-const JeanManufacturers: FC<ITaglineProps> = ({keyword, text}) => {
+const JeanManufacturersComp: FC<ITaglineProps> = ({keyword, text}) => {
   return (
     <div className="row">
       <Tagline headingText={keyword} paraText={text} />
@@ -25,4 +25,4 @@ const JeanManufacturers: FC<ITaglineProps> = ({keyword, text}) => {
     </div>
   )}
 
-export default JeanManufacturers;
+export default JeanManufacturersComp;

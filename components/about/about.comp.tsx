@@ -1,9 +1,7 @@
-import { FC } from "react"
 import Image from 'next/image'
 import styles from "./about.module.css"
-import { Metadata } from "next"
 
-const AboutComp : FC = () => {
+export default function AboutComp(){
   return (
     <div className="col-12 page-about">
       <div className="row">
@@ -51,5 +49,3 @@ const AboutComp : FC = () => {
     </div>
   )
 }
-
-export default AboutComp;
