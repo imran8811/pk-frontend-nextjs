@@ -42,25 +42,25 @@ const HomeComponent : FC = () => {
         <h2 className={styles.sectionHeading}>Jeans for Men</h2>
         <ul className="row">
           <li className="col-lg-3">
-            <a href={WHOLESALE_SHOP+"?category=men&type=jeans-pant"} className={styles.innerManufacture}>
+            <a href="javascript:void(0)" className={styles.innerManufacture}>
               <img src="/images/jeans-pant-main.jpg" alt="jeans pants" />
               <span className={styles.productCategory}>Jeans Pants</span>
             </a>
           </li>
           <li className="col-lg-3">
-            <a href={WHOLESALE_SHOP+"?category=men&type=jeans-jacket"} className={styles.innerManufacture}>
+            <a href="javascript:void(0)" className={styles.innerManufacture}>
               <img src="/images/jeans-jacket-main.jpg" alt="Jeans Jackets" />
               <span className={styles.productCategory}>Jeans Jackets</span>
             </a>
           </li>
           <li className="col-lg-3">
-            <a href={WHOLESALE_SHOP+"?category=men&type=jeans-shirt"} className={styles.innerManufacture}>
+            <a href="javascript:void(0)" className={styles.innerManufacture}>
               <img src="/images/jeans-shirt-main.jpg" alt="jeans shirts" />
               <span className={styles.productCategory}>Jeans Shirts</span>
             </a>
           </li>
           <li className="col-lg-3">
-            <a href={WHOLESALE_SHOP+"?category=men&type=jeans-short"} className={styles.innerManufacture}>
+            <a href="javascript:void(0)" className={styles.innerManufacture}>
               <img src="/images/jeans-short-main.jpg" alt="jeans shorts" />
               <span className={styles.productCategory}>Jeans Shorts</span>
             </a>
@@ -71,25 +71,25 @@ const HomeComponent : FC = () => {
         <h2 className={styles.sectionHeading}>Jeans for Women</h2>
         <ul className="row">
           <li className="col-lg-3">
-            <a href={WHOLESALE_SHOP+"?category=women&type=jeans-pant"} className={styles.innerManufacture}>
+            <a href="javascript:void(0)" className={styles.innerManufacture}>
               <img src="/images/women-jeans.jpg" alt="jeans pants" />
               <span className={styles.productCategory}>Jeans Pants</span>
             </a>
           </li>
           <li className="col-lg-3">
-            <a href={WHOLESALE_SHOP+"?category=women&type=jeans-jacket"} className={styles.innerManufacture}>
+            <a href="javascript:void(0)" className={styles.innerManufacture}>
               <img src="/images/women-jacket.jpg" alt="Jeans Jackets" />
               <span className={styles.productCategory}>Jeans Jackets</span>
             </a>
           </li>
           <li className="col-lg-3">
-            <a href={WHOLESALE_SHOP+"?category=women&type=jeans-shirt"} className={styles.innerManufacture}>
+            <a href="javascript:void(0)" className={styles.innerManufacture}>
               <img src="/images/women-shirt.jpg" alt="jeans shirts" />
               <span className={styles.productCategory}>Jeans Shirts</span>
             </a>
           </li>
           <li className="col-lg-3">
-            <a href={WHOLESALE_SHOP+"?category=women&type=jeans-short"} className={styles.innerManufacture}>
+            <a href="javascript:void(0)" className={styles.innerManufacture}>
               <img src="/images/women-short.jpg" alt="jeans shorts" />
               <span className={styles.productCategory}>Jeans Shorts</span>
             </a>
