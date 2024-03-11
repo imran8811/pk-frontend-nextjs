@@ -1,17 +1,12 @@
 import { FC } from "react";
 import styles from './home.module.css'
-import cls from 'classnames'
-import FAQS from '../faqs/faqs.comp'
-import RatingReviews from "../rating-reviews/rating-reviews.comp";
-import Keywords from "../keywords/keywords.comp";
 import HomeBanner from "../home-banner/home-banner.comp";
-import { WHOLESALE_SHOP } from "../../endpoints";
 
 const HomeComponent : FC = () => {
   return (
     <div className="col-12">
       <div className="mb-5">
-        <HomeBanner></HomeBanner>     
+        <HomeBanner></HomeBanner>   
       </div>
       <div className="mb-5">
         <strong className={styles.sectionHeading}>How It Works</strong>

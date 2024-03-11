@@ -1,4 +1,3 @@
-"use client";
 import Header from '../components/header/header.comp';
 import Footer from '../components/footer/footer.comp';
 import HomeComponent from '../components/home/home.comp';
