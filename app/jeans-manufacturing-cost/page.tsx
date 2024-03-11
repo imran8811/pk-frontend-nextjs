@@ -2,7 +2,7 @@
 import { Metadata } from 'next';
 import Header from '../../components/header/header.comp';
 import Footer from '../../components/footer/footer.comp';
-import JeansManufacturersComp from '../../components/landing-pages/jeans-manufacturers';
+import JeansManufacturingCostComp from '../../components/landing-pages/jeans-manufacturing-cost';
 
 const JeansManufacturers = () => {
   return (
@@ -10,7 +10,7 @@ const JeansManufacturers = () => {
       <div className='container'>
         <div className='row'>
           <Header></Header>
-          <JeansManufacturersComp keyword='Jeans Manufacturers' text='Jeans Manufacturers'></JeansManufacturersComp>
+          <JeansManufacturingCostComp keyword='Jeans Manufacturing Cost' text='Jeans Manufacturing Cost'></JeansManufacturingCostComp>
         </div>
       </div>
       <Footer></Footer>

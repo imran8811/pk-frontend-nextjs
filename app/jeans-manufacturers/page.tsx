@@ -1,7 +1,7 @@
 "use client";
 import Header from '../../components/header/header.comp';
 import Footer from '../../components/footer/footer.comp';
-import JeansManufacturingCostComp from '../../components/landing-pages/jeans-manufacturing-cost';
+import JeansManufacturersComp from '../../components/landing-pages/jeans-manufacturers';
 
 const JeansManufacturers = () => {
   return (
@@ -9,7 +9,7 @@ const JeansManufacturers = () => {
       <div className='container'>
         <div className='row'>
           <Header></Header>
-          <JeansManufacturingCostComp keyword='Jeans Manufacturing Cost' text='Jeans Manufacturing Cost'></JeansManufacturingCostComp>
+          <JeansManufacturersComp keyword='Jeans Manufacturers' text='Jeans Manufacturers'></JeansManufacturersComp>
         </div>
       </div>
       <Footer></Footer>

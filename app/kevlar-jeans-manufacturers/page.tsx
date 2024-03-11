@@ -1,8 +1,7 @@
 "use client";
-import { Metadata } from 'next';
 import Header from '../../components/header/header.comp';
 import Footer from '../../components/footer/footer.comp';
-import JeansWholesaleComp from '../../components/landing-pages/jeans-wholesale';
+import KevlarJeansManufacturersComp from '../../components/landing-pages/kevlar-jeans-manufacturers';
 
 const KevlarJeansManufacturers = () => {
   return (
@@ -10,7 +9,10 @@ const KevlarJeansManufacturers = () => {
       <div className='container'>
         <div className='row'>
           <Header></Header>
-          <JeansWholesaleComp keyword='Kevlar Jeans Manufacturers' text='Kevlar Jeans Manufacturers'></JeansWholesaleComp>
+          <KevlarJeansManufacturersComp 
+            keyword='Kevlar Jeans Manufacturers' 
+            text='Kevlar Jeans Manufacturers'>
+          </KevlarJeansManufacturersComp>
         </div>
       </div>
       <Footer></Footer>
