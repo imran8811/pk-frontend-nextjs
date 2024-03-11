@@ -8,12 +8,12 @@ export default function AboutComp(){
         <div className="col-lg-2"></div>
         <div className="col-lg-8 mb-5">
           <h1 className="page-title">Jeans Manufacturing Company</h1><br />
-          <div className="row">
+          <div className="row mb-4">
             <div className="col-6 mb-3">
-              <Image src="/images/img3.jpg" width={300} height={200} alt="about img" className="img-thumbnail" />
+              <img src="/images/img3.jpg" alt="about img" className="img-thumbnail" />
             </div>
             <div className="col-6">
-              <Image src="/images/img2.jpg" width={300} height={200} alt="about img" className="img-thumbnail" />
+              <img src="/images/img2.jpg" alt="about img" className="img-thumbnail" />
             </div>
           </div>
           <p>PK Apparel is a well-reputed name engaged in the Manufacturing and Supplying of a wide range of Jeans
@@ -30,10 +30,10 @@ export default function AboutComp(){
             the material we use is organic such that it qualifies as a trademark offering of Fine Fair garments.</p>
           <div className="row mb-5 mt-5">
             <div className="col-6">
-              <Image src="/images/img4.jpg" width={200} height={200} alt="about img" className="img-thumbnail" />
+              <img src="/images/img4.jpg" alt="about img" className="img-thumbnail" />
             </div>
             <div className="col-6">
-              <Image src="/images/img5.jpg" width={200} height={200} alt="about img" className="img-thumbnail" />
+              <img src="/images/img5.jpg" alt="about img" className="img-thumbnail" />
             </div>
           </div>
           <h3>Quality</h3>

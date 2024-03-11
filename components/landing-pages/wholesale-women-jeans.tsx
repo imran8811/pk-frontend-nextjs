@@ -4,6 +4,13 @@ import RatingReviews from '../rating-reviews/rating-reviews.comp'
 import Tagline from '../tagline/tagline.comp'
 import ProductListing from '../product-listing/product-listing.comp'
 import { ITaglineProps } from '../../models'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Wholesale Women Jeans",
+  keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Wholesale",
+  description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
+}
 
 const WholesaleWomenJeans: FC<ITaglineProps> = ({keyword, text}) => {
   return (

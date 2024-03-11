@@ -4,8 +4,15 @@ import RatingReviews from '../rating-reviews/rating-reviews.comp'
 import Tagline from '../tagline/tagline.comp'
 import ProductListing from '../product-listing/product-listing.comp'
 import { ITaglineProps } from '../../models'
+import { Metadata } from 'next'
 
-const JeansWholesale: FC<ITaglineProps> = ({keyword, text}) => {
+export const metadata: Metadata = {
+  title: "Jeans Wholesale",
+  keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Wholesale",
+  description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
+}
+
+const JeansWholesaleComp: FC<ITaglineProps> = ({keyword, text}) => {
   return (
     <div className="row">
       <Tagline headingText={keyword} paraText={text} />
@@ -24,4 +31,4 @@ const JeansWholesale: FC<ITaglineProps> = ({keyword, text}) => {
     </div>
   )}
 
-export default JeansWholesale;
+export default JeansWholesaleComp;
