@@ -21,10 +21,10 @@ ul {
   padding: 0;
 }
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 a:hover {
-	text-decoration: underline;
+	text-decoration: underline !important;
 }
 
 .section-heading {

@@ -22,7 +22,7 @@ const ContactComp : FC = () => {
               </li>
               <li className="clearfix mb-2">
                 <span>Email: </span>
-                <span><a href="mailto:pkapparel2@gmail.com">pkapparel2@gmail.com</a></span>
+                <span><a href="mailto:info@pkapparel.com">info@pkapparel.com</a></span>
               </li>
             </ul>
           </div>
@@ -38,6 +38,10 @@ const ContactComp : FC = () => {
               <li className="clearfix mb-2">
                 <span>Tel: </span>
                 <span>(+92) 423 5216095</span>
+              </li>
+              <li className="clearfix mb-2">
+                <span>Email: </span>
+                <span><a href="mailto:info@pkapparel.com">info@pkapparel.com</a></span>
               </li>
             </ul>
           </div>
