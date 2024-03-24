@@ -16,7 +16,7 @@ const ContactComp : FC = () => {
                 <span>Address</span>
                 <span>Lucky Hotel Stop, Ferozepur road, <br />Lahore, Pakistan</span>
               </li>
-              <li className="clearfix mb-2">
+              <li className="clearfix mb-3">
                 <span>Tel/Whatsapp: </span>
                 <span>(+92) 3 000-911-000</span>
               </li>
@@ -35,7 +35,7 @@ const ContactComp : FC = () => {
                 <span>Address</span>
                 <span>21-KM, Ferozepur road, <br />Lahore, Pakistan</span>
               </li>
-              <li className="clearfix mb-2">
+              <li className="clearfix mb-3">
                 <span>Tel: </span>
                 <span>(+92) 423 5216095</span>
               </li>

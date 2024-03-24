@@ -1,5 +1,5 @@
 import { FC } from "react";
-import styles from '../home/home.module.css'
+import styles from '../../home/home.module.css'
 import cls from 'classnames'
 
 const RatingReviews: FC = () => {

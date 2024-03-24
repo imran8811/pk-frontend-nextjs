@@ -1,33 +1,51 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useCallback, useEffect, useState } from "react"
 import cls from 'classnames'
 import styles from './shop.module.css'
 import axios from "axios"
 import { basePath, SEARCH_PRODUCTS } from "../../endpoints"
 import { Product } from "../../models"
 import { useForm } from 'react-hook-form'
-import { useRouter } from "next/dist/client/router";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Shop : FC = (props:any) => {
   const [products, setProducts] = useState<Product[]>(props.data);
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
-  const router = useRouter();  
-  const { query, isReady } = useRouter();
+  const router = useRouter();
+  // const { query, isReady } = useRouter();
 
-  const searchProducts = () => {
-    axios.post(SEARCH_PRODUCTS, query).then(res => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  console.log(props.params.dept, props.params.category);
+  const createQueryString = useCallback((name: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set(name, value)
+    return params.toString()
+  }, [searchParams])
+
+  useEffect(() => {
+    getAllProducts();
+  }, [])
+
+  const data = {
+    dept: props.params.dept,
+    category: props.params.category
+  }
+
+  const getAllProducts = () => {
+    axios.get(`${SEARCH_PRODUCTS}/men/jeans-pant`).then(res => {
       setProducts(res.data)
     })
   }
 
   const setFiltersData = (filterType, e) => {
     if(e.target.value === '') {
-      delete query[filterType]
-      router.push(router, undefined, {scroll: false});
+      delete searchParams.get[filterType]
+      router.push(pathname + '?' + createQueryString(filterType, e.target.value), { scroll: false });
     } else {
-      router.query[filterType] = e.target.value
-      router.push(router, undefined, {scroll: false});
+      searchParams.set[filterType] = e.target.value
+      router.push(pathname + '?' + createQueryString(filterType, e.target.value), { scroll: false });
     }
-    searchProducts();
+    getAllProducts();
   }
 
   return (
@@ -37,7 +55,7 @@ const Shop : FC = (props:any) => {
           <form className="product-filters">
             <div className="mb-3">
               <label htmlFor="category">Category</label>
-              <select {...register('category', {required: true})} className="form-control" onChange={(e) => setFiltersData('category', e)}>
+              <select {...register('category', {required: true})} onChange={(e) => setFiltersData('category', e)}>
                 <option value="men">Men</option>
                 <option value="women">Women</option>
                 <option value="boys">Boys</option>
@@ -46,7 +64,7 @@ const Shop : FC = (props:any) => {
             </div>
             <div className="mb-3">
               <label htmlFor="type">Type</label>
-              <select {...register('type', {required: true})} className="form-control" onChange={(e) => setFiltersData('type', e)}>
+              <select {...register('type', {required: true})} onChange={(e) => setFiltersData('type', e)}>
                 <option value="jeans-pant">Jeans Pant</option>
                 <option value="chino-pant">Chino Pant</option>
                 <option value="cargo-trouser">Cargo Trouser</option>
@@ -54,7 +72,7 @@ const Shop : FC = (props:any) => {
             </div>
             <div className="mb-3">
               <label htmlFor="fitting">Fitting</label>
-              <select {...register('fitting', {required: true})} className="form-control" onChange={(e) => setFiltersData('fitting', e)}>
+              <select {...register('fitting', {required: true})} onChange={(e) => setFiltersData('fitting', e)}>
                 <option value="slim">Slim</option>
                 <option value="straight">Straight</option>
                 <option value="skinny">Skinny</option>
@@ -62,15 +80,8 @@ const Shop : FC = (props:any) => {
               </select>
             </div>
             <div className="mb-3">
-              <label htmlFor="length">Length</label>
-              <select {...register('length', {required: true})} className="form-control" onChange={(e) => setFiltersData('length', e)}>
-                <option value="long">Long</option>
-                <option value="short">Short</option>
-              </select>
-            </div>
-            <div className="mb-3">
               <label htmlFor="colors">Colors</label>
-              <select {...register('colors', {required: true})} className="form-control" onChange={(e) => setFiltersData('colors', e)}>
+              <select {...register('colors', {required: true})} onChange={(e) => setFiltersData('colors', e)}>
                 <option value="blue">Blue</option>
                 <option value="mid-blue">Mid Blue</option>
                 <option value="navy-blue">Navy Blue</option>
@@ -92,14 +103,14 @@ const Shop : FC = (props:any) => {
             { products && products.map((product, index) => {
               return (
                 <div className="col-lg-3 mb-3" key={index}>
-                  <a href={"/wholesale-shop/product-details/"+product.article_no} className="d-block mb-3" target="_blank" rel="noreferrer">
+                  <a href={"/wholesale-shop/product-details/"+product.articleNo} className="d-block mb-3" target="_blank" rel="noreferrer">
                     <img
-                      src={basePath+product.product_images.path+'/'+product.product_images.name} 
-                      alt={product.product_images.path} 
+                      src={basePath+product.product_images?.path+'/'+product.product_images?.name} 
+                      alt={product.product_images?.path} 
                       height="370"
                       className={styles.img} />
                   </a>
-                  <a href={"/wholesale-shop/product-details/"+product.article_no} className="d-block text-center">Article# {product.article_no}</a>
+                  <a href={"/wholesale-shop/product-details/"+product.articleNo} className="d-block text-center">Article# {product.articleNo}</a>
                 </div>
               )
             })}

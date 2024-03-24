@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Header from '../../components/header/header.comp';
-import Footer from '../../components/footer/footer.comp';
-import FactoryComp from '../../components/factory/factory.comp';
+import Header from '../../components/shared/header/header.comp';
+import Footer from '../../components/shared/footer/footer.comp';
+import FactoryComp from '../../components/static/factory/factory.comp';
 
 export const metadata: Metadata = {
   title: "Factory - PK Apparel",

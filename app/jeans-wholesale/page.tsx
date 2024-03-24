@@ -1,6 +1,6 @@
 "use client";
-import Header from '../../components/header/header.comp';
-import Footer from '../../components/footer/footer.comp';
+import Header from '../../components/shared/header/header.comp';
+import Footer from '../../components/shared/footer/footer.comp';
 import JeansWholesaleComp from '../../components/landing-pages/jeans-wholesale';
 
 const JeansWholesale = () => {

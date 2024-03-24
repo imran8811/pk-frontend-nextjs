@@ -14,6 +14,10 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-site-verification" content="WlphvHVaVW1jVWUufak-1TfWkjBAvf271H95iMGwtSw" />
+        <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+      </head>
       <body>{children}</body>
     </html>
   );

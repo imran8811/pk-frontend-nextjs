@@ -1,7 +1,7 @@
 "use client";
 import { Metadata } from 'next';
-import Header from '../../components/header/header.comp';
-import Footer from '../../components/footer/footer.comp';
+import Header from '../../components/shared/header/header.comp';
+import Footer from '../../components/shared/footer/footer.comp';
 import WholesaleJeansManufacturersComp from '../../components/landing-pages/wholesale-jeans-manufacturers';
 
 const WholesaleJeansManufacturers = () => {

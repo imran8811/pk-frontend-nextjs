@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Header from '../../components/header/header.comp';
-import Footer from '../../components/footer/footer.comp';
-import AboutComp from '../../components/about/about.comp';
+import Header from '../../components/shared/header/header.comp';
+import Footer from '../../components/shared/footer/footer.comp';
+import AboutComp from '../../components/static/about/about.comp';
 
 export const metadata: Metadata = {
   title: "About Us - PK Apparel",

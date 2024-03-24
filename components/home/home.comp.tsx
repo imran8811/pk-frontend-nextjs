@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from './home.module.css'
-import HomeBanner from "../home-banner/home-banner.comp";
+import HomeBanner from "../shared/home-banner/home-banner.comp";
+import Link from "next/link";
 
 const HomeComponent : FC = () => {
   return (
@@ -37,28 +38,28 @@ const HomeComponent : FC = () => {
         <h2 className={styles.sectionHeading}>Jeans for Men</h2>
         <ul className="row">
           <li className="col-lg-3">
-            <a href="javascript:void(0)" className={styles.innerManufacture}>
+            <Link href="wholesale-shop/men/jeans-pants" className={styles.innerManufacture}>
               <img src="/images/jeans-pant-main.jpg" alt="jeans pants" />
               <span className={styles.productCategory}>Jeans Pants</span>
-            </a>
+            </Link>
           </li>
           <li className="col-lg-3">
-            <a href="javascript:void(0)" className={styles.innerManufacture}>
+            <Link href="#" className={styles.innerManufacture}>
               <img src="/images/jeans-jacket-main.jpg" alt="Jeans Jackets" />
               <span className={styles.productCategory}>Jeans Jackets</span>
-            </a>
+            </Link>
           </li>
           <li className="col-lg-3">
-            <a href="javascript:void(0)" className={styles.innerManufacture}>
+            <Link href="#" className={styles.innerManufacture}>
               <img src="/images/jeans-shirt-main.jpg" alt="jeans shirts" />
               <span className={styles.productCategory}>Jeans Shirts</span>
-            </a>
+            </Link>
           </li>
           <li className="col-lg-3">
-            <a href="javascript:void(0)" className={styles.innerManufacture}>
+            <Link href="#" className={styles.innerManufacture}>
               <img src="/images/jeans-short-main.jpg" alt="jeans shorts" />
               <span className={styles.productCategory}>Jeans Shorts</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -66,28 +67,28 @@ const HomeComponent : FC = () => {
         <h2 className={styles.sectionHeading}>Jeans for Women</h2>
         <ul className="row">
           <li className="col-lg-3">
-            <a href="javascript:void(0)" className={styles.innerManufacture}>
+            <Link href="#" className={styles.innerManufacture}>
               <img src="/images/women-jeans.jpg" alt="jeans pants" />
               <span className={styles.productCategory}>Jeans Pants</span>
-            </a>
+            </Link>
           </li>
           <li className="col-lg-3">
-            <a href="javascript:void(0)" className={styles.innerManufacture}>
+            <Link href="#" className={styles.innerManufacture}>
               <img src="/images/women-jacket.jpg" alt="Jeans Jackets" />
               <span className={styles.productCategory}>Jeans Jackets</span>
-            </a>
+            </Link>
           </li>
           <li className="col-lg-3">
-            <a href="javascript:void(0)" className={styles.innerManufacture}>
+            <Link href="#" className={styles.innerManufacture}>
               <img src="/images/women-shirt.jpg" alt="jeans shirts" />
               <span className={styles.productCategory}>Jeans Shirts</span>
-            </a>
+            </Link>
           </li>
           <li className="col-lg-3">
-            <a href="javascript:void(0)" className={styles.innerManufacture}>
+            <Link href="#" className={styles.innerManufacture}>
               <img src="/images/women-short.jpg" alt="jeans shorts" />
               <span className={styles.productCategory}>Jeans Shorts</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
