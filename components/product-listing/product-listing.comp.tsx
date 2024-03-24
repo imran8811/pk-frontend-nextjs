@@ -37,7 +37,7 @@ const ProductListing : FC<IProductListing> = ({category, type, numberOfRecords})
                   height="370"
                   className={styles.img} />
               </a>
-              <a href={"/wholesale-shop/product-details/"+product.article_no} className="d-block text-center">Article# {product.article_no}</a>
+              <a href={"/wholesale-shop/product-details/"+product.articleNo} className="d-block text-center">Article# {product.articleNo}</a>
             </div>
           </>
         )})}
