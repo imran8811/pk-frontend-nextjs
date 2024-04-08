@@ -32,8 +32,8 @@ const ProductListing : FC<IProductListing> = ({category, type, numberOfRecords})
             <div className="col-lg-3 mb-3">
               <a href={"/wholesale-shop?category"+category+"&type="+type} className="d-block mb-3" target="_blank" rel="noreferrer">
                 <img 
-                  src={basePath+product.product_images.path+'/'+product.product_images.name} 
-                  alt={product.product_images.path} 
+                  src={product.productImages.frontImgUrl} 
+                  alt={product.productImages.frontImgUrl} 
                   height="370"
                   className={styles.img} />
               </a>
