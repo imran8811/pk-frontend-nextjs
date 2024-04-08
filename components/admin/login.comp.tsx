@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { ADMIN_LOGIN } from '../../endpoints'
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/navigation";
 
 const AdminLogin: FC = () => {
   const router = useRouter();

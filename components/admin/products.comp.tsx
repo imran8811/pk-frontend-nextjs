@@ -1,8 +1,9 @@
 import { FC, useEffect } from 'react'
 import axios from 'axios'
 import { DELETE_PRODUCT, GET_PRODUCTS, UPDATE_PRODUCT } from '../../endpoints'
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/navigation";
 import useState from 'react-usestateref';
+import Link from 'next/link';
 
 const Products: FC = () => {
   const basePath = 'http://localhost:8000'
@@ -29,13 +30,9 @@ const Products: FC = () => {
   const deleteProduct = (article_no:any) => {
     axios.delete(`${DELETE_PRODUCT}/${article_no}`).then(res => {
       if(res.data.type === 'success') {
-        router.reload()
+        router.refresh();
       }
     })
-  }
-
-  const editProduct = (id:number) => {
-
   }
 
   return (
@@ -45,9 +42,12 @@ const Products: FC = () => {
           { productsRef.current && productsRef.current.map((product:any, index) => {
               return (
                 <div className='col-3' key={index}>
+                  <Link href={"/admin/edit-product/"+product.articleNo}>
+                    <img src={product.productImages.frontImgUrl} alt={product.productImages.frontImgUrl} width={200} />
+                  </Link>
                   <ul className='list-group'>
                     <li className='list-item'>
-                      <span>{product.article_no}</span>
+                      <span>{product.articleNo}</span>
                     </li>
                     <li className='list-item'>
                       <span>{product.colors}</span>
@@ -69,8 +69,7 @@ const Products: FC = () => {
                     </li>
                   </ul>
                   <div className='mb-3 mt-3'>
-                    <button type='button' className='btn btn-primary' onClick={() => editProduct(product.id)}>Edit</button>
-                    <button type='button' className='btn btn-danger' onClick={() => deleteProduct(product.article_no)}>Delete</button>
+                    <button type='button' className='btn btn-danger' onClick={() => deleteProduct(product.articleNo)}>Delete</button>
                   </div>
                 </div>
               )

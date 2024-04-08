@@ -1,2 +1,2 @@
-export * from './header'
-export * from './footer'
+export * from './admin-header'
+export * from './admin-footer'

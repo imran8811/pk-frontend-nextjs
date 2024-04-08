@@ -1,4 +1,8 @@
 export type ProductImages = {
-  name : string,
-  path : string,
+  articleNo: number,
+  frontImgUrl: string,
+  backImgUrl: string,
+  other1ImgUrl: string,
+  other2ImgUrl: string,
+  other3ImgUrl: string,
 }

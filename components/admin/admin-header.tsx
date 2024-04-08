@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from 'react'
-import { useRouter } from "next/dist/client/router";
 import axios from 'axios'
 import Router from 'next/router'
-
-import { ADMIN_LOGOUT } from '../../endpoints'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link';
 
-const Header: FC = () => {
+import { ADMIN_LOGOUT } from '../../endpoints'
+
+const AdminHeader: FC = () => {
   const [session, setSession] = useState(false);
   const router = useRouter();
   useEffect(() => {
@@ -53,4 +53,4 @@ const Header: FC = () => {
     </header>
 )}
 
-export default Header;
+export default AdminHeader;

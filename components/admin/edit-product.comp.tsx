@@ -2,18 +2,22 @@ import { FC, useEffect, createRef, useRef } from 'react'
 import useState from 'react-usestateref'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { ADD_PRODUCT, IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO } from '../../endpoints'
+import { ADD_PRODUCT, IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO, GET_PRODUCT_DETAILS } from '../../endpoints'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/navigation';
-import { type PutBlobResult } from '@vercel/blob';
+import { useParams, useRouter } from 'next/navigation';
+import { type PutBlobResult, del } from '@vercel/blob';
 import { upload } from '@vercel/blob/client';
+import { IProductListing } from '../../models/productListing.model'
+import { Product } from '../../models'
  
 
-const AddProduct: FC = () => {
-  const [articleNo, setArticleNo, articleNoRef] = useState('');
+const EditProduct: FC = () => {
+  const [productDetails, setProductDetails, productDetailsRef] = useState<Product>();
   const [currentStep, setCurrentStep, currentStepRef] = useState('stepProductInfo');
-  const [blob, setBlob, blobRef] = useState<PutBlobResult | any>('');
+  const [blob, setBlob, blobRef] = useState<PutBlobResult | any>();
+  const router = useRouter();
+  const params = useParams();
 
   const { register, handleSubmit, getValues, setValue, watch, formState: { errors }} = useForm({
     defaultValues: {
@@ -38,27 +42,38 @@ const AddProduct: FC = () => {
   const ProductOther1ImageRef = useRef<HTMLInputElement>(null);
   const ProductOther2ImageRef = useRef<HTMLInputElement>(null);
   const ProductOther3ImageRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
-    getArticleNo()
+    getProductDetails()
   }, [])
 
-  const getArticleNo = async() => {
+  const getProductDetails = async() => {
     await axios({
       method: 'get',
-      url: GET_ARTICLE_NO,
+      url: GET_PRODUCT_DETAILS+"/"+params.id,
     }).then((res:any) => {
-      if(res.statusText === 'OK'){
-        const latestArticleNo = res.data+1
-        setArticleNo(latestArticleNo)
-        setValue('articleNo', latestArticleNo);
-      }
+      console.log(res);
+      setProductDetails(res.data[0]);
+      const data = res.data[0];
+      setValue('articleNo', data.articleNo);
+      setValue('dept', data.dept);
+      setValue('category', data.category);
+      setValue('length', data.length);
+      setValue('articleNo', data.articleNo);
+      setValue('slug', data.slug);
+      setValue('sizes', data.sizes);
+      setValue('fabric', data.fabric);
+      setValue('fabricWeight', data.fabricWeight);
+      setValue('washType', data.washType);
+      setValue('moq', data.moq);
+      setValue('color', data.color);
+      setValue('price', data.price);
+    }).catch((err) => {
+      console.log(err)
     });
   }
   
   const onSubmit = async(data:any) => {
-    console.log(data);
     await axios({
       method: 'post',
       url: ADD_PRODUCT,
@@ -111,6 +126,17 @@ const AddProduct: FC = () => {
     updateImagePath(imgType);
   }
 
+  const deleteBlob = async(url) => {
+    const delBlob = await del(url, {
+      token: 'vercel_blob_rw_iVSO8j7JEXHRJCvW_xbEKfE1fiDvvlUtRdOM5gnst958kWu'
+    }).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    });
+    updateImagePath(undefined);
+  }
+
   const updateImagePath = async(imgType) => {
     let data;
     let frontImgUrl:string = '';
@@ -118,26 +144,28 @@ const AddProduct: FC = () => {
     let other1ImgUrl: string = '';
     let other2ImgUrl: string = '';
     let other3ImgUrl: string = '';
-    switch(imgType){
-      case 'front': 
-      frontImgUrl = blobRef.current.url
-      break;
-      case 'back': 
-      backImgUrl = blobRef.current?.url
-      break;
-      case 'other1': 
-      other1ImgUrl = blobRef.current?.url
-      break;
-      case 'other2': 
-      other2ImgUrl = blobRef.current?.url
-      break;
-      case 'other3': 
-      other3ImgUrl = blobRef.current?.url
-      break;
+    if(imgType){
+      switch(imgType){
+        case 'front': 
+        frontImgUrl = blobRef.current.url
+        break;
+        case 'back': 
+        backImgUrl = blobRef.current?.url
+        break;
+        case 'other1': 
+        other1ImgUrl = blobRef.current?.url
+        break;
+        case 'other2': 
+        other2ImgUrl = blobRef.current?.url
+        break;
+        case 'other3': 
+        other3ImgUrl = blobRef.current?.url
+        break;
+      }
     }
     
     data = {
-      articleNo : articleNoRef.current.toString(),
+      articleNo : productDetailsRef.current?.articleNo.toString(),
       frontImgUrl,
       backImgUrl,
       other1ImgUrl,
@@ -173,7 +201,7 @@ const AddProduct: FC = () => {
           <div className='row mb-3'>
             { currentStepRef.current === 'stepProductInfo' &&
               <>
-                <h2 className='text-center mb-5'>Add Product</h2>
+                <h2 className='text-center mb-5'>Edit Product</h2>
                 <div className='col-4'>
                   <label htmlFor='dept'>Dept.</label>
                   <select {...register('dept', { required: true })} className="select-input">
@@ -247,16 +275,19 @@ const AddProduct: FC = () => {
                   <input type="text" id='price' {...register('price', {required: true})} className='form-control' />
                 </div>
                 <div className='d-grid gap-2 pt-4'>
-                  <button type="submit" className='btn btn-primary btn-block'>Upload Photos</button>
+                  <button type="submit" className='btn btn-primary'>Add Product</button>
+                  <button type="button" className='btn btn-primary' onClick={() => {setCurrentStep('stepImageUpload')}}>Upload Photos</button>
                 </div>
               </>
             }
             { currentStepRef.current === 'stepImageUpload' &&
               <>
-                <span className='fa' onClick={() => {stepChange('stepProductInfo')}}>Back</span>
+                <button type='button' className='btn-warning' onClick={() => {stepChange('stepProductInfo')}}>Back</button>
                 <h2 className='text-center mb-5'>Upload Images</h2>
                 <div className='col-4 mb-5'>
-                  <label htmlFor='frontImg'>Front Image</label>
+                  <label htmlFor='frontImg' className='mb-2'>Front Image</label>
+                  <img src={productDetailsRef.current?.productImages.frontImgUrl} width={200} />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.frontImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='frontImg' 
@@ -267,7 +298,9 @@ const AddProduct: FC = () => {
                   />
                 </div>
                 <div className='col-4'>
-                  <label htmlFor='backImg'>Back Image</label>
+                  <label htmlFor='backImg' className='mb-2'>Back Image</label>
+                  <img src={productDetailsRef.current?.productImages.backImgUrl} width={200} />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.backImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='backImg' 
@@ -278,7 +311,9 @@ const AddProduct: FC = () => {
                   />
                 </div>
                 <div className='col-4'>
-                  <label htmlFor='other1Img'>Other 1</label>
+                  <label htmlFor='other1Img' className='mb-2'>Other 1</label>
+                  <img src={productDetailsRef.current?.productImages.other1ImgUrl} width={200} />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other1ImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='other1Img'
@@ -289,7 +324,9 @@ const AddProduct: FC = () => {
                   />
                 </div>
                 <div className='col-4 mb-3'>
-                  <label htmlFor='other2Img'>Other 2</label>
+                  <label htmlFor='other2Img' className='mb-2'>Other 2</label>
+                  <img src={productDetailsRef.current?.productImages.other2ImgUrl} width={200} />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other2ImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='other2Img'
@@ -300,7 +337,9 @@ const AddProduct: FC = () => {
                   />
                 </div>
                 <div className='col-4'>
-                  <label htmlFor='other3Img'>Other 3</label>
+                  <label htmlFor='other3Img' className='mb-2'>Other 3</label>
+                  <img src={productDetailsRef.current?.productImages.other3ImgUrl} width={200} />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other3ImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='other3Img'
@@ -325,4 +364,4 @@ const AddProduct: FC = () => {
     </div>
 )}
 
-export default AddProduct;
+export default EditProduct;
