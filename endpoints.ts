@@ -10,11 +10,11 @@ export const DELETE_PRODUCT = `${baseRoute}/admin/product`;
 export const UPDATE_PRODUCT = `${baseRoute}/admin/product`;
 export const SEARCH_PRODUCTS = `${baseRoute}/product`;
 export const IMAGE_UPLOAD = `${baseRoute}/admin/product/image-upload`;
-export const GET_PRODUCT_DETAILS = `${baseRoute}/product`;
+export const GET_PRODUCT_DETAILS = `${baseRoute}/product/details`;
 export const CREATE_ADMIN_USER = `${baseRoute}/admin/create`;
 export const ADMIN_LOGOUT = `${baseRoute}/admin/logout`;
 export const GET_PRODUCTS_LISTING = `${baseRoute}/product-listing`;
-export const GET_ARTICLE_NO = `${baseRoute}/product/articleNo`;
+export const GET_ARTICLE_NO = `${baseRoute}/product/getLatestArticleNo`;
 export const UPDATE_PRODUCT_IMAGE_PATH = `${baseRoute}/product/update-image-path`;
 
 //internal routes

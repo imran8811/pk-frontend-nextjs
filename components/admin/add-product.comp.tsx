@@ -54,6 +54,8 @@ const AddProduct: FC = () => {
         setArticleNo(latestArticleNo)
         setValue('articleNo', latestArticleNo);
       }
+    }).catch(err => {
+      console.log(err);
     });
   }
   
