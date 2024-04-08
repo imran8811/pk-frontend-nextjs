@@ -2,7 +2,7 @@
 import { Metadata } from 'next';
 import Header from '../../components/shared/header/header.comp';
 import Footer from '../../components/shared/footer/footer.comp';
-import Shop from '../../components/wholesale-shop/shop.comp';
+import ShopComp from '../../components/wholesale-shop/shop.comp';
 import Keywords from '../../components/shared/keywords/keywords.comp';
 
 const ShopPage = (data) => {
@@ -10,7 +10,7 @@ const ShopPage = (data) => {
     <>
       <div className='container'>
         <Header />
-        <Shop {...data} />
+        <ShopComp />
         <Keywords />
       </div>
       <Footer></Footer>

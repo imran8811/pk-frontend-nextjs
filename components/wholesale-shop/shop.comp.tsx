@@ -7,15 +7,14 @@ import { Product } from "../../models"
 import { useForm } from 'react-hook-form'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const Shop : FC = (props:any) => {
-  const [products, setProducts] = useState<Product[]>(props.data);
+const ShopComp : FC = (props:any) => {
+  const [products, setProducts] = useState<Product[]>();
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
   const router = useRouter();
   // const { query, isReady } = useRouter();
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  console.log(props.params.dept, props.params.category);
   const createQueryString = useCallback((name: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString())
     params.set(name, value)
@@ -26,14 +25,10 @@ const Shop : FC = (props:any) => {
     getAllProducts();
   }, [])
 
-  const data = {
-    dept: props.params.dept,
-    category: props.params.category
-  }
-
   const getAllProducts = () => {
     axios.get(`${SEARCH_PRODUCTS}/men/jeans-pant`).then(res => {
       setProducts(res.data)
+      console.log(res.data);
     })
   }
 
@@ -51,12 +46,12 @@ const Shop : FC = (props:any) => {
   return (
       <div className="row">
         <div className={cls(styles.shopListing, 'col-lg-12')}>
-          <h2 className="text-center mb-4">Jeans Pant for Men</h2>
           <div className="row">
             { products && products.map((product, index) => {
+              <h2 className="text-center mb-4">Jeans Pant for Men</h2>
               return (
                 <div className="col-lg-3 col-md-4 mb-3" key={index}>
-                  <a href={`${product.category}/${product.articleNo}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+                  <a href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`} className="d-block mb-3" target="_blank" rel="noreferrer">
                     <img
                       src={product.productImages.frontImgUrl} 
                       alt={product.productImages.frontImgUrl}
@@ -67,10 +62,13 @@ const Shop : FC = (props:any) => {
                 </div>
               )
             })}
+            {products?.length === 0 &&
+              <h6 className="text-center text-danger mb-5 mt-5">No Product Found</h6>
+            }
           </div>
         </div>
       </div>
   )
 }
 
-export default Shop;
+export default ShopComp;

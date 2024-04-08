@@ -14,7 +14,7 @@ export const GET_PRODUCT_DETAILS = `${baseRoute}/product`;
 export const CREATE_ADMIN_USER = `${baseRoute}/admin/create`;
 export const ADMIN_LOGOUT = `${baseRoute}/admin/logout`;
 export const GET_PRODUCTS_LISTING = `${baseRoute}/product-listing`;
-export const GET_ARTICLE_NO = `${baseRoute}/product/article-no`;
+export const GET_ARTICLE_NO = `${baseRoute}/product/articleNo`;
 export const UPDATE_PRODUCT_IMAGE_PATH = `${baseRoute}/product/update-image-path`;
 
 //internal routes

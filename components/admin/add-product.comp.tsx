@@ -20,7 +20,7 @@ const AddProduct: FC = () => {
       dept: "men",
       category: "jeans-pant",
       length: "long",
-      articleNo: "",
+      articleNo: 0,
       slug: "",
       sizes: "",
       fitting: "slim",
@@ -137,7 +137,7 @@ const AddProduct: FC = () => {
     }
     
     data = {
-      articleNo : articleNoRef.current.toString(),
+      articleNo : getValues('articleNo'),
       frontImgUrl,
       backImgUrl,
       other1ImgUrl,
@@ -202,7 +202,7 @@ const AddProduct: FC = () => {
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='article-no'>Article No.</label>
-                  <input type="text" id='article-no' {...register('articleNo', {required: true})} className='form-control' />
+                  <input type="text" id='article-no' {...register('articleNo', {required: true, valueAsNumber: true})} className='form-control' />
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='product-slug'>Product Slug</label>
