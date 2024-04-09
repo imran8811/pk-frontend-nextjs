@@ -2,7 +2,7 @@ import { FC, useEffect, createRef, useRef } from 'react'
 import useState from 'react-usestateref'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { ADD_PRODUCT, IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO } from '../../endpoints'
+import { PRODUCT_API, IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO } from '../../endpoints'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
@@ -11,7 +11,6 @@ import { upload } from '@vercel/blob/client';
  
 
 const AddProduct: FC = () => {
-  const [articleNo, setArticleNo, articleNoRef] = useState('');
   const [currentStep, setCurrentStep, currentStepRef] = useState('stepProductInfo');
   const [blob, setBlob, blobRef] = useState<PutBlobResult | any>('');
 
@@ -20,7 +19,7 @@ const AddProduct: FC = () => {
       dept: "men",
       category: "jeans-pant",
       length: "long",
-      articleNo: 0,
+      articleNo: "",
       slug: "",
       sizes: "",
       fitting: "slim",
@@ -51,8 +50,7 @@ const AddProduct: FC = () => {
     }).then((res:any) => {
       if(res.statusText === 'OK'){
         const latestArticleNo = res.data+1
-        setArticleNo(latestArticleNo)
-        setValue('articleNo', latestArticleNo);
+        setValue('articleNo', latestArticleNo.toString());
       }
     }).catch(err => {
       console.log(err);
@@ -60,10 +58,9 @@ const AddProduct: FC = () => {
   }
   
   const onSubmit = async(data:any) => {
-    console.log(data);
     await axios({
       method: 'post',
-      url: ADD_PRODUCT,
+      url: PRODUCT_API,
       data: data,
     }).then((res:any) => {
       if(res.data.type === 'success'){
@@ -152,7 +149,6 @@ const AddProduct: FC = () => {
       url: UPDATE_PRODUCT_IMAGE_PATH,
       data: data,
     }).then(res => {
-      console.log(res);
       if(res.data.type === 'success') {
         toast.success('Image Uploaded')
       }
@@ -204,7 +200,7 @@ const AddProduct: FC = () => {
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='article-no'>Article No.</label>
-                  <input type="text" id='article-no' {...register('articleNo', {required: true, valueAsNumber: true})} className='form-control' />
+                  <input type="text" id='article-no' {...register('articleNo', {required: true, valueAsNumber : false})} className='form-control' />
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='product-slug'>Product Slug</label>

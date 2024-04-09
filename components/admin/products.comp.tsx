@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react'
 import axios from 'axios'
-import { DELETE_PRODUCT, GET_PRODUCTS, UPDATE_PRODUCT } from '../../endpoints'
+import { GET_PRODUCTS, PRODUCT_API } from '../../endpoints'
 import { useRouter } from "next/navigation";
 import useState from 'react-usestateref';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ const Products: FC = () => {
   }, [])
 
   const deleteProduct = (article_no:any) => {
-    axios.delete(`${DELETE_PRODUCT}/${article_no}`).then(res => {
+    axios.delete(`${PRODUCT_API}/${article_no}`).then(res => {
       if(res.data.type === 'success') {
         router.refresh();
       }

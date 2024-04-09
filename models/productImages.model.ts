@@ -1,5 +1,5 @@
 export type ProductImages = {
-  articleNo: number,
+  articleNo: string,
   frontImgUrl: string,
   backImgUrl: string,
   other1ImgUrl: string,

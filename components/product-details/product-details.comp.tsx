@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react"
 import useState from 'react-usestateref'
-import { GET_PRODUCT_DETAILS, basePath } from "../../endpoints"
+import { PRODUCT_API, basePath } from "../../endpoints"
 import { Product } from "../../models"
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,9 +17,8 @@ const ProductDetails : FC = (props:any) => {
   const getProductDetails = async () => {
     const res = await axios({
       method: "get",
-      url: `${GET_PRODUCT_DETAILS}/${params.dept}/${params.category}/${params.id}`
+      url: `${PRODUCT_API}/${params.dept}/${params.category}/${params.id}`
     }).then(res => {
-      console.log(res);
       setproductDetails(res.data);
     })
   }

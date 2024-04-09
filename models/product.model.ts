@@ -9,7 +9,7 @@ export type Product = {
   washType : string,
   moq : number,
   price : number,
-  articleNo : number,
+  articleNo : string,
   dept: string,
   category : string,
   type : string,

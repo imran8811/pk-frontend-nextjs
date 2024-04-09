@@ -2,7 +2,7 @@ import { FC, useEffect, createRef, useRef } from 'react'
 import useState from 'react-usestateref'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { ADD_PRODUCT, IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO, GET_PRODUCT_DETAILS } from '../../endpoints'
+import { IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO, GET_PRODUCT_DETAILS } from '../../endpoints'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams, useRouter } from 'next/navigation';

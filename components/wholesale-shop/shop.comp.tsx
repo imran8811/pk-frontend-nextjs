@@ -2,7 +2,7 @@ import { FC, useCallback, useEffect, useState } from "react"
 import cls from 'classnames'
 import styles from './shop.module.css'
 import axios from "axios"
-import { basePath, SEARCH_PRODUCTS } from "../../endpoints"
+import { basePath, PRODUCT_API } from "../../endpoints"
 import { Product } from "../../models"
 import { useForm } from 'react-hook-form'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -26,9 +26,8 @@ const ShopComp : FC = (props:any) => {
   }, [])
 
   const getAllProducts = () => {
-    axios.get(`${SEARCH_PRODUCTS}/men/jeans-pant`).then(res => {
+    axios.get(`${PRODUCT_API}/men/jeans-pant`).then(res => {
       setProducts(res.data)
-      console.log(res.data);
     })
   }
 
@@ -47,8 +46,8 @@ const ShopComp : FC = (props:any) => {
       <div className="row">
         <div className={cls(styles.shopListing, 'col-lg-12')}>
           <div className="row">
+            <h1 className="text-center mb-4">Jeans Wholesale Shop</h1>
             { products && products.map((product, index) => {
-              <h2 className="text-center mb-4">Jeans Pant for Men</h2>
               return (
                 <div className="col-lg-3 col-md-4 mb-3" key={index}>
                   <a href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`} className="d-block mb-3" target="_blank" rel="noreferrer">
