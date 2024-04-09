@@ -2,13 +2,12 @@ import { FC, useEffect, createRef, useRef } from 'react'
 import useState from 'react-usestateref'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO, GET_PRODUCT_DETAILS } from '../../endpoints'
+import { UPDATE_PRODUCT_IMAGE_PATH, GET_PRODUCT_DETAILS, PRODUCT_API } from '../../endpoints'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams, useRouter } from 'next/navigation';
 import { type PutBlobResult, del } from '@vercel/blob';
 import { upload } from '@vercel/blob/client';
-import { IProductListing } from '../../models/productListing.model'
 import { Product } from '../../models'
  
 
@@ -76,7 +75,7 @@ const EditProduct: FC = () => {
   const onSubmit = async(data:any) => {
     await axios({
       method: 'post',
-      url: ADD_PRODUCT,
+      url: PRODUCT_API,
       data: data,
     }).then((res:any) => {
       if(res.data.type === 'success'){

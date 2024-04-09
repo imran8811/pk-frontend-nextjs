@@ -2,7 +2,7 @@ import { FC, useCallback, useEffect, useState } from "react"
 import cls from 'classnames'
 import styles from './shop.module.css'
 import axios from "axios"
-import { basePath, SEARCH_PRODUCTS } from "../endpoints"
+import { basePath, PRODUCT_API } from "../endpoints"
 import { Product } from "../models"
 import { useForm } from 'react-hook-form'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -32,7 +32,7 @@ const ProductFiltersComp : FC = (props:any) => {
   }
 
   const getAllProducts = () => {
-    axios.get(`${SEARCH_PRODUCTS}/men/jeans-pant`).then(res => {
+    axios.get(`${PRODUCT_API}/men/jeans-pant`).then(res => {
       setProducts(res.data)
     })
   }
