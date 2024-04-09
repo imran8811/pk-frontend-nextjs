@@ -12,6 +12,7 @@ import { upload } from '@vercel/blob/client';
 
 const AddProduct: FC = () => {
   const [currentStep, setCurrentStep, currentStepRef] = useState('stepProductInfo');
+  const [productId, setProductId, productIdRef] = useState();
   const [blob, setBlob, blobRef] = useState<PutBlobResult | any>('');
 
   const { register, handleSubmit, getValues, setValue, watch, formState: { errors }} = useForm({
@@ -63,6 +64,8 @@ const AddProduct: FC = () => {
       url: PRODUCT_API,
       data: data,
     }).then((res:any) => {
+      console.log(res);
+      setProductId(res.data.data._id)
       if(res.data.type === 'success'){
         setCurrentStep('stepImageUpload');
       }

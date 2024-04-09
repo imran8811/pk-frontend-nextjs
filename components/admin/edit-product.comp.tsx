@@ -195,7 +195,7 @@ const EditProduct: FC = () => {
 
   return (
     <div className='col-lg-12 mt-5 mb-5'>
-      <div className='row justify-content-center'>
+      <div className='row'>
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           <div className='row mb-3'>
             { currentStepRef.current === 'stepProductInfo' &&
@@ -285,7 +285,7 @@ const EditProduct: FC = () => {
                 <h2 className='text-center mb-5'>Upload Images</h2>
                 <div className='col-4 mb-5'>
                   <label htmlFor='frontImg' className='mb-2'>Front Image</label>
-                  <img src={productDetailsRef.current?.productImages.frontImgUrl} width={200} />
+                  <img src={productDetailsRef.current?.productImages.frontImgUrl} width={200} className='d-block mb-2' />
                   <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.frontImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
@@ -298,7 +298,7 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4'>
                   <label htmlFor='backImg' className='mb-2'>Back Image</label>
-                  <img src={productDetailsRef.current?.productImages.backImgUrl} width={200} />
+                  <img src={productDetailsRef.current?.productImages.backImgUrl} width={200} className='d-block mb-2' />
                   <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.backImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
@@ -311,7 +311,7 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4'>
                   <label htmlFor='other1Img' className='mb-2'>Other 1</label>
-                  <img src={productDetailsRef.current?.productImages.other1ImgUrl} width={200} />
+                  <img src={productDetailsRef.current?.productImages.other1ImgUrl} width={200} className='d-block mb-2' />
                   <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other1ImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
@@ -324,7 +324,7 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='other2Img' className='mb-2'>Other 2</label>
-                  <img src={productDetailsRef.current?.productImages.other2ImgUrl} width={200} />
+                  <img src={productDetailsRef.current?.productImages.other2ImgUrl} width={200} className='d-block mb-2' />
                   <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other2ImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 
@@ -337,7 +337,7 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4'>
                   <label htmlFor='other3Img' className='mb-2'>Other 3</label>
-                  <img src={productDetailsRef.current?.productImages.other3ImgUrl} width={200} />
+                  <img src={productDetailsRef.current?.productImages.other3ImgUrl} width={200} className='d-block mb-2' />
                   <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other3ImgUrl)}}>Delete Image</button>
                   <input 
                     type="file" 

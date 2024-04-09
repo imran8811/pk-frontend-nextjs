@@ -26,11 +26,6 @@ const ProductFiltersComp : FC = (props:any) => {
     getAllProducts();
   }, [])
 
-  const data = {
-    dept: props.params.dept,
-    category: props.params.category
-  }
-
   const getAllProducts = () => {
     axios.get(`${PRODUCT_API}/men/jeans-pant`).then(res => {
       setProducts(res.data)

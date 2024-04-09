@@ -4,6 +4,7 @@ import { GET_PRODUCTS, PRODUCT_API } from '../../endpoints'
 import { useRouter } from "next/navigation";
 import useState from 'react-usestateref';
 import Link from 'next/link';
+import { del } from '@vercel/blob';
 
 const Products: FC = () => {
   const basePath = 'http://localhost:8000'
@@ -27,21 +28,29 @@ const Products: FC = () => {
     })
   }, [])
 
-  const deleteProduct = (article_no:any) => {
-    axios.delete(`${PRODUCT_API}/${article_no}`).then(res => {
+  const deleteProduct = async(articleNo:string, blobUrls: string[]) => {
+    const res = await axios.delete(`${PRODUCT_API}/${articleNo}`).then(res => {
       if(res.data.type === 'success') {
-        router.refresh();
+        deleteBlob(blobUrls)
       }
+    })
+  }
+
+  const deleteBlob = (blobUrls: string[]) => {
+    blobUrls.forEach(url => {
+      const delBlob =  del(url, {
+        token: 'vercel_blob_rw_iVSO8j7JEXHRJCvW_xbEKfE1fiDvvlUtRdOM5gnst958kWu'
+      })
     })
   }
 
   return (
     <div className='col-lg-12 mt-5 mb-5'>
-      <div className='row justify-content-center'>
+      <div className='row'>
         <h2 className='text-center mb-3'>Products</h2>
           { productsRef.current && productsRef.current.map((product:any, index) => {
               return (
-                <div className='col-3' key={index}>
+                <div className='col-4' key={index}>
                   <Link href={"/admin/edit-product/"+product.articleNo}>
                     <img src={product.productImages.frontImgUrl} alt={product.productImages.frontImgUrl} width={200} />
                   </Link>
@@ -69,7 +78,16 @@ const Products: FC = () => {
                     </li>
                   </ul>
                   <div className='mb-3 mt-3'>
-                    <button type='button' className='btn btn-danger' onClick={() => deleteProduct(product.articleNo)}>Delete</button>
+                    <button 
+                      type='button' 
+                      className='btn btn-danger' 
+                      onClick={() => deleteProduct(product.articleNo, [
+                        product.productImages.frontImgUrl, 
+                        product.productImages.backImgUrl, 
+                        product.productImages.other1ImgUrl, 
+                        product.productImages.other2ImgUrl, 
+                        product.productImages.other3ImgUrl
+                      ])}>Delete</button>
                   </div>
                 </div>
               )
