@@ -50,7 +50,7 @@ const AddProduct: FC = () => {
       url: GET_ARTICLE_NO,
     }).then((res:any) => {
       if(res.statusText === 'OK'){
-        const latestArticleNo = res.data+1
+        const latestArticleNo = res.data+1;
         setValue('articleNo', latestArticleNo.toString());
       }
     }).catch(err => {
@@ -64,7 +64,6 @@ const AddProduct: FC = () => {
       url: PRODUCT_API,
       data: data,
     }).then((res:any) => {
-      console.log(res);
       setProductId(res.data.data._id)
       if(res.data.type === 'success'){
         setCurrentStep('stepImageUpload');
@@ -87,18 +86,18 @@ const AddProduct: FC = () => {
         }
       break;
       case 'other1': 
-        if (ProductBackImageRef.current?.files) {
-          file = ProductBackImageRef.current?.files[0]
+        if (ProductOther1ImageRef.current?.files) {
+          file = ProductOther1ImageRef.current?.files[0]
         }
       break;
       case 'other2': 
-      if (ProductBackImageRef.current?.files) {
-        file = ProductBackImageRef.current?.files[0]
+      if (ProductOther2ImageRef.current?.files) {
+        file = ProductOther2ImageRef.current?.files[0]
       }
       break;
       case 'other3': 
-        if (ProductBackImageRef.current?.files) {
-          file = ProductBackImageRef.current?.files[0]
+        if (ProductOther3ImageRef.current?.files) {
+          file = ProductOther3ImageRef.current?.files[0]
         }
       break;
       default :
@@ -215,7 +214,7 @@ const AddProduct: FC = () => {
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='fitting'>Fitting</label>
-                  <select id='fitting' {...register('fitting', { required: true })} className="form-control">
+                  <select id='fitting' {...register('fitting', { required: true })} className="select-input">
                     <option value='slim'>Slim</option>
                     <option value='straight'>Straight</option>
                     <option value='skinny'>Skinny</option>

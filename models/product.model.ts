@@ -1,6 +1,7 @@
 import { ProductImages } from "./productImages.model"
 
-export type Product = {
+export type IProduct = {
+  _id : string,
   sizes : string,
   color : string,
   fitting : string,

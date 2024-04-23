@@ -8,11 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useParams, useRouter } from 'next/navigation';
 import { type PutBlobResult, del } from '@vercel/blob';
 import { upload } from '@vercel/blob/client';
-import { Product } from '../../models'
+import { IProduct } from '../../models'
  
 
 const EditProduct: FC = () => {
-  const [productDetails, setProductDetails, productDetailsRef] = useState<Product>();
+  const [productDetails, setProductDetails, productDetailsRef] = useState<IProduct>();
   const [currentStep, setCurrentStep, currentStepRef] = useState('stepProductInfo');
   const [blob, setBlob, blobRef] = useState<PutBlobResult | any>();
   const router = useRouter();
@@ -33,7 +33,6 @@ const EditProduct: FC = () => {
       moq: "",
       price: "",
       color: "",
-      productImages:[]
     }
   });
   const ProductFrontImageRef = useRef<HTMLInputElement>(null);
@@ -50,10 +49,10 @@ const EditProduct: FC = () => {
     await axios({
       method: 'get',
       url: GET_PRODUCT_DETAILS+"/"+params.id,
-    }).then((res:any) => {
+    }).then((res) => {
       console.log(res);
-      setProductDetails(res.data[0]);
-      const data = res.data[0];
+      setProductDetails(res.data);
+      const data = res.data;
       setValue('articleNo', data.articleNo);
       setValue('dept', data.dept);
       setValue('category', data.category);
@@ -74,12 +73,12 @@ const EditProduct: FC = () => {
   
   const onSubmit = async(data:any) => {
     await axios({
-      method: 'post',
-      url: PRODUCT_API,
+      method: 'put',
+      url: PRODUCT_API+'/'+params.id,
       data: data,
     }).then((res:any) => {
       if(res.data.type === 'success'){
-        setCurrentStep('stepImageUpload');
+        toast.success(res.data.message);
       }
     });
   }
@@ -99,18 +98,18 @@ const EditProduct: FC = () => {
         }
       break;
       case 'other1': 
-        if (ProductBackImageRef.current?.files) {
-          file = ProductBackImageRef.current?.files[0]
+        if (ProductOther1ImageRef.current?.files) {
+          file = ProductOther1ImageRef.current?.files[0]
         }
       break;
       case 'other2': 
-      if (ProductBackImageRef.current?.files) {
-        file = ProductBackImageRef.current?.files[0]
+      if (ProductOther2ImageRef.current?.files) {
+        file = ProductOther2ImageRef.current?.files[0]
       }
       break;
       case 'other3': 
-        if (ProductBackImageRef.current?.files) {
-          file = ProductBackImageRef.current?.files[0]
+        if (ProductOther3ImageRef.current?.files) {
+          file = ProductOther3ImageRef.current?.files[0]
         }
       break;
       default :
@@ -162,7 +161,6 @@ const EditProduct: FC = () => {
         break;
       }
     }
-    
     data = {
       articleNo : productDetailsRef.current?.articleNo.toString(),
       frontImgUrl,
@@ -210,7 +208,7 @@ const EditProduct: FC = () => {
                     <option value='girls'>Girls</option>
                   </select>
                 </div>
-                <input type='hidden' {...register('productImages')} />
+                {/* <input type='hidden' {...register('productImages')} /> */}
                 <div className='col-4 mb-3'>
                   <label htmlFor='category'>Category</label>
                   <select {...register('category', { required: true })} className="select-input">
@@ -241,7 +239,7 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='fitting'>Fitting</label>
-                  <select id='fitting' {...register('fitting', { required: true })} className="form-control">
+                  <select id='fitting' {...register('fitting', { required: true })} className="select-input">
                     <option value='slim'>Slim</option>
                     <option value='straight'>Straight</option>
                     <option value='skinny'>Skinny</option>
@@ -274,7 +272,7 @@ const EditProduct: FC = () => {
                   <input type="text" id='price' {...register('price', {required: true})} className='form-control' />
                 </div>
                 <div className='d-grid gap-2 pt-4'>
-                  <button type="submit" className='btn btn-primary'>Add Product</button>
+                  <button type="submit" className='btn btn-primary'>Update Product</button>
                   <button type="button" className='btn btn-primary' onClick={() => {setCurrentStep('stepImageUpload')}}>Upload Photos</button>
                 </div>
               </>

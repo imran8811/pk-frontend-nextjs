@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@vercel/blob": "^0.22.1",
+    "antd": "^5.16.1",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "classnames": "^2.5.1",
@@ -17,6 +21,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-tabs": "^6.0.2",
     "react-toastify": "^10.0.4",
     "react-usestateref": "^1.0.8",
     "swiper": "^11.0.7"

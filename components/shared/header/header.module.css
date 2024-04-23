@@ -1,15 +1,14 @@
-.mainMenu {
+.headerMenu, .footerMenu {
 	padding: 10px;
-	overflow: hidden;
 	display: block;
 }
-.mainMenu ul {
+.headerMenu ul, .footerMenu ul {
 	list-style: none;
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: bold;
 }
-.mainMenu ul li {
+.headerMenu ul li, .footerMenu ul li {
 	background: url(/images/separator.png) no-repeat 0 50%;
 	vertical-align: middle;
 	display: inline-block;
@@ -17,9 +16,26 @@
 	margin: 0 0 0 20px;
 	text-transform:capitalize;
 }
-.mainMenu ul li:hover a{ text-decoration:none; }
-.mainMenu ul li:first-child {
+.headerMenu ul li { background: none; }
+.headerMenu ul li:hover a, .footerMenu ul li:hover a { text-decoration:none; }
+.headerMenu ul li:first-child, .footerMenu ul li:first-child {
 	background: none;
 	margin: 0;
 	padding: 0;
+}
+.headerMenu .headerMenuDropdown { position: relative; }
+.headerMenu .headerMenuDropdown ul {
+	position: absolute;
+	left: -8px;
+	top: 21px;
+	width: 104px;
+	padding: 10px;
+	display: none;
+}
+.headerMenu .headerMenuDropdown ul li {
+	display: block;
+	padding: 5px 0;
+}
+.headerMenu .headerMenuDropdown:hover > ul {
+	display: block;
 }

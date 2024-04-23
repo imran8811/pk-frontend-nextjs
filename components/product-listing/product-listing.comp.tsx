@@ -2,12 +2,12 @@ import { FC, useEffect, useState } from "react"
 import styles from './product-listing.module.css'
 import axios from "axios"
 import { GET_PRODUCTS_LISTING, basePath } from "../../endpoints"
-import { Product } from "../../models"
+import { IProduct } from "../../models"
 import { useRouter } from "next/navigation";
 import { IProductListing } from "../../models/productListing.model"
 
 const ProductListing : FC<IProductListing> = ({category, type, numberOfRecords}) => {
-  const [productListing, setProductListing] = useState<Product[]>();
+  const [productListing, setProductListing] = useState<IProduct[]>();
   // const { isReady } = useRouter();
 
   useEffect(() => {

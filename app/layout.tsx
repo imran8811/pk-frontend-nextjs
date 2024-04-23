@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
+import BootstrapClient from '../components/BootstrapClient.js';
+
 import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css'
 
@@ -18,7 +20,16 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
         <meta name="google-site-verification" content="WlphvHVaVW1jVWUufak-1TfWkjBAvf271H95iMGwtSw" />
         <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="main-wrapper">
+          <div className="container-fluid">
+            <div className="row-fluid">
+              {children}
+              <BootstrapClient />
+            </div>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }

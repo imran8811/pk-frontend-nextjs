@@ -3,12 +3,12 @@ import cls from 'classnames'
 import styles from './shop.module.css'
 import axios from "axios"
 import { basePath, PRODUCT_API } from "../../endpoints"
-import { Product } from "../../models"
+import { IProduct } from "../../models"
 import { useForm } from 'react-hook-form'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const ShopComp : FC = (props:any) => {
-  const [products, setProducts] = useState<Product[]>();
+  const [products, setProducts] = useState<IProduct[]>();
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
   const router = useRouter();
   // const { query, isReady } = useRouter();
@@ -50,7 +50,7 @@ const ShopComp : FC = (props:any) => {
             { products && products.map((product, index) => {
               return (
                 <div className="col-lg-3 col-md-4 mb-3" key={index}>
-                  <a href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+                  <a href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`} className="d-block mb-3" target="_blank" rel="noreferrer">
                     <img
                       src={product.productImages.frontImgUrl} 
                       alt={product.productImages.frontImgUrl}

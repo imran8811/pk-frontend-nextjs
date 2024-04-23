@@ -17,3 +17,13 @@ export const UPDATE_PRODUCT_IMAGE_PATH = `${baseRoute}/product/update-image-path
 //internal routes
 export const PRODUCT_DETAILS = '/wholesale-shop/product-details'
 export const WHOLESALE_SHOP = '/wholesale-shop'
+
+//cart CRUD
+export const ADD_TO_CART = `${baseRoute}/cart/saveItem`;
+export const GET_CART_DETAILS = `${baseRoute}/cart/getAll`;
+export const DELETE_CART_ITEM = `${baseRoute}/cart`;
+
+//authentication
+export const USER_LOGIN = `${baseRoute}/auth/login`;
+export const USER_SIGN_UP = `${baseRoute}/auth/signup`;
+export const USER_LOGOUT = `${baseRoute}/auth/logout`;

@@ -7,7 +7,7 @@ const RatingReviews: FC = () => {
     <div className="mb-5">
       <h3 className={styles.sectionHeading}>Rating & Reviews</h3>
       <ul className="row">
-        <li className="col-lg-3">
+        <li className="col-lg-3 mb-3">
           <div className={cls(styles.innerRating, styles.innerManufacture)}>
             <p>We orders 500 women jackets, delivery was on time and quality was also good, we repeated our order</p>
             <div className={styles.ratingWrap}>
@@ -25,7 +25,7 @@ const RatingReviews: FC = () => {
             </div>
           </div>
         </li>
-        <li className="col-lg-3">
+        <li className="col-lg-3 mb-3">
           <div className={cls(styles.innerRating, styles.innerManufacture)}>
             <p>Pants quality was awesome but shipment was 2 weeks late, had not much good expeience but will try them again</p>
             <div className={styles.ratingWrap}>
@@ -40,7 +40,7 @@ const RatingReviews: FC = () => {
             </div>
           </div>
         </li>
-        <li className="col-lg-3">
+        <li className="col-lg-3 mb-3">
           <div className={cls(styles.innerRating, styles.innerManufacture)}>
             <p>Awesome quality better than China, Pakistani jeans have real denim looks and price is also cheap, regular client of PK apparel</p>
             <div className={styles.ratingWrap}>
@@ -58,7 +58,7 @@ const RatingReviews: FC = () => {
             </div>
           </div>
         </li>
-        <li className="col-lg-3">
+        <li className="col-lg-3 mb-3">
           <div className={cls(styles.innerRating, styles.innerManufacture)}>
             <p>Communication is bit slow but overall expeience of denim quality and on time delivery is good, anyway liked them</p>
             <div className={styles.ratingWrap}>

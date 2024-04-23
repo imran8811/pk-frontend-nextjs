@@ -25,7 +25,7 @@ const AdminLogin: FC = () => {
     <div className='col-lg-12 mt-5 mb-5'>
       <div className='row justify-content-center'>
         <h2 className='text-center mb-3'>Admin Login</h2>
-        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-6'>
+        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-4 col-md-6 col-12'>
           <div className='mb-3'>
             <input type="text"  {...register('email', {required: true})} placeholder='Email' className='form-control' />
           </div>

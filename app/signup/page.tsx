@@ -1,18 +1,17 @@
 "use client";
-import { Metadata } from 'next';
 import Header from '../../components/shared/header/header.comp';
 import Footer from '../../components/shared/footer/footer.comp';
-import ShopComp from '../../components/wholesale-shop/shop.comp';
 import Keywords from '../../components/shared/keywords/keywords.comp';
+import SignupComp from '../../components/auth/signup/signup.comp';
 
-const ShopPage = (data) => {
+const CartPage = () => {
   return (
     <>
       <Header />
-      <ShopComp />
+      <SignupComp />
       <Footer />
     </>
   )
 }
 
-export default ShopPage;
+export default CartPage;
