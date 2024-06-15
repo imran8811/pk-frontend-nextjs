@@ -1,18 +1,18 @@
 "use client";
-import axios from "axios";
 import { USER_LOGOUT } from "../endpoints";
+import axiosInstance from "../interceptors/axios.interceptor";
 
 export class AuthService {
   constructor() { }
 
   public checkUserSession() {
     let userData = localStorage.getItem('userData');
-    userData = userData? JSON.parse(userData) : ''
+    userData = userData? JSON.parse(userData) : '';
     return userData;
   }
 
   public async userLogout(userId:string){
-    const userLogout = await axios({
+    const userLogout = await axiosInstance({
       method: 'post',
       url: USER_LOGOUT,
       data: {

@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react'
-import axios from 'axios'
+import axiosInstance from '../../interceptors/axios.interceptor';
 import { GET_PRODUCTS, PRODUCT_API } from '../../endpoints'
 import { useRouter } from "next/navigation";
 import useState from 'react-usestateref';
@@ -15,11 +15,11 @@ const Products: FC = () => {
   useEffect(() => {
     if(localStorage.getItem('adminToken')) {
       const token = localStorage.getItem('adminToken');
-      axios.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
+      axiosInstance.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
     } else {
       router.push('/admin/login')
     }
-    axios.get(GET_PRODUCTS).then(res => {
+    axiosInstance.get(GET_PRODUCTS).then(res => {
       if(res.data.length === 0) {
         setNoProductFound(true);
       } else {
@@ -29,7 +29,7 @@ const Products: FC = () => {
   }, [])
 
   const deleteProduct = async(articleNo:string, blobUrls: string[]) => {
-    const res = await axios.delete(`${PRODUCT_API}/${articleNo}`).then(res => {
+    const res = await axiosInstance.delete(`${PRODUCT_API}/${articleNo}`).then(res => {
       if(res.data.type === 'success') {
         deleteBlob(blobUrls)
       }

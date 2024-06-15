@@ -7,7 +7,6 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { CheckUserSession, UserLogout } from '../../../services/auth.service'
 import { useRouter } from 'next/navigation'
 import { WHOLESALE_SHOP } from '../../../endpoints'
-import { useEffect } from 'react';
 import cls from 'classnames';
 
 export default function Header() {
@@ -22,7 +21,7 @@ export default function Header() {
 
   return (
     <>
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-TTX4WPE230"></Script>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-TTX4WPE230" />
       <Script
         id="g-tag" 
         strategy="afterInteractive"
@@ -44,6 +43,7 @@ export default function Header() {
           <div className={cls(styles.headerMenu, 'text-end')}>
             <ul >
               <li><Link href={'/wholesale-shop'}>Wholesale Shop</Link></li>
+              <li><Link href={'/wholesale-shop/cart'}>Cart (0)</Link></li>
               {!CheckUserSession() &&
                 <>
                   <li><Link href={'/login'}>Login</Link></li>
@@ -51,14 +51,14 @@ export default function Header() {
                 </>
               }
               {CheckUserSession() &&
-                <li className={styles.headerMenuDropdown}> {'Username'} &nbsp;<FontAwesomeIcon icon={faCaretDown} className='fa fa-caret-down' />
+                <li className={styles.headerMenuDropdown}> {userData.businessName} &nbsp;<FontAwesomeIcon icon={faCaretDown} className='fa fa-caret-down' />
                   <ul>
                     <li><Link href={'/account'}>Account</Link></li> 
+                    <li><Link href={'/orders'}>Orders</Link></li> 
                     <li><Link href={'#'} onClick={() => {userLogout()}}>Logout</Link></li> 
                   </ul>
                 </li>
               }
-              <li><Link href={'/wholesale-shop/cart'}>Cart(0)</Link></li>
             </ul>
           </div>
         </div>

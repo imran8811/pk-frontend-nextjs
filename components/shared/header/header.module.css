@@ -25,16 +25,17 @@
 }
 .headerMenu .headerMenuDropdown { position: relative; }
 .headerMenu .headerMenuDropdown ul {
+	background-color: #fff;
 	position: absolute;
 	left: -8px;
 	top: 21px;
-	width: 104px;
-	padding: 10px;
+	width: 110px;
 	display: none;
+	z-index: 9999;
 }
 .headerMenu .headerMenuDropdown ul li {
 	display: block;
-	padding: 5px 0;
+	padding: 6px 10px;
 }
 .headerMenu .headerMenuDropdown:hover > ul {
 	display: block;

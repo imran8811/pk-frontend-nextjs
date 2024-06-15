@@ -6,12 +6,8 @@ import BulkJeansComp from '../../components/landing-pages/bulk-jeans';
 const BulkJeans = () => {
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <Header></Header>
-          <BulkJeansComp keyword='Bulk Jeans' text='Bulk Jeans'></BulkJeansComp>
-        </div>
-      </div>
+      <Header></Header>
+      <BulkJeansComp keyword='Bulk Jeans' text='Bulk Jeans'></BulkJeansComp>
       <Footer></Footer>
     </>
   )

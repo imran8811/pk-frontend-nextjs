@@ -1,7 +1,7 @@
 import { FC, useEffect, createRef, useRef } from 'react'
 import useState from 'react-usestateref'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
+import axiosInstance from '../../interceptors/axios.interceptor'
 import { PRODUCT_API, IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO } from '../../endpoints'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,7 +45,7 @@ const AddProduct: FC = () => {
   }, [])
 
   const getArticleNo = async() => {
-    await axios({
+    await axiosInstance({
       method: 'get',
       url: GET_ARTICLE_NO,
     }).then((res:any) => {
@@ -59,7 +59,7 @@ const AddProduct: FC = () => {
   }
   
   const onSubmit = async(data:any) => {
-    await axios({
+    await axiosInstance({
       method: 'post',
       url: PRODUCT_API,
       data: data,
@@ -146,7 +146,7 @@ const AddProduct: FC = () => {
       other3ImgUrl,
       imgType, 
     }
-    const res = await axios({
+    const res = await axiosInstance({
       method: "post",
       url: UPDATE_PRODUCT_IMAGE_PATH,
       data: data,

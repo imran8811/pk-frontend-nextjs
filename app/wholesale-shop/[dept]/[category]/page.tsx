@@ -1,19 +1,14 @@
 "use client";
-import { Metadata } from 'next';
 import Header from '../../../../components/shared/header/header.comp';
 import Footer from '../../../../components/shared/footer/footer.comp';
-import Shop from '../../../../components/wholesale-shop/shop.comp';
-import Keywords from '../../../../components/shared/keywords/keywords.comp';
+import ShopComp from '../../../../components/wholesale-shop/shop.comp';
 
-const ShopPage = (data) => {
+const ShopPage = () => {
   return (
     <>
-      <div className='container'>
-        <Header />
-        <Shop {...data} />
-        <Keywords />
-      </div>
-      <Footer></Footer>
+      <Header />
+      <ShopComp />
+      <Footer />
     </>
   )
 }

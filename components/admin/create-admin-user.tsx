@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
+import axiosInstance from '../../interceptors/axios.interceptor';
 import { CREATE_ADMIN_USER } from '../../endpoints'
 import { useRouter } from "next/dist/client/router";
 
@@ -9,7 +9,7 @@ const CreateAdminUser: FC = () => {
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
 
   const onSubmit = async(data:any) => {
-    await axios({
+    await axiosInstance({
       method: 'post',
       url: CREATE_ADMIN_USER,
       data: data,

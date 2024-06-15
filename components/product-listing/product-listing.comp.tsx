@@ -1,22 +1,20 @@
 import { FC, useEffect, useState } from "react"
 import styles from './product-listing.module.css'
-import axios from "axios"
-import { GET_PRODUCTS_LISTING, basePath } from "../../endpoints"
+import axiosInstance from "../../interceptors/axios.interceptor"
+import { GET_PRODUCTS_LISTING, PRODUCT_API, basePath } from "../../endpoints"
 import { IProduct } from "../../models"
 import { useRouter } from "next/navigation";
 import { IProductListing } from "../../models/productListing.model"
 
 const ProductListing : FC<IProductListing> = ({category, type, numberOfRecords}) => {
   const [productListing, setProductListing] = useState<IProduct[]>();
-  // const { isReady } = useRouter();
 
   useEffect(() => {
-    // if(!isReady) {return}
     getProductsListing()
-  })
+  }, [])
 
   const getProductsListing = () => {
-    axios.get(`${GET_PRODUCTS_LISTING}?category=${category}&type=${type}&numberOfRecords=${numberOfRecords}`).then(res => {
+    axiosInstance.get(`${PRODUCT_API}/men/jeans-pant`).then(res => {
       setProductListing(res.data)
     })
   }
@@ -26,18 +24,17 @@ const ProductListing : FC<IProductListing> = ({category, type, numberOfRecords})
       <h2 className="text-center mb-5">
         <span className="text-capitalize">{category}</span> Hot Selling <span className="text-capitalize">{type}</span>
       </h2>
-      {productListing && productListing.map(product => {
+      {productListing && productListing.map((product, index) => {
         return (
           <>
-            <div className="col-lg-3 mb-3">
-              <a href={"/wholesale-shop?category"+category+"&type="+type} className="d-block mb-3" target="_blank" rel="noreferrer">
-                <img 
+            <div className="col-lg-3 col-md-6 col-12 mb-3 text-center" key={index}>
+              <a href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+                <img
                   src={product.productImages.frontImgUrl} 
-                  alt={product.productImages.frontImgUrl} 
-                  height="370"
+                  alt={product.productImages.frontImgUrl}
                   className={styles.img} />
               </a>
-              <a href={"/wholesale-shop/product-details/"+product.articleNo} className="d-block text-center">Article# {product.articleNo}</a>
+              <a  className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`}>{product.articleNo + '-' + product.slug}</a>
             </div>
           </>
         )})}

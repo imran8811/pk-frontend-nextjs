@@ -5,18 +5,19 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 
 import { ICart } from "../../models/cart.model";
-import axios from "axios";
-import { DELETE_CART_ITEM, GET_CART_DETAILS } from "../../endpoints";
+import axiosInstance from "../../interceptors/axios.interceptor";
+import { DELETE_CART_ITEM, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, WHOLESALE_SHOP } from "../../endpoints";
 import { Button, Modal } from 'antd';
 import styles from './checkout.module.css';
 import cls from 'classnames';
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const CheckoutComp: FC = () => {
   const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>([]);
   const router = useRouter();
   const userData = JSON.parse(localStorage.getItem('userData')!);
-  console.log(userData.userId);
 
   useEffect(() => {
     getCartDetails();
@@ -30,7 +31,7 @@ const CheckoutComp: FC = () => {
   };
 
   const deleteCartItem = async() => {
-    await axios({
+    await axiosInstance({
       method: 'delete',
       url: `${DELETE_CART_ITEM}/${cartDetails[0]?.productId}`
     }).then(res => {
@@ -42,12 +43,18 @@ const CheckoutComp: FC = () => {
   };
 
   const confirmOrder = async() => {
-    await axios({
+    await axiosInstance({
       method: 'post',
-      url: `${DELETE_CART_ITEM}/${cartDetails[0]?.productId}`
+      url: `${NEW_ORDER}`,
+      data: {
+        items: cartDetailsRef.current,
+        userId: userData.userId,
+        shippingAddress: "user address",
+        orderAmount: '15000'
+      }
     }).then(res => {
-      console.log(res);
-      setIsDeleteCartItemModalOpen(false);
+      setConfirmOrderModalOpen(false);
+      router.push(`${ORDER_CONFIRMED}`);
     }).catch((err) => {
       console.log(err);
     })
@@ -59,7 +66,7 @@ const CheckoutComp: FC = () => {
   };
 
   const getCartDetails = async () => {
-    const res = await axios({
+    const res = await axiosInstance({
       method: "get",
       url: `${GET_CART_DETAILS}?userId=${userData.userId}`
     }).then(res => {
@@ -75,7 +82,7 @@ const CheckoutComp: FC = () => {
     <>
       <h1 className="text-center">Checkout</h1>
       <div className="row align-items-stretch">
-        <div className="col-md-8">
+        <div className="col-md-9">
           <div className="col-12">
             <h3>Order Details</h3>
             <div className="card mb-3">
@@ -88,6 +95,7 @@ const CheckoutComp: FC = () => {
                       <th className="col">Sizes</th>
                       <th className="col">Quantity</th>
                       <th className="col">Amount</th>
+                      <th className="col">Instructions</th>
                       <th className="col">Action</th>
                     </tr>
                   </thead>
@@ -103,10 +111,11 @@ const CheckoutComp: FC = () => {
                         <td>
                           <span>{cart.quantity.map(qty => qty.concat('-'))}</span>
                         </td>
-                        <td>${cart.amount}</td>
+                        <td>${parseInt(cart.amount).toFixed(2)}</td>
+                        <td>{cart.instructions}</td>
                         <td>
-                          <div  className="row">
-                            <button type="button" className="btn col-6" onClick={() => {router.push(`/cart/edit${cart.productId}`)}}>
+                          <div className="row">
+                            <button type="button" className="btn col-6" onClick={() => {router.push(`/cart/edit/${cart.productId}`)}}>
                               <FontAwesomeIcon icon={faEdit} className="fas fa-edit" />
                             </button>
                             <button type="button" className="btn col-6" onClick={deleteCartItemConfirmation}>
@@ -146,7 +155,7 @@ const CheckoutComp: FC = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-3">
           <h3>Order Summary</h3>
           <div className={cls('card mb-3', styles.heightFull)}>
             <div className="card-body">
@@ -175,6 +184,7 @@ const CheckoutComp: FC = () => {
         <p>Confirm Order?</p>
         <Link href={"/return-policy"}>Return Policy</Link>
       </Modal>
+      <ToastContainer />
     </>
   )
 }

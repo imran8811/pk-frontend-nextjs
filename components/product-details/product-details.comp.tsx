@@ -3,7 +3,7 @@ import { FC, useEffect } from "react"
 import useState from 'react-usestateref'
 import { PRODUCT_API, basePath, ADD_TO_CART } from "../../endpoints"
 import { IProduct } from "../../models"
-import axios from "axios"
+import axiosInstance from "../../interceptors/axios.interceptor";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams, useRouter, useSearchParams } from "next/navigation"
@@ -14,11 +14,18 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { ErrorMessage } from "@hookform/error-message"
 
 const ProductDetails : FC = () => {
+  type FormInputs = {
+    productId:string,
+    sizes: string[],
+    quantity: string[],
+    instructions: string
+  }
   const [productDetails, setproductDetails, productDetailsRef] = useState<IProduct[]>([]);
   const [totalAmount, setTotalAmount, totalAmountRef] = useState<number>(0);
-  const { register, handleSubmit, getValues, setValue, watch, formState: { errors }} = useForm();
+  const { register, handleSubmit, getValues, setValue, setError, watch, formState: { errors }} = useForm<FormInputs>({ criteriaMode: 'all'});
   const params = useParams();
   const router = useRouter();
   const userData = JSON.parse(localStorage.getItem('userData')!);
@@ -28,7 +35,7 @@ const ProductDetails : FC = () => {
   }, [])
 
   const getProductDetails = async () => {
-    const res = await axios({
+    const res = await axiosInstance({
       method: "get",
       url: `${PRODUCT_API}/${params.dept}/${params.category}/${params.id}`
     }).then(res => {
@@ -43,6 +50,7 @@ const ProductDetails : FC = () => {
       router.push('/login');
       return;
     }
+    
     const data = {
       productId: formData.productId,
       userId: userData.userId,
@@ -53,7 +61,7 @@ const ProductDetails : FC = () => {
       productDetails: []
     }
     calculateTotalAmount(formData.quantity, productDetailsRef.current[0].price);
-    const res = await axios({
+    const res = await axiosInstance({
       method: "post",
       url: `${ADD_TO_CART}`,
       data: data
@@ -83,8 +91,8 @@ const ProductDetails : FC = () => {
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item"><Link href={'/wholesale-shop'}>Shop</Link></li>
-                  <li className="breadcrumb-item"><Link href={`/wholesale-shop/${params.dept}`}>{params.dept}</Link></li>
-                  <li className="breadcrumb-item"><Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{params.category}</Link></li>
+                  <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}`}>{params.dept}</Link></li>
+                  <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li>
                   <li className="breadcrumb-item active" aria-current="page">{product.articleNo}</li>
                 </ol>
               </nav>
@@ -110,8 +118,9 @@ const ProductDetails : FC = () => {
               </div>
               <div className="col-md-6 ps-2">
                 <div className="product-min-details">
-                  <span>Price: ${product.price} </span>
-                  <span>Fabric: {product.fabricWeight} {product.fabric} </span>
+                  <span>Price: ${product.price} |  </span> 
+                  <span>Fabric: {product.fabricWeight}Ounce  |  </span>
+                  <span>Contents: {product.fabric} </span>
                 </div>
                 <hr />
                 <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -120,72 +129,69 @@ const ProductDetails : FC = () => {
                     <li className="row mb-2">
                       <div className="col-6">
                         <input 
-                          type="text" 
+                          type="number" 
                           className="form-control" 
-                          {...register('sizes.0', {required: true})} 
+                          {...register('sizes.0', { required: "Required"})} 
                           placeholder="Size" />
-                          <small className="text-danger">Required</small>
+                          <ErrorMessage errors={errors} name="sizes.0" as={<small className="text-small text-danger"></small>} />
                       </div>
                       <div className="col-6">
                         <input 
-                          type="text" 
+                          type="number" 
                           className="col-9 form-control" 
-                          {...register('quantity.0', {required: true})}
+                          {...register('quantity.0', { required: 'Required'})}
                           onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}} 
                           placeholder="Quantity" />
-                          <small className="text-danger">Required</small>
+                          <ErrorMessage errors={errors} name="quantity.0" as={<small className="text-danger"></small>} />
                       </div>
                     </li>
                     <li className="row mb-2">
                       <div className="col-6">
                         <input 
-                          type="text" 
+                          type="number" 
                           className="form-control" 
-                          {...register('sizes.1')}
+                          {...register('sizes.1', { required: 'Required'})}
                           placeholder="Size" />
+                          <ErrorMessage errors={errors} name="sizes.1" as={<small className="text-danger"></small>} />
                       </div>
                       <div className="col-6">
                         <input 
-                          type="text"
+                          type="number"
                           className="col-9 form-control"
-                          {...register('quantity.1')} 
+                          {...register('quantity.1', { required: 'Required'})} 
                           onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}
                           placeholder="Quantity" />
+                          <ErrorMessage errors={errors} name="quantity.1" as={<small className="text-danger"></small>} />
                       </div>
                     </li>
                     <li className="row mb-2">
                       <div className="col-6">
                         <input 
-                          type="text" 
+                          type="number" 
                           className="form-control" 
-                          {...register('sizes.2')} 
+                          {...register('sizes.2', { required: 'Required'})} 
                           placeholder="Size" />
+                          <ErrorMessage errors={errors} name="sizes.2" as={<small className="text-danger"></small>} />
                       </div>
                       <div className="col-6">
                         <input 
-                          type="text" 
+                          type="number" 
                           className="col-9 form-control" 
-                          {...register('quantity.2')}
+                          {...register('quantity.2', { required: 'Required'})}
                           onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}  
                           placeholder="Quantity" />
-                      </div>
-                    </li>
-                    <li className="row mb-2">
-                      <div className="col-6">
-                        <input type="text" className="form-control" {...register('sizes.3')} placeholder="Size" />
-                      </div>
-                      <div className="col-6">
-                        <input 
-                          type="text" 
-                          className="col-9 form-control" 
-                          {...register('quantity.3')}
-                          onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}} 
-                          placeholder="Quantity" />
+                          <ErrorMessage errors={errors} name="quantity.2" as={<small className="text-danger"></small>} />
                       </div>
                     </li>
                   </ul>
                   <div className="order-instructions mb-3">
-                    <textarea rows={5} placeholder="Instructions" {...register('instructions')} className="form-control"></textarea>
+                    <textarea 
+                      rows={5} 
+                      placeholder="Instructions" 
+                      {...register('instructions', { required: 'Required'})} 
+                      className="form-control">
+                      </textarea>
+                    <ErrorMessage errors={errors} name="instructions" as={<small className="text-danger"></small>} />
                   </div>
                   <div className="order-uploads mb-3">
                     <label htmlFor="order-uploads">Uploads</label>
@@ -220,44 +226,44 @@ const ProductDetails : FC = () => {
                       <div className="col-md-5 ps-2">
                         <ul>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Article No.</span>
-                            <span className="col-6 col-md-9">{product.articleNo}</span>
+                            <span className="col-6 col-md-5 col-lg-3">Article No.</span>
+                            <span className="col-6 col-md-7 col-lg-9">{product.articleNo}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Fabric Details</span>
-                            <span className="col-6 col-md-9">{product.fabricWeight + ' Ounce - ' + product.fabric}</span>
+                            <span className="col-6 col-md-5 col-lg-3">Fabric Details</span>
+                            <span className="col-6 col-md-7 col-lg-9">{product.fabricWeight + ' Ounce - ' + product.fabric}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Colors</span>
-                            <span className="col-6 col-md-9">{product.color}</span>
+                            <span className="col-6 col-md-5 col-lg-3">Colors</span>
+                            <span className="col-6 col-md-7 col-lg-9">{product.color}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Waist Sizes</span>
-                            <span className="col-6 col-md-9">{product.sizes}</span>
+                            <span className="col-6 col-md-5 col-lg-3">Waist Sizes</span>
+                            <span className="col-6 col-md-7 col-lg-9">{product.sizes}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Wash Type</span>
-                            <span className="col-6 col-md-9">{product.washType}</span>
+                            <span className="col-6 col-md-5 col-lg-3">Wash Type</span>
+                            <span className="col-6 col-md-7 col-lg-9">{product.washType}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Category</span>
-                            <span className="col-6  col-md-9 text-capitalize">{product.category}</span>
+                            <span className="col-6 col-md-5 col-lg-3">Category</span>
+                            <span className="col-6  col-md-7 col-lg-9 text-capitalize">{product.category}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Shipping</span>
-                            <span className="col-6 col-md-9">By Air, Sea, DHL etc</span>
+                            <span className="col-6 col-md-5 col-lg-3">Shipping</span>
+                            <span className="col-6 col-md-7 col-lg-9">By Air, Sea, DHL etc</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Delivery</span>
-                            <span className="col-6 col-md-9">30 days</span>
+                            <span className="col-6 col-md-5 col-lg-3">Delivery</span>
+                            <span className="col-6 col-md-7 col-lg-9">30 days</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">MOQ</span>
-                            <span className="col-6 col-md-9">{product.moq}</span>
+                            <span className="col-6 col-md-5 col-lg-3">MOQ</span>
+                            <span className="col-6 col-md-7 col-lg-9">{product.moq}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-3">Price</span>
-                            <span className="col-6 col-md-9">${product.price}</span>
+                            <span className="col-6 col-md-5 col-lg-3">Price</span>
+                            <span className="col-6 col-md-7 col-lg-9">${product.price}</span>
                           </li>
                         </ul>
                       </div>

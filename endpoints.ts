@@ -1,5 +1,5 @@
-const baseRoute = 'http://localhost:3001';
-// const baseRoute = 'https://www.pkapparel.com/api';
+// export const baseRoute = 'http://localhost:3001';
+const baseRoute = 'https://api.pkapparel.com';
 
 // export const basePath = 'http://localhost:8000';
 export const basePath = 'https://www.pkapparel.com';
@@ -15,13 +15,18 @@ export const GET_ARTICLE_NO = `${baseRoute}/product/getLatestArticleNo`;
 export const UPDATE_PRODUCT_IMAGE_PATH = `${baseRoute}/product/update-image-path`;
 
 //internal routes
-export const PRODUCT_DETAILS = '/wholesale-shop/product-details'
-export const WHOLESALE_SHOP = '/wholesale-shop'
+export const PRODUCT_DETAILS = '/wholesale-shop/product-details';
+export const WHOLESALE_SHOP = '/wholesale-shop';
+export const ORDER_CONFIRMED = '/order-confirmed';
 
 //cart CRUD
 export const ADD_TO_CART = `${baseRoute}/cart/saveItem`;
 export const GET_CART_DETAILS = `${baseRoute}/cart/getAll`;
 export const DELETE_CART_ITEM = `${baseRoute}/cart`;
+
+//order CRUD
+export const NEW_ORDER = `${baseRoute}/order/new`;
+
 
 //authentication
 export const USER_LOGIN = `${baseRoute}/auth/login`;
