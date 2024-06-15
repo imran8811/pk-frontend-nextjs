@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
-import BootstrapClient from '../components/BootstrapClient.js';
+import BootstrapClient from '../components/bootstrapClient.js';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css'

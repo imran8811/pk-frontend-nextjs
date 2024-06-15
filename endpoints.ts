@@ -1,5 +1,5 @@
 // export const baseRoute = 'http://localhost:3001';
-const baseRoute = 'https://api.pkapparel.com';
+export const baseRoute = 'https://api.pkapparel.com';
 
 // export const basePath = 'http://localhost:8000';
 export const basePath = 'https://www.pkapparel.com';

@@ -3,12 +3,12 @@ import cls from 'classnames'
 import styles from './shop.module.css'
 import axios from "axios"
 import { basePath, PRODUCT_API } from "../endpoints"
-import { Product } from "../models"
+import { IProduct } from "../models"
 import { useForm } from 'react-hook-form'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const ProductFiltersComp : FC = (props:any) => {
-  const [products, setProducts] = useState<Product[]>(props.data);
+  const [products, setProducts] = useState<IProduct[]>(props.data);
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
   const router = useRouter();
   // const { query, isReady } = useRouter();
