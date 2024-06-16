@@ -12,10 +12,12 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const userData = JSON.parse(localStorage.getItem('userData')!);
-    if(userData){
-      const token = userData.token;
-      config.headers.Authorization = `Bearer ${token}`;
+    if (typeof localStorage !== 'undefined') {
+      const userData = JSON.parse(localStorage.getItem('userData')!);
+      if(userData){
+        const token = userData.token;
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
     return {
       ...config

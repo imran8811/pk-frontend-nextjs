@@ -15,7 +15,9 @@ const AdminLogin: FC = () => {
       data: data,
     }).then((res:any) => {
       if(res.data.type === 'success'){
-        localStorage.setItem('adminToken', res.data.token)
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('adminToken', res.data.token)
+        }
         router.push('/admin/add-product')
       }
     });

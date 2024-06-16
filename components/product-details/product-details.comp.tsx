@@ -28,7 +28,10 @@ const ProductDetails : FC = () => {
   const { register, handleSubmit, getValues, setValue, setError, watch, formState: { errors }} = useForm<FormInputs>({ criteriaMode: 'all'});
   const params = useParams();
   const router = useRouter();
-  const userData = JSON.parse(localStorage.getItem('userData')!);
+  let userData;
+  if (typeof localStorage !== 'undefined') {
+    userData = JSON.parse(localStorage.getItem('userData')!);
+  }
 
   useEffect(() => {
     getProductDetails();

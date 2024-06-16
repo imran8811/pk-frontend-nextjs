@@ -13,11 +13,13 @@ const Products: FC = () => {
   const [noProductFound, setNoProductFound, noProductFoundRef] = useState(false);
 
   useEffect(() => {
-    if(localStorage.getItem('adminToken')) {
-      const token = localStorage.getItem('adminToken');
-      axiosInstance.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
-    } else {
-      router.push('/admin/login')
+    if (typeof localStorage !== 'undefined') {
+      if(localStorage.getItem('adminToken')) {
+        const token = localStorage.getItem('adminToken');
+        axiosInstance.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
+      } else {
+        router.push('/admin/login')
+      }
     }
     axiosInstance.get(GET_PRODUCTS).then(res => {
       if(res.data.length === 0) {

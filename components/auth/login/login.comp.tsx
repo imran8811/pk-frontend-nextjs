@@ -18,7 +18,9 @@ const LoginComp: FC = () => {
       data: data,
     }).then((res:any) => {
       if(res.data.type === 'success'){
-        localStorage.setItem('userData', JSON.stringify(res.data.data));
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('userData', JSON.stringify(res.data.data));
+        }
         const nextRoute = sessionStorage.getItem('nextRoute');
         nextRoute? router.push(nextRoute): router.push(WHOLESALE_SHOP)
       }

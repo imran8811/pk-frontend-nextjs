@@ -6,9 +6,11 @@ export class AuthService {
   constructor() { }
 
   public checkUserSession() {
-    let userData = localStorage.getItem('userData');
-    userData = userData? JSON.parse(userData) : '';
-    return userData;
+    if (typeof localStorage !== 'undefined') {
+      let userData = localStorage.getItem('userData');
+      userData = userData? JSON.parse(userData) : '';
+      return userData;
+    }
   }
 
   public async userLogout(userId:string){

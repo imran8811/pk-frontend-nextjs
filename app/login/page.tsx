@@ -3,7 +3,7 @@ import Header from '../../components/shared/header/header.comp';
 import Footer from '../../components/shared/footer/footer.comp';
 import LoginComp from '../../components/auth/login/login.comp';
 
-const CartPage = () => {
+const LoginPage = () => {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ const CartPage = () => {
   )
 }
 
-export default CartPage;
+export default LoginPage;

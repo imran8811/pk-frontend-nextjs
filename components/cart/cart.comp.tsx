@@ -12,7 +12,10 @@ import { Modal } from "antd";
 
 const CartComp: FC = () => {
   const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>([]);
-  const userData = JSON.parse(localStorage.getItem('userData')!);
+  let userData;
+  if (typeof localStorage !== 'undefined') {
+    userData = JSON.parse(localStorage.getItem('userData')!);
+  }
   const router = useRouter();
   const [isDeleteCartItemModalOpen, setIsDeleteCartItemModalOpen] = useState(false);
   const [confirmOrderModalOpen, setConfirmOrderModalOpen] = useState(false);

@@ -2,12 +2,11 @@
 import Header from '../../../components/shared/header/header.comp';
 import Footer from '../../../components/shared/footer/footer.comp';
 import CheckoutComp from '../../../components/checkout/checkout.comp';
-import Keywords from '../../../components/shared/keywords/keywords.comp';
 import { useEffect } from 'react';
 import { CheckUserSession } from '../../../services/auth.service';
 import { redirect } from 'next/navigation';
 
-const CartPage = () => {
+const CheckoutPage = () => {
   useEffect(() => {
     if(!CheckUserSession()){
       redirect('/login')
@@ -22,4 +21,4 @@ const CartPage = () => {
   )
 }
 
-export default CartPage;
+export default CheckoutPage;

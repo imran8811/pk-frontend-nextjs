@@ -17,7 +17,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const CheckoutComp: FC = () => {
   const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>([]);
   const router = useRouter();
-  const userData = JSON.parse(localStorage.getItem('userData')!);
+  let userData;
+  if (typeof localStorage !== 'undefined') {
+    userData = JSON.parse(localStorage.getItem('userData')!);
+  }
 
   useEffect(() => {
     getCartDetails();

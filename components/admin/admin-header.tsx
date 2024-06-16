@@ -10,11 +10,13 @@ const AdminHeader: FC = () => {
   const [session, setSession] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    if(localStorage.getItem('adminToken')) {
-      const token = localStorage.getItem('adminToken');
-      axios.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
-    } else {
-      router.push('/admin/login')
+    if (typeof localStorage !== 'undefined') {
+      if(localStorage.getItem('adminToken')) {
+        const token = localStorage.getItem('adminToken');
+        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
+      } else {
+        router.push('/admin/login')
+      }
     }
   }, [router])
 
@@ -22,7 +24,9 @@ const AdminHeader: FC = () => {
     e.preventDefault();
     axios.post(ADMIN_LOGOUT).then(res => {
       if(res.data.type === 'success') {
-        localStorage.removeItem('adminToken');
+        if (typeof localStorage !== 'undefined') {
+          localStorage.removeItem('adminToken');
+        }
         setSession(false);
         Router.push('/admin/login')
       }

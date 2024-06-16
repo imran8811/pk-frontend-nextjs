@@ -18,7 +18,9 @@ const SignupComp: FC = () => {
       data: data,
     }).then((res:any) => {
       if(res.data.type === 'success'){
-        localStorage.setItem('userData', JSON.stringify(res.data.data));
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('userData', JSON.stringify(res.data.data));
+        }
         router.push(WHOLESALE_SHOP);
       }
     }).catch((err) => {
