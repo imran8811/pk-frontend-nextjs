@@ -226,47 +226,47 @@ const ProductDetails : FC = () => {
                 <TabPanel>
                   <div className="details-wrap p-3">
                     <div className="row">
-                      <div className="col-md-5 ps-2">
+                      <div className="col-md-8 col-12 ps-2">
                         <ul>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Article No.</span>
-                            <span className="col-6 col-md-7 col-lg-9">{product.articleNo}</span>
+                            <span className="col-6 col-md-4 col-lg-3">Article No.</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.articleNo}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Fabric Details</span>
-                            <span className="col-6 col-md-7 col-lg-9">{product.fabricWeight + ' Ounce - ' + product.fabric}</span>
+                            <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.fabricWeight + ' Ounce - ' + product.fabric}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Colors</span>
-                            <span className="col-6 col-md-7 col-lg-9">{product.color}</span>
+                            <span className="col-6 col-md-4 col-lg-3">Colors</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.color}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Waist Sizes</span>
-                            <span className="col-6 col-md-7 col-lg-9">{product.sizes}</span>
+                            <span className="col-6 col-md-4 col-lg-3">Waist Sizes</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.sizes}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Wash Type</span>
-                            <span className="col-6 col-md-7 col-lg-9">{product.washType}</span>
+                            <span className="col-6 col-md-4 col-lg-3">Wash Type</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.washType}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Category</span>
-                            <span className="col-6  col-md-7 col-lg-9 text-capitalize">{product.category}</span>
+                            <span className="col-6 col-md-4 col-lg-3">Category</span>
+                            <span className="col-6  col-md-8 col-lg-9 text-capitalize">{product.category}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Shipping</span>
-                            <span className="col-6 col-md-7 col-lg-9">By Air, Sea, DHL etc</span>
+                            <span className="col-6 col-md-4 col-lg-3">Shipping</span>
+                            <span className="col-6 col-md-8 col-lg-9">By Air, Sea, DHL etc</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Delivery</span>
-                            <span className="col-6 col-md-7 col-lg-9">30 days</span>
+                            <span className="col-6 col-md-4 col-lg-3">Delivery</span>
+                            <span className="col-6 col-md-8 col-lg-9">30 days</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">MOQ</span>
-                            <span className="col-6 col-md-7 col-lg-9">{product.moq}</span>
+                            <span className="col-6 col-md-4 col-lg-3">MOQ</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.moq}</span>
                           </li>
                           <li className="row mb-2">
-                            <span className="col-6 col-md-5 col-lg-3">Price</span>
-                            <span className="col-6 col-md-7 col-lg-9">${product.price}</span>
+                            <span className="col-6 col-md-4 col-lg-3">Price</span>
+                            <span className="col-6 col-md-8 col-lg-9">${product.price}</span>
                           </li>
                         </ul>
                       </div>

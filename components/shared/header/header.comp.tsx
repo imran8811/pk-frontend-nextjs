@@ -10,17 +10,18 @@ import { WHOLESALE_SHOP } from '../../../endpoints'
 import cls from 'classnames';
 
 export default function Header() {
+  const router = useRouter();
   let userData, userLogout;
   if (typeof localStorage !== 'undefined') {
     userData = JSON.parse(localStorage.getItem('userData')!);
     userLogout = async() => {
       if(await UserLogout(userData.userId)){
         localStorage.removeItem('userData');
-        router.push(WHOLESALE_SHOP);
+        router.replace(WHOLESALE_SHOP);
+        // router.push(WHOLESALE_SHOP);
       }
     }
   }
-  const router = useRouter();
 
   return (
     <>

@@ -12,11 +12,14 @@ import { Modal } from "antd";
 
 const CartComp: FC = () => {
   const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>([]);
+  const router = useRouter();
   let userData;
   if (typeof localStorage !== 'undefined') {
     userData = JSON.parse(localStorage.getItem('userData')!);
+    if(!userData){
+      router.push('/login');
+    }
   }
-  const router = useRouter();
   const [isDeleteCartItemModalOpen, setIsDeleteCartItemModalOpen] = useState(false);
   const [confirmOrderModalOpen, setConfirmOrderModalOpen] = useState(false);
 
@@ -102,11 +105,11 @@ const CartComp: FC = () => {
                 </>
               )})}
           </table>
-        </>
-        }
         <div className="mb-5 justify-content-end d-flex">
           <Link href={'/wholesale-shop/checkout'} className="btn btn-success">Checkout </Link>
         </div>
+        </>
+        }
         {cartDetails?.length === 0 && 
           <h2 className="text-danger text-center mt-5 mb-5">No item found in cart</h2>
         }
