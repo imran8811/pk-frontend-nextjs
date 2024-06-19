@@ -7,7 +7,7 @@ import axiosInstance from "../../interceptors/axios.interceptor";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams, useRouter, useSearchParams } from "next/navigation"
-import { CheckUserSession } from '../../services/auth.service';
+import { getUserSessionData } from '../../services/auth.service';
 import { useForm } from "react-hook-form"
 import Link from "next/link"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -15,6 +15,7 @@ import 'react-tabs/style/react-tabs.css';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ErrorMessage } from "@hookform/error-message"
+import { USER_TYPES } from "../../constants";
 
 const ProductDetails : FC = () => {
   type FormInputs = {
@@ -24,8 +25,10 @@ const ProductDetails : FC = () => {
     instructions: string
   }
   const [productDetails, setproductDetails, productDetailsRef] = useState<IProduct[]>([]);
-  const [totalAmount, setTotalAmount, totalAmountRef] = useState<number>(0);
   const { register, handleSubmit, getValues, setValue, setError, watch, formState: { errors }} = useForm<FormInputs>({ criteriaMode: 'all'});
+  const [totalAmount, setTotalAmount, totalAmountRef] = useState(0);
+  // const [guestId, setGuestId, guestIdRef] = useState('');
+  
   const params = useParams();
   const router = useRouter();
   let userData;
@@ -47,16 +50,26 @@ const ProductDetails : FC = () => {
   }
 
   const onSubmit = async(formData:any) => {
-    if(!CheckUserSession()){
-      sessionStorage.setItem('nextRoute', `/wholesale-shop/${productDetails[0].dept}/${productDetails[0].category}/${productDetails[0]._id}`);
-      sessionStorage.setItem('nextAction', `addToCart`);
-      router.push('/login');
-      return;
+    let userId:string = '';
+    console.log(userData);
+    userData = '';
+    if (typeof localStorage !== 'undefined') {
+      userData = JSON.parse(localStorage.getItem('userData')!);
     }
-    
+    // return;
+    if(!userData || userData.userId === ''){
+      console.log('1');
+      userId = crypto.randomUUID();
+    } else {
+      console.log('2');
+      userId = userData.userId
+    }
+    // console.log(userData);
+    // console.log(userData?.userId);
+    // console.log(userId);
     const data = {
       productId: formData.productId,
-      userId: userData.userId,
+      userId: userId,
       sizes: formData.sizes,
       quantity: formData.quantity,
       instructions: formData.instructions,
@@ -71,6 +84,13 @@ const ProductDetails : FC = () => {
     }).then(res => {
       if(res.data.type === 'success') {
         toast.success('Item Added to cart');
+        if (typeof localStorage !== 'undefined') {
+          const userData = {
+            userId: userId,
+            userType: USER_TYPES.GUEST
+          }
+          localStorage.setItem('userData', JSON.stringify(userData));
+        }
       }
     }).catch(err =>{
       if(err.response.data.errorCode === 960){
@@ -81,7 +101,7 @@ const ProductDetails : FC = () => {
 
   const calculateTotalAmount = (quantity:string[], price) => {
     const totalQuantity = quantity.reduce((a, b) => Number(a)+Number(b), 0);
-    setTotalAmount(totalQuantity * Number(price));
+    setTotalAmount(Number((totalQuantity * Number(price)).toFixed(2)));
   }
 
   return (
@@ -122,7 +142,7 @@ const ProductDetails : FC = () => {
               <div className="col-md-6 ps-2">
                 <div className="product-min-details">
                   <span>Price: ${product.price} |  </span> 
-                  <span>Fabric: {product.fabricWeight}Ounce  |  </span>
+                  <span>Fabric: Denim {product.fabricWeight}oz  <span className="text-danger">|</span>  </span>
                   <span>Contents: {product.fabric} </span>
                 </div>
                 <hr />

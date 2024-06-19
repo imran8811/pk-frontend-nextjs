@@ -5,7 +5,7 @@ import axiosInstance from "../interceptors/axios.interceptor";
 export class AuthService {
   constructor() { }
 
-  public checkUserSession() {
+  public getUserSessionData() {
     if (typeof localStorage !== 'undefined') {
       let userData = localStorage.getItem('userData');
       userData = userData? JSON.parse(userData) : '';
@@ -25,5 +25,5 @@ export class AuthService {
   }
 }
 
-export const CheckUserSession = AuthService.prototype.checkUserSession;
+export const getUserSessionData = AuthService.prototype.getUserSessionData;
 export const UserLogout = AuthService.prototype.userLogout;

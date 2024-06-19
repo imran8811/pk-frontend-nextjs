@@ -4,12 +4,15 @@ import Script from 'next/script'
 import styles from '../header/header.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { CheckUserSession, UserLogout } from '../../../services/auth.service'
+import { getUserSessionData, UserLogout } from '../../../services/auth.service'
 import { useRouter } from 'next/navigation'
-import { WHOLESALE_SHOP } from '../../../endpoints'
+import { GET_CART_DETAILS, WHOLESALE_SHOP } from '../../../endpoints'
 import cls from 'classnames';
+import { useEffect, useState } from 'react';
+import axiosInstance from '../../../interceptors/axios.interceptor';
 
 export default function Header() {
+  const [cartItemsCount, setCartItemsCount] = useState(0)
   const router = useRouter();
   let userData, userLogout;
   if (typeof localStorage !== 'undefined') {
@@ -21,6 +24,20 @@ export default function Header() {
         // router.push(WHOLESALE_SHOP);
       }
     }
+  }
+
+  useEffect(() => {
+    getCartItemsCount();
+  }, [])
+
+  const getCartItemsCount = async() => {
+    await axiosInstance({
+      method: "get",
+      url: `${GET_CART_DETAILS}?userId=${userData.userId}`
+    }).then(res => {
+      console.log(res)
+      setCartItemsCount(res.data.length)
+    })
   }
 
   return (
@@ -47,15 +64,16 @@ export default function Header() {
           <div className={cls(styles.headerMenu, 'text-end')}>
             <ul >
               <li><Link href={'/wholesale-shop'}>Wholesale Shop</Link></li>
-              <li><Link href={'/wholesale-shop/cart'}>Cart (0)</Link></li>
-              {!CheckUserSession() &&
+              <li><Link href={'/wholesale-shop/cart'}>Cart ({cartItemsCount})</Link></li>
+              {!getUserSessionData() &&
                 <>
                   <li><Link href={'/login'}>Login</Link></li>
                   <li><Link href={'/signup'}>Signup</Link></li>
                 </>
               }
-              {CheckUserSession() &&
-                <li className={styles.headerMenuDropdown}> {userData.businessName} &nbsp;<FontAwesomeIcon icon={faCaretDown} className='fa fa-caret-down' />
+              {getUserSessionData() &&
+                <li className={styles.headerMenuDropdown}> {userData.userType === 'guest'? 'Guest' : userData.businessName} &nbsp;
+                  <FontAwesomeIcon icon={faCaretDown} className='fa fa-caret-down' />
                   <ul>
                     <li><Link href={'/account'}>Account</Link></li> 
                     <li><Link href={'/orders'}>Orders</Link></li> 

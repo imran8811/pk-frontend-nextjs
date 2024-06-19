@@ -40,3 +40,8 @@
 .headerMenu .headerMenuDropdown:hover > ul {
 	display: block;
 }
+@media screen and (max-width: 786px) {
+	.headerMenu .headerMenuDropdown ul {
+		left: -35px;
+	}
+}

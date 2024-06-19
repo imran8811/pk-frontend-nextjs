@@ -4,6 +4,8 @@ import BootstrapClient from '../components/bootstrapClient.js';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css'
+import StoreProvider from "./StoreProvider.jsx";
+import { makeStore } from "../lib/store.js";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
