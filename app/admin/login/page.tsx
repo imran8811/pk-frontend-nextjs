@@ -2,7 +2,7 @@
 import type { NextPage } from 'next'
 import AdminHeader from '../../../components/admin/admin-header'
 import AdminFooter from '../../../components/admin/admin-footer'
-import AdminLogin from '../../../components/admin/login.comp'
+import AdminLogin from '../../../components/admin/admin-login.comp'
 
 const AdminLoginPage: NextPage = () => {
   return (

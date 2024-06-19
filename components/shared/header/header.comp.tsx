@@ -65,14 +65,14 @@ export default function Header() {
             <ul >
               <li><Link href={'/wholesale-shop'}>Wholesale Shop</Link></li>
               <li><Link href={'/wholesale-shop/cart'}>Cart ({cartItemsCount})</Link></li>
-              {!getUserSessionData() &&
+              {!userData?.token &&
                 <>
                   <li><Link href={'/login'}>Login</Link></li>
                   <li><Link href={'/signup'}>Signup</Link></li>
                 </>
               }
-              {getUserSessionData() &&
-                <li className={styles.headerMenuDropdown}> {userData.userType === 'guest'? 'Guest' : userData.businessName} &nbsp;
+              {userData?.token &&
+                <li className={styles.headerMenuDropdown}> {userData.businessName} &nbsp;
                   <FontAwesomeIcon icon={faCaretDown} className='fa fa-caret-down' />
                   <ul>
                     <li><Link href={'/account'}>Account</Link></li> 

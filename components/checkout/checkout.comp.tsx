@@ -13,6 +13,7 @@ import cls from 'classnames';
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { checkUserSession } from "../../services/auth.service";
 
 const CheckoutComp: FC = () => {
   const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>([]);
@@ -23,6 +24,9 @@ const CheckoutComp: FC = () => {
   }
 
   useEffect(() => {
+    if(!checkUserSession()){
+      router.push('/login?next=wholesale-shop/checkout')
+    }
     getCartDetails();
   }, [])
 
@@ -134,26 +138,10 @@ const CheckoutComp: FC = () => {
             </div>
           </div>
           <div className="col-12">
-            <h3>Shipping Details</h3>
+            <h3>Shipping Address</h3>
             <div className="card mb-3">
               <div className="card-body">
-                <ul>
-                  <li>
-                    <ul>
-                      <li>Packing size wise</li>
-                      <li>10 pieces in Blister</li>
-                      <li>6 blister in single carton</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <span>Carton Dimensions</span>
-                    <span>24 x 24 x 40</span>
-                  </li>
-                  <li>
-                    <span>Carton Dimensions</span>
-                    <span>24 x 24 x 40</span>
-                  </li>
-                </ul>
+                
               </div>
             </div>
           </div>
@@ -165,11 +153,11 @@ const CheckoutComp: FC = () => {
               <ul>
                 <li>
                   <span>Total Quantity</span> 
-                  <span>1500</span> 
+                  <span>0</span> 
                 </li>
                 <li>
                   <span>Total Amount</span> 
-                  <span>$15000</span> 
+                  <span>0</span> 
                 </li>
               </ul>
             </div>

@@ -37,9 +37,8 @@ const CartComp: FC = () => {
       method: 'delete',
       url: `${DELETE_CART_ITEM}/${cartDetails[0]?.productId}`
     }).then(res => {
-      console.log(res);
       setIsDeleteCartItemModalOpen(false);
-      router.refresh();
+      getCartDetails();
     }).catch((err) => {
       console.log(err);
     })
@@ -62,7 +61,7 @@ const CartComp: FC = () => {
   return (
     <div className="row justify-content-center">
       <div className="col-lg-9 col-12">
-      { cartDetails &&
+      { cartDetails.length > 0 &&
         <>
         <h1 className="text-center m-4">Cart Details</h1>
         <table className="table">
@@ -105,9 +104,9 @@ const CartComp: FC = () => {
                 </>
               )})}
           </table>
-        <div className="mb-5 justify-content-end d-flex">
-          <Link href={'/wholesale-shop/checkout'} className="btn btn-success">Checkout </Link>
-        </div>
+          <div className="mb-5 justify-content-end d-flex">
+            <Link href={'/wholesale-shop/checkout'} className="btn btn-success">Checkout </Link>
+          </div>
         </>
         }
         {cartDetails?.length === 0 && 

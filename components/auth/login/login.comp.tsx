@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { USER_LOGIN, WHOLESALE_SHOP } from '../../../endpoints'
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,9 @@ import 'react-toastify/dist/ReactToastify.css';
 const LoginComp: FC = () => {
   const router = useRouter();
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
+  
+  const searchParams = useSearchParams();
+  const getQueryParamNextRoute = searchParams.get('next');
 
   const onSubmit = async(data:any) => {
     await axios({
@@ -21,8 +24,9 @@ const LoginComp: FC = () => {
         if (typeof localStorage !== 'undefined') {
           localStorage.setItem('userData', JSON.stringify(res.data.data));
         }
-        const nextRoute = sessionStorage.getItem('nextRoute');
-        nextRoute? router.push(nextRoute): router.push(WHOLESALE_SHOP)
+        // const nextRoute = sessionStorage.getItem('nextRoute');
+        const nextRoute = getQueryParamNextRoute;
+        nextRoute? router.push(getQueryParamNextRoute): router.push(WHOLESALE_SHOP)
       }
     }).catch((err) => {
       toast.error(err.response.data.message);

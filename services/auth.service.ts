@@ -1,15 +1,24 @@
 "use client";
 import { USER_LOGOUT } from "../endpoints";
 import axiosInstance from "../interceptors/axios.interceptor";
+import { IUser } from "../models/user.model";
 
 export class AuthService {
   constructor() { }
 
+  public checkUserSession(){
+    if (typeof localStorage !== 'undefined') {
+      let userData:IUser = JSON.parse(localStorage.getItem('userData')!);
+      return userData?.token? true : false;
+    }
+  }
+
   public getUserSessionData() {
     if (typeof localStorage !== 'undefined') {
       let userData = localStorage.getItem('userData');
-      userData = userData? JSON.parse(userData) : '';
-      return userData;
+      if(userData){
+        return JSON.parse(userData);
+      }
     }
   }
 
@@ -25,5 +34,6 @@ export class AuthService {
   }
 }
 
-export const getUserSessionData = AuthService.prototype.getUserSessionData;
 export const UserLogout = AuthService.prototype.userLogout;
+export const getUserSessionData = AuthService.prototype.getUserSessionData;
+export const checkUserSession = AuthService.prototype.checkUserSession;
