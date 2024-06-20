@@ -1,34 +1,31 @@
 import { FC, useEffect, useState } from 'react'
 import axios from 'axios'
-import Router from 'next/router'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link';
 
 import { ADMIN_LOGOUT } from '../../endpoints'
+import axiosInstance from '../../interceptors/axios.interceptor';
 
 const AdminHeader: FC = () => {
   const [session, setSession] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    if (typeof localStorage !== 'undefined') {
-      if(localStorage.getItem('adminToken')) {
-        const token = localStorage.getItem('adminToken');
-        axios.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
-      } else {
-        router.push('/admin/login')
-      }
-    }
-  }, [router])
+  // useEffect(() => {
+  // }, [router])
 
-  const adminLogout = (e:any) => {
+  const adminLogout = async(e:any) => {
     e.preventDefault();
-    axios.post(ADMIN_LOGOUT).then(res => {
+
+    await axiosInstance({
+      method: 'post',
+      url: ADMIN_LOGOUT,
+      // adminId: adminId,
+    }).then((res:any) => {
       if(res.data.type === 'success') {
         if (typeof localStorage !== 'undefined') {
           localStorage.removeItem('adminToken');
+          setSession(false);
+          router.push('/admin/login')
         }
-        setSession(false);
-        Router.push('/admin/login')
       }
     })
   }
@@ -58,7 +55,7 @@ const AdminHeader: FC = () => {
                 <div className="navbar-nav">
                   <Link href="/admin/products" className="nav-item nav-link">Products</Link>
                   <Link href="/admin/add-product" className="nav-item nav-link">Add product</Link>
-                  <Link href="/admin/create-user" className="nav-item nav-link">Create User</Link>
+                  <Link href="/admin/create-admin-user" className="nav-item nav-link">Create Admin</Link>
                   <Link href="/admin/login" className="nav-item nav-link">Login</Link>
                   <Link href="/admin/logout" onClick={(e) => adminLogout(e)} className="nav-item nav-link">Logout</Link>
                 </div>

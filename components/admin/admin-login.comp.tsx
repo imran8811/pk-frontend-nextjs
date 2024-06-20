@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
+import axiosInstance from '../../interceptors/axios.interceptor';
 import { ADMIN_LOGIN } from '../../endpoints'
 import { useRouter } from "next/navigation";
 
@@ -9,14 +9,15 @@ const AdminLogin: FC = () => {
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
 
   const onSubmit = async(data:any) => {
-    await axios({
+    await axiosInstance({
       method: 'post',
       url: ADMIN_LOGIN,
       data: data,
     }).then((res:any) => {
+      console.log(res);
       if(res.data.type === 'success'){
         if (typeof localStorage !== 'undefined') {
-          localStorage.setItem('adminToken', res.data.token)
+          localStorage.setItem('adminToken', res.data.data.token)
         }
         router.push('/admin/add-product')
       }

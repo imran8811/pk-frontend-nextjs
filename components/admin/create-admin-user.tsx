@@ -2,9 +2,10 @@ import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axiosInstance from '../../interceptors/axios.interceptor';
 import { CREATE_ADMIN_USER } from '../../endpoints'
-import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from 'react-toastify';
 
-const CreateAdminUser: FC = () => {
+const CreateAdminUserComp: FC = () => {
   const router = useRouter();
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
 
@@ -16,10 +17,12 @@ const CreateAdminUser: FC = () => {
     }).then((res:any) => {
       if(res.data.type === 'success'){
         if (typeof localStorage !== 'undefined') {
-          localStorage.setItem('adminToken', res.data.token)
+          localStorage.setItem('adminToken', res.data.data.token)
+          router.push('/admin/add-product')
         }
-        router.push('/admin/add-product')
       }
+    }).catch(err => {
+      toast.error(err.message)
     });
   } 
 
@@ -29,7 +32,7 @@ const CreateAdminUser: FC = () => {
         <h2 className='text-center mb-3'>Create New Admin</h2>
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-6'>
           <div className='mb-3'>
-            <input type="text"  {...register('name', {required: true})} placeholder='Name' className='form-control' />
+            <input type="text"  {...register('fullName', {required: true})} placeholder='Name' className='form-control' />
           </div>
           <div className='mb-3'>
             <input type="text"  {...register('email', {required: true})} placeholder='Email' className='form-control' />
@@ -42,7 +45,8 @@ const CreateAdminUser: FC = () => {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
 )}
 
-export default CreateAdminUser;
+export default CreateAdminUserComp;

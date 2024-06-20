@@ -51,22 +51,15 @@ const ProductDetails : FC = () => {
 
   const onSubmit = async(formData:any) => {
     let userId:string = '';
-    console.log(userData);
     userData = '';
     if (typeof localStorage !== 'undefined') {
       userData = JSON.parse(localStorage.getItem('userData')!);
     }
-    // return;
     if(!userData || userData.userId === ''){
-      console.log('1');
       userId = crypto.randomUUID();
     } else {
-      console.log('2');
       userId = userData.userId
     }
-    // console.log(userData);
-    // console.log(userData?.userId);
-    // console.log(userId);
     const data = {
       productId: formData.productId,
       userId: userId,
