@@ -35,7 +35,6 @@ export default function Header() {
       method: "get",
       url: `${GET_CART_DETAILS}?userId=${userData.userId}`
     }).then(res => {
-      console.log(res)
       setCartItemsCount(res.data.length)
     })
   }
@@ -72,12 +71,13 @@ export default function Header() {
                 </>
               }
               {userData?.token &&
-                <li className={styles.headerMenuDropdown}> {userData.businessName} &nbsp;
+                <li className={styles.headerMenuDropdown}> 
+                  {userData.businessName} &nbsp;
                   <FontAwesomeIcon icon={faCaretDown} className='fa fa-caret-down' />
                   <ul>
-                    <li><Link href={'/account'}>Account</Link></li> 
-                    <li><Link href={'/orders'}>Orders</Link></li> 
-                    <li><Link href={'#'} onClick={() => {userLogout()}}>Logout</Link></li> 
+                    <li><Link href={'/account'}>Account</Link></li>
+                    <li><Link href={'/orders'}>Orders</Link></li>
+                    <li><Link href={'#'} onClick={() => {userLogout()}}>Logout</Link></li>
                   </ul>
                 </li>
               }
