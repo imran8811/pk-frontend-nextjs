@@ -67,6 +67,10 @@ a:hover {
 	color: #2d639e;
 	margin: 20px 0;
 }
+.carousel .slide img {
+	width: auto !important;
+	height: 400px !important;
+}
 .loader {
   width: 150px;
   height: 400px;

@@ -57,7 +57,7 @@ const ShopComp : FC = (props:any) => {
                     height="370"
                     className={styles.img} />
                 </a>
-                <a  className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`}>{product.articleNo + '-' + product.slug}</a>
+                <a className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`}>{'$'+ product.price + '-' + product.slug}</a>
               </div>
             )
           })}
