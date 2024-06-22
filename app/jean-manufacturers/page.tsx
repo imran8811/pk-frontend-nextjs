@@ -7,12 +7,8 @@ import JeanManufacturersComp from '../../components/landing-pages/jean-manufactu
 const JeanManufacturers = () => {
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <Header></Header>
-          <JeanManufacturersComp keyword='Jean Manufacturers' text='Jean Manufacturers'></JeanManufacturersComp>
-        </div>
-      </div>
+      <Header></Header>
+      <JeanManufacturersComp keyword='Jean Manufacturers' text='Jean Manufacturers'></JeanManufacturersComp>
       <Footer></Footer>
     </>
   )

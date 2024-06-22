@@ -64,7 +64,7 @@ const FactoryComp : FC = () => {
               <img src="/images/denim-manufacturers.jpg" alt="denim-manufacturers" className="img-fluid" />
             </div>
             <div className="col-lg-6">
-              <img src="/images/denim-pants-suppliers-china.jpg" alt="denim-pants-suppliers-china" className="img-fluid" />
+              <img src="/images/pk-washing2.jpg" alt="pk-washing-department" className="img-fluid" />
             </div>
           </div>
         </div>

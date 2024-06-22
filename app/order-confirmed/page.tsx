@@ -12,12 +12,8 @@ const metadata: Metadata = {
 export default function OrderConfirmation(){
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <Header></Header>
-          <OrderConfirmedComp></OrderConfirmedComp>
-        </div>
-      </div>
+      <Header></Header>
+      <OrderConfirmedComp></OrderConfirmedComp>
       <Footer></Footer>
     </>
   )

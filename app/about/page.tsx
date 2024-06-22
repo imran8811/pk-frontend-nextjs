@@ -12,12 +12,8 @@ export const metadata: Metadata = {
 export default function About(){
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <Header></Header>
-          <AboutComp></AboutComp>
-        </div>
-      </div>
+      <Header></Header>
+      <AboutComp></AboutComp>
       <Footer></Footer>
     </>
   )

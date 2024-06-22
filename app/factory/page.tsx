@@ -12,12 +12,8 @@ export const metadata: Metadata = {
 const Factory = () => {
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <Header></Header>
-          <FactoryComp></FactoryComp>
-        </div>
-      </div>
+      <Header></Header>
+      <FactoryComp></FactoryComp>
       <Footer></Footer>
     </>
   )

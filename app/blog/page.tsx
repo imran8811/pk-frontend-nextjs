@@ -12,12 +12,8 @@ export const metadata: Metadata = {
 const Blog = () => {
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <Header></Header>
-          <BlogComp></BlogComp>
-        </div>
-      </div>
+      <Header></Header>
+      <BlogComp></BlogComp>
       <Footer></Footer>
     </>
   )

@@ -12,12 +12,8 @@ export const metadata: Metadata = {
 const Contact = () => {
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <Header></Header>
-          <ContactComp></ContactComp>
-        </div>
-      </div>
+      <Header></Header>
+      <ContactComp></ContactComp>
       <Footer></Footer>
     </>
   )

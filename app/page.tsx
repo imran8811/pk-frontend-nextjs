@@ -8,15 +8,11 @@ import FAQS from '../components/shared/faqs/faqs.comp'
 const Page = () => {
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <Header />
-          <HomeComponent />
-        </div>
-        <RatingReviews />
-        <FAQS />
-        <Keywords />
-      </div>
+      <Header />
+      <HomeComponent />
+      <RatingReviews />
+      <FAQS />
+      <Keywords />
       <Footer />
     </>
   );
