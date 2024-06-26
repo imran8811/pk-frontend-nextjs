@@ -275,11 +275,11 @@ const ProductDetails : FC = () => {
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">MOQ</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.moq}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.moq} Pieces</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Price</span>
-                            <span className="col-6 col-md-8 col-lg-9">${product.price}</span>
+                            <span className="col-6 col-md-8 col-lg-9">${product.price} Ex-factory</span>
                           </li>
                         </ul>
                       </div>
