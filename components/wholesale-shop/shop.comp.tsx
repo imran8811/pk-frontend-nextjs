@@ -4,16 +4,21 @@ import styles from './shop.module.css'
 import { basePath, GET_PRODUCTS, PRODUCT_API } from "../../endpoints"
 import { IProduct } from "../../models"
 import { useForm } from 'react-hook-form'
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 import axiosInstance from "../../interceptors/axios.interceptor"
 
 const ShopComp : FC = (props:any) => {
   const [products, setProducts] = useState<IProduct[]>();
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
   const router = useRouter();
-  // const { query, isReady } = useRouter();
-
   const searchParams = useSearchParams();
+  const params = useParams();
+  console.log(params.dept)
+  console.log(params.category)
+  console.log(params.id)
+  // console.log(searchParams.get('dept'))
+  // console.log(searchParams.get('category'))
+  // console.log(searchParams.get('id'))
   const pathname = usePathname();
   const createQueryString = useCallback((name: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -21,12 +26,24 @@ const ShopComp : FC = (props:any) => {
     return params.toString()
   }, [searchParams])
 
+  let queryURL:string;
+  
+  if(params.dept && params.category){
+    queryURL = `/${params.dept}/${params.category}`;
+  } else if(params.dept) {
+    queryURL = `/${params.dept}`;
+  } else if(params.category) {
+    queryURL = `/${params.category}`;
+  } else {
+    queryURL = '/getAll';
+  }
+
   useEffect(() => {
     getAllProducts();
   }, [])
 
   const getAllProducts = () => {
-    axiosInstance.get(`${GET_PRODUCTS}`).then(res => {
+    axiosInstance.get(`${PRODUCT_API}${queryURL}`).then(res => {
       setProducts(res.data)
     })
   }
