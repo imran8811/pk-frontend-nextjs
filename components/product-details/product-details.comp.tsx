@@ -135,8 +135,7 @@ const ProductDetails : FC = () => {
               <div className="col-md-6 ps-2">
                 <div className="product-min-details">
                   <span>Price: ${product.price} |  </span> 
-                  <span>Fabric: Denim {product.fabricWeight}oz  <span className="text-danger">|</span>  </span>
-                  <span>Contents: {product.fabric} </span>
+                  <span>Fabric: {product.fabric + " " + product.fabricWeight}</span>
                 </div>
                 <hr />
                 <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -247,7 +246,7 @@ const ProductDetails : FC = () => {
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.fabricWeight + ' Ounce - ' + product.fabric}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.fabricWeight + " " + product.fabric}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Colors</span>

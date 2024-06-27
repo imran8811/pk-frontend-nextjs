@@ -49,10 +49,11 @@ const AddProduct: FC = () => {
       method: 'get',
       url: GET_ARTICLE_NO,
     }).then((res:any) => {
-      if(res.statusText === 'OK'){
+      // console.log(res);
+      // if(res.statusText === 'OK'){
         const latestArticleNo = res.data+1;
         setValue('articleNo', latestArticleNo.toString());
-      }
+      // }
     }).catch(err => {
       console.log(err);
     });

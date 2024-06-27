@@ -76,7 +76,7 @@ const Products: FC = () => {
                       <span>{product.moq} Pcs</span>
                     </li>
                     <li className='list-item'>
-                      <span>PKR {product.price}</span>
+                      <span>$ {product.price}</span>
                     </li>
                   </ul>
                   <div className='mb-3 mt-3'>

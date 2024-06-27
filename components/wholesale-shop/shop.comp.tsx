@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useState } from "react"
 import cls from 'classnames'
 import styles from './shop.module.css'
-import { basePath, PRODUCT_API } from "../../endpoints"
+import { basePath, GET_PRODUCTS, PRODUCT_API } from "../../endpoints"
 import { IProduct } from "../../models"
 import { useForm } from 'react-hook-form'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -26,7 +26,7 @@ const ShopComp : FC = (props:any) => {
   }, [])
 
   const getAllProducts = () => {
-    axiosInstance.get(`${PRODUCT_API}/men/jeans-pant`).then(res => {
+    axiosInstance.get(`${GET_PRODUCTS}`).then(res => {
       setProducts(res.data)
     })
   }
