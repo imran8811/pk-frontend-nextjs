@@ -1,7 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://www.pkapparel.com',
-  generateRobotsTxt: false,
   changefreq: "weekly",
   priority: 0.7,
   exclude: [
@@ -17,6 +16,8 @@ module.exports = {
     "/order-confirmed",
     "/file-upload",
     "/orders",
+    "/wholesale-shop/cart",
+    "/wholesale-shop/checkout",
     "/robots.txt"
   ],
   additionalPaths: async (config) => {
@@ -44,13 +45,13 @@ module.exports = {
         loc: '/wholesale-shop/men/chino-pant',
         lastmod: new Date().toISOString(),
         changefreq: "weekly",
-        priority: 1.0,
+        priority: 0.7,
       },
       {
         loc: '/wholesale-shop/boys/jeans-pant',
         lastmod: new Date().toISOString(),
         changefreq: "weekly",
-        priority: 1.0,
+        priority: 0.7,
       }
     )
     return result;
