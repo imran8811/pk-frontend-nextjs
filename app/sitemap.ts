@@ -1,4 +1,7 @@
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { basePath } from "../endpoints";
 export default async function sitemap() {
   const routes = [
