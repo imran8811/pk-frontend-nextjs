@@ -6,13 +6,7 @@ module.exports = {
   exclude: [
     "/admin",
     "/admin/*",
-    "/login",
-    "/signup",
     "/forgot-password",
-    "/about",
-    "/contact",
-    "/factory",
-    "/blog",
     "/order-confirmed",
     "/file-upload",
     "/orders",
