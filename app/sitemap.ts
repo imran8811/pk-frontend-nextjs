@@ -1,5 +1,5 @@
 
-
+import { basePath } from "../endpoints";
 export default async function sitemap() {
   const routes = [
     "/",
@@ -12,7 +12,7 @@ export default async function sitemap() {
     "/jeans-wholesale",
   ];
   routes.map((route) => ({
-    url: `${URL}${route}`,
+    url: `${basePath}${route}`,
     lastModified: new Date().toISOString(),
   }));
  
