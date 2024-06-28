@@ -3,7 +3,7 @@ module.exports = {
   siteUrl: process.env.SITE_URL || 'https://www.pkapparel.com',
   generateRobotsTxt: false,
   changefreq: "weekly",
-  priority: 1.0,
+  priority: 0.7,
   exclude: [
     "/admin",
     "/admin/*",
@@ -23,16 +23,34 @@ module.exports = {
     const result = [];
     result.push(
       {
+        loc: '/',
+        lastmod: new Date().toISOString(),
+        changefreq: "weekly",
+        priority: 1.0,
+      },
+      {
+        loc: '/wholesale-shop',
+        lastmod: new Date().toISOString(),
+        changefreq: "weekly",
+        priority: 1.0,
+      },
+      {
         loc: '/wholesale-shop/men/jeans-pant',
         lastmod: new Date().toISOString(),
+        changefreq: "weekly",
+        priority: 1.0,
       },
       {
         loc: '/wholesale-shop/men/chino-pant',
         lastmod: new Date().toISOString(),
+        changefreq: "weekly",
+        priority: 1.0,
       },
       {
-        loc: '/wholesale-shop/menboys/jeans-pant',
+        loc: '/wholesale-shop/boys/jeans-pant',
         lastmod: new Date().toISOString(),
+        changefreq: "weekly",
+        priority: 1.0,
       }
     )
     return result;
