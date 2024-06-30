@@ -75,7 +75,7 @@ export default function Header() {
                   {userData.businessName} &nbsp;
                   <FontAwesomeIcon icon={faCaretDown} className='fa fa-caret-down' />
                   <ul>
-                    <li><Link href={'/account'}>Account</Link></li>
+                    <li><Link href={'/manage-account'}>Account</Link></li>
                     <li><Link href={'/orders'}>Orders</Link></li>
                     <li><Link href={'#'} onClick={() => {userLogout()}}>Logout</Link></li>
                   </ul>

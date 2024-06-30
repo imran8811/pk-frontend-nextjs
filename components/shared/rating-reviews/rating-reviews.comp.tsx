@@ -20,7 +20,7 @@ const RatingReviews: FC = () => {
               </ul>
               <p className={styles.reviewerInfo}>
                 <span className={styles.reviewerName}>Brand Owner</span>, 
-                <span className={styles.reviewerName}>USA</span>
+                <span className={styles.reviewerName}> USA</span>
               </p>
             </div>
           </div>
@@ -35,7 +35,7 @@ const RatingReviews: FC = () => {
               </ul>
               <p className={styles.reviewerInfo}>
                 <span className={styles.reviewerName}>Wholesaler</span>, 
-                <span className={styles.reviewerName}>UK</span>
+                <span className={styles.reviewerName}> UK</span>
               </p>
             </div>
           </div>
@@ -53,7 +53,7 @@ const RatingReviews: FC = () => {
               </ul>
               <p className={styles.reviewerInfo}>
                 <span className={styles.reviewerName}>Store Owner</span>, 
-                <span className={styles.reviewerName}>Germany</span>
+                <span className={styles.reviewerName}> Germany</span>
               </p>
             </div>
           </div>
@@ -70,7 +70,7 @@ const RatingReviews: FC = () => {
               </ul>
               <p className={styles.reviewerInfo}>
                 <span className={styles.reviewerName}>Amazon Retailer</span>, 
-                <span className={styles.reviewerName}>UK</span>
+                <span className={styles.reviewerName}> UK</span>
               </p>
             </div>
           </div>

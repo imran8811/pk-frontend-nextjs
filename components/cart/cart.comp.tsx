@@ -11,7 +11,7 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Modal } from "antd";
 
 const CartComp: FC = () => {
-  const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>([]);
+  const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>();
   const router = useRouter();
   let userData;
   if (typeof localStorage !== 'undefined') {
@@ -35,7 +35,7 @@ const CartComp: FC = () => {
   const deleteCartItem = async() => {
     await axiosInstance({
       method: 'delete',
-      url: `${DELETE_CART_ITEM}/${cartDetails[0]?.productId}`
+      url: `${DELETE_CART_ITEM}/${cartDetails![0]?.productId}`
     }).then(res => {
       setIsDeleteCartItemModalOpen(false);
       getCartDetails();
@@ -61,7 +61,7 @@ const CartComp: FC = () => {
   return (
     <div className="row justify-content-center">
       <div className="col-lg-9 col-12">
-      { cartDetails.length > 0 &&
+      { cartDetails && cartDetails.length > 0 &&
         <>
         <h1 className="text-center m-4">Cart Details</h1>
         <table className="table">
@@ -109,7 +109,7 @@ const CartComp: FC = () => {
           </div>
         </>
         }
-        {cartDetails?.length === 0 && 
+        {cartDetails && cartDetails.length === 0 && 
           <h2 className="text-danger text-center mt-5 mb-5">No item found in cart</h2>
         }
       </div>

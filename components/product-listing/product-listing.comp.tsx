@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from "react"
 import styles from './product-listing.module.css'
 import axiosInstance from "../../interceptors/axios.interceptor"
-import { GET_PRODUCTS_LISTING, PRODUCT_API, basePath } from "../../endpoints"
+import { PRODUCT_API } from "../../endpoints"
 import { IProduct } from "../../models"
-import { useRouter } from "next/navigation";
-import { IProductListing } from "../../models/productListing.model"
+import { IProductListing } from "../../models/productListing.model";
+import cls from 'classnames';
 
 const ProductListing : FC<IProductListing> = ({category, type, numberOfRecords}) => {
   const [productListing, setProductListing] = useState<IProduct[]>();
@@ -20,24 +20,25 @@ const ProductListing : FC<IProductListing> = ({category, type, numberOfRecords})
   }
 
   return (
-    <div className="row">
-      <h2 className="text-center mb-5">
+    <div className="mb-5">
+      <h3 className="mb-5">
         <span className="text-capitalize">{category}</span> Hot Selling <span className="text-capitalize">{type}</span>
-      </h2>
+      </h3>
+      <div className={cls(styles.productListing, 'row')}>
       {productListing && productListing.map((product, index) => {
         return (
-          <>
-            <div className="col-lg-3 col-md-6 col-12 mb-3 text-center" key={index}>
-              <a href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`} className="d-block mb-3" target="_blank" rel="noreferrer">
-                <img
-                  src={product.productImages.frontImgUrl} 
-                  alt={product.productImages.frontImgUrl}
-                  className={styles.img} />
-              </a>
-              <a  className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`}>{product.articleNo + '-' + product.slug}</a>
-            </div>
-          </>
+          <div className="col-lg-3 col-md-4 mb-3 text-center" key={index}>
+            <a href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+              <img
+                src={product.productImages.frontImgUrl} 
+                alt={product.productImages.frontImgUrl}
+                height="370"
+                className={styles.img} />
+            </a>
+            <a className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`}>{'$'+ product.price + '-' + product.slug}</a>
+          </div>
         )})}
+      </div>
     </div>
   )
 }

@@ -50,7 +50,6 @@ const EditProduct: FC = () => {
       method: 'get',
       url: GET_PRODUCT_DETAILS+"/"+params.id,
     }).then((res) => {
-      console.log(res);
       setProductDetails(res.data);
       const data = res.data;
       setValue('articleNo', data.articleNo);
@@ -80,6 +79,8 @@ const EditProduct: FC = () => {
       if(res.data.type === 'success'){
         toast.success(res.data.message);
       }
+    }).catch((err) => {
+      toast.error(err.message)
     });
   }
 

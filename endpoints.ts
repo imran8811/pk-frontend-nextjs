@@ -1,5 +1,5 @@
-// export const baseRoute = 'http://localhost:3001';
-export const baseRoute = 'https://api.pkapparel.com';
+export const baseRoute = 'http://localhost:3001';
+// export const baseRoute = 'https://api.pkapparel.com';
 
 // export const basePath = 'http://localhost:8000';
 export const basePath = 'https://www.pkapparel.com';
@@ -33,3 +33,7 @@ export const NEW_ORDER = `${baseRoute}/order/new`;
 export const USER_LOGIN = `${baseRoute}/auth/login`;
 export const USER_SIGN_UP = `${baseRoute}/auth/signup`;
 export const USER_LOGOUT = `${baseRoute}/auth/logout`;
+
+
+//user
+export const GET_USER_ACCOUNT = `${baseRoute}/user-account`;

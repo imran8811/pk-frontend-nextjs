@@ -26,8 +26,9 @@ const CheckoutComp: FC = () => {
   useEffect(() => {
     if(!checkUserSession()){
       router.push('/login?next=wholesale-shop/checkout')
+    } else {
+      getCartDetails();
     }
-    getCartDetails();
   }, [])
 
   const [isDeleteCartItemModalOpen, setIsDeleteCartItemModalOpen] = useState(false);

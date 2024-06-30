@@ -22,7 +22,8 @@ const ProductDetails : FC = () => {
     productId:string,
     sizes: string[],
     quantity: string[],
-    instructions: string
+    instructions: string,
+    documentLink: string
   }
   const [productDetails, setproductDetails, productDetailsRef] = useState<IProduct[]>([]);
   const { register, handleSubmit, getValues, setValue, setError, watch, formState: { errors }} = useForm<FormInputs>({ criteriaMode: 'all'});
@@ -198,6 +199,25 @@ const ProductDetails : FC = () => {
                           <ErrorMessage errors={errors} name="quantity.2" as={<small className="text-danger"></small>} />
                       </div>
                     </li>
+                    <li className="row mb-2">
+                      <div className="col-6">
+                        <input 
+                          type="number" 
+                          className="form-control" 
+                          {...register('sizes.3', { required: 'Required'})} 
+                          placeholder="Size" />
+                          <ErrorMessage errors={errors} name="sizes.3" as={<small className="text-danger"></small>} />
+                      </div>
+                      <div className="col-6">
+                        <input 
+                          type="number" 
+                          className="col-9 form-control" 
+                          {...register('quantity.3', { required: 'Required'})}
+                          onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}  
+                          placeholder="Quantity" />
+                          <ErrorMessage errors={errors} name="quantity.3" as={<small className="text-danger"></small>} />
+                      </div>
+                    </li>
                   </ul>
                   <div className="order-instructions mb-3">
                     <textarea 
@@ -209,10 +229,15 @@ const ProductDetails : FC = () => {
                     <ErrorMessage errors={errors} name="instructions" as={<small className="text-danger"></small>} />
                   </div>
                   <div className="order-uploads mb-3">
-                    <label htmlFor="order-uploads">Uploads</label>
+                    <div>
+                      <small>Upload documents (custom design, measurement chart etc.) to any storage and input the link below</small>
+                    </div>
                     <div className="col-12 mb-3">
-                      <input type="file" className="form-control" />
-                      <small>(Custom design, measurement chart etc.)</small>
+                      <textarea 
+                        rows={3} 
+                        className="form-control"
+                        {...register('documentLink')} 
+                        placeholder="e.g https://drive.google.com/file/d/1rDKaLFVTT3-y0GCwN_Sd461f-bhkMCgu/view?usp=sharing" />
                     </div>
                   </div>
                   <hr />
@@ -232,7 +257,7 @@ const ProductDetails : FC = () => {
               <Tabs>
                 <TabList>
                   <Tab>Details</Tab>
-                  <Tab>Packing</Tab>
+                  <Tab>Packing & Shipping</Tab>
                   <Tab>Reviews (0)</Tab>
                 </TabList>
                 <TabPanel>
@@ -246,7 +271,7 @@ const ProductDetails : FC = () => {
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.fabricWeight + " " + product.fabric}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.fabric + " " + product.fabricWeight}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Colors</span>
@@ -263,10 +288,6 @@ const ProductDetails : FC = () => {
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Category</span>
                             <span className="col-6  col-md-8 col-lg-9 text-capitalize">{product.category}</span>
-                          </li>
-                          <li className="row mb-2">
-                            <span className="col-6 col-md-4 col-lg-3">Shipping</span>
-                            <span className="col-6 col-md-8 col-lg-9">By Air, Sea, DHL etc</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Delivery</span>
@@ -286,23 +307,19 @@ const ProductDetails : FC = () => {
                   </div>
                 </TabPanel>
                 <TabPanel>
-                  <h2>Packing Details:</h2>
-                  <ul>
-                    <li>
-                      <ul>
-                        <li>Packing size wise</li>
-                        <li>10 pieces in Blister</li>
-                        <li>6 blister in single carton</li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span>Carton Dimensions</span>
-                      <span>24 x 24 x 40</span>
-                    </li>
+                  <ul className="list-group">
+                    <li className="list-group-item">Packing size wise</li>
+                    <li className="list-group-item">10 pieces in Blister</li>
+                    <li className="list-group-item">6 blister in single carton</li>
+                    <li className="list-group-item">Carton Dimensions: 24 x 24 x 40 </li>
+                    <li className="list-group-item">Weight per piece : {product.fabricWeight} </li>
+                    <li className="list-group-item">Shipping : By Air, Sea, DHL etc </li>
                   </ul>
                 </TabPanel>
                 <TabPanel>
-                  <h2>Reviews</h2>
+                  <div className="p-4">
+                    <p className="text-danger">No Review Found</p>
+                  </div>
                 </TabPanel>
               </Tabs>
               </div>
