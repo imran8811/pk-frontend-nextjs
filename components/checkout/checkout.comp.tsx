@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
-import { DELETE_CART_ITEM, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, WHOLESALE_SHOP } from "../../endpoints";
+import { DELETE_CART_ITEM, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, USER_ADDRESS, WHOLESALE_SHOP } from "../../endpoints";
 import { Button, Modal } from 'antd';
 import styles from './checkout.module.css';
 import cls from 'classnames';
@@ -14,10 +14,21 @@ import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { checkUserSession } from "../../services/auth.service";
+import { IUserAddress } from "../../models";
+import { ALLOWED_COUNTRIES } from "../../constants";
+import { ErrorMessage } from "@hookform/error-message";
+import { useForm } from "react-hook-form";
 
 const CheckoutComp: FC = () => {
   const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>([]);
+  const [isDeleteCartItemModalOpen, setIsDeleteCartItemModalOpen] = useState(false);
+  const [confirmOrderModalOpen, setConfirmOrderModalOpen] = useState(false);
+  const [userAddresses, setUserAddresses, userAddressesRef] = useState<IUserAddress[]>();
+  const [isCreateAddressModalOpen, setIsCreateAddressModalOpen] = useState(false);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
   const router = useRouter();
+  const { register, handleSubmit, getValues, setValue, reset, formState: { errors }} = useForm({ criteriaMode: 'all'});
   let userData;
   if (typeof localStorage !== 'undefined') {
     userData = JSON.parse(localStorage.getItem('userData')!);
@@ -28,15 +39,57 @@ const CheckoutComp: FC = () => {
       router.push('/login?next=wholesale-shop/checkout')
     } else {
       getCartDetails();
+      getUserAddresses();
     }
   }, [])
 
-  const [isDeleteCartItemModalOpen, setIsDeleteCartItemModalOpen] = useState(false);
-  const [confirmOrderModalOpen, setConfirmOrderModalOpen] = useState(false);
+  const createAddressModalOpen = () => {
+    setIsCreateAddressModalOpen(true);
+  };
 
   const deleteCartItemConfirmation = () => {
     setIsDeleteCartItemModalOpen(true);
   };
+
+  const getUserAddresses = async () => {
+    const res = await axiosInstance({
+      method: "get",
+      url: `${USER_ADDRESS}/${userData.userId}`
+    }).then(res => {
+      setUserAddresses(res.data.data);
+    })
+  }
+
+  const createNewUserAddress = async(data:any) => {
+    await axiosInstance({
+      method: 'post',
+      url: USER_ADDRESS,
+      data: {
+        ...data,
+        userId: userData.userId
+      },
+    }).then((res:any) => {
+      if(res.data.type === 'success'){
+        toast.success(res.data.message);
+        setIsCreateAddressModalOpen(false);
+        getUserAddresses();
+        reset();
+      }
+    }).catch((err) => {
+      toast.error(err.response.data.message);
+    }) ;
+  }
+
+  const calculateAmountQuantity = async() => {
+    let amount:number = 0;
+    let quantity:any = 0;
+    const totalAmount = cartDetailsRef.current.map((item, index) => {
+      amount = Number(amount)+Number(item.amount);
+      quantity += item.quantity.reduce((a, b) => Number(a)+Number(b), 0)
+    })
+    setTotalAmount(amount);
+    setTotalQuantity(quantity);
+  }
 
   const deleteCartItem = async() => {
     await axiosInstance({
@@ -71,6 +124,8 @@ const CheckoutComp: FC = () => {
   const handleCancel = () => {
     setIsDeleteCartItemModalOpen(false);
     setConfirmOrderModalOpen(false);
+    setIsCreateAddressModalOpen(false);
+    reset();
   };
 
   const getCartDetails = async () => {
@@ -79,6 +134,7 @@ const CheckoutComp: FC = () => {
       url: `${GET_CART_DETAILS}?userId=${userData.userId}`
     }).then(res => {
       setCartDetails(res.data);
+      calculateAmountQuantity();
     })
   }
 
@@ -141,8 +197,29 @@ const CheckoutComp: FC = () => {
           <div className="col-12">
             <h3>Shipping Address</h3>
             <div className="card mb-3">
-              <div className="card-body">
-                
+              <div className="card-body row">
+                {userAddresses && userAddresses.length > 0 && 
+                  <>
+                    {userAddresses?.map((address, index) => {
+                      return (
+                        <div className={cls(styles.addressList, 'card col-md-5 mb-3')} key={index}>
+                          <div className="card-body">
+                            <p>{address.addressType}</p>
+                            <address>
+                              {address.area+', '+address.city+', '+address.country+', '+address.postalCode }
+                            </address>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </>
+                }
+                {userAddresses && userAddresses.length === 0 && 
+                  <div className="mb-3">
+                    <p className="text-danger">No Address Found</p>
+                  </div>
+                }
+                <button type="button" className="btn btn-link" onClick={() => {createAddressModalOpen()}}>Add New Address</button>
               </div>
             </div>
           </div>
@@ -154,11 +231,11 @@ const CheckoutComp: FC = () => {
               <ul>
                 <li>
                   <span>Total Quantity</span> 
-                  <span>0</span> 
+                  <span>{totalQuantity}</span> 
                 </li>
                 <li>
                   <span>Total Amount</span> 
-                  <span>0</span> 
+                  <span>${totalAmount}</span> 
                 </li>
               </ul>
             </div>
@@ -175,6 +252,51 @@ const CheckoutComp: FC = () => {
       <Modal open={confirmOrderModalOpen} onOk={confirmOrder} onCancel={handleCancel}>
         <p>Confirm Order?</p>
         <Link href={"/return-policy"}>Return Policy</Link>
+      </Modal>
+      <Modal open={isCreateAddressModalOpen} footer={null} onCancel={handleCancel}>
+        <div className='row justify-content-center'>
+          <h2 className='text-center mb-3'>Enter Address Details</h2>
+          <form onSubmit={handleSubmit(createNewUserAddress)} autoComplete="off" className='col-12'>
+            <div className='mb-3'>
+              <select className="select-input" {...register('country', {required: 'Required'})}>
+                <option value={''} selected>Select Country</option>
+                {ALLOWED_COUNTRIES.map((country) => {
+                  return(
+                    <option value={country.toLocaleLowerCase()}>{country}</option>
+                  )
+                })}
+              </select>
+              <ErrorMessage errors={errors} name="country" as={<small className="text-danger"></small>} />
+            </div>
+            <div className='mb-3'>
+              <input type="text"  {...register('state', {required: 'Required'})} placeholder='State' className='form-control' />
+              <ErrorMessage errors={errors} name="country" as={<small className="text-danger"></small>} />
+            </div>
+            <div className='mb-3'>
+              <input type="text"  {...register('city', {required: 'Required'})} placeholder='City' className='form-control' />
+              <ErrorMessage errors={errors} name="country" as={<small className="text-danger"></small>} />
+            </div>
+            <div className='mb-3'>
+              <input type="text"  {...register('area', {required: 'Required'})} placeholder='Street/Area/Town' className='form-control' />
+              <ErrorMessage errors={errors} name="country" as={<small className="text-danger"></small>} />
+            </div>
+            <div className='mb-3'>
+              <input type="text"  {...register('postalCode', {required: 'Required'})} placeholder='Postal Code' className='form-control' />
+              <ErrorMessage errors={errors} name="country" as={<small className="text-danger"></small>} />
+            </div>
+            <div className='mb-3'>
+              <select className="select-input" {...register('addressType', {required: 'Required'})}>
+                <option>Select address type</option>
+                <option value={'home'}>Home</option>
+                <option value={'work'}>Work</option>
+              </select>
+              <ErrorMessage errors={errors} name="addressType" as={<small className="text-danger"></small>} />
+            </div>
+            <div className="mb-3 text-end">
+              <button type="submit" className='btn btn-primary col-4'>Create</button>
+            </div>
+          </form>
+        </div>
       </Modal>
       <ToastContainer />
     </>

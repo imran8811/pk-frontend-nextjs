@@ -1,3 +1,6 @@
 .heightFull {
     height: 80%;
 }
+.addressList {
+    cursor: pointer;
+}

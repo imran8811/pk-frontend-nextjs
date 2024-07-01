@@ -37,3 +37,5 @@ export const USER_LOGOUT = `${baseRoute}/auth/logout`;
 
 //user
 export const GET_USER_ACCOUNT = `${baseRoute}/user-account`;
+export const USER_ADDRESS = `${baseRoute}/user-account/user-address`;
+export const GET_USER_ADDRESS_BY_ID = `${baseRoute}/user-account/user-address-by-id`;
