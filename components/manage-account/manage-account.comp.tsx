@@ -176,9 +176,9 @@ const ManageAccountComp: FC = () => {
             </div>
             <div className="col-md-4">
               <h2>Address Book</h2>
-              {userAddresses?.map((address) => {
+              {userAddresses?.map((address, index) => {
                 return (
-                  <div className="mb-3">
+                  <div className="mb-3" key={index}>
                     <p>{address.addressType}</p>
                     <address>
                       {address.area+', '+address.city+', '+address.country+', '+address.postalCode }
@@ -205,9 +205,9 @@ const ManageAccountComp: FC = () => {
             <div className='mb-3'>
               <select className="select-input" {...register('country', {required: 'Required'})}>
                 <option selected>Select Country</option>
-                {ALLOWED_COUNTRIES.map((country) => {
+                {ALLOWED_COUNTRIES.map((country, index) => {
                   return(
-                    <option value={country.toLocaleLowerCase()}>{country}</option>
+                    <option value={country.toLocaleLowerCase()} key={index}>{country}</option>
                   )
                 })}
               </select>
@@ -253,9 +253,9 @@ const ManageAccountComp: FC = () => {
             <div className='mb-3'>
               <select className="select-input" {...register('country', {required: 'Required'})}>
                 <option selected>Select Country</option>
-                {ALLOWED_COUNTRIES.map((country) => {
+                {ALLOWED_COUNTRIES.map((country, index) => {
                   return(
-                    <option value={country.toLocaleLowerCase()}>{country}</option>
+                    <option value={country.toLocaleLowerCase()} key={index}>{country}</option>
                   )
                 })}
               </select>

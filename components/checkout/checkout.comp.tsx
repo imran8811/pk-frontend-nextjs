@@ -260,9 +260,9 @@ const CheckoutComp: FC = () => {
             <div className='mb-3'>
               <select className="select-input" {...register('country', {required: 'Required'})}>
                 <option value={''} selected>Select Country</option>
-                {ALLOWED_COUNTRIES.map((country) => {
+                {ALLOWED_COUNTRIES.map((country, index) => {
                   return(
-                    <option value={country.toLocaleLowerCase()}>{country}</option>
+                    <option value={country.toLocaleLowerCase()} key={index}>{country}</option>
                   )
                 })}
               </select>
