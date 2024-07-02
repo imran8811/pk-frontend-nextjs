@@ -1,3 +1,4 @@
+"use client";
 import { FC, useCallback, useEffect, useState } from "react"
 import cls from 'classnames'
 import styles from './shop.module.css'
@@ -13,12 +14,6 @@ const ShopComp : FC = (props:any) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const params = useParams();
-  console.log(params.dept)
-  console.log(params.category)
-  console.log(params.id)
-  // console.log(searchParams.get('dept'))
-  // console.log(searchParams.get('category'))
-  // console.log(searchParams.get('id'))
   const pathname = usePathname();
   const createQueryString = useCallback((name: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString())
