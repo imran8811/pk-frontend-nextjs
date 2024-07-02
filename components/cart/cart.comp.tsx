@@ -17,7 +17,7 @@ const CartComp: FC = () => {
   if (typeof localStorage !== 'undefined') {
     userData = JSON.parse(localStorage.getItem('userData')!);
     if(!userData){
-      router.push('/login');
+      router.push('/login?next=/wholesale-shop/cart');
     }
   }
   const [isDeleteCartItemModalOpen, setIsDeleteCartItemModalOpen] = useState(false);
@@ -26,7 +26,6 @@ const CartComp: FC = () => {
   useEffect(() => {
     getCartDetails();
   }, [])
-
 
   const deleteCartItemConfirmation = () => {
     setIsDeleteCartItemModalOpen(true);

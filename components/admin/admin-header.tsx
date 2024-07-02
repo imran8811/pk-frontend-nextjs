@@ -9,8 +9,6 @@ import axiosInstance from '../../interceptors/axios.interceptor';
 const AdminHeader: FC = () => {
   const [session, setSession] = useState(false);
   const router = useRouter();
-  // useEffect(() => {
-  // }, [router])
 
   const adminLogout = async(e:any) => {
     e.preventDefault();

@@ -16,8 +16,11 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ErrorMessage } from "@hookform/error-message"
 import { USER_TYPES } from "../../constants";
+import { Metadata } from "next";
+let params;
 
 const ProductDetails : FC = () => {
+  params = useParams();
   type FormInputs = {
     productId:string,
     sizes: string[],
@@ -30,7 +33,6 @@ const ProductDetails : FC = () => {
   const [totalAmount, setTotalAmount, totalAmountRef] = useState(0);
   // const [guestId, setGuestId, guestIdRef] = useState('');
   
-  const params = useParams();
   const router = useRouter();
   let userData;
   if (typeof localStorage !== 'undefined') {

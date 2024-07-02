@@ -22,10 +22,7 @@ const ShopComp : FC = (props:any) => {
     return params.toString()
   }, [searchParams])
 
-  console.log(params);
-
   let queryURL:string;
-  
   if(params.dept && params.category){
     queryURL = `/${params.dept}/${params.category}`;
   } else if(params.dept && !params.category) {
