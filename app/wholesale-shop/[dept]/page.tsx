@@ -1,7 +1,8 @@
-import Header from '../../../../../components/shared/header/header.comp';
-import Footer from '../../../../../components/shared/footer/footer.comp';
-import ProductDetails from '../../../../../components/product-details/product-details.comp';
+import Header from '../../../components/shared/header/header.comp';
+import Footer from '../../../components/shared/footer/footer.comp';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
+import ShopComp from '../../../components/wholesale-shop/shop.comp';
 
 export const metadata: Metadata = {
   title: "Wholesale Shop - Factory Shop for Jeans Products",
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
 
 const ShopPage = () => {
   return (
-    <>
+    <Suspense>
       <Header />
-      <ProductDetails />
+      <ShopComp />
       <Footer />
-    </>
+    </Suspense>
   )
 }
 

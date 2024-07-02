@@ -7,6 +7,7 @@ import { IProduct } from "../../models"
 import { useForm } from 'react-hook-form'
 import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 import axiosInstance from "../../interceptors/axios.interceptor"
+import Link from "next/link";
 
 const ShopComp : FC = (props:any) => {
   const [products, setProducts] = useState<IProduct[]>();
@@ -21,14 +22,14 @@ const ShopComp : FC = (props:any) => {
     return params.toString()
   }, [searchParams])
 
+  console.log(params);
+
   let queryURL:string;
   
   if(params.dept && params.category){
     queryURL = `/${params.dept}/${params.category}`;
-  } else if(params.dept) {
+  } else if(params.dept && !params.category) {
     queryURL = `/${params.dept}`;
-  } else if(params.category) {
-    queryURL = `/${params.category}`;
   } else {
     queryURL = '/getAll';
   }
@@ -58,6 +59,21 @@ const ShopComp : FC = (props:any) => {
     <div className="row">
       <div className={cls(styles.shopListing, 'col-lg-12')}>
         <div className="row">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link href={'/wholesale-shop'}>Shop</Link>
+              </li>
+              <li className="breadcrumb-item text-capitalize">
+                <Link href={`/wholesale-shop/${params.dept}`}>{params.dept}</Link>
+              </li>
+              {params.category && 
+                <li className="breadcrumb-item text-capitalize">
+                  <Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link>
+                </li>
+              }
+            </ol>
+          </nav>
           <h1 className="text-center mb-4">Wholesale Shop</h1>
           { products && products.map((product, index) => {
             return (
