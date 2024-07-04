@@ -1,11 +1,12 @@
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { USER_LOGIN, WHOLESALE_SHOP } from '../../../endpoints'
+import { CART_API, USER_LOGIN, WHOLESALE_SHOP } from '../../../endpoints'
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axiosInstance from '../../../interceptors/axios.interceptor';
 
 const LoginComp: FC = () => {
   const router = useRouter();
@@ -13,6 +14,20 @@ const LoginComp: FC = () => {
   
   const searchParams = useSearchParams();
   const getQueryParamNextRoute = searchParams.get('next');
+
+  const updateCartItemUserId = async(guestUserId, loggedInUserId) => {
+    await axiosInstance({
+      method: 'patch',
+      url: `${CART_API}`,
+      data: {
+        guestUserId, 
+        loggedInUserId
+      }
+    }).then(res => {
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
 
   const onSubmit = async(data:any) => {
     await axios({
@@ -22,9 +37,12 @@ const LoginComp: FC = () => {
     }).then((res:any) => {
       if(res.data.type === 'success'){
         if (typeof localStorage !== 'undefined') {
+          const userData = JSON.parse(localStorage.getItem('userData')!);
+          if(userData) {
+            updateCartItemUserId(userData.userId, res.data.data.userId)
+          } 
           localStorage.setItem('userData', JSON.stringify(res.data.data));
         }
-        // const nextRoute = sessionStorage.getItem('nextRoute');
         const nextRoute = getQueryParamNextRoute;
         nextRoute? router.push(getQueryParamNextRoute): router.push(WHOLESALE_SHOP)
       }

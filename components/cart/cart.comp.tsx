@@ -3,7 +3,7 @@ import useState from 'react-usestateref'
 
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
-import { DELETE_CART_ITEM, GET_CART_DETAILS } from "../../endpoints";
+import { CART_API, GET_CART_DETAILS } from "../../endpoints";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
@@ -34,7 +34,7 @@ const CartComp: FC = () => {
   const deleteCartItem = async() => {
     await axiosInstance({
       method: 'delete',
-      url: `${DELETE_CART_ITEM}/${cartDetails![0]?.productId}`
+      url: `${CART_API}/${cartDetails![0]?.productId}`
     }).then(res => {
       setIsDeleteCartItemModalOpen(false);
       getCartDetails();

@@ -11,16 +11,12 @@ import { getUserSessionData } from '../../services/auth.service';
 import { useForm } from "react-hook-form"
 import Link from "next/link"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ErrorMessage } from "@hookform/error-message"
 import { USER_TYPES } from "../../constants";
-import { Metadata } from "next";
-let params;
 
 const ProductDetails : FC = () => {
-  params = useParams();
   type FormInputs = {
     productId:string,
     sizes: string[],
@@ -31,8 +27,8 @@ const ProductDetails : FC = () => {
   const [productDetails, setproductDetails, productDetailsRef] = useState<IProduct[]>([]);
   const { register, handleSubmit, getValues, setValue, setError, watch, formState: { errors }} = useForm<FormInputs>({ criteriaMode: 'all'});
   const [totalAmount, setTotalAmount, totalAmountRef] = useState(0);
-  // const [guestId, setGuestId, guestIdRef] = useState('');
   
+  const params = useParams();
   const router = useRouter();
   let userData;
   if (typeof localStorage !== 'undefined') {

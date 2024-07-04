@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
-import { DELETE_CART_ITEM, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, USER_ADDRESS, WHOLESALE_SHOP } from "../../endpoints";
+import { CART_API, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, USER_ADDRESS, WHOLESALE_SHOP } from "../../endpoints";
 import { Button, Modal } from 'antd';
 import styles from './checkout.module.css';
 import cls from 'classnames';
@@ -24,9 +24,11 @@ const CheckoutComp: FC = () => {
   const [isDeleteCartItemModalOpen, setIsDeleteCartItemModalOpen] = useState(false);
   const [confirmOrderModalOpen, setConfirmOrderModalOpen] = useState(false);
   const [userAddresses, setUserAddresses, userAddressesRef] = useState<IUserAddress[]>();
+  const [selectUserAddresses, setSelectUserAddresses, selectUserAddressesRef] = useState('');
   const [isCreateAddressModalOpen, setIsCreateAddressModalOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
+
   const router = useRouter();
   const { register, handleSubmit, getValues, setValue, reset, formState: { errors }} = useForm({ criteriaMode: 'all'});
   let userData;
@@ -94,7 +96,7 @@ const CheckoutComp: FC = () => {
   const deleteCartItem = async() => {
     await axiosInstance({
       method: 'delete',
-      url: `${DELETE_CART_ITEM}/${cartDetails[0]?.productId}`
+      url: `${CART_API}/${cartDetails[0]?.productId}`
     }).then(res => {
       console.log(res);
       setIsDeleteCartItemModalOpen(false);
@@ -108,15 +110,18 @@ const CheckoutComp: FC = () => {
       method: 'post',
       url: `${NEW_ORDER}`,
       data: {
+        orderId: 123,
         items: cartDetailsRef.current,
         userId: userData.userId,
-        shippingAddress: "user address",
-        orderAmount: '15000'
+        shippingAddressId: selectUserAddressesRef.current,
+        totalAmount,
+        totalQuantity,
       }
     }).then(res => {
       setConfirmOrderModalOpen(false);
       router.push(`${ORDER_CONFIRMED}`);
     }).catch((err) => {
+      toast.error('Unable to place order, try later');
       console.log(err);
     })
   };
@@ -202,7 +207,7 @@ const CheckoutComp: FC = () => {
                   <>
                     {userAddresses?.map((address, index) => {
                       return (
-                        <div className={cls(styles.addressList, 'card col-md-5 mb-3')} key={index}>
+                        <div className={cls(styles.addressList, 'card col-md-5 mb-3')} key={index} onClick={() => setSelectUserAddresses(address._id)}>
                           <div className="card-body">
                             <p>{address.addressType}</p>
                             <address>

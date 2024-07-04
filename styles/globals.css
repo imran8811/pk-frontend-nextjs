@@ -5,6 +5,7 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@import 'react-tabs/style/react-tabs.css';
 body {
 	min-width: 320px;
 	background:#fff;

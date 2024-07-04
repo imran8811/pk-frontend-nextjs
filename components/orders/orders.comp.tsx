@@ -3,16 +3,12 @@ import useState from 'react-usestateref'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
-
-import { ICart } from "../../models/cart.model";
-import axiosInstance from "../../interceptors/axios.interceptor";
-import { DELETE_CART_ITEM, GET_CART_DETAILS, GET_ORDERS, NEW_ORDER, ORDER_CONFIRMED, WHOLESALE_SHOP } from "../../endpoints";
-import { Button, Modal } from 'antd';
-import styles from './orders.module.css';
-import cls from 'classnames';
-import Link from "next/link";
-import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
+
+import axiosInstance from "../../interceptors/axios.interceptor";
+import { GET_ORDERS } from "../../endpoints";
 import { checkUserSession } from "../../services/auth.service";
 import { IOrder } from "../../models/order.model";
 
@@ -58,37 +54,57 @@ const OrdersComp: FC = () => {
 
   return (
     <>
-      <h1 className="text-center">Orders Details</h1>
-      {orders && 
-      <div className="row align-items-stretch">
-        <div className="col-12">
-          <h4 className="text-success">Products</h4>
-          <div className="card mb-3">
-            <div className="card-body">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th className="col">Order#</th>
-                    <th className="col">Quantity</th>
-                    <th className="col">Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {orders.map((order, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index+1}</td>
-                      <td>{order.totalQuantity}</td>
-                      <td>{order.totalAmount}</td>
-                    </tr>
-                  )})}
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <h1 className="text-center">Orders</h1>
+      <div className="row">
+        <div className="product-tabs">
+        <Tabs>
+          <TabList>
+            <Tab>Payment Pending (0)</Tab>
+            <Tab>In Process (0)</Tab>
+            <Tab>Shipped (0)</Tab>
+          </TabList>
+          <TabPanel>
+            {orders && 
+              <div className="row align-items-stretch">
+                <div className="col-12">
+                  <div className="card mb-3">
+                    <div className="card-body">
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th className="col">Order#</th>
+                            <th className="col">Amount</th>
+                            <th className="col">Quantity</th>
+                            <th className="col">Shipping Address</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {orders.map((order, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{index+1}</td>
+                              <td>{order.totalAmount}</td>
+                              <td>{order.totalQuantity}</td>
+                              <td>{order.shippingAddress}</td>
+                            </tr>
+                          )})}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </TabPanel>
+          <TabPanel>
+            
+          </TabPanel>
+          <TabPanel>
+            
+          </TabPanel>
+        </Tabs>
         </div>
       </div>
-      }
       <ToastContainer />
     </>
   )

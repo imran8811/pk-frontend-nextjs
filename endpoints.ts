@@ -1,5 +1,5 @@
-// export const baseRoute = 'http://localhost:3001';
-export const baseRoute = 'https://api.pkapparel.com';
+export const baseRoute = 'http://localhost:3001';
+// export const baseRoute = 'https://api.pkapparel.com';
 
 // export const basePath = 'http://localhost:8000';
 export const basePath = 'https://www.pkapparel.com';
@@ -22,7 +22,7 @@ export const ORDER_CONFIRMED = '/order-confirmed';
 //cart CRUD
 export const ADD_TO_CART = `${baseRoute}/cart/saveItem`;
 export const GET_CART_DETAILS = `${baseRoute}/cart/getAll`;
-export const DELETE_CART_ITEM = `${baseRoute}/cart`;
+export const CART_API = `${baseRoute}/cart`;
 
 //order CRUD
 export const GET_ORDERS = `${baseRoute}/order/getAll`;
