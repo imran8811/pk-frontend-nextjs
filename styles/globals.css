@@ -59,6 +59,10 @@ a:hover {
   padding: 10px 0;
   border-top: 1px solid #ccc;
 }
+.shodow-rounded {
+	border-radius: 5px;
+	box-shadow: 0 0 5px 0.5px #C2C2C2;
+}
 .page-title {
 	display: block;
 	text-align: center;
@@ -67,15 +71,19 @@ a:hover {
 	color: #2d639e;
 	margin: 20px 0;
 }
-.carousel .slide img {
-	width: auto !important;
-	height: 400px !important;
-}
 .loader {
   width: 150px;
   height: 400px;
   background: url("/images/loader.gif") no-repeat 100%;
   margin: 0 auto;
+}
+.product-filters {
+	border-right: 1px solid #ccc;
+	padding-right: 20px;
+}
+.carousel .slide img {
+  width: auto !important;
+  height: 400px !important;
 }
 .carousel-dots .carousel-dot {
   background-color: #2d639e;
@@ -87,6 +95,11 @@ a:hover {
   padding: 8px 10px 8px 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+.radio-input {
+	display: block;
+	width: 100%;
+	margin-bottom: 6px;
 }
 .border-bottom-grey {
   border-bottom: 1px solid #ccc;

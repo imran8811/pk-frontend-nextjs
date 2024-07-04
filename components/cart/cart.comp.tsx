@@ -104,6 +104,7 @@ const CartComp: FC = () => {
               )})}
           </table>
           <div className="mb-5 justify-content-end d-flex">
+            <Link href={'/wholesale-shop'} className="btn btn-link">Continue Shopping</Link>
             <Link href={'/wholesale-shop/checkout'} className="btn btn-success">Checkout </Link>
           </div>
         </>

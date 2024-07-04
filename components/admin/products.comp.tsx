@@ -48,60 +48,47 @@ const Products: FC = () => {
 
   return (
     <div className='col-lg-12 mt-5 mb-5'>
+      <h2 className='text-center mb-3'>Products</h2>
       <div className='row'>
-        <h2 className='text-center mb-3'>Products</h2>
-          { productsRef.current && productsRef.current.map((product:any, index) => {
-              return (
-                <div className='col-4' key={index}>
-                  <Link href={"/admin/edit-product/"+product._id}>
-                    <img src={product.productImages.frontImgUrl} alt="Product Front Image" width={200} />
-                  </Link>
-                  <ul className='list-group'>
-                    <li className='list-item'>
-                      <span>{product.articleNo}</span>
-                    </li>
-                    <li className='list-item'>
-                      <span>{product.colors}</span>
-                    </li>
-                    <li className='list-item'>
-                      <span>{product.category}</span>
-                    </li>
-                    <li className='list-item'>
-                      <span>{product.type}</span>
-                    </li>
-                    <li className='list-item'>
-                      <span>{product.length}</span>
-                    </li>
-                    <li className='list-item'>
-                      <span>{product.moq} Pcs</span>
-                    </li>
-                    <li className='list-item'>
-                      <span>$ {product.price}</span>
-                    </li>
-                  </ul>
-                  <div className='mb-3 mt-3'>
-                    <button 
-                      type='button' 
-                      className='btn btn-danger' 
-                      onClick={() => deleteProduct(product.articleNo, [
-                        product.productImages.frontImgUrl, 
-                        product.productImages.backImgUrl, 
-                        product.productImages.other1ImgUrl, 
-                        product.productImages.other2ImgUrl, 
-                        product.productImages.other3ImgUrl
-                      ])}>Delete</button>
-                  </div>
+        { productsRef.current && productsRef.current.map((product:any, index) => {
+            return (
+              <div className='col-3 shadow-rounded' key={index}>
+                <Link href={"/admin/edit-product/"+product._id}>
+                  <img src={product.productImages.frontImgUrl} alt="Product Front Image" width={200} height={250} />
+                </Link>
+                <ul className='list-group'>
+                  <li className='list-item'>
+                    <span>{product.articleNo}</span>-
+                    <span>$ {product.price}</span> - 
+                    <span>{product.category}</span>
+                    <span>{product.type}</span> -
+                    <span>{product.length}</span> -
+                    <span>{product.color}</span>
+                  </li>
+                </ul>
+                <div className='mb-3 mt-3'>
+                  <button 
+                    type='button' 
+                    className='btn btn-danger' 
+                    onClick={() => deleteProduct(product.articleNo, [
+                      product.productImages.frontImgUrl, 
+                      product.productImages.backImgUrl, 
+                      product.productImages.other1ImgUrl, 
+                      product.productImages.other2ImgUrl, 
+                      product.productImages.other3ImgUrl
+                    ])}>Delete</button>
                 </div>
-              )
-            })
-          }
-          {noProductFound &&
-            <div className='mt-5 mb-5'>
-              <h3 className='text-danger'>No Product Found</h3>
-            </div>
-          }
-      </div>
+              </div>
+            )
+          })
+        }
+        {noProductFound &&
+          <div className='mt-5 mb-5'>
+            <h3 className='text-danger'>No Product Found</h3>
+          </div>
+        }
     </div>
+  </div>
 )}
 
 export default Products;

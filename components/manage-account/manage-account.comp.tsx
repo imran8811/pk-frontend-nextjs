@@ -152,8 +152,8 @@ const ManageAccountComp: FC = () => {
       <h1>Manage your account</h1>
       {userAccount && 
         <>
-          <div className="row">
-            <div className="col-md-4">
+          <div className="row card">
+            <div className="col-md-4 card-body">
               <h2>Personal profile</h2>
               <ul>
                 <li>
@@ -184,8 +184,8 @@ const ManageAccountComp: FC = () => {
                       {address.area+', '+address.city+', '+address.country+', '+address.postalCode }
                     </address>
                     <ul>
-                      <li><button className="btn-link" onClick={() => {getAddressbyId(address._id)}}>Edit</button></li>
-                      <li><button className="btn-link" onClick={() => {deleteAddressModalOpen(address._id)}}>Delete</button></li>
+                      <li><button className="btn btn-link" onClick={() => {getAddressbyId(address._id)}}>Edit</button></li>
+                      <li><button className="btn btn-link" onClick={() => {deleteAddressModalOpen(address._id)}}>Delete</button></li>
                     </ul>
                   </div>
                 )

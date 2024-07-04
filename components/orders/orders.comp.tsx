@@ -68,13 +68,9 @@ const OrdersComp: FC = () => {
               <table className="table">
                 <thead>
                   <tr>
-                    <th className="col">Item</th>
-                    <th className="col">Details</th>
-                    <th className="col">Sizes</th>
+                    <th className="col">Order#</th>
                     <th className="col">Quantity</th>
                     <th className="col">Amount</th>
-                    <th className="col">Instructions</th>
-                    <th className="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -82,72 +78,17 @@ const OrdersComp: FC = () => {
                   return (
                     <tr key={index}>
                       <td>{index+1}</td>
-                      <td>{order.items[index].productDetails.slug}</td>
-                      <td>
-                        <span>{order.items[index].sizes.map(size => size.concat('-'))}</span><br></br>
-                      </td>
-                      <td>
-                        <span>{order.items[index].quantity.map(qty => qty.concat('-'))}</span>
-                      </td>
-                      <td>${parseInt(order.items[index].amount).toFixed(2)}</td>
-                      <td>{order.items[index].instructions}</td>
-                      <td>
-                        <div className="row">
-                          <button 
-                            type="button" 
-                            className="btn btn-danger" 
-                            onClick={() => {router.push(`/order/edit/${order.items[index].productId}`)}}>
-                            Cancel
-                          </button>
-                        </div>
-                      </td>
+                      <td>{order.totalQuantity}</td>
+                      <td>{order.totalAmount}</td>
                     </tr>
                   )})}
                 </tbody>
               </table>
             </div>
           </div>
-          {orders.map((order) => {
-            return (
-              <>
-                <div className="col-12">
-                  <h4 className="text-success">Shipping Address</h4>
-                  <div className="card mb-3">
-                    <div className="card-body">
-                      {order.shippingAddress}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-12">
-                <h4 className="text-success">Order Summary</h4>
-                <div className={cls('card mb-3', styles.heightFull)}>
-                  <div className="card-body">
-                    <ul>
-                      <li>
-                        <span>Total Quantity</span> 
-                        <span>{order.totalQuantity}</span> 
-                      </li>
-                      <li>
-                        <span>Total Amount</span> 
-                        <span>{order.orderAmount}</span> 
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              </>
-            )}
-          )}
         </div>
       </div>
       }
-      {/* <Modal title="Delete Cart Item" open={isDeleteCartItemModalOpen} onOk={deleteCartItem} onCancel={handleCancel}>
-        <p>Want to delete cart item?</p>
-      </Modal>
-      <Modal open={confirmOrderModalOpen} onOk={confirmOrder} onCancel={handleCancel}>
-        <p>Confirm Order?</p>
-        <Link href={"/return-policy"}>Return Policy</Link>
-      </Modal> */}
       <ToastContainer />
     </>
   )

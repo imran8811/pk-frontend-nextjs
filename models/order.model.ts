@@ -5,7 +5,7 @@ export interface IOrder {
   _id: string;
   items: ICart[];
   shippingAddress: string[];
-  orderAmount: string[];
+  totalAmount: string[];
   totalQuantity: string[];
   userId: string;
 }

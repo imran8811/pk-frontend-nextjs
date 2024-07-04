@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form'
 import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 import axiosInstance from "../../interceptors/axios.interceptor"
 import Link from "next/link";
+import ProductFiltersComp from "../product-filters.comp";
 
 const ShopComp : FC = (props:any) => {
   const [products, setProducts] = useState<IProduct[]>();
@@ -16,46 +17,35 @@ const ShopComp : FC = (props:any) => {
   const searchParams = useSearchParams();
   const params = useParams();
   const pathname = usePathname();
-  const createQueryString = useCallback((name: string, value: string) => {
-    const params = new URLSearchParams(searchParams.toString())
-    params.set(name, value)
-    return params.toString()
-  }, [searchParams])
 
   let queryURL:string;
   if(params.dept && params.category){
     queryURL = `/${params.dept}/${params.category}`;
   } else if(params.dept && !params.category) {
     queryURL = `/${params.dept}`;
+  } else if(searchParams.get('dept') && searchParams.get('category')) {
+    queryURL = `/${searchParams.get('dept')}/${searchParams.get('category')}`;
+  } else if(searchParams.get('dept') && !searchParams.get('category')) {
+    queryURL = `/${searchParams.get('dept')}`;
   } else {
     queryURL = '/getAll';
   }
 
   useEffect(() => {
     getAllProducts();
-  }, [])
+  }, [searchParams])
 
   const getAllProducts = () => {
     axiosInstance.get(`${PRODUCT_API}${queryURL}`).then(res => {
       setProducts(res.data)
     })
-  }
-
-  const setFiltersData = (filterType, e) => {
-    if(e.target.value === '') {
-      delete searchParams.get[filterType]
-      router.push(pathname + '?' + createQueryString(filterType, e.target.value), { scroll: false });
-    } else {
-      searchParams.set[filterType] = e.target.value
-      router.push(pathname + '?' + createQueryString(filterType, e.target.value), { scroll: false });
-    }
-    // getAllProducts();
+    console.log(products)
   }
 
   return (
-    <div className="row">
+    <div className="mb-3">
       <div className={cls(styles.shopListing, 'col-lg-12')}>
-        <div className="row">
+        <div className="mb-3">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
@@ -72,23 +62,32 @@ const ShopComp : FC = (props:any) => {
             </ol>
           </nav>
           <h1 className="text-center mb-4">Wholesale Shop</h1>
-          { products && products.map((product, index) => {
-            return (
-              <div className="col-lg-3 col-md-4 mb-3 text-center" key={index}>
-                <a href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`} className="d-block mb-3" target="_blank" rel="noreferrer">
-                  <img
-                    src={product.productImages.frontImgUrl} 
-                    alt={product.productImages.frontImgUrl}
-                    height="370"
-                    className={styles.img} />
-                </a>
-                <a className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product._id}`}>{'$'+ product.price + '-' + product.slug}</a>
+          <div className="row">
+            <div className="col-2">
+              <ProductFiltersComp />
+            </div>
+            <div className="col-lg-10">
+              <div className="row">
+                { products && products.map((product, index) => {
+                  return (
+                    <div className="col-lg-3 col-md-4 mb-5 text-center shodow-rounded" key={index}>
+                      <a href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+                        <img
+                          src={product.productImages.frontImgUrl} 
+                          alt={product.productImages.frontImgUrl}
+                          height="370"
+                          className={styles.img} />
+                      </a>
+                      <a className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`}>{'$'+ product.price + '-' + product.slug}</a>
+                    </div>
+                  )
+                })}
               </div>
-            )
-          })}
-          {products?.length === 0 &&
-            <h6 className="text-center text-danger mb-5 mt-5">No Product Found</h6>
-          }
+              {products && products.length === 0 &&
+                <h4 className="text-center text-danger mb-5 mt-5">No Item Found</h4>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -86,6 +86,7 @@ const ProductDetails : FC = () => {
             userType: USER_TYPES.GUEST
           }
           localStorage.setItem('userData', JSON.stringify(userData));
+          router.push('/wholesale-shop/cart')
         }
       }
     }).catch(err =>{

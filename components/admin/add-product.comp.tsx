@@ -9,7 +9,6 @@ import { useRouter } from 'next/navigation';
 import { type PutBlobResult } from '@vercel/blob';
 import { upload } from '@vercel/blob/client';
  
-
 const AddProduct: FC = () => {
   const [currentStep, setCurrentStep, currentStepRef] = useState('stepProductInfo');
   const [productId, setProductId, productIdRef] = useState();
@@ -46,14 +45,12 @@ const AddProduct: FC = () => {
 
   const getArticleNo = async() => {
     await axiosInstance({
-      method: 'get',
+      method: 'post',
       url: GET_ARTICLE_NO,
+      data: ''
     }).then((res:any) => {
-      console.log(res);
-      // if(res.statusText === 'OK'){
-        const latestArticleNo = res.data+1;
-        setValue('articleNo', latestArticleNo.toString());
-      // }
+      const latestArticleNo = res.data+1;
+      setValue('articleNo', latestArticleNo.toString());
     }).catch(err => {
       console.log(err);
     });

@@ -4,7 +4,8 @@ export const USER_TYPES = {
 }
 
 export const ALLOWED_COUNTRIES = [
-    "Austria", 
+    "Austria",
+    "Azerbaijan",
     "Belgium", 
     "Bulgaria", 
     "Croatia", 
