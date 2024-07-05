@@ -15,7 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { checkUserSession } from "../../services/auth.service";
 import { IUserAddress } from "../../models";
-import { ALLOWED_COUNTRIES } from "../../constants";
+import { ALLOWED_COUNTRIES, ORDER_STATUS } from "../../constants";
 import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
 
@@ -116,6 +116,7 @@ const CheckoutComp: FC = () => {
         shippingAddressId: selectUserAddressesRef.current,
         totalAmount,
         totalQuantity,
+        status: ORDER_STATUS.PAYMENT_PENDING
       }
     }).then(res => {
       setConfirmOrderModalOpen(false);

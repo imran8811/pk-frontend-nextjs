@@ -53,7 +53,7 @@ const Products: FC = () => {
         { productsRef.current && productsRef.current.map((product:any, index) => {
             return (
               <div className='col-3 shadow-rounded' key={index}>
-                <Link href={"/admin/edit-product/"+product._id}>
+                <Link href={"/admin/edit-product/"+product.articleNo}>
                   <img src={product.productImages.frontImgUrl} alt="Product Front Image" width={200} height={250} />
                 </Link>
                 <ul className='list-group'>

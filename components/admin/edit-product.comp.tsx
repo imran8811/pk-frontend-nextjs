@@ -78,6 +78,7 @@ const EditProduct: FC = () => {
     }).then((res:any) => {
       if(res.data.type === 'success'){
         toast.success(res.data.message);
+        router.push('/admin/products');
       }
     }).catch((err) => {
       toast.error(err.message)

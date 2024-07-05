@@ -8,4 +8,5 @@ export interface IOrder {
   totalAmount: string[];
   totalQuantity: string[];
   userId: string;
+  status: string;
 }

@@ -3,6 +3,13 @@ export const USER_TYPES = {
     USER : 'user'
 }
 
+export const ORDER_STATUS = {
+    PAYMENT_PENDING : 'Payment Pending',
+    IN_PROCESS : 'In Process',
+    SHIPPED : 'Shipped',
+    CANCELLED : 'Cancelled',
+}
+
 export const ALLOWED_COUNTRIES = [
     "Austria",
     "Azerbaijan",
