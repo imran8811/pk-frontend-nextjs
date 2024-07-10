@@ -56,7 +56,7 @@ const JeansManufacturersComp: FC = () => {
 
         <h3 className='mb-3'>Different color combinations for jeans</h3>
         
-        <p className="mb-4">We offer brands to create their jeans in different colors and shades. Color combinations that we offer are inclusive of blue, black, and grey tones. Like all blue <strong>jeans manufacturers</strong>, we also create blue jeans in different styles for our clients. So, we are one of the children's jeans manufacturers who offer various customization of colors for kids also. 
+        <p className="mb-4">We offer brands to create their jeans in different colors and shades. Color combinations that we offer are inclusive of blue, black, and grey tones. Like all blue <strong>jeans manufacturers</strong>, we also create blue jeans in different styles for our clients. So, we are one of the children&apos;s jeans manufacturers who offer various customization of colors for kids also. 
         </p>
 
         <h3 className='mb-3'>Reach your audience with the best jean products</h3>
@@ -73,20 +73,20 @@ const JeansManufacturersComp: FC = () => {
 
         <p className='mb-1'>For men we offer:</p>
         <ul className='mb-4 list-group'>
-          <li className='list-group-item'>Men's navy blue stretch jeans pant</li>
-          <li className='list-group-item'>Men's blue stretch slim fit jeans pant</li>
-          <li className='list-group-item'>Men's navy blue stretch chino pant</li>
-          <li className='list-group-item'>Men's camel stretch cargo trousers</li>
-          <li className='list-group-item'>Men's camo stretch cargo trousers</li>
-          <li className='list-group-item'>Men's khaki stretch cargo trousers</li>
-          <li className='list-group-item'>Men's olive stretch cargo trousers</li>
+          <li className='list-group-item'>Men&apos;s navy blue stretch jeans pant</li>
+          <li className='list-group-item'>Men&apos;s blue stretch slim fit jeans pant</li>
+          <li className='list-group-item'>Men&apos;s navy blue stretch chino pant</li>
+          <li className='list-group-item'>Men&apos;s camel stretch cargo trousers</li>
+          <li className='list-group-item'>Men&apos;s camo stretch cargo trousers</li>
+          <li className='list-group-item'>Men&apos;s khaki stretch cargo trousers</li>
+          <li className='list-group-item'>Men&apos;s olive stretch cargo trousers</li>
         </ul>
         
         <p className='mb-4'>We believe in producing all these jeans with high-quality materials and we offer these at affordable prices to customers and clothing brands.</p>
 
         <p className='mb-1'>For women we offer:</p>
         <ul className='mb-4 list-group'>
-          <li className='list-group-item'>Women's navy blue stretch Capri jeans</li>
+          <li className='list-group-item'>Women&apos;s navy blue stretch Capri jeans</li>
           <li className='list-group-item'>Skinny fit jeans</li>
           <li className='list-group-item'>Boot cut jeans</li>
           <li className='list-group-item'>Loose fit jeans</li>
