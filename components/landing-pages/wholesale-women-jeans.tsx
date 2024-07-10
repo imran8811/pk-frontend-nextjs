@@ -16,7 +16,7 @@ const WholesaleWomenJeans: FC<ITaglineProps> = ({keyword, text}) => {
   return (
     <div className="row">
       <Tagline headingText={keyword} paraText={text} />
-      <ProductListing category="men" type="jeans-pant" numberOfRecords={6} />
+      <ProductListing dept="men" category="jeans-pant" numberOfRecords={6} />
       <RatingReviews />
       <FAQS />
       <div className="mb-5">
