@@ -17,4 +17,5 @@ export type IProduct = {
   length : string,
   productImages : ProductImages,
   slug:string
+  pieceWeight:string
 }

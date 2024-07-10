@@ -1,5 +1,5 @@
 export type IProductListing = {
+  dept : string,
   category : string,
-  type : string,
   numberOfRecords : number
 }

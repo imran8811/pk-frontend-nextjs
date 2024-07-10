@@ -307,12 +307,11 @@ const ProductDetails : FC = () => {
                 </TabPanel>
                 <TabPanel>
                   <ul className="list-group">
+                    <li className="list-group-item mt-1">Weight per piece: {product.pieceWeight} grams</li>
                     <li className="list-group-item">Packing size wise</li>
                     <li className="list-group-item">10 pieces in Blister</li>
                     <li className="list-group-item">6 blister in single carton</li>
                     <li className="list-group-item">Carton Dimensions: 24 x 24 x 40 </li>
-                    <li className="list-group-item">Weight per piece : {product.fabricWeight} </li>
-                    <li className="list-group-item">Shipping : By Air, Sea, DHL etc </li>
                   </ul>
                 </TabPanel>
                 <TabPanel>

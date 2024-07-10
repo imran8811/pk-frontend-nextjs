@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { getUserSessionData, UserLogout } from '../../../services/auth.service'
 import { useRouter } from 'next/navigation'
-import { GET_CART_DETAILS, WHOLESALE_SHOP } from '../../../endpoints'
+import { GET_CART_DETAILS, TOKEN_REFRESH, WHOLESALE_SHOP } from '../../../endpoints'
 import cls from 'classnames';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../../interceptors/axios.interceptor';
@@ -21,11 +21,12 @@ export default function Header() {
       if(await UserLogout(userData.userId)){
         localStorage.removeItem('userData');
         router.replace(WHOLESALE_SHOP);
-        // router.push(WHOLESALE_SHOP);
       }
     }
   }
 
+  // let tokenExpire = setTimeout(() => getRefreshToken(), 500000)
+  
   useEffect(() => {
     getCartItemsCount();
   }, [])
@@ -38,6 +39,21 @@ export default function Header() {
       setCartItemsCount(res.data.length)
     })
   }
+
+  // const getRefreshToken = async() => {
+  //   const data = {
+  //     oldRefreshToken: userData.refreshToken
+  //   }
+  //   await axiosInstance({
+  //     method: "post",
+  //     url: `${TOKEN_REFRESH}`,
+  //     data: data
+  //   }).then(res => {
+  //       console.log(res);
+  //       clearTimeout(tokenExpire);
+  //       tokenExpire = setTimeout(() => getRefreshToken(), 500000);
+  //   })
+  // }
 
   return (
     <>

@@ -3,8 +3,8 @@ import styles from './tagline.module.css';
 import cls from 'classnames'
 
 interface ITaglineProps {
-  headingText : string,
-  paraText : string
+  headingText : any,
+  paraText : any
 }
 
 const Tagline: NextPage<ITaglineProps> = ({headingText, paraText}:ITaglineProps) => {

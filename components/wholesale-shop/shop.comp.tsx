@@ -27,6 +27,8 @@ const ShopComp : FC = (props:any) => {
     queryURL = `/${searchParams.get('dept')}/${searchParams.get('category')}`;
   } else if(searchParams.get('dept') && !searchParams.get('category')) {
     queryURL = `/${searchParams.get('dept')}`;
+  } else if(!searchParams.get('dept') && searchParams.get('category')) {
+    queryURL = `/men/${searchParams.get('category')}`;
   } else {
     queryURL = '/getAll';
   }
@@ -39,7 +41,6 @@ const ShopComp : FC = (props:any) => {
     axiosInstance.get(`${PRODUCT_API}${queryURL}`).then(res => {
       setProducts(res.data)
     })
-    console.log(products)
   }
 
   return (
@@ -63,7 +64,7 @@ const ShopComp : FC = (props:any) => {
           </nav>
           <h1 className="text-center mb-4">Wholesale Shop</h1>
           <div className="row">
-            <div className="col-2">
+            <div className="col-lg-2 d-lg-block d-md-none">
               <ProductFiltersComp />
             </div>
             <div className="col-lg-10">

@@ -8,34 +8,98 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: "Jeans Manufacturers",
-  keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Wholesale",
-  description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
+  keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Factories",
+  description: "We offer top-notch jeans at amazing prices to customers who need a real blend of quality and style. So, place your order with a renowned jeans manufacturer."
 }
 
-const JeansManufacturersComp: FC<ITaglineProps> = ({keyword, text}) => {
+const JeansManufacturersComp: FC = () => {
+  const mainHeading = metadata.title;
+  const subHeading = metadata.description;
   return (
     <div className="row">
-      <Tagline headingText={keyword} paraText={text} />
+      <Tagline headingText={mainHeading} paraText={subHeading} />
       {/* <RatingReviews />
       <FAQS /> */}
       <div className="mb-5">
-        <h2 className="mb-4">Who are jeans manufacturers?</h2>
-        <p className="mb-4">Did you know around 69% of US entrepreneurs start their business from home? The digital world is whole new, its own kind of planet where people instead of carrying out raids on their opponents warehouses, wage war with marketing tactics.</p>
-        <p className="mb-4">The best one wins! </p>
-        <p className="mb-4">Now, it should be clarified that who is the best one? What it takes to be considered best one? </p>
-        <p className="mb-4">Jeans is one of the sub-types of apparel industry and is considered as necessary item of our wardrobe. If you are one of the <strong>Jeans Manufacturers</strong>, then you may relate to a lot of things that this article holds for you. </p>
-        <p>We know how much important jeans is for our clothing. We wear it almost every day, at work, home, party, educational institutes and whatnot! When such thing is in so much demand, it is natural to have competition among the manufacturers.</p>
-        <p className="mb-4">The question arise who is going to counter all those hurdles and win their customer&apos;s hearts? There are many ways to be successful, have a look at some of them:</p>
-        <ProductListing category="men" type="jeans-pant" numberOfRecords={6} />
-        <ul>
-          <li>Make sure the material of your jeans is pure and up-to-date. </li>
-          <li>Your marketing campaigns are relatable and engaging</li>
-          <li>Know market trends all the time. </li>
-          <li>Hire competent individuals who are passionate about their job.</li>
-          <li>Customer care should be available 24/7 to cater to the queries of consumers.</li>
-          <li>Come up with discount options and sale every now and then to attract new customers and retain the old ones.</li>
+        <p className='mb-4'>As a leading name in the denim industry, we are here to create splendid jeans that cater to the needs of unparalleled craftsmanship, distinction, and dedication to the best quality. Our experienced staff produces visually enchanting and premium quality jeans that fit the requirements of clothing brands. 
+        Our jeans are created by skilled artisans with state-of-the-art designs and facilities. All such things enable PK Apparel to produce jeans that meet the expectations of global clothing brands. </p>
+        
+        <h2 className="mb-3">What do we design as your jean manufacturer</h2>
+        
+        <p className="mb-2">Our specialized designers are well aware of the latest trends in each jean industry whether you need jeans for men, women, boys, and girls they produce premium jeans. Such jeans embody both a stylish look and durable stuff.</p>
+        
+        <p className="mb-4">Moreover, whether you need classic-style jeans for men or women and you need to follow cutting-edge trends we make sure to deliver excellence in every stitch. So, if you want each pair of jeans to carry the mark of superb handwork and meticulous attention then hire us as your <strong>best jeans manufacturer</strong>.</p>
+
+        <ProductListing dept='men' category='jeans-pant' numberOfRecords={4} />
+        
+        <h3 className="mb-3">Constant newness and skillful stitching</h3>
+        
+        <p className="mb-4">It is the era of beauty and fashion, and the importance of denim and jeans is not ignorable. This fabric stands as a timeless fabric for more than a decay. However, it is also cherished by the fashion industry due to its versatility and reliability. And the jeans manufacturer craved it as a separate niche by employing dedication and innovation in its design.It is the era of beauty and fashion, and the importance of denim and jeans is not ignorable. This fabric basically stands as a timeless fabric for more than a decay. However, it is also cherished by the fashion industry due to its versatility and reliability. And the <strong>jeans manufacturer</strong> craved it as a separate niche by employing dedication and innovation in its design. </p>
+
+        <h3 className='mb-3'>Ensure the quality of denim products at PK Apparel</h3>
+
+        <p className="mb-2">At PK Apparel, craftsmanship is not only a practice but it is our tradition that we attain from our generations. Our staff is equipped with expertise of several years. And when they weave together the tradition with creativity they produce the best quality jeans and denims. And such denim products really go beyond trends and times.</p>
+        
+        <p className='mb-4'>In order to create premium jeans and denim we select top-notch raw material and precise stitching with finishing touches. We proudly say that we satisfy our potential customers with all of our jean products. However, as a <strong>private label jeans manufacturer</strong>, we would create custom designs and sizes as per our client needs.</p>
+
+        <h3 className='mb-3'>Innovation with skillful stitching</h3>
+        
+        <p className="mb-2">Creating iconic designs for clothing brands is our priority as a <strong>professional jeans-making factory</strong>. We have a history of experience in creating innovative designs along with the best-quality fabric. All and sundry knows well that denim is one of the core elements of clothing that everyone wears. So, we are here to produce practical, fashionable, and suitable jeans of various types for fashion designers.</p>
+        
+        <p className="mb-4">Jeans are one of the fashion mainstays that has been booming for the last few years. And that is the reason it is always an important part of the fashion industry. Therefore, as the best jeans manufacturer in the USA, we deliver superb quality jeans with skillful stitching.</p>
+
+        <ProductListing dept='women' category='jeans-pant' numberOfRecords={4} />
+        
+        <h3 className='mb-3'>Classic to advanced designs</h3>
+        
+        <p className="mb-4">Clothing brands are in search of such <strong>jeans manufacturers</strong> who can add custom designs along with custom hardware and accessories. Our expert designers would add the patches, embroidery, and buttons as per the requirements of clients. However, they are expert in creating classes to advance all types of jeans and denim for your fashion collection. Custom designs are also made at PK Apparel for all such clients who need custom jeans and denim products.</p>
+
+        <h3 className='mb-3'>Different color combinations for jeans</h3>
+        
+        <p className="mb-4">We offer brands to create their jeans in different colors and shades. Color combinations that we offer are inclusive of blue, black, and grey tones. Like all blue <strong>jeans manufacturers</strong>, we also create blue jeans in different styles for our clients. So, we are one of the children's jeans manufacturers who offer various customization of colors for kids also. 
+        </p>
+
+        <h3 className='mb-3'>Reach your audience with the best jean products</h3>
+        
+        <p className="mb-4">We ensure our clients reach their audience with the best jean products. As the <strong>best jeans manufacturer</strong>, we provide quality products to the brands that help in fostering strong relations with the customers. It also encourages repurchase of the jeans products. The only thing you need to do is to trust our experience and commitment to transparency. </p>
+
+        <h3 className='mb-3'>Quality assurance of jeans</h3>
+        
+        <p className="mb-4">We send every pair of jeans to the quality check department to ensure that the quality of stitching and material is up to the mark. After passing the quality check we dispatch the jeans to your provided location. So, your jeans are just a click away. Place your order with us and grant a new version to your denim fashion.</p>
+        
+        <h3 className='mb-3'>Various types of jeans that we offer</h3>
+        
+        <p className="mb-4">We know the fashion collection of jeans is very broad and it contains various types of jeans that are segmented as per the fashion needs of various niches. So, you can choose any type of jeans from our collection.</p>
+
+        <p className='mb-1'>For men we offer:</p>
+        <ul className='mb-4 list-group'>
+          <li className='list-group-item'>Men's navy blue stretch jeans pant</li>
+          <li className='list-group-item'>Men's blue stretch slim fit jeans pant</li>
+          <li className='list-group-item'>Men's navy blue stretch chino pant</li>
+          <li className='list-group-item'>Men's camel stretch cargo trousers</li>
+          <li className='list-group-item'>Men's camo stretch cargo trousers</li>
+          <li className='list-group-item'>Men's khaki stretch cargo trousers</li>
+          <li className='list-group-item'>Men's olive stretch cargo trousers</li>
         </ul>
-        <p>One thing should always stay there - put your customer first and see how quickly things changes in your favor.</p>
+        
+        <p className='mb-4'>We believe in producing all these jeans with high-quality materials and we offer these at affordable prices to customers and clothing brands.</p>
+
+        <p className='mb-1'>For women we offer:</p>
+        <ul className='mb-4 list-group'>
+          <li className='list-group-item'>Women's navy blue stretch Capri jeans</li>
+          <li className='list-group-item'>Skinny fit jeans</li>
+          <li className='list-group-item'>Boot cut jeans</li>
+          <li className='list-group-item'>Loose fit jeans</li>
+          <li className='list-group-item'>Jegging fit jeans </li>
+          <li className='list-group-item'>Original rise jeans</li>
+          <li className='list-group-item'>Regular fit jeans</li>
+        </ul>
+
+        <p className='mb-4'>These are a few common types you can find in our collection of jeans and denim. But this list does not end here we can also make custom sizes, colors, and styles of jeans for men, women, boys, and girls.</p>
+
+        <h3 className='mb-3'>Place your order with us right now</h3>
+        <p className='mb-4'>Now you get the idea about our jeans products and the way we make your jeans more adorable as well as reliable. So, if you need to place your order with us start chatting online or contact us. We would serve you as <strong>wholesale jeans manufacturers</strong>by providing affordable prices for your jeans.</p>
+
       </div>
     </div>
   )}

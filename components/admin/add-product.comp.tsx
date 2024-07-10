@@ -29,6 +29,7 @@ const AddProduct: FC = () => {
       moq: "",
       price: "",
       color: "",
+      pieceWeight: "",
       productImages:[]
     }
   });
@@ -243,6 +244,10 @@ const AddProduct: FC = () => {
                 <div className='col-4'>
                   <label htmlFor='price'>Price</label>
                   <input type="text" id='price' {...register('price', {required: true})} className='form-control' />
+                </div>
+                <div className='col-4'>
+                  <label htmlFor='piece-weight'>Weight per piece</label>
+                  <input type="text" id='piece-weight' {...register('pieceWeight', {required: true})} className='form-control' />
                 </div>
                 <div className='d-grid gap-2 pt-4'>
                   <button type="submit" className='btn btn-primary btn-block'>Upload Photos</button>

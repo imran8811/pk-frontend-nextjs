@@ -33,6 +33,7 @@ export const NEW_ORDER = `${baseRoute}/order/new`;
 export const USER_LOGIN = `${baseRoute}/auth/login`;
 export const USER_SIGN_UP = `${baseRoute}/auth/signup`;
 export const USER_LOGOUT = `${baseRoute}/auth/logout`;
+export const TOKEN_REFRESH = `${baseRoute}/auth/refresh-token`;
 
 
 //user

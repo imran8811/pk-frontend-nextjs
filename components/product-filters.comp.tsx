@@ -32,10 +32,12 @@ const ProductFiltersComp : FC = (props:any) => {
   }
   const onFilterCategoryOptionChange = (e) => {
     setFilterCategory(e.target.value)
+    filterDeptRef.current === ''? setFilterDept('men') : filterDeptRef.current;
     setFiltersData('category', e.target.value)
   }
 
   const setFiltersData = (filterType, value) => {
+    console.log(filterType, value);
     if(value === '') {
       delete searchParams.get[filterType]
       router.push(pathname + '?' + createQueryString(filterType, value), { scroll: false });
