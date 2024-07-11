@@ -38,9 +38,9 @@ export default function Header() {
   const getUserIP = async() => {
     await axiosInstance({
       method: "get",
-      url: 'https://ipinfo.io'
+      url: 'http://ip-api.com/json/'
     }).then(res => {
-      if(RESTRICTED_COUNTRIES.includes(res.data.country)){
+      if(RESTRICTED_COUNTRIES.includes(res.data.countryCode)){
         setHideShopLink(true);
         if(pathname.includes('/wholesale-shop')){
           router.push('/');
