@@ -12,10 +12,10 @@ export const metadata: Metadata = {
   description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
 }
 
-const WholesaleJeansManufacturersComp: FC<ITaglineProps> = ({keyword, text}) => {
+const WholesaleJeansManufacturersComp: FC<ITaglineProps> = ({mainHeading, subHeading}) => {
   return (
     <div className="row">
-      <Tagline headingText={keyword} paraText={text} />
+      <Tagline headingText={mainHeading} paraText={subHeading} />
       <ProductListing dept="men" category="jeans-pant" numberOfRecords={6} />
       <RatingReviews />
       <FAQS />

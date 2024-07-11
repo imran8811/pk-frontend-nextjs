@@ -10,8 +10,8 @@ const WholesaleWomenJeans = () => {
         <div className='row'>
           <Header></Header>
           <WholesaleJeansManufacturersComp 
-            keyword='Wholesale Women Jeans' 
-            text='Wholesale Women Jeans'>
+            mainHeading='Wholesale Women Jeans' 
+            subHeading='Wholesale Women Jeans'>
           </WholesaleJeansManufacturersComp>
         </div>
       </div>

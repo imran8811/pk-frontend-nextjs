@@ -10,9 +10,8 @@ const WholesaleJeansBulk = () => {
         <div className='row'>
           <Header></Header>
           <WholesaleJeansBulkComp 
-            keyword='Wholesale Jeans Bulk' 
-            text='Wholesale Jeans Bulk'>
-          </WholesaleJeansBulkComp>
+            mainHeading='Wholesale Jeans Bulk' 
+            subHeading='Wholesale Jeans Bulk' />
         </div>
       </div>
       <Footer></Footer>

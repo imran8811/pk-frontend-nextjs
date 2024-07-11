@@ -8,7 +8,7 @@ const JeanManufacturers = () => {
   return (
     <>
       <Header></Header>
-      <JeanManufacturersComp keyword='Jean Manufacturers' text='Jean Manufacturers'></JeanManufacturersComp>
+      <JeanManufacturersComp mainHeading='Jean Manufacturers' subHeading='Jean Manufacturers'></JeanManufacturersComp>
       <Footer></Footer>
     </>
   )
