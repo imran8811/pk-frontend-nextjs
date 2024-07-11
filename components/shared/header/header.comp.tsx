@@ -29,24 +29,24 @@ export default function Header() {
 
   // let tokenExpire = setTimeout(() => getRefreshToken(), 500000)
   
-  useEffect(() => {
-    getUserIP();
-  }, [])
+  // useEffect(() => {
+  //   getUserIP();
+  //   getCartItemsCount();
+  // }, [])
 
   
-  const getUserIP = async() => {
-    await axiosInstance({
-      method: "get",
-      url: '/auth/user-auth'
-    }).then(res => {
-      setHideShopLink(res.data)
-      if(!res.data.data){
-        router.push('/')
-      } else {
-        getCartItemsCount();
-      }
-    })
-  }
+  // const getUserIP = async() => {
+  //   await axiosInstance({
+  //     method: "get",
+  //     url: '/auth/user-auth'
+  //   }).then(res => {
+  //     setHideShopLink(res.data)
+  //     if(!res.data.data){
+  //       router.push('/')
+  //     } else {
+  //     }
+  //   })
+  // }
 
   const getCartItemsCount = async() => {
     await axiosInstance({
