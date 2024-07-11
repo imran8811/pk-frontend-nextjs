@@ -5,15 +5,18 @@ import styles from '../header/header.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { getUserSessionData, UserLogout } from '../../../services/auth.service'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { GET_CART_DETAILS, TOKEN_REFRESH, WHOLESALE_SHOP } from '../../../endpoints'
 import cls from 'classnames';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../../interceptors/axios.interceptor';
+import { RESTRICTED_COUNTRIES } from '../../../constants';
 
 export default function Header() {
-  const [cartItemsCount, setCartItemsCount] = useState(0)
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+  const [hideShopLink, setHideShopLink] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
   let userData, userLogout;
   if (typeof localStorage !== 'undefined') {
     userData = JSON.parse(localStorage.getItem('userData')!);
@@ -29,7 +32,22 @@ export default function Header() {
   
   useEffect(() => {
     getCartItemsCount();
+    getUserIP();
   }, [])
+
+  const getUserIP = async() => {
+    await axiosInstance({
+      method: "get",
+      url: 'https://ipinfo.io'
+    }).then(res => {
+      if(RESTRICTED_COUNTRIES.includes(res.data.country)){
+        setHideShopLink(true);
+        if(pathname.includes('/wholesale-shop')){
+          router.push('/');
+        }
+      }
+    })
+  }
 
   const getCartItemsCount = async() => {
     await axiosInstance({
@@ -68,7 +86,7 @@ export default function Header() {
           gtag('js', new Date());
           gtag('config', 'G-TTX4WPE230')`,
         }} />
-      <header className='row border-bottom border-info'>
+      <header className='row border-bottom border-info mb-3'>
         <div className="col-md-3 pt-3 mb-2">
           <Link href="/">
             <img src="/images/logo.jpg" alt="logo" width={227} height={46} title="PK Apparel Home" />
@@ -78,7 +96,9 @@ export default function Header() {
         <div className='col-md-8 mt-3'>
           <div className={cls(styles.headerMenu, 'text-end')}>
             <ul >
-              <li><Link href={'/wholesale-shop'}>Wholesale Shop</Link></li>
+              {!hideShopLink &&
+                <li><Link href={'/wholesale-shop'}>Wholesale Shop</Link></li>
+              }
               <li><Link href={'/wholesale-shop/cart'}>Cart ({cartItemsCount})</Link></li>
               {!userData?.token &&
                 <>

@@ -3,6 +3,9 @@ export const USER_TYPES = {
     USER : 'user'
 }
 
+// export const RESTRICTED_COUNTRIES = ['PK', 'IN', 'CN', 'BD'];
+export const RESTRICTED_COUNTRIES = ['PK', 'IN', 'CN', 'BD'];
+
 export const ORDER_STATUS = {
     PAYMENT_PENDING : 'Payment Pending',
     IN_PROCESS : 'In Process',
