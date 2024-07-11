@@ -29,10 +29,10 @@ const SignupComp: FC = () => {
   } 
 
   return (
-    <div className='col-lg-12 mt-5 mb-5'>
+    <div className='page-content'>
       <div className='row justify-content-center'>
         <h2 className='text-center mb-4'>User Signup</h2>
-        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-4 col-md-6 col-12'>
+        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-5 col-md-6 col-12'>
           <div className='mb-3'>
             <input type="text"  {...register('businessName', {required: true})} placeholder='Business Name' className='form-control' />
           </div>

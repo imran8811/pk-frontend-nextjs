@@ -8,4 +8,6 @@ export type IUser = {
   token : string,
   createdAt: string;
   updatedAt: string;
+  userId: string;
+  userType: string;
 }

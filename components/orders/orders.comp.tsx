@@ -62,7 +62,7 @@ const OrdersComp: FC = () => {
   }
 
   return (
-    <>
+    <div className="page-content">
       <h1 className="text-center">Orders</h1>
       <div className="row">
         <div className="product-tabs">
@@ -221,7 +221,7 @@ const OrdersComp: FC = () => {
         </div>
       </div>
       <ToastContainer />
-    </>
+    </div>
   )
 }
 

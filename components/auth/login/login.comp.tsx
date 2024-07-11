@@ -52,22 +52,22 @@ const LoginComp: FC = () => {
   } 
 
   return (
-    <div className='col-12 mt-5 mb-5'>
+    <div className='page-content'>
       <div className='row justify-content-center'>
-        <h2 className='text-center mb-3'>User Login</h2>
-        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-4 col-md-6 col-12'>
-          <div className='mb-3'>
+        <h2 className='mb-3 text-center'>User Login</h2>
+        <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-5 col-md-6 col-12'>
+          <div className='mb-4'>
             <input type="text"  {...register('email', {required: true})} placeholder='Email' className='form-control' />
           </div>
-          <div className='mb-3'>
+          <div className='mb-4'>
             <input type="password"  {...register('password', {required: true})} placeholder='Password' className='form-control' />
           </div>
           <div className='row mb-3'>
             <div className='col-6'>
-              <Link href={'/forgot-password'} className='btn-link'>Forgot Password?</Link>
+              <Link href={'/forgot-password'} className='btn-link d-block mb-2'>Forgot Password?</Link>
+              <Link href={'/signup'} className='btn-link'>Sign up</Link>
             </div>
             <div className='col-6 text-end'>
-              <Link href={'/signup'} className='btn-link'>Sign up</Link>&nbsp;&nbsp;
               <button type="submit" className='btn btn-primary col-4'>Login</button>
             </div>
           </div>

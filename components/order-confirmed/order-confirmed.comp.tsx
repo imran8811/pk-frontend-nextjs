@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const OrderConfirmedComp : FC = () => {
   return (
-    <div className="col-12">
+    <div className="page-content">
       <p>Order Confirmed!</p>
       <p>Download or View Invoice</p>
     </div>

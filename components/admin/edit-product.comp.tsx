@@ -33,6 +33,7 @@ const EditProduct: FC = () => {
       moq: "",
       price: "",
       color: "",
+      pieceWeight: "",
     }
   });
   const ProductFrontImageRef = useRef<HTMLInputElement>(null);
@@ -65,6 +66,7 @@ const EditProduct: FC = () => {
       setValue('moq', data.moq);
       setValue('color', data.color);
       setValue('price', data.price);
+      setValue('pieceWeight', data.pieceWeight);
     }).catch((err) => {
       console.log(err)
     });
@@ -272,6 +274,10 @@ const EditProduct: FC = () => {
                 <div className='col-4'>
                   <label htmlFor='price'>Price</label>
                   <input type="text" id='price' {...register('price', {required: true})} className='form-control' />
+                </div>
+                <div className='col-4'>
+                  <label htmlFor='piece-weight'>Weight per piece</label>
+                  <input type="text" id='piece-weight' {...register('pieceWeight', {required: true})} className='form-control' />
                 </div>
                 <div className='d-grid gap-2 pt-4'>
                   <button type="submit" className='btn btn-primary'>Update Product</button>

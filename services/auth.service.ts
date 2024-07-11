@@ -12,6 +12,13 @@ export class AuthService {
       return userData?.token? true : false;
     }
   }
+  
+  public guestUserExist(){
+    if(typeof localStorage !== 'undefined') {
+      let userData:IUser = JSON.parse(localStorage.getItem('userData')!);
+      return userData?.userType === 'guest'? true : false;
+    }  
+  }
 
   public getUserSessionData() {
     if (typeof localStorage !== 'undefined') {
@@ -37,3 +44,4 @@ export class AuthService {
 export const UserLogout = AuthService.prototype.userLogout;
 export const getUserSessionData = AuthService.prototype.getUserSessionData;
 export const checkUserSession = AuthService.prototype.checkUserSession;
+export const guestUserExist = AuthService.prototype.guestUserExist;

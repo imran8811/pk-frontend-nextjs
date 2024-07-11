@@ -38,7 +38,7 @@ const AdminHeader: FC = () => {
         </div>
         <div className='col-8'>
           <nav className="navbar navbar-expand-lg bg-light">
-            <div className="container-fluid">
+            {/* <div className="container-fluid"> */}
               <button 
                 className="navbar-toggler" 
                 type="button" 
@@ -58,7 +58,7 @@ const AdminHeader: FC = () => {
                   <Link href="/admin/logout" onClick={(e) => adminLogout(e)} className="nav-item nav-link">Logout</Link>
                 </div>
               </div>
-            </div>
+            {/* </div> */}
           </nav>
         </div>
       </div>

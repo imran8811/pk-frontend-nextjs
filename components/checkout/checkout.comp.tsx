@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import useState from 'react-usestateref'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
@@ -13,7 +13,7 @@ import cls from 'classnames';
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { checkUserSession } from "../../services/auth.service";
+import { checkUserSession, guestUserExist } from "../../services/auth.service";
 import { IUserAddress } from "../../models";
 import { ALLOWED_COUNTRIES, ORDER_STATUS } from "../../constants";
 import { ErrorMessage } from "@hookform/error-message";
@@ -30,6 +30,8 @@ const CheckoutComp: FC = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
 
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const { register, handleSubmit, getValues, setValue, reset, formState: { errors }} = useForm({ criteriaMode: 'all'});
   let userData;
   if (typeof localStorage !== 'undefined') {
@@ -37,6 +39,16 @@ const CheckoutComp: FC = () => {
   }
 
   useEffect(() => {
+    if(searchParams.get('guestUserId')){
+      shiftCardItems();
+    }
+    console.log(searchParams.get('guestUserId'));
+    console.log(guestUserExist())
+    console.log(checkUserSession())
+    if(guestUserExist()) {
+      router.push(`/login?next=wholesale-shop/checkout?guestUserId=${userData.userId}`);
+      return;
+    }
     if(!checkUserSession()){
       router.push('/login?next=wholesale-shop/checkout')
     } else {
@@ -44,6 +56,27 @@ const CheckoutComp: FC = () => {
       getUserAddresses();
     }
   }, [])
+
+  const shiftCardItems = async() => {
+    const data = {
+      guestUserId : searchParams.get('guestUserId'),
+      loggedInUserId : userData.userId
+    } 
+    await axiosInstance({
+      method: "patch",
+      url: `${CART_API}`,
+      data
+    }).then(res => {
+      removeQueryParam('guestUserId');
+      toast.success('Cart user updated successfully')
+    })
+  }
+
+  const removeQueryParam = (param) => {
+    const nextSearchParams = new URLSearchParams(searchParams.toString())
+    nextSearchParams.delete(param)
+    router.replace(`${pathname}?${nextSearchParams}`)
+  };
 
   const createAddressModalOpen = () => {
     setIsCreateAddressModalOpen(true);

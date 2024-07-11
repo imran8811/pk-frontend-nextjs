@@ -7,7 +7,7 @@ import axiosInstance from "../../interceptors/axios.interceptor";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams, useRouter, useSearchParams } from "next/navigation"
-import { getUserSessionData } from '../../services/auth.service';
+import { checkUserSession, getUserSessionData } from '../../services/auth.service';
 import { useForm } from "react-hook-form"
 import Link from "next/link"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -49,15 +49,20 @@ const ProductDetails : FC = () => {
   }
 
   const onSubmit = async(formData:any) => {
-    let userId:string = '';
-    userData = '';
-    if (typeof localStorage !== 'undefined') {
-      userData = JSON.parse(localStorage.getItem('userData')!);
-    }
-    if(!userData || userData.userId === ''){
-      userId = crypto.randomUUID();
-    } else {
+    let userId;
+    // userData = '';
+    // if (typeof localStorage !== 'undefined') {
+    //   userData = JSON.parse(localStorage.getItem('userData')!);
+    // }
+    // if(!userData || userData.userId === ''){
+    //   userId = crypto.randomUUID();
+    // } else {
+    //   userId = userData.userId
+    // }
+    if(checkUserSession()){
       userId = userData.userId
+    } else {
+      userId = crypto.randomUUID();
     }
     const data = {
       productId: formData.productId,
@@ -77,11 +82,13 @@ const ProductDetails : FC = () => {
       if(res.data.type === 'success') {
         toast.success('Item Added to cart');
         if (typeof localStorage !== 'undefined') {
-          const userData = {
-            userId: userId,
-            userType: USER_TYPES.GUEST
+          if(!checkUserSession()){
+            const userData = {
+              userId: userId,
+              userType: USER_TYPES.GUEST
+            }
+            localStorage.setItem('userData', JSON.stringify(userData));
           }
-          localStorage.setItem('userData', JSON.stringify(userData));
           router.push('/wholesale-shop/cart')
         }
       }

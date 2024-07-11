@@ -18,10 +18,10 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
       <body>
         <div className="main-wrapper">
           <div className="container-fluid">
-            <div className="row-fluid">
+            {/* <div className="d-flex"> */}
               {children}
               <BootstrapClient />
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </body>

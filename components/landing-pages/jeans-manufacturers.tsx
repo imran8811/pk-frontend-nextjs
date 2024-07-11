@@ -1,3 +1,4 @@
+"use client";
 import { FC } from 'react'
 import FAQS from '../shared/faqs/faqs.comp'
 import RatingReviews from '../shared/rating-reviews/rating-reviews.comp'
@@ -6,15 +7,7 @@ import ProductListing from '../product-listing/product-listing.comp'
 import { ITaglineProps } from '../../models'
 import { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: "Jeans Manufacturers",
-  keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Factories",
-  description: "We offer top-notch jeans at amazing prices to customers who need a real blend of quality and style. So, place your order with a renowned jeans manufacturer."
-}
-
-const JeansManufacturersComp: FC = () => {
-  const mainHeading = metadata.title;
-  const subHeading = metadata.description;
+const JeansManufacturersComp: FC<ITaglineProps> = ({mainHeading, subHeading}) => {
   return (
     <div className="row">
       <Tagline headingText={mainHeading} paraText={subHeading} />

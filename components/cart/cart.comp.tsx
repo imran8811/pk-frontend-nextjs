@@ -58,7 +58,8 @@ const CartComp: FC = () => {
   }
 
   return (
-    <div className="row justify-content-center">
+    <div className="page-content">
+      <div className="row justify-content-center">
       <div className="col-lg-9 col-12">
       { cartDetails && cartDetails.length > 0 &&
         <>
@@ -112,6 +113,7 @@ const CartComp: FC = () => {
         {cartDetails && cartDetails.length === 0 && 
           <h2 className="text-danger text-center mt-5 mb-5">No item found in cart</h2>
         }
+      </div>
       </div>
       <Modal title="Delete Cart Item" open={isDeleteCartItemModalOpen} onOk={deleteCartItem} onCancel={handleCancel}>
         <p>Want to delete cart item?</p>
