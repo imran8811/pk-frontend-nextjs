@@ -38,14 +38,9 @@ export default function Header() {
   const getUserIP = async() => {
     await axiosInstance({
       method: "get",
-      url: 'http://ip-api.com/json/'
+      url: '/auth/user-auth'
     }).then(res => {
-      if(RESTRICTED_COUNTRIES.includes(res.data.countryCode)){
-        setHideShopLink(true);
-        if(pathname.includes('/wholesale-shop')){
-          router.push('/');
-        }
-      }
+      setHideShopLink(res.data);
     })
   }
 
