@@ -30,7 +30,6 @@ export default function Header() {
   // let tokenExpire = setTimeout(() => getRefreshToken(), 500000)
   
   useEffect(() => {
-    getCartItemsCount();
     getUserIP();
   }, [])
 
@@ -41,6 +40,11 @@ export default function Header() {
       url: '/auth/user-auth'
     }).then(res => {
       setHideShopLink(res.data)
+      if(!res.data.data){
+        router.push('/')
+      } else {
+        getCartItemsCount();
+      }
     })
   }
 
