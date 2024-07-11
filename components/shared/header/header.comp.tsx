@@ -10,7 +10,6 @@ import { GET_CART_DETAILS, TOKEN_REFRESH, WHOLESALE_SHOP } from '../../../endpoi
 import cls from 'classnames';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../../interceptors/axios.interceptor';
-import { RESTRICTED_COUNTRIES } from '../../../constants';
 
 export default function Header() {
   const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -35,12 +34,13 @@ export default function Header() {
     getUserIP();
   }, [])
 
+  
   const getUserIP = async() => {
     await axiosInstance({
       method: "get",
       url: '/auth/user-auth'
     }).then(res => {
-      setHideShopLink(res.data);
+      setHideShopLink(res.data)
     })
   }
 

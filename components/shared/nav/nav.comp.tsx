@@ -6,7 +6,7 @@ const Nav: FC = () => {
   return (
     <nav className={styles.footerMenu}>
       <ul>
-        <li><Link href="/wholesale-shop">Wholesale Shop</Link></li>
+        {/* <li><Link href="/wholesale-shop">Wholesale Shop</Link></li> */}
         <li><Link href="/about">About us</Link></li>
         <li><Link href="/factory">Factory</Link></li>
         <li><Link href="/blog">Blog</Link></li>
