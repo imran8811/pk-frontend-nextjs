@@ -71,15 +71,17 @@ const ShopComp : FC = (props:any) => {
               <div className="row">
                 { products && products.map((product, index) => {
                   return (
-                    <div className="col-lg-3 col-md-4 mb-5 text-center shodow-rounded" key={index}>
-                      <a href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`} className="d-block mb-3" target="_blank" rel="noreferrer">
-                        <img
-                          src={product.productImages.frontImgUrl} 
-                          alt={product.productImages.frontImgUrl}
-                          height="370"
-                          className={styles.img} />
-                      </a>
-                      <a className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`}>{'$'+ product.price + '-' + product.slug}</a>
+                    <div className="col-lg-3 col-md-4 mb-5 text-center" key={index}>
+                      <div className="shodow-rounded">
+                        <a href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+                          <img
+                            src={product.productImages.frontImgUrl} 
+                            alt={product.productImages.frontImgUrl}
+                            height="370"
+                            className={styles.img} />
+                        </a>
+                        <a className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`}>{'$'+ product.price + '-' + product.slug}</a>
+                      </div>
                     </div>
                   )
                 })}
