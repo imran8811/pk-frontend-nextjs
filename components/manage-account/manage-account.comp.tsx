@@ -1,3 +1,4 @@
+"use client";
 import { FC, useEffect } from "react";
 import useState from 'react-usestateref'
 import { useRouter } from "next/navigation";
@@ -149,8 +150,8 @@ const ManageAccountComp: FC = () => {
   }
 
   return (
-    <>
-      <h1 className="text-center mt-3 mb-4">Manage your account</h1>
+    <div className="page-content">
+      <h1 className="text-center mb-4">Manage your account</h1>
       {userAccount && 
         <>
           <div className="row justify-content-center">
@@ -300,7 +301,7 @@ const ManageAccountComp: FC = () => {
         </div>
       </Modal>
       <ToastContainer />
-    </>
+    </div>
   )
 }
 
