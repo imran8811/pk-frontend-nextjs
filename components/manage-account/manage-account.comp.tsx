@@ -41,6 +41,7 @@ const ManageAccountComp: FC = () => {
   const createAddressModalOpen = () => {
     setIsCreateAddressModalOpen(true);
   };
+
   const deleteAddressModalOpen = (addressId:string) => {
     setIsDeleteAddressModalOpen(true);
     setAddressId(addressId);
@@ -149,52 +150,59 @@ const ManageAccountComp: FC = () => {
 
   return (
     <>
-      <h1>Manage your account</h1>
+      <h1 className="text-center mt-3 mb-4">Manage your account</h1>
       {userAccount && 
         <>
-          <div className="row card">
-            <div className="col-md-4 card-body">
-              <h2>Personal profile</h2>
+          <div className="row justify-content-center">
+            <div className="col-md-3 p-5 m-3 shodow-rounded">
+              <h2 className="mb-4">Personal profile</h2>
               <ul>
-                <li>
-                  <span>Business Name</span>
-                  <span>{userAccount.businessName}</span>
+                <li className="row mb-3">
+                  <span className="col-6">Business Name: &nbsp;&nbsp;</span>
+                  <span className="col-6">{userAccount.businessName}</span>
                 </li>
-                <li>
-                  <span>Email</span>
-                  <span>{userAccount.email}</span>
+                <li className="row mb-3">
+                  <span className="col-6">Email: &nbsp;&nbsp;</span>
+                  <span className="col-6">{userAccount.email}</span>
                 </li>
-                <li>
-                  <span>Contact No</span>
-                  <span>{userAccount.contactNo}</span>
+                <li className="row mb-3">
+                  <span className="col-6">Contact No: &nbsp;&nbsp;</span>
+                  <span className="col-6">{userAccount.contactNo}</span>
                 </li>
-                <li>
-                  <span>Member Since</span>
-                  <span>{dayjs(userAccount.createdAt).format('DD-MMM-YYYY')}</span>
+                <li className="row mb-3">
+                  <span className="col-6">Member Since: &nbsp;&nbsp;</span>
+                  <span className="col-6">{dayjs(userAccount.createdAt).format('DD-MMM-YYYY')}</span>
                 </li>
               </ul>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-8 p-5 m-3 shodow-rounded">
               <h2>Address Book</h2>
-              {userAddresses?.map((address, index) => {
-                return (
-                  <div className="mb-3" key={index}>
-                    <p>{address.addressType}</p>
-                    <address>
-                      {address.area+', '+address.city+', '+address.country+', '+address.postalCode }
-                    </address>
-                    <ul>
-                      <li><button className="btn btn-link" onClick={() => {getAddressbyId(address._id)}}>Edit</button></li>
-                      <li><button className="btn btn-link" onClick={() => {deleteAddressModalOpen(address._id)}}>Delete</button></li>
-                    </ul>
-                  </div>
-                )
-              })}
-              <button className="btn btn-link" onClick={() => {createAddressModalOpen()}}>Add New Address</button>
+              <div className="row justify-content-start">
+                {userAddresses?.map((address, index) => {
+                  return (
+                    <div className="col-md-5 p-4 m-3 shodow-rounded mb-3" key={index}>
+                      <h2 className="text-capitalize text-primary mb-3">{address.addressType}</h2>
+                      <address>
+                        {address.area+', '+address.city+', '+address.country+', '+address.postalCode }
+                      </address>
+                      <ul>
+                        <li><button className="btn btn-link" onClick={() => {getAddressbyId(address._id)}}>Edit</button></li>
+                        <li><button className="btn btn-link" onClick={() => {deleteAddressModalOpen(address._id)}}>Delete</button></li>
+                      </ul>
+                    </div>
+                  )
+                })}
+              </div>
+              <div className="col-12 mt-3 text-center">
+                <button className="btn btn-link" onClick={() => {createAddressModalOpen()}}>Add New Address</button>
+              </div>
             </div>
           </div>
-          <div className="row">
-            <h2>Recent Orders</h2>
+          <div className="row justify-centent-center">
+            <div className="col-11 m-3 shodow-rounded p-3">
+              <h2>Recent Orders</h2>
+
+            </div>
           </div>
         </>
       }
