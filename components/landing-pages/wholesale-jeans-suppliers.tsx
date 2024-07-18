@@ -1,18 +1,13 @@
 "use client";
 import { FC } from 'react'
-import FAQS from '../shared/faqs/faqs.comp'
-import RatingReviews from '../shared/rating-reviews/rating-reviews.comp'
 import Tagline from '../shared/tagline/tagline.comp'
 import ProductListing from '../product-listing/product-listing.comp'
 import { ITaglineProps } from '../../models'
-import { Metadata } from 'next'
 
-const JeansManufacturersComp: FC<ITaglineProps> = ({title, description}) => {
+const WholesaleJeansSuppliersComp: FC<ITaglineProps> = ({title, description}) => {
   return (
     <div className="row">
       <Tagline headingText={title} paraText={description} />
-      {/* <RatingReviews />
-      <FAQS /> */}
       <div className="mb-5">
         <p className='mb-4'>As a leading name in the denim industry, we are here to create splendid jeans that cater to the needs of unparalleled craftsmanship, distinction, and dedication to the best quality. Our experienced staff produces visually enchanting and premium quality jeans that fit the requirements of clothing brands. 
         Our jeans are created by skilled artisans with state-of-the-art designs and facilities. All such things enable PK Apparel to produce jeans that meet the expectations of global clothing brands. </p>
@@ -97,4 +92,4 @@ const JeansManufacturersComp: FC<ITaglineProps> = ({title, description}) => {
     </div>
   )}
 
-export default JeansManufacturersComp;
+export default WholesaleJeansSuppliersComp;

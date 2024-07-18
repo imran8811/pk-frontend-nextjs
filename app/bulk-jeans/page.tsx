@@ -8,7 +8,7 @@ const BulkJeans = () => {
   return (
     <Suspense fallback={<>Loading...</>}>
       <Header></Header>
-      <BulkJeansComp mainHeading='Bulk Jeans' subHeading='Bulk Jeans'></BulkJeansComp>
+      <BulkJeansComp title='Bulk Jeans' description='Bulk Jeans'></BulkJeansComp>
       <Footer></Footer>
     </Suspense>
   )

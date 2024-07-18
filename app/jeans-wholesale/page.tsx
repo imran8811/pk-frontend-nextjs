@@ -9,7 +9,7 @@ const JeansWholesale = () => {
       <div className='container'>
         <div className='row'>
           <Header></Header>
-          <JeansWholesaleComp mainHeading='Jeans Wholesale' subHeading='Jeans Wholesale' />
+          <JeansWholesaleComp title='Jeans Wholesale' description='Jeans Wholesale' />
         </div>
       </div>
       <Footer></Footer>

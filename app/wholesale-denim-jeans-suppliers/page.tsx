@@ -11,8 +11,8 @@ const WholesaleDenimJeansSuppliers = () => {
         <div className='row'>
           <Header></Header>
           <WholesaleDenimJeansSuppliersComp 
-            mainHeading='Wholesale Denim Jeans Suppliers' 
-            subHeading='Wholesale Denim Jeans Suppliers'>
+            title='Wholesale Denim Jeans Suppliers' 
+            description='Wholesale Denim Jeans Suppliers'>
           </WholesaleDenimJeansSuppliersComp>
         </div>
       </div>

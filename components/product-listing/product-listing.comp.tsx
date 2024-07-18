@@ -1,3 +1,4 @@
+"use client";
 import { FC, useEffect, useState } from "react"
 import styles from './product-listing.module.css'
 import axiosInstance from "../../interceptors/axios.interceptor"

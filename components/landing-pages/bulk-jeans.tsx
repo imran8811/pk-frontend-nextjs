@@ -5,10 +5,10 @@ import Tagline from '../shared/tagline/tagline.comp'
 import ProductListing from '../product-listing/product-listing.comp'
 import { ITaglineProps } from '../../models'
 
-const BulkJeansComp: FC<ITaglineProps> = ({mainHeading, subHeading}) => {
+const BulkJeansComp: FC<ITaglineProps> = ({title, description}) => {
   return (
     <div className="row">
-      <Tagline headingText={mainHeading} paraText={subHeading} />
+      <Tagline headingText={title} paraText={description} />
       <ProductListing dept="men" category="jeans-pant" numberOfRecords={6} />
       <RatingReviews />
       <FAQS />

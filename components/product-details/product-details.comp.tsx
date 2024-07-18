@@ -71,7 +71,8 @@ const ProductDetails : FC = () => {
       quantity: formData.quantity,
       instructions: formData.instructions,
       amount: totalAmountRef.current,
-      productDetails: []
+      productDetails: [],
+      documentLink: formData.documentLink
     }
     calculateTotalAmount(formData.quantity, productDetailsRef.current[0].price);
     const res = await axiosInstance({
@@ -111,7 +112,7 @@ const ProductDetails : FC = () => {
         return (
           <>
             <div className="row mb-5" key={index}>
-              <nav aria-label="breadcrumb">
+              <nav aria-label="breadcrumb" className="mt-4">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item"><Link href={'/wholesale-shop'}>Shop</Link></li>
                   <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}`}>{params.dept}</Link></li>
@@ -242,8 +243,7 @@ const ProductDetails : FC = () => {
                       <textarea 
                         rows={3} 
                         className="form-control"
-                        {...register('documentLink')} 
-                        placeholder="e.g https://drive.google.com/file/d/1rDKaLFVTT3-y0GCwN_Sd461f-bhkMCgu/view?usp=sharing" />
+                        {...register('documentLink')} />
                     </div>
                   </div>
                   <hr />

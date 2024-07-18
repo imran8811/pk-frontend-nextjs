@@ -3,7 +3,7 @@ import useState from 'react-usestateref'
 
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
-import { CART_API, GET_CART_DETAILS } from "../../endpoints";
+import { CART_API, GET_CART_DETAILS, WHOLESALE_SHOP } from "../../endpoints";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
@@ -91,7 +91,7 @@ const CartComp: FC = () => {
                       <td>${parseInt(cart.amount).toFixed(2)}</td>
                       <td>
                         <div  className="row">
-                          <button type="button" className="btn col-6" onClick={() => {router.push(`/cart/edit/${cart.productId}`)}}>
+                          <button type="button" className="btn col-6" onClick={() => {router.push(`${WHOLESALE_SHOP}/cart/edit/${cart.productId}`)}}>
                             <FontAwesomeIcon icon={faEdit} className="fas fa-edit" />
                           </button>
                           <button type="button" className="btn col-6" onClick={deleteCartItemConfirmation}>

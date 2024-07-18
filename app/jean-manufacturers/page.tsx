@@ -8,7 +8,7 @@ const JeanManufacturers = () => {
   return (
     <>
       <Header></Header>
-      <JeanManufacturersComp mainHeading='Jean Manufacturers' subHeading='Jean Manufacturers'></JeanManufacturersComp>
+      <JeanManufacturersComp title='Jean Manufacturers' description='Jean Manufacturers'></JeanManufacturersComp>
       <Footer></Footer>
     </>
   )

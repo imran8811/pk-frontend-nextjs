@@ -47,7 +47,7 @@ const ShopComp : FC = (props:any) => {
     <div className="mb-3">
       <div className={cls(styles.shopListing, 'col-lg-12')}>
         <div className="mb-3">
-          <nav aria-label="breadcrumb">
+          <nav aria-label="breadcrumb" className="mt-4">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
                 <Link href={'/wholesale-shop'}>Shop</Link>

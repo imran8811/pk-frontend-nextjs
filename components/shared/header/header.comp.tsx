@@ -85,7 +85,7 @@ export default function Header() {
           gtag('js', new Date());
           gtag('config', 'G-TTX4WPE230')`,
         }} />
-      <header className='row border-bottom border-info mb-3'>
+      <header className='row border-bottom border-info'>
         <div className="col-md-3 pt-3 mb-2">
           <Link href="/">
             <img src="/images/logo.jpg" alt="logo" width={227} height={46} title="PK Apparel Home" />

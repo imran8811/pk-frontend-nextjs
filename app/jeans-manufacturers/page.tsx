@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 }
 
 const JeansManufacturers = () => {
-  const mainHeading:any = 'Jeans Manufacturers';
-  const subHeading:any = metadata.description;
+  const title:any = 'Jeans Manufacturers';
+  const description:any = metadata.description;
   return (
     <>
       <div className='container'>
         <div className='row'>
           <Header></Header>
-          <JeansManufacturersComp mainHeading={mainHeading} subHeading={subHeading} />
+          <JeansManufacturersComp title={title} description={description} />
         </div>
       </div>
       <Footer></Footer>

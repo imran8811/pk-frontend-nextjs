@@ -103,6 +103,24 @@ const ProductFiltersComp : FC = (props:any) => {
                 id="jeans-pant" 
                 checked={filterCategory==='jeans-pant'} 
                 onChange={onFilterCategoryOptionChange} />  Jeans Pants
+            </label>
+            <label htmlFor="t-shirts" className="radio-input"> 
+              <input 
+                type="radio" 
+                name="filterCategory" 
+                value="t-shirts" 
+                id="t-shirts" 
+                checked={filterCategory==='t-shirts'} 
+                onChange={onFilterCategoryOptionChange} />  T-Shirts
+            </label> 
+            <label htmlFor="polo-shirts" className="radio-input"> 
+              <input 
+                type="radio" 
+                name="filterCategory" 
+                value="polo-shirts" 
+                id="polo-shirts" 
+                checked={filterCategory==='polo-shirts'} 
+                onChange={onFilterCategoryOptionChange} />  Polo Shirts
             </label> 
             <label htmlFor="chino-pant" className="radio-input"> 
               <input 

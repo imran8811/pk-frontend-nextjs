@@ -1,22 +1,22 @@
+import { Metadata } from 'next';
 import Header from '../../components/shared/header/header.comp';
 import Footer from '../../components/shared/footer/footer.comp';
-import ManageAccountComp from '../../components/manage-account/manage-account.comp';
-import { Metadata } from 'next';
+import WholesaleJeansSuppliersComp from '../../components/landing-pages/wholesale-jeans-suppliers';
 
 export const metadata: Metadata = {
-  title: "Manage Account - Wholesale shop PK Apparel",
+  title: "Wholesale Jeans Suppliers",
   keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Factories",
   description: "We offer top-notch jeans at amazing prices to customers who need a real blend of quality and style. So, place your order with a renowned jeans manufacturer."
 }
 
-const Orders = () => {
+const WholesaleJeansSuppliers = () => {
   return (
     <>
       <Header></Header>
-      <ManageAccountComp></ManageAccountComp>
+      <WholesaleJeansSuppliersComp title={metadata.title} description={metadata.description} />
       <Footer></Footer>
     </>
   )
 }
 
-export default Orders;
+export default WholesaleJeansSuppliers;

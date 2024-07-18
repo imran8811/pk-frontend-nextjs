@@ -10,8 +10,8 @@ const WholesaleWomenJeans = () => {
         <div className='row'>
           <Header></Header>
           <WholesaleJeansManufacturersComp 
-            mainHeading='Wholesale Women Jeans' 
-            subHeading='Wholesale Women Jeans'>
+            title='Wholesale Women Jeans' 
+            description='Wholesale Women Jeans'>
           </WholesaleJeansManufacturersComp>
         </div>
       </div>

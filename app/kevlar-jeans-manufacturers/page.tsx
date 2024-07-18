@@ -10,8 +10,8 @@ const KevlarJeansManufacturers = () => {
         <div className='row'>
           <Header></Header>
           <KevlarJeansManufacturersComp 
-            mainHeading='Kevlar Jeans Manufacturers' 
-            subHeading='Kevlar Jeans Manufacturers' />
+            title='Kevlar Jeans Manufacturers' 
+            description='Kevlar Jeans Manufacturers' />
         </div>
       </div>
       <Footer></Footer>

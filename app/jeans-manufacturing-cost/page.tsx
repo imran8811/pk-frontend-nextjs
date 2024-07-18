@@ -10,7 +10,7 @@ const JeansManufacturers = () => {
       <div className='container'>
         <div className='row'>
           <Header></Header>
-          <JeansManufacturingCostComp mainHeading='Jeans Manufacturing Cost' subHeading='Jeans Manufacturing Cost' />
+          <JeansManufacturingCostComp title='Jeans Manufacturing Cost' description='Jeans Manufacturing Cost' />
         </div>
       </div>
       <Footer></Footer>

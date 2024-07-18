@@ -7,11 +7,8 @@ import Keywords from '../../../../components/shared/keywords/keywords.comp';
 const CartEditPage = () => {
   return (
     <>
-      <div className='container'>
-        <Header />
-        <CartComp />
-        <Keywords />
-      </div>
+      <Header />
+      <CartComp />
       <Footer></Footer>
     </>
   )
