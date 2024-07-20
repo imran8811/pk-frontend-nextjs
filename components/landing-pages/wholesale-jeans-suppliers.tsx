@@ -9,84 +9,68 @@ const WholesaleJeansSuppliersComp: FC<ITaglineProps> = ({title, description}) =>
     <div className="row">
       <Tagline headingText={title} paraText={description} />
       <div className="mb-5">
-        <p className='mb-4'>As a leading name in the denim industry, we are here to create splendid jeans that cater to the needs of unparalleled craftsmanship, distinction, and dedication to the best quality. Our experienced staff produces visually enchanting and premium quality jeans that fit the requirements of clothing brands. 
-        Our jeans are created by skilled artisans with state-of-the-art designs and facilities. All such things enable PK Apparel to produce jeans that meet the expectations of global clothing brands. </p>
+        <p className='mb-4'>Clothing brands are always in search of wholesale jeans suppliers who are well aware of how to source the best jeans and denim products. It is a realm of beauty and fashion where jeans are one of the known attire for their practicality, comfort, and style. We found denim to be a part of all types of dressing, from casual to formal. The versatile adaptability of the jeans makes them hold a quintessential place in clothing fashion. And that is the reason brands need to purchase jeans from a credible and affordable source like "PK Apparel".</p>
         
-        <h2 className="mb-3">What do we design as your jean manufacturer</h2>
+        <h2 className="mb-3">Jeans suppliers with multiple fabric and design options</h2>
         
-        <p className="mb-2">Our specialized designers are well aware of the latest trends in each jean industry whether you need jeans for men, women, boys, and girls they produce premium jeans. Such jeans embody both a stylish look and durable stuff.</p>
+        <p className="mb-2">Brands want to add bold, beautiful, and different jeans and denim to make their fashion collection outstanding. So, we are here to connect them with the best-tailored jeans. Before sourcing any sort of denim and jeans, our fabric experts deeply examine the material, design, and all other features of jeans. And that is the reason we provide jeans that are really beyond our client's expectations. As a <strong>wholesale jeans supplier</strong>, we never compromise on the quality of our jeans collection.</p>
         
-        <p className="mb-4">Moreover, whether you need classic-style jeans for men or women and you need to follow cutting-edge trends we make sure to deliver excellence in every stitch. So, if you want each pair of jeans to carry the mark of superb handwork and meticulous attention then hire us as your <strong>best jeans manufacturer</strong>.</p>
+        <p className="mb-4">Welcome to the best jeans and denim, where you can get everything that you want to see in your jean attire. Our best pricing, quality jeans products, and latest design make our jeans showroom that you have been looking for. So, your <strong>wholesale jeans distributors</strong> are just a click away from you with a wide range of denim products.</p>
 
         <ProductListing dept='men' category='jeans-pant' numberOfRecords={4} />
         
-        <h3 className="mb-3">Constant newness and skillful stitching</h3>
+        <h3 className="mb-3">Connect you with the best-tailored jeans and denim</h3>
         
-        <p className="mb-4">It is the era of beauty and fashion, and the importance of denim and jeans is not ignorable. This fabric stands as a timeless fabric for more than a decay. However, it is also cherished by the fashion industry due to its versatility and reliability. And the jeans manufacturer craved it as a separate niche by employing dedication and innovation in its design.It is the era of beauty and fashion, and the importance of denim and jeans is not ignorable. This fabric basically stands as a timeless fabric for more than a decay. However, it is also cherished by the fashion industry due to its versatility and reliability. And the <strong>jeans manufacturer</strong> craved it as a separate niche by employing dedication and innovation in its design. </p>
+        <p className="mb-2">Our goal is to connect the brands with the best-produced jeans and denim at the most reasonable pricing options. So, we make sure you stay ahead of the immense competition in the fashion industry. We add men, women, girls, and boys, all segments in our collection of denim and jeans. And the brand who needs to check the quality of the jeans we offer can easily order denim swatches from our collection.</p>
+        
+        <p className="mb-4">As a reliable <strong>wholesale supplier</strong> of your denim and jeans, we offer you the opportunity to enhance your inventory with improved profit margins. So, stay on the top of the list with the best quality denim and jeans that we deliver to you at your doorsteps.</p>
 
-        <h3 className='mb-3'>Ensure the quality of denim products at PK Apparel</h3>
+        <h3 className='mb-3'>We supply bold, beautiful, and distinct denim for clothing brands.</h3>
 
-        <p className="mb-2">At PK Apparel, craftsmanship is not only a practice but it is our tradition that we attain from our generations. Our staff is equipped with expertise of several years. And when they weave together the tradition with creativity they produce the best quality jeans and denims. And such denim products really go beyond trends and times.</p>
+        <p className="mb-2">We supply jeans in all classic to contemporary styles, colors, and materials to our customers. Finding the right jeans and denim is one of the key elements that positively impact your business success. That is the reason brands need <strong>wholesale jeans suppliers</strong> that are not only reliable but affordable, too. That's why PK Apparel not only offers quality but also discounts on bulk purchases of jeans and denims.</p>
         
-        <p className='mb-4'>In order to create premium jeans and denim we select top-notch raw material and precise stitching with finishing touches. We proudly say that we satisfy our potential customers with all of our jean products. However, as a <strong>private label jeans manufacturer</strong>, we would create custom designs and sizes as per our client needs.</p>
+        <p className='mb-4'>It means we are one of the budget-friendly sources not only for clothing brands but also for fashion designers. Whether you are looking for classic designs or trendy styles, you can easily get both of these at our one-stop destination for jeans and denim.</p>
 
-        <h3 className='mb-3'>Innovation with skillful stitching</h3>
+        <h3 className='mb-3'>Just scroll through our collection, which we supply as wholesale jeans suppliers</h3>
         
-        <p className="mb-2">Creating iconic designs for clothing brands is our priority as a <strong>professional jeans-making factory</strong>. We have a history of experience in creating innovative designs along with the best-quality fabric. All and sundry knows well that denim is one of the core elements of clothing that everyone wears. So, we are here to produce practical, fashionable, and suitable jeans of various types for fashion designers.</p>
+        <p className="mb-2">From the first pair of jeans to the last on our website, you will see a variation of advanced and classic designs. We gather these jeans for our jeans showroom, and they are really awesome in every aspect. By adding beautiful imperfections, designers make these jeans an apple of the eye for the viewers. However, our efforts as <strong>wholesale jeans suppliers</strong> make it visible and buyable for different clothing brands.</p>
         
-        <p className="mb-4">Jeans are one of the fashion mainstays that has been booming for the last few years. And that is the reason it is always an important part of the fashion industry. Therefore, as the best jeans manufacturer in the USA, we deliver superb quality jeans with skillful stitching.</p>
+        <p className="mb-4">No doubt that denim is one of the timeless wardrobe attire, so it is always with us. We believe in delivering top-quality, well-fabricated, and well-stitched jeans and denim that complement your collection of fashion apparel. At PK Apparel, we offer brands, retailers, boutique owners, and resellers the opportunity to choose suitable styles, sizes, and materials for their denim. We also offer all these jeans at discounted prices, which makes our jeans collection affordable and budget-friendly.</p>
 
         <ProductListing dept='women' category='jeans-pant' numberOfRecords={4} />
         
-        <h3 className='mb-3'>Classic to advanced designs</h3>
+        <h3 className='mb-3'>Find out the best match from our flavor of denim and jeans attire</h3>
         
-        <p className="mb-4">Clothing brands are in search of such <strong>jeans manufacturers</strong> who can add custom designs along with custom hardware and accessories. Our expert designers would add the patches, embroidery, and buttons as per the requirements of clients. However, they are expert in creating classes to advance all types of jeans and denim for your fashion collection. Custom designs are also made at PK Apparel for all such clients who need custom jeans and denim products.</p>
+        <p className="mb-2">It is the foremost responsibility of jeans suppliers to help brands keep a stylish and competitive denim inventory. In order to help the brands make an informed decision about sourcing the jeans, PK Apparel understands the needs of the brands. Then, we find the best match for our client's jeans and denim collection. </p>
+        
+        <p className="mb-4">The staff of PK Apparel is well-equipped with the knowledge to explore your options for denim and jeans. That is one of the major reasons we are the best wholesale jeans suppliers. First of all, they finalize key features that the brand needs in their denim and jeans, for instance: </p>
 
-        <h3 className='mb-3'>Different color combinations for jeans</h3>
-        
-        <p className="mb-4">We offer brands to create their jeans in different colors and shades. Color combinations that we offer are inclusive of blue, black, and grey tones. Like all blue <strong>jeans manufacturers</strong>, we also create blue jeans in different styles for our clients. So, we are one of the children&apos;s jeans manufacturers who offer various customization of colors for kids also. 
-        </p>
-
-        <h3 className='mb-3'>Reach your audience with the best jean products</h3>
-        
-        <p className="mb-4">We ensure our clients reach their audience with the best jean products. As the <strong>best jeans manufacturer</strong>, we provide quality products to the brands that help in fostering strong relations with the customers. It also encourages repurchase of the jeans products. The only thing you need to do is to trust our experience and commitment to transparency. </p>
-
-        <h3 className='mb-3'>Quality assurance of jeans</h3>
-        
-        <p className="mb-4">We send every pair of jeans to the quality check department to ensure that the quality of stitching and material is up to the mark. After passing the quality check we dispatch the jeans to your provided location. So, your jeans are just a click away. Place your order with us and grant a new version to your denim fashion.</p>
-        
-        <h3 className='mb-3'>Various types of jeans that we offer</h3>
-        
-        <p className="mb-4">We know the fashion collection of jeans is very broad and it contains various types of jeans that are segmented as per the fashion needs of various niches. So, you can choose any type of jeans from our collection.</p>
-
-        <p className='mb-1'>For men we offer:</p>
         <ul className='mb-4 list-group'>
-          <li className='list-group-item'>Men&apos;s navy blue stretch jeans pant</li>
-          <li className='list-group-item'>Men&apos;s blue stretch slim fit jeans pant</li>
-          <li className='list-group-item'>Men&apos;s navy blue stretch chino pant</li>
-          <li className='list-group-item'>Men&apos;s camel stretch cargo trousers</li>
-          <li className='list-group-item'>Men&apos;s camo stretch cargo trousers</li>
-          <li className='list-group-item'>Men&apos;s khaki stretch cargo trousers</li>
-          <li className='list-group-item'>Men&apos;s olive stretch cargo trousers</li>
-        </ul>
-        
-        <p className='mb-4'>We believe in producing all these jeans with high-quality materials and we offer these at affordable prices to customers and clothing brands.</p>
-
-        <p className='mb-1'>For women we offer:</p>
-        <ul className='mb-4 list-group'>
-          <li className='list-group-item'>Women&apos;s navy blue stretch Capri jeans</li>
-          <li className='list-group-item'>Skinny fit jeans</li>
-          <li className='list-group-item'>Boot cut jeans</li>
-          <li className='list-group-item'>Loose fit jeans</li>
-          <li className='list-group-item'>Jegging fit jeans </li>
-          <li className='list-group-item'>Original rise jeans</li>
-          <li className='list-group-item'>Regular fit jeans</li>
+          <li className='list-group-item'>Premium quality and design.</li>
+          <li className='list-group-item'>Flexible order quantities.</li>
+          <li className='list-group-item'>Wide range of styles, designs, and sizes.</li>
+          <li className='list-group-item'>Reliable customer service.</li>
+          <li className='list-group-item'>Trendy and advanced stitching and styling.</li>
+          <li className='list-group-item'>Affordable and reasonable bulk prices.</li>
+          <li className='list-group-item'>Facility to serve urgent orders.</li>
         </ul>
 
-        <p className='mb-4'>These are a few common types you can find in our collection of jeans and denim. But this list does not end here we can also make custom sizes, colors, and styles of jeans for men, women, boys, and girls.</p>
+        <p className="mb-4">After finalizing what you need, we provide the best denim and jean products that cater to your needs. So, we deliver what we promise to our clients.</p>
 
-        <h3 className='mb-3'>Place your order with us right now</h3>
-        <p className='mb-4'>Now you get the idea about our jeans products and the way we make your jeans more adorable as well as reliable. So, if you need to place your order with us start chatting online or contact us. We would serve you as <strong>wholesale jeans manufacturers</strong>by providing affordable prices for your jeans.</p>
+        <h3 className='mb-3'>Tips for brands to partner with unerring fashion jeans suppliers</h3>
+
+        <p className="mb-4">Before making the decision to source from any jeans supplier, brands need to understand which <strong>wholesale jeans suppliers</strong> are best for them. So, here are a few tips that will let you know how to choose the right denim supplier. The supplier that offers the following qualities would be best for you:</p>
+
+        <ul className='mb-4 list-group'>
+          <li className='list-group-item'>Provide ease of communication.</li>
+          <li className='list-group-item'>Offer samples before dispatching your order.</li>
+          <li className='list-group-item'>Open to negotiation on terms.</li>
+          <li className='list-group-item'>Stay updated in terms of jeans designs.</li>
+        </ul>
+
+        <h3 className='mb-3'>Go on the right path by choosing the right jeans suppliers.</h3>
+
+        <p className='mb-4'>Every brand needs to double its profit margin by offering the best products to customers. And if you are dealing in the fashion industry, then denim and jeans would be a prominent part of your fashion apparel. So, you need to choose the right <strong>wholesale jeans suppliers</strong> to get affordable denim at the best pricing. So, consider us when sourcing your next jeans and denim. </p>
 
       </div>
     </div>

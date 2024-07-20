@@ -5,8 +5,8 @@ import WholesaleJeansSuppliersComp from '../../components/landing-pages/wholesal
 
 export const metadata: Metadata = {
   title: "Wholesale Jeans Suppliers",
-  keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Factories",
-  description: "We offer top-notch jeans at amazing prices to customers who need a real blend of quality and style. So, place your order with a renowned jeans manufacturer."
+  keywords:  "Wholesale Jeans Suppliers, Jeans Wholesale, Jeans Factories",
+  description: "It is the right time to order low-cost and brilliant quality denim and jeans from the best wholesale jeans suppliers with your required specifications"
 }
 
 const WholesaleJeansSuppliers = () => {
