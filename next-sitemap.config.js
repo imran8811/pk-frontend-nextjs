@@ -6,10 +6,11 @@ module.exports = {
   exclude: [
     "/admin",
     "/admin/*",
-    "/forgot-password",
-    "/order-confirmed",
     "/file-upload",
-    "/orders",
+    "/wholesale-shop/order-placed",
+    "/wholesale-shop/order-invoice",
+    "/wholesale-shop/orders",
+    "/wholesale-shop/manage-account",
     "/wholesale-shop/cart",
     "/wholesale-shop/checkout",
     "/robots.txt"
@@ -43,6 +44,12 @@ module.exports = {
       },
       {
         loc: '/wholesale-shop/boys/jeans-pant',
+        lastmod: new Date().toISOString(),
+        changefreq: "weekly",
+        priority: 0.7,
+      },
+      {
+        loc: '/wholesale-shop/women/jeans-pant',
         lastmod: new Date().toISOString(),
         changefreq: "weekly",
         priority: 0.7,

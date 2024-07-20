@@ -9,8 +9,6 @@
 # testing
 /coverage
 
-public/sitemap-0.xml
-
 # next.js
 /.next/
 /out/
