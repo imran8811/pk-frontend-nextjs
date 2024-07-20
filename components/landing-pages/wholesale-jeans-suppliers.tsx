@@ -9,11 +9,11 @@ const WholesaleJeansSuppliersComp: FC<ITaglineProps> = ({title, description}) =>
     <div className="row">
       <Tagline headingText={title} paraText={description} />
       <div className="mb-5">
-        <p className='mb-4'>Clothing brands are always in search of wholesale jeans suppliers who are well aware of how to source the best jeans and denim products. It is a realm of beauty and fashion where jeans are one of the known attire for their practicality, comfort, and style. We found denim to be a part of all types of dressing, from casual to formal. The versatile adaptability of the jeans makes them hold a quintessential place in clothing fashion. And that is the reason brands need to purchase jeans from a credible and affordable source like "PK Apparel".</p>
+        <p className='mb-4'>Clothing brands are always in search of wholesale jeans suppliers who are well aware of how to source the best jeans and denim products. It is a realm of beauty and fashion where jeans are one of the known attire for their practicality, comfort, and style. We found denim to be a part of all types of dressing, from casual to formal. The versatile adaptability of the jeans makes them hold a quintessential place in clothing fashion. And that is the reason brands need to purchase jeans from a credible and affordable source like PK Apparel.</p>
         
         <h2 className="mb-3">Jeans suppliers with multiple fabric and design options</h2>
         
-        <p className="mb-2">Brands want to add bold, beautiful, and different jeans and denim to make their fashion collection outstanding. So, we are here to connect them with the best-tailored jeans. Before sourcing any sort of denim and jeans, our fabric experts deeply examine the material, design, and all other features of jeans. And that is the reason we provide jeans that are really beyond our client's expectations. As a <strong>wholesale jeans supplier</strong>, we never compromise on the quality of our jeans collection.</p>
+        <p className="mb-2">Brands want to add bold, beautiful, and different jeans and denim to make their fashion collection outstanding. So, we are here to connect them with the best-tailored jeans. Before sourcing any sort of denim and jeans, our fabric experts deeply examine the material, design, and all other features of jeans. And that is the reason we provide jeans that are really beyond our client&apos;s expectations. As a <strong>wholesale jeans supplier</strong>, we never compromise on the quality of our jeans collection.</p>
         
         <p className="mb-4">Welcome to the best jeans and denim, where you can get everything that you want to see in your jean attire. Our best pricing, quality jeans products, and latest design make our jeans showroom that you have been looking for. So, your <strong>wholesale jeans distributors</strong> are just a click away from you with a wide range of denim products.</p>
 
@@ -27,7 +27,7 @@ const WholesaleJeansSuppliersComp: FC<ITaglineProps> = ({title, description}) =>
 
         <h3 className='mb-3'>We supply bold, beautiful, and distinct denim for clothing brands.</h3>
 
-        <p className="mb-2">We supply jeans in all classic to contemporary styles, colors, and materials to our customers. Finding the right jeans and denim is one of the key elements that positively impact your business success. That is the reason brands need <strong>wholesale jeans suppliers</strong> that are not only reliable but affordable, too. That's why PK Apparel not only offers quality but also discounts on bulk purchases of jeans and denims.</p>
+        <p className="mb-2">We supply jeans in all classic to contemporary styles, colors, and materials to our customers. Finding the right jeans and denim is one of the key elements that positively impact your business success. That is the reason brands need <strong>wholesale jeans suppliers</strong> that are not only reliable but affordable, too. That&apos;s why PK Apparel not only offers quality but also discounts on bulk purchases of jeans and denims.</p>
         
         <p className='mb-4'>It means we are one of the budget-friendly sources not only for clothing brands but also for fashion designers. Whether you are looking for classic designs or trendy styles, you can easily get both of these at our one-stop destination for jeans and denim.</p>
 
@@ -41,7 +41,7 @@ const WholesaleJeansSuppliersComp: FC<ITaglineProps> = ({title, description}) =>
         
         <h3 className='mb-3'>Find out the best match from our flavor of denim and jeans attire</h3>
         
-        <p className="mb-2">It is the foremost responsibility of jeans suppliers to help brands keep a stylish and competitive denim inventory. In order to help the brands make an informed decision about sourcing the jeans, PK Apparel understands the needs of the brands. Then, we find the best match for our client's jeans and denim collection. </p>
+        <p className="mb-2">It is the foremost responsibility of jeans suppliers to help brands keep a stylish and competitive denim inventory. In order to help the brands make an informed decision about sourcing the jeans, PK Apparel understands the needs of the brands. Then, we find the best match for our client&apos;s jeans and denim collection. </p>
         
         <p className="mb-4">The staff of PK Apparel is well-equipped with the knowledge to explore your options for denim and jeans. That is one of the major reasons we are the best wholesale jeans suppliers. First of all, they finalize key features that the brand needs in their denim and jeans, for instance: </p>
 
