@@ -50,44 +50,29 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/kevlar-jeans-manufacturers" title="kevlar-jeans-manufacturers">Biker Kevlar Jeans</a>
+          <a href="/motorcycle-jeans-manufacturers" title="motorcycle-jeans-manufacturers">Motorcycle Jeans</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
-            <img src="/images/posts/kevlar-jeans-manufacturers.jfif" alt="kevlar-jeans-manufacturers" />
+            <img src="/images/posts/motorcycle-jeans-manufacturers.jfif" alt="motorcycle-jeans-manufacturers" />
           </div>
           <div className="col-lg-8">
-            <p>Jeans with aramid protection will never run out of fashion. They will remain a signature style for the bikers. It is impossible to venture out with regular jeans once you are introduced to the best quality that Kevlar Jeans manufacturers are providing.</p>
-            <p><a className="read-more" href="/kevlar-jeans-manufacturers"> Read More</a></p>
+            <p>Jeans with aramid protection will never run out of fashion. They will remain a signature style for the bikers. It is impossible to venture out with regular jeans once you are introduced to the best quality that motorcycle Jeans manufacturers are providing.</p>
+            <p><a className="read-more" href="/motorcycle-jeans-manufacturers"> Read More</a></p>
           </div>
         </div>
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/wholsale-jeans-bulk" title="wholsale-jeans-bulk">Wholsale Jeans Bulk</a>
+          <a href="/wholesale-jeans-bulk" title="wholesale-jeans-bulk">Wholsale Jeans Bulk</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
-            <img src="/images/posts/wholsale-jeans-bulk.jpg" alt="wholsale-jeans-bulk" />
+            <img src="/images/posts/wholesale-jeans-bulk.jpg" alt="wholesale-jeans-bulk" />
           </div>
           <div className="col-lg-8">
             <p>Denim is the type of fabric that is unique yet extremely versatile at the same time. In previous years and even in today&apos;s fashion, denim is being used in various clothing items such as jeans, dresses and t shirts. Since denim seems to be the latest fashion trend, wholesale denim shirts suppliers seem to be </p>
-            <p><a className="read-more" href="/wholsale-jeans-bulk"> Read More</a></p>
-          </div>
-        </div>
-      </div>
-      <div className="single-post col-12 mb-5">
-        <h2>
-          <a href="/denim-shirts-manufacturers" title="Denim shirts manufacturers">Denim shirts manufacturers</a>
-        </h2>
-        <div className="row">
-          <div className="col-lg-4 mb-3">
-            <img src="/images/posts/denim-shirts-manufacturers.jpg" alt="denim-shirts-manufacturers" />
-          </div>
-          <div className="col-lg-8">
-            <p>In recent few years, denim shirts manufacturers have come in the limelight because of this newly discovered denim style. Denim is a kind of fabric that is versatile and durable and this very reason makes its demand endless all over the world. Talking about the good ole 1800s, this was the time when denim became </p>
-            <p><a className="read-more" href="/denim-shirts-manufacturers"> Read More</a>
-            </p>
+            <p><a className="read-more" href="/wholesale-jeans-bulk"> Read More</a></p>
           </div>
         </div>
       </div>

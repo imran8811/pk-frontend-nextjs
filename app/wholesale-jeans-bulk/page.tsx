@@ -1,7 +1,7 @@
 "use client";
 import Header from '../../components/shared/header/header.comp';
 import Footer from '../../components/shared/footer/footer.comp';
-import WholesaleJeansBulkComp from '../../components/landing-pages/wholsale-jeans-bulk';
+import WholesaleJeansBulkComp from '../../components/landing-pages/wholesale-jeans-bulk';
 
 const WholesaleJeansBulk = () => {
   return (
