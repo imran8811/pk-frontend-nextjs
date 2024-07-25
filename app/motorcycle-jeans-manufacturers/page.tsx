@@ -1,24 +1,23 @@
 import Header from '../../components/shared/header/header.comp';
 import Footer from '../../components/shared/footer/footer.comp';
-import WholesaleWomenJeansComp from '../../components/landing-pages/wholesale-women-jeans';
-import { Metadata } from 'next'
+import MotorcycleJeansManufacturersComp from '../../components/landing-pages/motorcycle-jeans-manufacturers';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Wholesale Women Jeans",
-  keywords:  "Women Jeans manufacturers, Jeans Pants Manufacturers, Jeans Wholesale",
+  title: "Motorcycle Jeans Manufacturers",
+  keywords:  "Biker Jeans manufacturers, KEvlar Jeans Pants Manufacturers",
   description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
 }
 
-const WholesaleWomenJeans = () => {
+const MotorcycleJeansManufacturers = () => {
   return (
     <>
       <div className='container'>
         <div className='row'>
           <Header></Header>
-          <WholesaleWomenJeansComp 
+          <MotorcycleJeansManufacturersComp 
             title={metadata.title} 
-            description={metadata.description}>
-          </WholesaleWomenJeansComp>
+            description={metadata.description} />
         </div>
       </div>
       <Footer></Footer>
@@ -26,4 +25,4 @@ const WholesaleWomenJeans = () => {
   )
 }
 
-export default WholesaleWomenJeans;
+export default MotorcycleJeansManufacturers;
