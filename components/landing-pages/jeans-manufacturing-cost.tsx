@@ -1,29 +1,18 @@
 import { FC } from 'react'
-import FAQS from '../shared/faqs/faqs.comp'
-import RatingReviews from '../shared/rating-reviews/rating-reviews.comp'
 import Tagline from '../shared/tagline/tagline.comp'
 import ProductListing from '../product-listing/product-listing.comp'
 import { ITaglineProps } from '../../models'
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: "Jeans Manufacturing Cost",
-  keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Wholesale",
-  description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
-}
 
 const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => {
   return (
     <div className="row">
       <Tagline headingText={title} paraText={description} />
-      <ProductListing dept="men" category="jeans-pant" numberOfRecords={6} />
-      <RatingReviews />
-      <FAQS />
       <div className='mb-5'>
         <p className='mb-4'>Pakistan is one of the biggest exporters of denim fabric and garments. It is well-known for its apparel and denim manufacturing. Pakistan has captured a large market share of denim jeans when compared to the rest of the world. The reason for its success is its efficiency to produce large volumes of jeans with fewer turnovers.</p>
         <p className='mb-4'>Textile, in this country, is the hardest-hitting sector. Being a key exporter, it accounts for almost half of the shipment abroad. The business owners in Pakistan are experts in navigating through the hurdles that arise in the textile sector. They are responsible for the success of jeans pants wholesalers due to their immense hard work. This is the reason why well-known denim brands from overseas, all, get their jeans manufactured from Pakistan.</p>
         <p className='mb-4'>Pakistan, as a denim hub, has affordable <strong>jeans manufacturing costs</strong>. The majority of leading suppliers of high-quality denim exist in this region that caters to the needs of world-known brands. They can increase job opportunities due to their significant contribution to the export sector. With technological advancements occurring every day, Pakistan can provide commendable performance in the denim sector.</p>
         <p className='mb-4'>Vertically integrated industries produce all the raw material for the manufacturing of jeans in their units. This is one of the reasons why the <strong>jeans manufacturing cost</strong> is reduced in Pakistan. The number of overheads is reduced, the turnover time is shortened and the quality remains consistent. Since the whole process remains consistent, the possibility of ditching the familiar and expanding the horizons of innovation enhances. There is more room for creativity in the development process.</p>
+        <ProductListing dept="men" category="jeans-pant" numberOfRecords={6} />
         <h2>Major denim brands</h2>
         <p className='mb-4'>Since the products are less expensive without any compromise on the quality, multiple denim brands are interested in dealing with the industries in Pakistan. Major denim brands in Europe, United States, Australia, and Korea, all get their jeans manufactured in Pakistan. Here are the names of some of the brands.</p>
         <ul>

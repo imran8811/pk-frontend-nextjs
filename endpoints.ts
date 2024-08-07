@@ -22,6 +22,7 @@ export const ORDER_CONFIRMED = '/order-confirmed';
 //cart CRUD
 export const ADD_TO_CART = `${baseRoute}/cart/saveItem`;
 export const GET_CART_DETAILS = `${baseRoute}/cart/getAll`;
+export const GET_CART_ITEM_DETAILS = `${baseRoute}/cart/get`;
 export const CART_API = `${baseRoute}/cart`;
 
 //order CRUD

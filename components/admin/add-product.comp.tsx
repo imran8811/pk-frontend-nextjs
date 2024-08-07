@@ -113,11 +113,11 @@ const AddProduct: FC = () => {
 
   const updateImagePath = async(imgType) => {
     let data;
-    let frontImgUrl:string = '';
-    let backImgUrl:string = '';
-    let other1ImgUrl: string = '';
-    let other2ImgUrl: string = '';
-    let other3ImgUrl: string = '';
+    let frontImgUrl   : string = '';
+    let backImgUrl    : string = '';
+    let other1ImgUrl  : string = '';
+    let other2ImgUrl  : string = '';
+    let other3ImgUrl  : string = '';
     switch(imgType){
       case 'front': 
       frontImgUrl = blobRef.current.url

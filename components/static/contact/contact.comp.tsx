@@ -18,7 +18,7 @@ const ContactComp : FC = () => {
               </li>
               <li className="clearfix mb-3">
                 <span>Tel/Whatsapp: </span>
-                <span>(+92) 3 000-911-000</span>
+                <span>(+92) 300 8811310</span>
               </li>
               <li className="clearfix mb-2">
                 <span>Email: </span>

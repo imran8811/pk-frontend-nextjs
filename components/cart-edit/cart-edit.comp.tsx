@@ -1,7 +1,7 @@
 "use client";
 import { FC, useEffect } from "react"
 import useState from 'react-usestateref'
-import { PRODUCT_API, basePath, ADD_TO_CART } from "../../endpoints"
+import { PRODUCT_API, basePath, ADD_TO_CART, GET_CART_ITEM_DETAILS } from "../../endpoints"
 import { IProduct } from "../../models"
 import axiosInstance from "../../interceptors/axios.interceptor";
 import { ToastContainer, toast } from 'react-toastify';
@@ -15,8 +15,9 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ErrorMessage } from "@hookform/error-message"
 import { USER_TYPES } from "../../constants";
+import { ICart } from "../../models/cart.model";
 
-const ProductDetails : FC = () => {
+const CartEditComp : FC = () => {
   type FormInputs = {
     productId:string,
     sizes: string[],
@@ -24,7 +25,7 @@ const ProductDetails : FC = () => {
     instructions: string,
     documentLink: string
   }
-  const [productDetails, setproductDetails, productDetailsRef] = useState<IProduct[]>([]);
+  const [cartDetails, setCartDetails, cartDetailsRef] = useState<ICart[]>([]);
   const { register, handleSubmit, getValues, setValue, setError, watch, formState: { errors }} = useForm<FormInputs>({ criteriaMode: 'all'});
   const [totalAmount, setTotalAmount, totalAmountRef] = useState(0);
   
@@ -37,63 +38,39 @@ const ProductDetails : FC = () => {
   }
 
   useEffect(() => {
-    getProductDetails();
-    console.log(searchParams.get('mode'));
+    getCartDetails();
   }, [])
 
-  const getProductDetails = async () => {
+  const getCartDetails = async () => {
     const res = await axiosInstance({
       method: "get",
-      url: `${PRODUCT_API}/${params.dept}/${params.category}/${params.id}`
+      url: `${GET_CART_ITEM_DETAILS}/${params.id}`
     }).then(res => {
-      setproductDetails(res.data);
+      setCartDetails(res.data);
     })
   }
 
   const onSubmit = async(formData:any) => {
-    let userId;
-    // userData = '';
-    // if (typeof localStorage !== 'undefined') {
-    //   userData = JSON.parse(localStorage.getItem('userData')!);
-    // }
-    // if(!userData || userData.userId === ''){
-    //   userId = crypto.randomUUID();
-    // } else {
-    //   userId = userData.userId
-    // }
-    if(checkUserSession()){
-      userId = userData.userId
-    } else {
-      userId = crypto.randomUUID();
-    }
     const data = {
       productId: formData.productId,
-      userId: userId,
+      userId: userData.userId,
       sizes: formData.sizes,
       quantity: formData.quantity,
       instructions: formData.instructions,
       amount: totalAmountRef.current,
       productDetails: [],
+      productImages: [],
       documentLink: formData.documentLink
     }
-    calculateTotalAmount(formData.quantity, productDetailsRef.current[0].price);
+    calculateTotalAmount(formData.quantity, cartDetailsRef.current[0].productDetails.price);
     const res = await axiosInstance({
       method: "post",
       url: `${ADD_TO_CART}`,
       data: data
     }).then(res => {
       if(res.data.type === 'success') {
-        toast.success('Item Added to cart');
-        if (typeof localStorage !== 'undefined') {
-          if(!checkUserSession()){
-            const userData = {
-              userId: userId,
-              userType: USER_TYPES.GUEST
-            }
-            localStorage.setItem('userData', JSON.stringify(userData));
-          }
-          router.push('/wholesale-shop/cart')
-        }
+        toast.success(res.data.message);
+        router.push('/wholesale-shop/cart')
       }
     }).catch(err =>{
       if(err.response.data.errorCode === 960){
@@ -108,44 +85,52 @@ const ProductDetails : FC = () => {
   }
 
   return (
-    <div className="mb-5">
-      {productDetails && productDetails.map((product, index) => {
-        setValue('productId', product._id);
+    <div className="page-content">
+      {cartDetails && cartDetails.map((cartItem, index) => {
+        setValue('productId', cartItem.productDetails._id);
+        cartItem.sizes.forEach((item, index) => {
+          setValue(`sizes.${index}`, cartItem.sizes[index]);
+        })
+        cartItem.quantity.forEach((item, index) => {
+          setValue(`quantity.${index}`, cartItem.quantity[index]);
+        })
+        setValue('instructions', cartDetails[0].instructions);
+        setValue('documentLink', cartDetails[0].documentLink);
         return (
           <>
             <div className="row mb-5" key={index}>
               <nav aria-label="breadcrumb" className="mt-4">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item"><Link href={'/wholesale-shop'}>Shop</Link></li>
-                  <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}`}>{params.dept}</Link></li>
-                  <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li>
-                  <li className="breadcrumb-item active" aria-current="page">{product.articleNo}</li>
+                  <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/cart`}>Cart</Link></li>
+                  {/* <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li> */}
+                  <li className="breadcrumb-item active" aria-current="page">{cartItem.productDetails.articleNo}</li>
                 </ol>
               </nav>
-              <h1 className="text-center mb-5">{product.slug}</h1>
+              <h1 className="text-center mb-5">{cartItem.productDetails.slug}</h1>
               <div className="col-md-6">
                 <Carousel>
                   <div>
-                    <img src={product.productImages.frontImgUrl} alt={product.productImages.frontImgUrl} />
+                    <img src={cartItem.productDetails.productImages.frontImgUrl} alt={cartItem.productDetails.productImages.frontImgUrl} />
                   </div>
                   <div>
-                    <img src={product.productImages.backImgUrl} alt={product.productImages.backImgUrl} />
+                    <img src={cartItem.productDetails.productImages.backImgUrl} alt={cartItem.productDetails.productImages.backImgUrl} />
                   </div>
                   <div>
-                    <img src={product.productImages.other1ImgUrl} alt={product.productImages.other1ImgUrl} />
+                    <img src={cartItem.productDetails.productImages.other1ImgUrl} alt={cartItem.productDetails.productImages.other1ImgUrl} />
                   </div>
                   <div>
-                    <img src={product.productImages.other2ImgUrl} alt={product.productImages.other2ImgUrl} />
+                    <img src={cartItem.productDetails.productImages.other2ImgUrl} alt={cartItem.productDetails.productImages.other2ImgUrl} />
                   </div>
                   <div>
-                    <img src={product.productImages.other3ImgUrl} alt={product.productImages.other3ImgUrl} />
+                    <img src={cartItem.productDetails.productImages.other3ImgUrl} alt={cartItem.productDetails.productImages.other3ImgUrl} />
                   </div>
                 </Carousel>
               </div>
               <div className="col-md-6 ps-2">
                 <div className="product-min-details">
-                  <span>Price: ${product.price} |  </span> 
-                  <span>Fabric: {product.fabric + " " + product.fabricWeight}</span>
+                  <span>Price: ${cartItem.productDetails.price} |  </span> 
+                  <span>Fabric: {cartItem.productDetails.fabric + " " + cartItem.productDetails.fabricWeight}</span>
                 </div>
                 <hr />
                 <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -165,7 +150,7 @@ const ProductDetails : FC = () => {
                           type="number" 
                           className="col-9 form-control" 
                           {...register('quantity.0', { required: 'Required'})}
-                          onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}} 
+                          onBlur={() => {calculateTotalAmount(getValues('quantity'), cartItem.productDetails.price)}} 
                           placeholder="Quantity" />
                           <ErrorMessage errors={errors} name="quantity.0" as={<small className="text-danger"></small>} />
                       </div>
@@ -184,7 +169,7 @@ const ProductDetails : FC = () => {
                           type="number"
                           className="col-9 form-control"
                           {...register('quantity.1', { required: 'Required'})} 
-                          onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}
+                          onBlur={() => {calculateTotalAmount(getValues('quantity'), cartItem.productDetails.price)}}
                           placeholder="Quantity" />
                           <ErrorMessage errors={errors} name="quantity.1" as={<small className="text-danger"></small>} />
                       </div>
@@ -203,7 +188,7 @@ const ProductDetails : FC = () => {
                           type="number" 
                           className="col-9 form-control" 
                           {...register('quantity.2', { required: 'Required'})}
-                          onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}  
+                          onBlur={() => {calculateTotalAmount(getValues('quantity'), cartItem.productDetails.price)}}  
                           placeholder="Quantity" />
                           <ErrorMessage errors={errors} name="quantity.2" as={<small className="text-danger"></small>} />
                       </div>
@@ -222,7 +207,7 @@ const ProductDetails : FC = () => {
                           type="number" 
                           className="col-9 form-control" 
                           {...register('quantity.3', { required: 'Required'})}
-                          onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}  
+                          onBlur={() => {calculateTotalAmount(getValues('quantity'), cartItem.productDetails.price)}}  
                           placeholder="Quantity" />
                           <ErrorMessage errors={errors} name="quantity.3" as={<small className="text-danger"></small>} />
                       </div>
@@ -275,27 +260,27 @@ const ProductDetails : FC = () => {
                         <ul>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Article No.</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.articleNo}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.articleNo}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.fabric + " " + product.fabricWeight}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.fabric + " " + cartItem.productDetails.fabricWeight}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Colors</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.color}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.color}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Waist Sizes</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.sizes}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.sizes}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Wash Type</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.washType}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.washType}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Category</span>
-                            <span className="col-6  col-md-8 col-lg-9 text-capitalize">{product.category}</span>
+                            <span className="col-6  col-md-8 col-lg-9 text-capitalize">{cartItem.productDetails.category}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Delivery</span>
@@ -303,11 +288,11 @@ const ProductDetails : FC = () => {
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">MOQ</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.moq} Pieces</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.moq} Pieces</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Price</span>
-                            <span className="col-6 col-md-8 col-lg-9">${product.price} Ex-factory</span>
+                            <span className="col-6 col-md-8 col-lg-9">${cartItem.productDetails.price} Ex-factory</span>
                           </li>
                         </ul>
                       </div>
@@ -316,7 +301,7 @@ const ProductDetails : FC = () => {
                 </TabPanel>
                 <TabPanel>
                   <ul className="list-group">
-                    <li className="list-group-item mt-1">Weight per piece: {product.pieceWeight} grams</li>
+                    <li className="list-group-item mt-1">Weight per piece: {cartItem.productDetails.pieceWeight} grams</li>
                     <li className="list-group-item">Packing size wise</li>
                     <li className="list-group-item">10 pieces in Blister</li>
                     <li className="list-group-item">6 blister in single carton</li>
@@ -338,4 +323,4 @@ const ProductDetails : FC = () => {
   )
 }
 
-export default ProductDetails;
+export default CartEditComp;

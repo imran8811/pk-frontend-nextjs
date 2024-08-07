@@ -91,7 +91,7 @@ const CartComp: FC = () => {
                       <td>${parseInt(cart.amount).toFixed(2)}</td>
                       <td>
                         <div  className="row">
-                          <button type="button" className="btn col-6" onClick={() => {router.push(`${WHOLESALE_SHOP}/cart/edit/${cart.productId}`)}}>
+                          <button type="button" className="btn col-6" onClick={() => {router.push(`${WHOLESALE_SHOP}/cart/edit/${cart._id}`)}}>
                             <FontAwesomeIcon icon={faEdit} className="fas fa-edit" />
                           </button>
                           <button type="button" className="btn col-6" onClick={deleteCartItemConfirmation}>
