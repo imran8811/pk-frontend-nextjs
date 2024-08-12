@@ -204,7 +204,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
             </table>
           </div>
         </div>
-        <p>So, this is the cost of men's, women's, boy's, and girl's jeans. After stitching, you need to wash these denims to make them soft and provide them with colors that fit your taste.</p>
+        <p>So, this is the cost of men&apos;s, women&apos;s, boy&apos;s, and girl&apos;s jeans. After stitching, you need to wash these denims to make them soft and provide them with colors that fit your taste.</p>
         
         <h3>Step 6: Washing</h3>
         <p className='mb-3'>Now, your denim jeans are ready to wash and colorize. This step is required to achieve the look and texture of denim. Washing is a technique that involves:</p>
@@ -256,7 +256,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
             </table>
           </div>
         </div>
-        <p className='mb-3'>Now, your denim and jeans are fully prepared, and if you want to add any accessories, then some additional costs for customization are added to this step as per the client's need.</p>
+        <p className='mb-3'>Now, your denim and jeans are fully prepared, and if you want to add any accessories, then some additional costs for customization are added to this step as per the client&apos;s need.</p>
 
         <h3>Step 7: Packaging</h3>
         <p className='mb-3'>It is the right time to pack the denim, and the packaging cost is added to the <strong>jeans manufacturing cost</strong>. The brands need to pay for packaging to provide safety and a proper outlook. So, the packaging cost of each pair of denim is approximately 0.17$.</p>
@@ -388,7 +388,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
         
         <h4>I want to know how much it costs to create jeans.</h4>
         
-        <p className='mb-3'>At PK Apparel, Managing the Cost of jeans is one of our top priorities as we know it would affect the pricing of the brands' overall apparel. Clothing brands and designers searching for competitive pricing for jeans can consider PK Apparel as we offer highly competitive prices for any jeans. Moreover, the cost of men's jeans is 4.233$, women's jeans are 3.591$, the cost of boys' jeans is 3.163$, and the cost of girls' jeans is 3.056$.</p>
+        <p className='mb-3'>At PK Apparel, Managing the Cost of jeans is one of our top priorities as we know it would affect the pricing of the brand&apos;s overall apparel. Clothing brands and designers searching for competitive pricing for jeans can consider PK Apparel as we offer highly competitive prices for any jeans. Moreover, the cost of men&apos;s jeans is 4.233$, women&apos;s jeans are 3.591$, the cost of boy&apos;s jeans is 3.163$, and the cost of girl&apos;s jeans is 3.056$.</p>
 
         <h4>Factors that influence jeans manufacturing cost</h4>
         <p className='mb-3'>Some factors affect the overall cost of jeans and denim. It would help minimize the overall jeans manufacturing cost but also help manage a large volume of jeans production orders. These two costs are inclusive:
