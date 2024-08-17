@@ -29,14 +29,14 @@ const ProductListing : FC<IProductListing> = ({dept, category, numberOfRecords})
       {productListing && productListing.map((product, index) => {
         return (
           <div className="col-lg-3 col-md-4 mb-3 text-center" key={index}>
-            <a href={`${WHOLESALE_SHOP}/${product.dept}/${product.category}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+            <a href={`${WHOLESALE_SHOP}`} className="d-block mb-3" target="_blank" rel="noreferrer">
               <img
                 src={product.productImages.frontImgUrl} 
                 alt={product.productImages.frontImgUrl}
                 height="370"
                 className={styles.img} />
             </a>
-            <a className="small" href={`${WHOLESALE_SHOP}/${product.dept}/${product.category}`}>{'$'+ product.price + '-' + product.slug}</a>
+            <a className="small" href={`${WHOLESALE_SHOP}`}>{'$'+ product.price + '-' + product.slug}</a>
           </div>
         )})}
       </div>

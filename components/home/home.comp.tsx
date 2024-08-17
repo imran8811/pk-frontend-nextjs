@@ -67,7 +67,7 @@ const HomeComponent : FC = () => {
         <h2 className={styles.sectionHeading}>Jeans for Women</h2>
         <ul className="row">
           <li className="col-lg-3 col-md-6 mb-3">
-            <Link href="#" className={styles.innerManufacture}>
+            <Link href="wholesale-shop/women/jeans-pant" className={styles.innerManufacture}>
               <img src="/images/women-jeans.jpg" alt="jeans pants" />
               <span className={styles.productCategory}>Jeans Pants</span>
             </Link>
