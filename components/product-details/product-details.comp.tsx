@@ -239,7 +239,7 @@ const ProductDetails : FC = () => {
                   </div>
                   <div className="order-uploads mb-3">
                     <div>
-                      <small>Upload documents (custom design, measurement chart etc.) to any storage and input the link below</small>
+                      <small>Upload documents (custom design, measurement chart etc.) to drive and share link below</small>
                     </div>
                     <div className="col-12 mb-3">
                       <textarea 
@@ -296,6 +296,10 @@ const ProductDetails : FC = () => {
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Category</span>
                             <span className="col-6  col-md-8 col-lg-9 text-capitalize">{product.category}</span>
+                          </li>
+                          <li className="row mb-2">
+                            <span className="col-6 col-md-4 col-lg-3">Front Fly</span>
+                            <span className="col-6  col-md-8 col-lg-9 text-capitalize">Zip</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Delivery</span>

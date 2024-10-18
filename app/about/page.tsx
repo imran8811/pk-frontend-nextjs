@@ -5,7 +5,7 @@ import AboutComp from '../../components/static/about/about.comp';
 
 export const metadata: Metadata = {
   title: "About Us - PK Apparel",
-  keywords: "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Wholesale",
+  keywords: "Jeans manufacturers, T shirts Manufacturers, Jeans Wholesale",
   description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
 }
 

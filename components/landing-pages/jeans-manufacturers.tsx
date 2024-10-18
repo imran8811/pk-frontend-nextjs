@@ -37,7 +37,7 @@ const JeansManufacturersComp: FC<ITaglineProps> = ({title, description}) => {
 
         <h3 className='mb-3'>Innovation with skillful stitching</h3>
         
-        <p className="mb-2">Creating iconic designs for clothing brands is our priority as a <strong>professional jeans-making factory</strong>. We have a history of experience in creating innovative designs along with the best-quality fabric. All and sundry knows well that denim is one of the core elements of clothing that everyone wears. So, we are here to produce practical, fashionable, and suitable jeans of various types for fashion designers.</p>
+        <p className="mb-2">Creating iconic designs for clothing brands is our priority as a <strong>professional jeans making factory</strong>. We have a history of experience in creating innovative designs along with the best-quality fabric. All and sundry knows well that denim is one of the core elements of clothing that everyone wears. So, we are here to produce practical, fashionable, and suitable jeans of various types for fashion designers.</p>
         
         <p className="mb-4">Jeans are one of the fashion mainstays that has been booming for the last few years. And that is the reason it is always an important part of the fashion industry. Therefore, as the best jeans manufacturer in the USA, we deliver superb quality jeans with skillful stitching.</p>
 
@@ -91,7 +91,7 @@ const JeansManufacturersComp: FC<ITaglineProps> = ({title, description}) => {
         <p className='mb-4'>These are a few common types you can find in our collection of jeans and denim. But this list does not end here we can also make custom sizes, colors, and styles of jeans for men, women, boys, and girls.</p>
 
         <h3 className='mb-3'>Place your order with us right now</h3>
-        <p className='mb-4'>Now you get the idea about our jeans products and the way we make your jeans more adorable as well as reliable. So, if you need to place your order with us start chatting online or contact us. We would serve you as <strong>wholesale jeans manufacturers</strong>by providing affordable prices for your jeans.</p>
+        <p className='mb-4'>Now you get the idea about our jeans products and the way we make your jeans more adorable as well as reliable. So, if you need to place your order with us start chatting online or contact us. We would serve you as <strong>wholesale jeans manufacturers</strong> by providing affordable prices for your jeans.</p>
 
       </div>
     </div>
