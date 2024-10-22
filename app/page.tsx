@@ -7,7 +7,7 @@ import FAQS from '../components/shared/faqs/faqs.comp'
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title : "Jeans Manufacturer and Wholesale - Jeans Pants Jeans Jackets",
+  title : "Garments Manufacturer and Wholesaler - Jeans Pants, T-shirts, Hoodie",
   description : "PK Apparel Specializes in jeans pants manufacturing and wholesale, jeans Jackets wholesale, Jeans Shirt and all other denim products. We stand behind all of the products that we handle and we are the company that stand behind the quality and performance of the products they build",
   keywords : "Jeans pants Manufacturers, Jeans pants Wholesalers, Jeans Pants suppliers"
 }
