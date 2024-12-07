@@ -87,7 +87,7 @@ const CartEditComp : FC = () => {
   return (
     <div className="page-content">
       {cartDetails && cartDetails.map((cartItem, index) => {
-        setValue('productId', cartItem.productDetails._id);
+        setValue('productId', cartItem.productDetails.p_id);
         cartItem.sizes.forEach((item, index) => {
           setValue(`sizes.${index}`, cartItem.sizes[index]);
         })
@@ -104,33 +104,33 @@ const CartEditComp : FC = () => {
                   <li className="breadcrumb-item"><Link href={'/wholesale-shop'}>Shop</Link></li>
                   <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/cart`}>Cart</Link></li>
                   {/* <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li> */}
-                  <li className="breadcrumb-item active" aria-current="page">{cartItem.productDetails.articleNo}</li>
+                  <li className="breadcrumb-item active" aria-current="page">{cartItem.productDetails.article_no}</li>
                 </ol>
               </nav>
               <h1 className="text-center mb-5">{cartItem.productDetails.slug}</h1>
               <div className="col-md-6">
                 <Carousel>
                   <div>
-                    <img src={cartItem.productDetails.productImages.frontImgUrl} alt={cartItem.productDetails.productImages.frontImgUrl} />
+                    <img src={cartItem.productDetails.image_front} alt={cartItem.productDetails.image_front} />
                   </div>
                   <div>
-                    <img src={cartItem.productDetails.productImages.backImgUrl} alt={cartItem.productDetails.productImages.backImgUrl} />
+                    <img src={cartItem.productDetails.image_back} alt={cartItem.productDetails.image_back} />
                   </div>
                   <div>
-                    <img src={cartItem.productDetails.productImages.other1ImgUrl} alt={cartItem.productDetails.productImages.other1ImgUrl} />
+                    <img src={cartItem.productDetails.image_side} alt={cartItem.productDetails.image_side} />
                   </div>
                   <div>
-                    <img src={cartItem.productDetails.productImages.other2ImgUrl} alt={cartItem.productDetails.productImages.other2ImgUrl} />
+                    <img src={cartItem.productDetails.image_other_one} alt={cartItem.productDetails.image_other_one} />
                   </div>
                   <div>
-                    <img src={cartItem.productDetails.productImages.other3ImgUrl} alt={cartItem.productDetails.productImages.other3ImgUrl} />
+                    <img src={cartItem.productDetails.image_other_two} alt={cartItem.productDetails.image_other_two} />
                   </div>
                 </Carousel>
               </div>
               <div className="col-md-6 ps-2">
                 <div className="product-min-details">
                   <span>Price: ${cartItem.productDetails.price} |  </span> 
-                  <span>Fabric: {cartItem.productDetails.fabric + " " + cartItem.productDetails.fabricWeight}</span>
+                  <span>Fabric: {cartItem.productDetails.fabric + " " + cartItem.productDetails.fabric_weight}</span>
                 </div>
                 <hr />
                 <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -260,11 +260,11 @@ const CartEditComp : FC = () => {
                         <ul>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Article No.</span>
-                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.articleNo}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.article_no}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
-                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.fabric + " " + cartItem.productDetails.fabricWeight}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.fabric + " " + cartItem.productDetails.fabric_weight}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Colors</span>
@@ -276,7 +276,7 @@ const CartEditComp : FC = () => {
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Wash Type</span>
-                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.washType}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{cartItem.productDetails.wash_type}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Category</span>
@@ -301,7 +301,7 @@ const CartEditComp : FC = () => {
                 </TabPanel>
                 <TabPanel>
                   <ul className="list-group">
-                    <li className="list-group-item mt-1">Weight per piece: {cartItem.productDetails.pieceWeight} grams</li>
+                    <li className="list-group-item mt-1">Weight per piece: {cartItem.productDetails.piece_weight} grams</li>
                     <li className="list-group-item">Packing size wise</li>
                     <li className="list-group-item">10 pieces in Blister</li>
                     <li className="list-group-item">6 blister in single carton</li>

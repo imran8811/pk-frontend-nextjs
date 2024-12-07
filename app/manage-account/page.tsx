@@ -1,6 +1,6 @@
-import Header from '../../../components/shared/header/header.comp';
-import Footer from '../../../components/shared/footer/footer.comp';
-import ManageAccountComp from '../../../components/manage-account/manage-account.comp';
+import Header from '../../components/shared/header/header.comp';
+import Footer from '../../components/shared/footer/footer.comp';
+import ManageAccountComp from '../../components/manage-account/manage-account.comp';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

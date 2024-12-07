@@ -80,7 +80,7 @@ const CartComp: FC = () => {
                 <>
                   <tbody>
                     <tr>
-                      <td>{cart.productDetails.articleNo}</td>
+                      <td>{cart.productDetails.article_no}</td>
                       <td>{cart.productDetails.slug}</td>
                       <td>
                         <span>{cart.sizes.map(size => size.concat('-'))}</span><br></br>

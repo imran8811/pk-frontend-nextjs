@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Header from '../../../components/shared/header/header.comp';
-import Footer from '../../../components/shared/footer/footer.comp';
-import OrderInvoiceComp from '../../../components/order-invoice/order-invoice.comp';
+import Header from '../../components/shared/header/header.comp';
+import Footer from '../../components/shared/footer/footer.comp';
+import OrderInvoiceComp from '../../components/order-invoice/order-invoice.comp';
 
 const metadata: Metadata = {
   title: "Order Placed - PK Apparel",
