@@ -92,7 +92,7 @@ const ProductDetails : FC = () => {
             }
             localStorage.setItem('userData', JSON.stringify(userData));
           }
-          router.push('/wholesale-shop/cart')
+          router.push('/cart')
         }
       }
     }).catch(err =>{
@@ -114,11 +114,11 @@ const ProductDetails : FC = () => {
         return (
           <>
             <div className="row mb-5" key={index}>
-              <nav aria-label="breadcrumb" className="mt-4">
+              <nav aria-label="breadcrumb" className="mt-4 px-4">
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><Link href={'/wholesale-shop'}>Shop</Link></li>
-                  <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}`}>{params.dept}</Link></li>
-                  <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li>
+                  <li className="breadcrumb-item"><Link href={'/'}>Shop</Link></li>
+                  <li className="breadcrumb-item text-capitalize"><Link href={`/${params.dept}`}>{params.dept}</Link></li>
+                  <li className="breadcrumb-item text-capitalize"><Link href={`/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li>
                   <li className="breadcrumb-item active" aria-current="page">{product.article_no}</li>
                 </ol>
               </nav>

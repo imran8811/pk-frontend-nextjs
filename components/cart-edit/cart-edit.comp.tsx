@@ -70,7 +70,7 @@ const CartEditComp : FC = () => {
     }).then(res => {
       if(res.data.type === 'success') {
         toast.success(res.data.message);
-        router.push('/wholesale-shop/cart')
+        router.push('/cart')
       }
     }).catch(err =>{
       if(err.response.data.errorCode === 960){
@@ -101,9 +101,9 @@ const CartEditComp : FC = () => {
             <div className="row mb-5" key={index}>
               <nav aria-label="breadcrumb" className="mt-4">
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><Link href={'/wholesale-shop'}>Shop</Link></li>
-                  <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/cart`}>Cart</Link></li>
-                  {/* <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li> */}
+                  <li className="breadcrumb-item"><Link href={'/'}>Shop</Link></li>
+                  <li className="breadcrumb-item text-capitalize"><Link href={`/cart`}>Cart</Link></li>
+                  {/* <li className="breadcrumb-item text-capitalize"><Link href={`/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li> */}
                   <li className="breadcrumb-item active" aria-current="page">{cartItem.productDetails.article_no}</li>
                 </ol>
               </nav>

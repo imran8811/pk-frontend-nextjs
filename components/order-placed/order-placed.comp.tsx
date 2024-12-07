@@ -9,7 +9,7 @@ const OrderPlacedComp : FC = () => {
       <h2>Order has been placed!</h2>
       <p>Your order is not confirmed until you pay advance amount</p>
       <div className="order-confirmed-links">
-        <Link href={'/wholesale-shop/order-invoice'}> Download / View Invoice </Link> 
+        <Link href={'/order-invoice'}> Download / View Invoice </Link> 
       </div>
     </div>
   )
