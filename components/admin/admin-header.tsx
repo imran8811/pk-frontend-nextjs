@@ -31,9 +31,9 @@ const AdminHeader: FC = () => {
   return (
     <header className='col-lg-12'>
       <div className='row'>
-        <div className='col-4'>
+        <div className='col-4 mt-3'>
           <Link href="/" className="navbar-brand">
-            <img src="/images/logo.jpg" alt="logo" width={227} height={71} title="PK Apparel Home" />
+            <img src="/images/logo.jpg" alt="logo" title="PK Apparel Home" />
           </Link>
         </div>
         <div className='col-8'>
@@ -49,7 +49,7 @@ const AdminHeader: FC = () => {
                 aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
-              <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
                   <Link href="/admin/products" className="nav-item nav-link">Products</Link>
                   <Link href="/admin/add-product" className="nav-item nav-link">Add product</Link>

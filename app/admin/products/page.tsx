@@ -7,11 +7,9 @@ import Products from '../../../components/admin/products.comp'
 const ProductsPage: NextPage = () => {
   return (
     <>
-      <div className='container'>
-        <div className='row'>
+      <div className='wrapper'>
           <Header></Header>
           <Products></Products>
-        </div>
       </div>
       <Footer></Footer>
     </>

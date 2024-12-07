@@ -72,39 +72,3 @@
 	line-height: 23px;
 	margin: 0 0 10px;
 }
-.categoriesSection {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 80px;
-}
-.categoriesSection .subCatSection {
-  position: relative;
-  width: 50%;
-  height: 450px;
-  margin: 25px;
-}
-.categoriesSection .subCatSection:first-child {
-  background-image: url('/images/men-banner.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.categoriesSection .subCatSection:nth-child(2) {
-  background-image: url('/images/women-banner1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.categoriesSection .shopNowOverlay {
-  position: absolute;
-  left: 50px;
-  bottom: 50px;
-}
-.categoriesSection .shopNowOverlay h3 {
-  color: #fff;
-  font-size: 25px;
-  line-height: 35px;
-}
-.categoriesSection img {
-  display: block;
-  width: 100%;
-  height: auto;
-}

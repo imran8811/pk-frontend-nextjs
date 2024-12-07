@@ -14,14 +14,15 @@ const Products: FC = () => {
 
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
-      if(localStorage.getItem('adminToken')) {
-        const token = localStorage.getItem('adminToken');
-        axiosInstance.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
-      } else {
-        router.push('/admin/login')
-      }
+      // if(localStorage.getItem('adminToken')) {
+      //   const token = localStorage.getItem('adminToken');
+      //   axiosInstance.defaults.headers.common = {'Authorization': `Bearer ${token}`, 'accept': 'application/json'}
+      // } else {
+      //   router.push('/admin/login')
+      // }
     }
     axiosInstance.get(GET_PRODUCTS).then(res => {
+      console.log(res);
       if(res.data.length === 0) {
         setNoProductFound(true);
       } else {
@@ -39,44 +40,45 @@ const Products: FC = () => {
   }
 
   const deleteBlob = (blobUrls: string[]) => {
-    blobUrls.forEach(url => {
-      const delBlob =  del(url, {
+    for(let i=0; i < blobUrls.length; i++){
+      const delBlob =  del(blobUrls[i], {
         token: 'vercel_blob_rw_iVSO8j7JEXHRJCvW_xbEKfE1fiDvvlUtRdOM5gnst958kWu'
       })
-    })
+      delBlob.then(res => {
+        console.log(res);
+      })
+    }
   }
 
   return (
-    <div className='col-lg-12 mt-5 mb-5'>
+    <div className='mt-5 mb-5'>
       <h2 className='text-center mb-3'>Products</h2>
-      <div className='row'>
+      <div className='products'>
+        <div className='boxes'>
         { productsRef.current && productsRef.current.map((product:any, index) => {
             return (
-              <div className='col-3 shadow-rounded' key={index}>
-                <Link href={"/admin/edit-product/"+product.articleNo}>
-                  <img src={product.productImages.frontImgUrl} alt="Product Front Image" width={200} height={250} />
+              <div className='box' key={index}>
+                <Link href={"/admin/edit-product/"+product.p_id}>
+                  <img src={product.image_front} alt="Product Front Image" width={200} height={250} />
                 </Link>
                 <ul className='list-group'>
-                  <li className='list-item'>
-                    <span>{product.articleNo}</span>-
-                    <span>$ {product.price}</span> - 
-                    <span>{product.category}</span>
-                    <span>{product.type}</span> -
-                    <span>{product.length}</span> -
-                    <span>{product.color}</span>
-                  </li>
+                  <li className='list-item'>{product.slug}</li>
+                  <li className='list-item'>{product.article_no}-${product.price}</li>
+                  <li className='list-item'>{product.category}-{product.color}</li>
+                  <li className='list-item'>{product.fabric}-{product.fabric_weight}</li>
                 </ul>
-                <div className='mb-3 mt-3'>
+                <div className='col-12'>
                   <button 
-                    type='button' 
-                    className='btn btn-danger' 
-                    onClick={() => deleteProduct(product.articleNo, [
-                      product.productImages.frontImgUrl, 
-                      product.productImages.backImgUrl, 
-                      product.productImages.other1ImgUrl, 
-                      product.productImages.other2ImgUrl, 
-                      product.productImages.other3ImgUrl
-                    ])}>Delete</button>
+                      type='button' 
+                      className='btn btn-danger' 
+                      onClick={() => deleteProduct(product.p_id, [
+                        product.image_front, 
+                        product.image_back, 
+                        product.image_side, 
+                        product.image_other_one, 
+                        product.image_other_two
+                      ])}>Delete</button>
+                    <a href={'/admin/add-product?action=d&pid='+product.p_id} target='_blank'>Duplicate</a>
                 </div>
               </div>
             )
@@ -87,6 +89,7 @@ const Products: FC = () => {
             <h3 className='text-danger'>No Product Found</h3>
           </div>
         }
+      </div>
     </div>
   </div>
 )}

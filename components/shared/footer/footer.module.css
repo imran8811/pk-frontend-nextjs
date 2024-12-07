@@ -3,27 +3,7 @@
 	border-top: 3px solid #069;
 	padding-top: 25px;
 }
-.socialNetwork {
-	text-align: center;
-	float: none;
-	width: auto;
-	margin: 0 0 20px;
+.footerMenu {
+	display: flex;
+	justify-content: center;
 }
-.socialNetwork li a  {
-	display: block;
-	background: url("/images/fb-icon.png") no-repeat;
-	width: 32px;
-	height: 32px;
-	background-size: 100%;
-	text-indent: -9999px;
-	overflow: hidden;
-}
-.socialNetwork li {
-	display: inline-block;
-	vertical-align: top;
-	float: none;
-  margin: 0 0 0 15px;
-}
-.socialNetwork li.instagram a {background: url("/images/instagram-icon.png") no-repeat; background-size: 100%;}
-.socialNetwork li.twitter a {background: url("/images/twitter-icon.png") no-repeat; background-size: 100%;}
-.socialNetwork li.linkedin a {background: url("/images/linkedin-icon.png") no-repeat; background-size: 100%;}

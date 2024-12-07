@@ -4,7 +4,7 @@ import cls from 'classnames'
 
 const RatingReviews: FC = () => {
   return (
-    <div className="mb-5">
+    <div className="mb-5 px-4">
       <h3 className={styles.sectionHeading}>Rating & Reviews</h3>
       <ul className="row">
         <li className="col-lg-3 col-md-6 col-12 mb-3">

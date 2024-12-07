@@ -1,21 +1,25 @@
 import { ProductImages } from "./productImages.model"
 
 export type IProduct = {
-  _id : string,
+  p_id : string,
   sizes : string,
   color : string,
   fitting : string,
   fabric: string,
-  fabricWeight: number,
-  washType : string,
+  fabric_weight: number,
+  wash_type : string,
   moq : number,
   price : number,
-  articleNo : string,
+  article_no : string,
   dept: string,
   category : string,
   type : string,
   length : string,
-  productImages : ProductImages,
+  image_front: string,
+  image_back: string,
+  image_side: string,
+  image_other_one: string,
+  image_other_two: string,
   slug:string
-  pieceWeight:string
+  piece_weight:string
 }

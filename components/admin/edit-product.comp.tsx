@@ -22,18 +22,18 @@ const EditProduct: FC = () => {
     defaultValues: {
       dept: "men",
       category: "jeans-pant",
-      length: "long",
-      articleNo: "",
+      article_no: "",
+      p_id: "",
       slug: "",
       sizes: "",
       fitting: "slim",
       fabric: "",
-      fabricWeight: "",
-      washType: "",
+      fabric_weight: "",
+      wash_type: "",
       moq: "",
       price: "",
       color: "",
-      pieceWeight: "",
+      piece_weight: "",
     }
   });
   const ProductFrontImageRef = useRef<HTMLInputElement>(null);
@@ -51,32 +51,32 @@ const EditProduct: FC = () => {
       method: 'get',
       url: GET_PRODUCT_DETAILS+"/"+params.id,
     }).then((res) => {
+      console.log(res.data);
       setProductDetails(res.data);
       const data = res.data;
-      setValue('articleNo', data.articleNo);
-      setValue('dept', data.dept);
-      setValue('category', data.category);
-      setValue('length', data.length);
-      setValue('articleNo', data.articleNo);
-      setValue('slug', data.slug);
-      setValue('sizes', data.sizes);
-      setValue('fabric', data.fabric);
-      setValue('fabricWeight', data.fabricWeight);
-      setValue('washType', data.washType);
-      setValue('moq', data.moq);
-      setValue('color', data.color);
-      setValue('price', data.price);
-      setValue('pieceWeight', data.pieceWeight);
+      setValue('article_no', data[0].article_no);
+      setValue('p_id', data[0].p_id);
+      setValue('dept', data[0].dept);
+      setValue('category', data[0].category);
+      setValue('slug', data[0].slug);
+      setValue('sizes', data[0].sizes);
+      setValue('fabric', data[0].fabric);
+      setValue('fabric_weight', data[0].fabric_weight);
+      setValue('wash_type', data[0].wash_type);
+      setValue('moq', data[0].moq);
+      setValue('color', data[0].color);
+      setValue('price', data[0].price);
+      setValue('piece_weight', data[0].piece_weight);
     }).catch((err) => {
       console.log(err)
     });
   }
   
-  const onSubmit = async(data:any) => {
+  const onSubmit = async(formData:any) => {
     await axiosInstance({
-      method: 'put',
+      method: 'post',
       url: PRODUCT_API+'/'+params.id,
-      data: data,
+      data: formData,
     }).then((res:any) => {
       if(res.data.type === 'success'){
         toast.success(res.data.message);
@@ -140,46 +140,47 @@ const EditProduct: FC = () => {
   }
 
   const updateImagePath = async(imgType) => {
-    let data;
-    let frontImgUrl:string = '';
-    let backImgUrl:string = '';
-    let other1ImgUrl: string = '';
-    let other2ImgUrl: string = '';
-    let other3ImgUrl: string = '';
-    if(imgType){
-      switch(imgType){
-        case 'front': 
-        frontImgUrl = blobRef.current.url
-        break;
-        case 'back': 
-        backImgUrl = blobRef.current?.url
-        break;
-        case 'other1': 
-        other1ImgUrl = blobRef.current?.url
-        break;
-        case 'other2': 
-        other2ImgUrl = blobRef.current?.url
-        break;
-        case 'other3': 
-        other3ImgUrl = blobRef.current?.url
-        break;
-      }
-    }
-    data = {
-      articleNo : productDetailsRef.current?.articleNo.toString(),
-      frontImgUrl,
-      backImgUrl,
-      other1ImgUrl,
-      other2ImgUrl,
-      other3ImgUrl,
-      imgType, 
+    const data={
+      article_no : getValues('article_no'),
+      p_id : getValues('p_id'),
+    };
+    let image_front   : string = '';
+    let image_back    : string = '';
+    let image_side    : string = '';
+    let image_other_one  : string = '';
+    let image_other_two  : string = '';
+    switch(imgType){
+      case 'front': 
+      image_front = blobRef.current.url,
+      data['image_front'] = image_front;
+      data['image_type'] = 'front';
+      break;
+      case 'back': 
+      image_back = blobRef.current?.url
+      data['image_back'] = image_back;
+      data['image_type'] = 'back';
+      break;
+      case 'other1': 
+      image_side = blobRef.current?.url
+      data['image_side'] = image_side;
+      data['image_type'] = 'side';
+      break;
+      case 'other2': 
+      image_other_one = blobRef.current?.url
+      data['image_other_one'] = image_other_one;
+      data['image_type'] = 'image_other_one';
+      break;
+      case 'other3': 
+      image_other_two = blobRef.current?.url
+      data['image_other_two'] = image_other_two;
+      data['image_type'] = 'image_other_two';
+      break;
     }
     const res = await axiosInstance({
       method: "post",
       url: UPDATE_PRODUCT_IMAGE_PATH,
       data: data,
     }).then(res => {
-      console.log(res);
       if(res.data.type === 'success') {
         toast.success('Image Uploaded')
       }
@@ -212,7 +213,7 @@ const EditProduct: FC = () => {
                     <option value='girls'>Girls</option>
                   </select>
                 </div>
-                {/* <input type='hidden' {...register('productImages')} /> */}
+                <input type='hidden' {...register('p_id')} />
                 <div className='col-4 mb-3'>
                   <label htmlFor='category'>Category</label>
                   <select {...register('category', { required: true })} className="select-input">
@@ -222,16 +223,16 @@ const EditProduct: FC = () => {
                     <option value='biker-jeans'>Biker Jeans</option>
                   </select>
                 </div>
-                <div className='col-4'>
+                {/* <div className='col-4'>
                   <label htmlFor='length'>Product Length</label>
                   <select {...register('length', { required: true })} className="select-input">
                     <option value='long'>Long</option>
                     <option value='short'>Short</option>
                   </select>
-                </div>
+                </div> */}
                 <div className='col-4 mb-3'>
                   <label htmlFor='article-no'>Article No.</label>
-                  <input type="text" id='article-no' {...register('articleNo', {required: true})} className='form-control' />
+                  <input type="text" id='article-no' {...register('article_no', {required: true})} className='form-control' />
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='product-slug'>Product Slug</label>
@@ -257,11 +258,11 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='fabric-weight'>Fabric Weight</label>
-                  <input type="text" id='fabric-weight' {...register('fabricWeight', {required: true})} className='form-control' />
+                  <input type="text" id='fabric-weight' {...register('fabric_weight', {required: true})} className='form-control' />
                 </div>
                 <div className='col-4'>
                   <label htmlFor='wash-type'>Wash Type</label>
-                  <input type="text" id='wash-type' {...register('washType', {required: true})} className='form-control' />
+                  <input type="text" id='wash-type' {...register('wash_type', {required: true})} className='form-control' />
                 </div>
                 <div className='col-4'>
                   <label htmlFor='moq'>MOQ</label>
@@ -277,7 +278,7 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4'>
                   <label htmlFor='piece-weight'>Weight per piece</label>
-                  <input type="text" id='piece-weight' {...register('pieceWeight', {required: true})} className='form-control' />
+                  <input type="text" id='piece-weight' {...register('piece_weight', {required: true})} className='form-control' />
                 </div>
                 <div className='d-grid gap-2 pt-4'>
                   <button type="submit" className='btn btn-primary'>Update Product</button>
@@ -291,8 +292,8 @@ const EditProduct: FC = () => {
                 <h2 className='text-center mb-5'>Upload Images</h2>
                 <div className='col-4 mb-5'>
                   <label htmlFor='frontImg' className='mb-2'>Front Image</label>
-                  <img src={productDetailsRef.current?.productImages.frontImgUrl} width={200} className='d-block mb-2' />
-                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.frontImgUrl)}}>Delete Image</button>
+                  <img src={productDetailsRef.current?.image_front} width={200} className='d-block mb-2' />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.image_front)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='frontImg' 
@@ -304,8 +305,8 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4'>
                   <label htmlFor='backImg' className='mb-2'>Back Image</label>
-                  <img src={productDetailsRef.current?.productImages.backImgUrl} width={200} className='d-block mb-2' />
-                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.backImgUrl)}}>Delete Image</button>
+                  <img src={productDetailsRef.current?.image_back} width={200} className='d-block mb-2' />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.image_back)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='backImg' 
@@ -317,8 +318,8 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4'>
                   <label htmlFor='other1Img' className='mb-2'>Other 1</label>
-                  <img src={productDetailsRef.current?.productImages.other1ImgUrl} width={200} className='d-block mb-2' />
-                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other1ImgUrl)}}>Delete Image</button>
+                  <img src={productDetailsRef.current?.image_side} width={200} className='d-block mb-2' />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.image_side)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='other1Img'
@@ -330,8 +331,8 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='other2Img' className='mb-2'>Other 2</label>
-                  <img src={productDetailsRef.current?.productImages.other2ImgUrl} width={200} className='d-block mb-2' />
-                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other2ImgUrl)}}>Delete Image</button>
+                  <img src={productDetailsRef.current?.image_other_one} width={200} className='d-block mb-2' />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.image_other_one)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='other2Img'
@@ -343,8 +344,8 @@ const EditProduct: FC = () => {
                 </div>
                 <div className='col-4'>
                   <label htmlFor='other3Img' className='mb-2'>Other 3</label>
-                  <img src={productDetailsRef.current?.productImages.other3ImgUrl} width={200} className='d-block mb-2' />
-                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.productImages.other3ImgUrl)}}>Delete Image</button>
+                  <img src={productDetailsRef.current?.image_other_two} width={200} className='d-block mb-2' />
+                  <button type='button' className='btn btn-danger' onClick={() => {deleteBlob(productDetailsRef.current?.image_other_two)}}>Delete Image</button>
                   <input 
                     type="file" 
                     id='other3Img'

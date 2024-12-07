@@ -1,7 +1,7 @@
 "use client";
 import { FC, useEffect } from "react"
 import useState from 'react-usestateref'
-import { PRODUCT_API, basePath, ADD_TO_CART } from "../../endpoints"
+import { PRODUCT_API, basePath, ADD_TO_CART, GET_PRODUCT_DETAILS } from "../../endpoints"
 import { IProduct } from "../../models"
 import axiosInstance from "../../interceptors/axios.interceptor";
 import { ToastContainer, toast } from 'react-toastify';
@@ -44,7 +44,7 @@ const ProductDetails : FC = () => {
   const getProductDetails = async () => {
     const res = await axiosInstance({
       method: "get",
-      url: `${PRODUCT_API}/${params.dept}/${params.category}/${params.id}`
+      url: GET_PRODUCT_DETAILS+"/"+params.id,
     }).then(res => {
       setproductDetails(res.data);
     })
@@ -110,7 +110,7 @@ const ProductDetails : FC = () => {
   return (
     <div className="mb-5">
       {productDetails && productDetails.map((product, index) => {
-        setValue('productId', product._id);
+        setValue('productId', product.p_id);
         return (
           <>
             <div className="row mb-5" key={index}>
@@ -119,33 +119,33 @@ const ProductDetails : FC = () => {
                   <li className="breadcrumb-item"><Link href={'/wholesale-shop'}>Shop</Link></li>
                   <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}`}>{params.dept}</Link></li>
                   <li className="breadcrumb-item text-capitalize"><Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li>
-                  <li className="breadcrumb-item active" aria-current="page">{product.articleNo}</li>
+                  <li className="breadcrumb-item active" aria-current="page">{product.article_no}</li>
                 </ol>
               </nav>
               <h1 className="text-center mb-5">{product.slug}</h1>
               <div className="col-md-6">
                 <Carousel>
                   <div>
-                    <img src={product.productImages.frontImgUrl} alt={product.productImages.frontImgUrl} />
+                    <img src={product.image_front} alt={product.image_front} />
                   </div>
                   <div>
-                    <img src={product.productImages.backImgUrl} alt={product.productImages.backImgUrl} />
+                    <img src={product.image_back} alt={product.image_back} />
                   </div>
                   <div>
-                    <img src={product.productImages.other1ImgUrl} alt={product.productImages.other1ImgUrl} />
+                    <img src={product.image_side} alt={product.image_side} />
                   </div>
                   <div>
-                    <img src={product.productImages.other2ImgUrl} alt={product.productImages.other2ImgUrl} />
+                    <img src={product.image_other_one} alt={product.image_other_one} />
                   </div>
                   <div>
-                    <img src={product.productImages.other3ImgUrl} alt={product.productImages.other3ImgUrl} />
+                    <img src={product.image_other_two} alt={product.image_other_two} />
                   </div>
                 </Carousel>
               </div>
               <div className="col-md-6 ps-2">
                 <div className="product-min-details">
                   <span>Price: ${product.price} |  </span> 
-                  <span>Fabric: {product.fabric + " " + product.fabricWeight}</span>
+                  <span>Fabric: {product.fabric + " " + product.fabric_weight}</span>
                 </div>
                 <hr />
                 <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -275,11 +275,11 @@ const ProductDetails : FC = () => {
                         <ul>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Article No.</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.articleNo}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.article_no}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.fabric + " " + product.fabricWeight}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.fabric + " " + product.fabric_weight}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Colors</span>
@@ -291,7 +291,7 @@ const ProductDetails : FC = () => {
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Wash Type</span>
-                            <span className="col-6 col-md-8 col-lg-9">{product.washType}</span>
+                            <span className="col-6 col-md-8 col-lg-9">{product.wash_type}</span>
                           </li>
                           <li className="row mb-2">
                             <span className="col-6 col-md-4 col-lg-3">Category</span>
@@ -320,7 +320,7 @@ const ProductDetails : FC = () => {
                 </TabPanel>
                 <TabPanel>
                   <ul className="list-group">
-                    <li className="list-group-item mt-1">Weight per piece: {product.pieceWeight} grams</li>
+                    <li className="list-group-item mt-1">Weight per piece: {product.piece_weight} grams</li>
                     <li className="list-group-item">Packing size wise</li>
                     <li className="list-group-item">10 pieces in Blister</li>
                     <li className="list-group-item">6 blister in single carton</li>

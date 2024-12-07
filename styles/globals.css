@@ -28,8 +28,9 @@ a:hover {
 	text-decoration: underline !important;
 }
 .main-wrapper {
-	max-width: 1600px;
+	max-width: 1920px;
 	margin: 0 auto;
+	overflow: hidden;
 }
 .pk-list-item {
 	list-style-type: disc;
@@ -255,46 +256,19 @@ h3 { font-size: 1.4rem;}
   border-top: 3px solid #069;
   padding-top: 25px;
 }
-
-.social-network {
-  text-align: center;
-  float: none;
-  width: auto;
-  margin: 0 0 20px;
+.social-links {
+	display: flex;
 }
-
-.social-network li a {
-  display: block;
-  background: url("/images/fb-icon.png") no-repeat;
-  width: 32px;
-  height: 32px;
-  background-size: 100%;
-  text-indent: -9999px;
-  overflow: hidden;
+.social-links li {
+	margin: 0 20px 0 0;
+	font-size: 18px;
 }
-
-.social-network li {
-  display: inline-block;
-  vertical-align: top;
-  float: none;
-  margin: 0 0 0 15px;
+.social-links li a {
+	color: #333;
 }
-
-.social-network li.instagram a {
-  background: url("/images/instagram-icon.png") no-repeat;
-  background-size: 100%;
+.footer .social-links li a {
+	color: #fff;
 }
-
-.social-network li.twitter a {
-  background: url("/images/twitter-icon.png") no-repeat;
-  background-size: 100%;
-}
-
-.social-network li.linkedin a {
-  background: url("/images/linkedin-icon.png") no-repeat;
-  background-size: 100%;
-}
-
 .star-rating li {
   float: left;
   width: 20px;
@@ -395,28 +369,24 @@ h3 { font-size: 1.4rem;}
 }
 .products .boxes {
 	overflow: hidden;
-	width: 104%;
-	padding: 20px 0 0 5px;
+	width: 100%;
+	padding: 0;
 }
 .products .box {
 	display: inline-block;
 	vertical-align: top;
-	width: 29.7%;
-	margin: 0 3% 30px 0;
-	text-align: center;
-	-webkit-box-shadow: 0 0 5px 1px #E8E8E8;
-	box-shadow: 0 0 5px 1px #E8E8E8;
-	padding: 30px 0;
+	width: 20%;
+	/* -webkit-box-shadow: 0 0 5px 1px #E8E8E8;
+	box-shadow: 0 0 5px 1px #E8E8E8; */
 }
-.products .box:hover {
+/* .products .box:hover {
 	-webkit-box-shadow: 0 0 5px 1px #2d639e;
 	box-shadow: 0 0 5px 1px #2d639e;
-}
+} */
 .products .box .pro-name {color: #333;}
 .products .box img {
 	display: block;
-	max-width: 75%;
-	margin: 0 auto 10px;
+	margin: 0 auto;
 }
 .page-details {
 	overflow: hidden;

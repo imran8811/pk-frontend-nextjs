@@ -1,8 +1,8 @@
-import Header from '../../../components/shared/header/header.comp';
-import Footer from '../../../components/shared/footer/footer.comp';
+import Header from '../../components/shared/header/header.comp';
+import Footer from '../../components/shared/footer/footer.comp';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import ShopComp from '../../../components/wholesale-shop/shop.comp';
+import ShopComp from '../../components/wholesale-shop/shop.comp';
 
 export const metadata: Metadata = {
   title: "Wholesale Shop - Factory Shop for Jeans Products",

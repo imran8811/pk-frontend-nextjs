@@ -1,12 +1,14 @@
-.headerMenu {
+.headerMenu, .footerMenu {
 	display: block;
+}
+.footerMenu {
+	justify-content: center;
 }
 .headerMenu ul, .footerMenu ul {
 	list-style: none;
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: bold;
-	margin-top: 10px;
 }
 .headerMenu ul li, .footerMenu ul li {
 	background: url(/images/separator.png) no-repeat 0 50%;
@@ -16,11 +18,10 @@
 	margin: 0 0 0 20px;
 	text-transform:capitalize;
 }
-.headerMenu ul li a { 
-	color: #333;
-	font-size: 18px;
-}
 .headerMenu ul li { background: none; }
+.headerMenu ul li a {
+	color: #333;
+}
 .headerMenu ul li:hover a, .footerMenu ul li:hover a { text-decoration:none; }
 .headerMenu ul li:first-child, .footerMenu ul li:first-child {
 	background: none;
@@ -44,7 +45,7 @@
 .headerMenu .headerMenuDropdown:hover > ul {
 	display: block;
 }
-.headerMain {
+.headerTop {
 	padding: 0 20px;
 }
 @media screen and (max-width: 786px) {

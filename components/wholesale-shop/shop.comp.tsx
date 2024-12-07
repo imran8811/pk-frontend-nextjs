@@ -47,41 +47,39 @@ const ShopComp : FC = (props:any) => {
     <div className="mb-3">
       <div className={cls(styles.shopListing, 'col-lg-12')}>
         <div className="mb-3">
-          <nav aria-label="breadcrumb" className="mt-4">
+          <nav aria-label="breadcrumb" className="mt-4 px-4">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href={'/wholesale-shop'}>Shop</Link>
+                <Link href={'/'}>Shop</Link>
               </li>
               <li className="breadcrumb-item text-capitalize">
-                <Link href={`/wholesale-shop/${params.dept}`}>{params.dept}</Link>
+                <Link href={`/${params.dept}`}>{params.dept}</Link>
               </li>
               {params.category && 
                 <li className="breadcrumb-item text-capitalize">
-                  <Link href={`/wholesale-shop/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link>
+                  <Link href={`/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link>
                 </li>
               }
             </ol>
           </nav>
-          <h1 className="text-center mb-4">Wholesale Shop</h1>
-          <div className="row">
-            <div className="col-lg-2 d-lg-block d-md-none">
+          {/* <h1 className="text-center mb-4">Wholesale Shop</h1> */}
+          <div className="products-outer">
+            {/* <div className="col-lg-2 d-lg-block d-md-none">
               <ProductFiltersComp />
-            </div>
-            <div className="col-lg-10">
-              <div className="row">
+            </div> */}
+            <div className="products">
+              <div className="boxes">
                 { products && products.map((product, index) => {
                   return (
-                    <div className="col-lg-3 col-md-4 mb-5 text-center" key={index}>
-                      <div className="shodow-rounded">
-                        <a href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`} className="d-block mb-3" target="_blank" rel="noreferrer">
-                          <img
-                            src={product.productImages.frontImgUrl} 
-                            alt={product.productImages.frontImgUrl}
-                            height="370"
-                            className={styles.img} />
-                        </a>
-                        <a className="small" href={`/wholesale-shop/${product.dept}/${product.category}/${product.articleNo}`}>{'$'+ product.price + '-' + product.slug}</a>
-                      </div>
+                    <div className="box mb-5 text-center" key={index}>
+                      <a href={`/${product.dept}/${product.category}/${product.p_id}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+                        <img
+                          src={product.image_front} 
+                          alt={product.image_front}
+                          height="370"
+                          className={styles.img} />
+                      </a>
+                      <a className="small" href={`/${product.dept}/${product.category}/${product.p_id}`}>{'$'+ product.price + '-' + product.slug}</a>
                     </div>
                   )
                 })}

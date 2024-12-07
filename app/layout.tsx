@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
 import BootstrapClient from '../components/bootstrapClient.js';
 
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.min.css'
 import '../styles/globals.css'
-import StoreProvider from "./StoreProvider.jsx";
-import { makeStore } from "../lib/store.js";
-// const inter = Inter({ subsets: ["latin"] });
+
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
@@ -17,12 +16,8 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
       </head>
       <body>
         <div className="main-wrapper">
-          <div className="container-fluid">
-            {/* <div className="d-flex"> */}
-              {children}
-              <BootstrapClient />
-            {/* </div> */}
-          </div>
+          {children}
+          <BootstrapClient />
         </div>
       </body>
     </html>

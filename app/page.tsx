@@ -5,6 +5,7 @@ import Keywords from '../components/shared/keywords/keywords.comp';
 import RatingReviews from '../components/shared/rating-reviews/rating-reviews.comp';
 import FAQS from '../components/shared/faqs/faqs.comp'
 import { Metadata } from 'next';
+import WhyChooseUs from '../components/why-choose-us/why-choose-us.comp';
 
 export const metadata: Metadata = {
   title : "Garments Manufacturer and Wholesaler - Jeans Pants, T-shirts, Hoodie",
@@ -17,9 +18,10 @@ const Page = () => {
     <>
       <Header />
       <HomeComponent />
+      <WhyChooseUs />
       <RatingReviews />
       <FAQS />
-      <Keywords />
+      {/* <Keywords /> */}
       <Footer />
     </>
   );

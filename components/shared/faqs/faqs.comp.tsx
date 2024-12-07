@@ -3,7 +3,7 @@ import styles from '../../home/home.module.css'
 
 const FAQS: FC = () => {
   return (
-    <div className="mb-5">
+    <div className="mb-5 px-4">
       <h3 className={styles.sectionHeading}>Questions - FAQs</h3>
       <div className={styles.faqsList} itemScope itemType="https://schema.org/FAQPage">
         <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">

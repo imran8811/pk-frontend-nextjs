@@ -2,14 +2,16 @@ import { FC, useEffect, createRef, useRef } from 'react'
 import useState from 'react-usestateref'
 import { useForm } from 'react-hook-form'
 import axiosInstance from '../../interceptors/axios.interceptor'
-import { PRODUCT_API, IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO } from '../../endpoints'
+import { PRODUCT_API, IMAGE_UPLOAD, UPDATE_PRODUCT_IMAGE_PATH, GET_ARTICLE_NO, ADD_PRODUCT, GET_PRODUCT_DETAILS } from '../../endpoints'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { type PutBlobResult } from '@vercel/blob';
 import { upload } from '@vercel/blob/client';
+import { IProduct } from '../../models'
  
 const AddProduct: FC = () => {
+  const [productDetails, setProductDetails, productDetailsRef] = useState<IProduct>();
   const [currentStep, setCurrentStep, currentStepRef] = useState('stepProductInfo');
   const [productId, setProductId, productIdRef] = useState();
   const [blob, setBlob, blobRef] = useState<PutBlobResult | any>('');
@@ -18,19 +20,17 @@ const AddProduct: FC = () => {
     defaultValues: {
       dept: "men",
       category: "jeans-pant",
-      length: "long",
-      articleNo: "",
+      article_no: "",
       slug: "",
       sizes: "",
       fitting: "slim",
       fabric: "",
-      fabricWeight: "",
-      washType: "",
+      fabric_weight: "",
+      wash_type: "",
       moq: "",
       price: "",
       color: "",
-      pieceWeight: "",
-      productImages:[]
+      piece_weight: "",
     }
   });
   const ProductFrontImageRef = useRef<HTMLInputElement>(null);
@@ -39,31 +39,61 @@ const AddProduct: FC = () => {
   const ProductOther2ImageRef = useRef<HTMLInputElement>(null);
   const ProductOther3ImageRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const params = useParams();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    getArticleNo()
+    getArticleNo();
+    const getpid = searchParams.get('pid');
+    if(getpid){
+      getProductDetails()
+    }
   }, [])
 
   const getArticleNo = async() => {
     await axiosInstance({
-      method: 'post',
+      method: 'get',
       url: GET_ARTICLE_NO,
       data: ''
     }).then((res:any) => {
-      const latestArticleNo = res.data+1;
-      setValue('articleNo', latestArticleNo.toString());
+      const latestArticleNo = Number(res.data)+1;
+      setValue('article_no', latestArticleNo.toString());
     }).catch(err => {
       console.log(err);
     });
   }
+
+  const getProductDetails = async() => {
+    await axiosInstance({
+      method: 'get',
+      url: GET_PRODUCT_DETAILS+"/"+searchParams.get('pid'),
+    }).then((res) => {
+      setProductDetails(res.data);
+      const data = res.data;
+      setValue('dept', data[0].dept);
+      setValue('category', data[0].category);
+      setValue('slug', data[0].slug);
+      setValue('sizes', data[0].sizes);
+      setValue('fabric', data[0].fabric);
+      setValue('fabric_weight', data[0].fabric_weight);
+      setValue('wash_type', data[0].wash_type);
+      setValue('moq', data[0].moq);
+      setValue('color', data[0].color);
+      setValue('price', data[0].price);
+      setValue('piece_weight', data[0].piece_weight);
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
   
   const onSubmit = async(data:any) => {
+    console.log(data);
     await axiosInstance({
       method: 'post',
-      url: PRODUCT_API,
+      url: ADD_PRODUCT,
       data: data,
     }).then((res:any) => {
-      setProductId(res.data.data._id)
+      setProductId(res.data.p_id)
       if(res.data.type === 'success'){
         setCurrentStep('stepImageUpload');
       }
@@ -112,38 +142,41 @@ const AddProduct: FC = () => {
   }
 
   const updateImagePath = async(imgType) => {
-    let data;
-    let frontImgUrl   : string = '';
-    let backImgUrl    : string = '';
-    let other1ImgUrl  : string = '';
-    let other2ImgUrl  : string = '';
-    let other3ImgUrl  : string = '';
+    const data={
+      article_no : getValues('article_no'),
+      p_id : productIdRef.current
+    };
+    let image_front   : string = '';
+    let image_back    : string = '';
+    let image_side    : string = '';
+    let image_other_one  : string = '';
+    let image_other_two  : string = '';
     switch(imgType){
       case 'front': 
-      frontImgUrl = blobRef.current.url
+      image_front = blobRef.current.url,
+      data['image_front'] = image_front;
+      data['image_type'] = 'front';
       break;
       case 'back': 
-      backImgUrl = blobRef.current?.url
+      image_back = blobRef.current?.url
+      data['image_back'] = image_back;
+      data['image_type'] = 'back';
       break;
       case 'other1': 
-      other1ImgUrl = blobRef.current?.url
+      image_side = blobRef.current?.url
+      data['image_side'] = image_side;
+      data['image_type'] = 'side';
       break;
       case 'other2': 
-      other2ImgUrl = blobRef.current?.url
+      image_other_one = blobRef.current?.url
+      data['image_other_one'] = image_other_one;
+      data['image_type'] = 'image_other_one';
       break;
       case 'other3': 
-      other3ImgUrl = blobRef.current?.url
+      image_other_two = blobRef.current?.url
+      data['image_other_two'] = image_other_two;
+      data['image_type'] = 'image_other_two';
       break;
-    }
-    
-    data = {
-      articleNo : getValues('articleNo'),
-      frontImgUrl,
-      backImgUrl,
-      other1ImgUrl,
-      other2ImgUrl,
-      other3ImgUrl,
-      imgType, 
     }
     const res = await axiosInstance({
       method: "post",
@@ -182,7 +215,7 @@ const AddProduct: FC = () => {
                     <option value='girls'>Girls</option>
                   </select>
                 </div>
-                <input type='hidden' {...register('productImages')} />
+                {/* <input type='hidden' {...register('p_id')} /> */}
                 <div className='col-4 mb-3'>
                   <label htmlFor='category'>Category</label>
                   <select {...register('category', { required: true })} className="select-input">
@@ -192,16 +225,16 @@ const AddProduct: FC = () => {
                     <option value='biker-jeans'>Biker Jeans</option>
                   </select>
                 </div>
-                <div className='col-4'>
+                {/* <div className='col-4'>
                   <label htmlFor='length'>Product Length</label>
                   <select {...register('length', { required: true })} className="select-input">
                     <option value='long'>Long</option>
                     <option value='short'>Short</option>
                   </select>
-                </div>
+                </div> */}
                 <div className='col-4 mb-3'>
                   <label htmlFor='article-no'>Article No.</label>
-                  <input type="text" id='article-no' {...register('articleNo', {required: true, valueAsNumber : false})} className='form-control' />
+                  <input type="text" id='article-no' {...register('article_no', {required: true, valueAsNumber : false})} className='form-control' />
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='product-slug'>Product Slug</label>
@@ -227,11 +260,11 @@ const AddProduct: FC = () => {
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='fabric-weight'>Fabric Weight</label>
-                  <input type="text" id='fabric-weight' {...register('fabricWeight', {required: true})} className='form-control' />
+                  <input type="text" id='fabric-weight' {...register('fabric_weight', {required: true})} className='form-control' />
                 </div>
                 <div className='col-4'>
                   <label htmlFor='wash-type'>Wash Type</label>
-                  <input type="text" id='wash-type' {...register('washType', {required: true})} className='form-control' />
+                  <input type="text" id='wash-type' {...register('wash_type', {required: true})} className='form-control' />
                 </div>
                 <div className='col-4'>
                   <label htmlFor='moq'>MOQ</label>
@@ -247,7 +280,7 @@ const AddProduct: FC = () => {
                 </div>
                 <div className='col-4'>
                   <label htmlFor='piece-weight'>Weight per piece</label>
-                  <input type="text" id='piece-weight' {...register('pieceWeight', {required: true})} className='form-control' />
+                  <input type="text" id='piece-weight' {...register('piece_weight', {required: true})} className='form-control' />
                 </div>
                 <div className='d-grid gap-2 pt-4'>
                   <button type="submit" className='btn btn-primary btn-block'>Upload Photos</button>
