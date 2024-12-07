@@ -72,7 +72,7 @@ const ShopComp : FC = (props:any) => {
                 { products && products.map((product, index) => {
                   return (
                     <div className="box mb-5 text-center" key={index}>
-                      <a href={`/${product.dept}/${product.category}/${product.p_id}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+                      <a href={`/${product.dept}/${product.category}/${product.p_id}`} className="d-block" target="_blank" rel="noreferrer">
                         <img
                           src={product.image_front} 
                           alt={product.image_front}

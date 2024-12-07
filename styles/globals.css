@@ -130,9 +130,6 @@ a:hover {
 h1 { font-size: 2rem;}
 h2 { font-size: 1.6rem;}
 h3 { font-size: 1.4rem;}
-@media screen and (max-width: 768px){
-  .loader { left: 35%; }
-}
 .logo a {
   display: block;
 }
@@ -202,9 +199,14 @@ h3 { font-size: 1.4rem;}
     margin: 0;
   }
   .main-menu ul li:first-child {
-    background: #fff;
+		background: #fff;
     padding: 10px 0;
   }
+	.loader { left: 35%; }
+	.products .boxes .box {
+		width: 100%;
+		border-top: 1px solid #ccc;
+	}
 }
 
 @media screen and (max-width: 767px) {
