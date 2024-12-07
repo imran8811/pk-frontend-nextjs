@@ -1,12 +1,9 @@
 "use client";
 import Link from 'next/link'
-import Script from 'next/script'
 import styles from '../header/header.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { getUserSessionData, UserLogout } from '../../../services/auth.service'
 import { usePathname, useRouter } from 'next/navigation'
-import { GET_CART_DETAILS, TOKEN_REFRESH, WHOLESALE_SHOP } from '../../../endpoints'
+import { GET_CART_DETAILS, TOKEN_REFRESH } from '../../../endpoints'
 import cls from 'classnames';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../../interceptors/axios.interceptor';
@@ -23,7 +20,7 @@ export default function Header() {
     userLogout = async() => {
       if(await UserLogout(userData.userId)){
         localStorage.removeItem('userData');
-        router.replace(WHOLESALE_SHOP);
+        router.replace('/');
       }
     }
   }
@@ -42,22 +39,17 @@ export default function Header() {
       <header>
         <HeaderTop />
         <div className={cls(styles.headerMain, 'border-bottom row mt-4 pb-3')}>
-          <div className="col-md-3">
+          <div className="col-md-4 mb-3">
             <Link href="/">
               <img src="/images/logo.jpg" alt="logo" width={227} height={46} title="PK Apparel Home" />
             </Link>
           </div>
-          <div className='col-md-1'></div>
-          <div className='col-md-8'>
-            <div className={cls(styles.headerMenu, 'text-end')}>
-              <ul >
-                <li><Link href={'/men'}>Men</Link></li>
-                <li><Link href={'/women'}>Women</Link></li>
-                <li><Link href={'/boys'}>Boys</Link></li>
-                <li><Link href={'/girls'}>Girls</Link></li>
-              </ul>
-            </div>
-          </div>
+          <ul className={cls(styles.headerMenu, 'col-md-8')}>
+            <li><Link href={'/men'}>Men</Link></li>
+            <li><Link href={'/women'}>Women</Link></li>
+            <li><Link href={'/boys'}>Boys</Link></li>
+            <li><Link href={'/girls'}>Girls</Link></li>
+          </ul>
         </div>
       </header>
     </>

@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { CART_API, USER_LOGIN, WHOLESALE_SHOP } from '../../../endpoints'
+import { CART_API, USER_LOGIN } from '../../../endpoints'
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
@@ -44,7 +44,7 @@ const LoginComp: FC = () => {
           localStorage.setItem('userData', JSON.stringify(res.data.data));
         }
         const nextRoute = getQueryParamNextRoute;
-        nextRoute? router.push(getQueryParamNextRoute): router.push(WHOLESALE_SHOP)
+        nextRoute? router.push(getQueryParamNextRoute): router.push('/')
       }
     }).catch((err) => {
       toast.error(err.response.data.message);

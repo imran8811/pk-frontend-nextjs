@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { USER_SIGN_UP, WHOLESALE_SHOP } from '../../../endpoints'
+import { USER_SIGN_UP } from '../../../endpoints'
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,7 +21,7 @@ const SignupComp: FC = () => {
         if (typeof localStorage !== 'undefined') {
           localStorage.setItem('userData', JSON.stringify(res.data.data));
         }
-        router.push(WHOLESALE_SHOP);
+        router.push('/');
       }
     }).catch((err) => {
       toast.error(err.response.data.message)

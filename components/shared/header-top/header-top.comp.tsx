@@ -4,10 +4,9 @@ import Script from 'next/script'
 import styles from './header-top.module.css'
 import { getUserSessionData, UserLogout } from '../../../services/auth.service'
 import { usePathname, useRouter } from 'next/navigation'
-import { GET_CART_DETAILS, TOKEN_REFRESH, WHOLESALE_SHOP } from '../../../endpoints'
+import { GET_CART_DETAILS, TOKEN_REFRESH } from '../../../endpoints'
 import cls from 'classnames';
 import { useEffect, useState } from 'react';
-import axiosInstance from '../../../interceptors/axios.interceptor';
 
 export default function HeaderTop() {
   const [cartItemsCount, setCartItemsCount] = useState(0);
@@ -21,7 +20,7 @@ export default function HeaderTop() {
     userLogout = async() => {
       if(await UserLogout(userData.userId)){
         localStorage.removeItem('userData');
-        router.replace(WHOLESALE_SHOP);
+        router.replace('/');
       }
     }
   }

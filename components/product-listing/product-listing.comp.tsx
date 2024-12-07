@@ -2,7 +2,7 @@
 import { FC, useEffect, useState } from "react"
 import styles from './product-listing.module.css'
 import axiosInstance from "../../interceptors/axios.interceptor"
-import { PRODUCT_API, WHOLESALE_SHOP } from "../../endpoints"
+import { PRODUCT_API } from "../../endpoints"
 import { IProduct } from "../../models"
 import { IProductListing } from "../../models/productListing.model";
 import cls from 'classnames';
@@ -29,14 +29,14 @@ const ProductListing : FC<IProductListing> = ({dept, category, numberOfRecords})
       {productListing && productListing.map((product, index) => {
         return (
           <div className="col-lg-3 col-md-4 mb-3 text-center" key={index}>
-            <a href={`${WHOLESALE_SHOP}`} className="d-block mb-3" target="_blank" rel="noreferrer">
+            <a href={'/'} className="d-block mb-3" target="_blank" rel="noreferrer">
               <img
                 src={product.image_front} 
                 alt={product.image_front}
                 height="370"
                 className={styles.img} />
             </a>
-            <a className="small" href={`${WHOLESALE_SHOP}`}>{'$'+ product.price + '-' + product.slug}</a>
+            <a className="small" href={'/'}>{'$'+ product.price + '-' + product.slug}</a>
           </div>
         )})}
       </div>

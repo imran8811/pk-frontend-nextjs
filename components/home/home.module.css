@@ -103,8 +103,19 @@
   font-size: 25px;
   line-height: 35px;
 }
-.categoriesSection img {
+/* .categoriesSection img {
   display: block;
   width: 100%;
   height: auto;
+} */
+@media screen and (max-width: 920px){
+  .categoriesSection {
+    flex-flow: column;
+    margin-bottom: 20px;
+  }
+  .categoriesSection .subCatSection {
+    width: 100%;
+    height: 330px;
+    margin: 0 0 50px;
+  } 
 }

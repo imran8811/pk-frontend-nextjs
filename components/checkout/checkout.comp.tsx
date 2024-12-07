@@ -6,7 +6,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
-import { CART_API, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, USER_ADDRESS, WHOLESALE_SHOP } from "../../endpoints";
+import { CART_API, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, USER_ADDRESS } from "../../endpoints";
 import { Button, Modal } from 'antd';
 import styles from './checkout.module.css';
 import cls from 'classnames';

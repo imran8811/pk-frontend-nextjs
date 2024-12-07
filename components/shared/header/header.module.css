@@ -1,14 +1,15 @@
-.headerMenu {
-	display: block;
-}
-.headerMenu ul, .footerMenu ul {
+.headerMenu, .footerMenu ul {
 	list-style: none;
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: bold;
 	margin-top: 10px;
+	text-align: right;
 }
-.headerMenu ul li, .footerMenu ul li {
+.footerMenu ul {
+	text-align: center;
+}
+.headerMenu li, .footerMenu ul li {
 	background: url(/images/separator.png) no-repeat 0 50%;
 	vertical-align: middle;
 	display: inline-block;
@@ -16,13 +17,13 @@
 	margin: 0 0 0 20px;
 	text-transform:capitalize;
 }
-.headerMenu ul li a { 
+.headerMenu li { background: none; }
+.headerMenu li a { 
 	color: #333;
 	font-size: 18px;
 }
-.headerMenu ul li { background: none; }
-.headerMenu ul li:hover a, .footerMenu ul li:hover a { text-decoration:none; }
-.headerMenu ul li:first-child, .footerMenu ul li:first-child {
+.headerMenu li:hover a, .footerMenu ul li:hover a { text-decoration:none; }
+.headerMenu li:first-child, .footerMenu ul li:first-child {
 	background: none;
 	margin: 0;
 	padding: 0;
@@ -50,5 +51,11 @@
 @media screen and (max-width: 786px) {
 	.headerMenu .headerMenuDropdown ul {
 		left: -35px;
+	}
+	.headerMain, .headerMenu {
+		text-align: center;
+	}
+	.footerMenu ul li, .footerMenu ul li:first-child {
+		margin-bottom: 20px;
 	}
 }
