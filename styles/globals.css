@@ -253,10 +253,13 @@ h3 { font-size: 1.4rem;}
   padding: 13px 18px;
 }
 
-.footer {
+.footer-top {
   background: #333;
   border-top: 3px solid #069;
   padding-top: 25px;
+}
+.footer-bottom {
+	background: #f4f4f6;
 }
 .social-links {
 	display: flex;
