@@ -1,4 +1,4 @@
-import { ProductImages } from "./productImages.model"
+import { ProductReviews } from "./product-reviews.model"
 
 export type IProduct = {
   p_id : string,
@@ -22,4 +22,5 @@ export type IProduct = {
   image_other_two: string,
   slug:string
   piece_weight:string
+  reviews: ProductReviews[]
 }

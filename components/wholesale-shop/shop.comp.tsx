@@ -85,7 +85,7 @@ const ShopComp : FC = (props:any) => {
                 })}
               </div>
               {products && products.length === 0 &&
-                <h4 className="text-center text-danger mb-5 mt-5">No Product Found</h4>
+                <h4 className="text-center text-danger mb-5 mt-5">Products coming soon...</h4>
               }
             </div>
           </div>
