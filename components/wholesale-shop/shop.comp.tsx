@@ -78,17 +78,19 @@ const ShopComp : FC = (props:any) => {
             </div> */}
             <div className="products">
               <div className="boxes">
-                {countByDeptCategories && countByDeptCategories.map((category, index) => {
-                  return (
-                    <ul className="product-categories-pills px-5 mb-5" key={index}>
-                      <li>
+                {countByDeptCategories && 
+                  <ul className="product-categories-pills mb-5">
+                  {countByDeptCategories.map((category, index) => {
+                    return (
+                      <li className="mx-2 px-3" key={index}>
                         <Link className="text-capitalize" href={'/men/'+category['category']}>
                         {category['category'].replace("-", " ")+'s'} ({ category['count']})
                         </Link>
                       </li>
-                    </ul>
-                  )
-                })}
+                    )
+                  })}
+                  </ul>
+                }
                 {products && products.map((product, index) => {
                   return (
                     <div className="box mb-5 text-center" key={index}>
