@@ -114,7 +114,7 @@ const ProductDetails : FC = () => {
         return (
           <>
             <div className="mb-5" key={index}>
-              <nav aria-label="breadcrumb" className="mt-4 px-4">
+              <nav aria-label="breadcrumb" className="mt-4 mb-5 px-4">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item"><Link href={'/'}>Shop</Link></li>
                   <li className="breadcrumb-item text-capitalize"><Link href={`/${params.dept}`}>{params.dept}</Link></li>
@@ -122,9 +122,8 @@ const ProductDetails : FC = () => {
                   <li className="breadcrumb-item active" aria-current="page">{product.article_no}</li>
                 </ol>
               </nav>
-              <h1 className="text-center mb-5">{product.slug}</h1>
               <div className="row px-3">
-                <div className="col-md-6">
+                <div className="col-md-6 mb-4">
                   <Carousel>
                     <div>
                       <img src={product.image_front} alt={product.image_front} />
@@ -144,8 +143,7 @@ const ProductDetails : FC = () => {
                   </Carousel>
                 </div>
                 <div className="col-md-6">
-                  <h2>Price: ${product.price}</h2> 
-                  <hr />
+                  <h1 className="mb-3 border-bottom">{product.slug}</h1> 
                   <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
                     <ul>
                       <li className="mb-2">Order Quantity</li>
@@ -237,21 +235,18 @@ const ProductDetails : FC = () => {
                     </div>
                     <div className="order-uploads mb-3">
                       <div>
-                        <small>Upload documents (custom design, measurement chart etc.) to drive and share link below</small>
+                        <small>Upload documents (custom design, measurement chart etc.) to any online storage and share link below</small>
                       </div>
                       <div className="col-12 mb-3">
-                        <textarea 
-                          rows={3} 
-                          className="form-control"
-                          {...register('documentLink')} />
+                        <input type="text" className="form-control" {...register('documentLink')} />
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-6">
+                      <div className="col-4">
                         <button type="submit" className="btn btn-success text-right">Add to cart</button>
                       </div>
-                      <div className="col-6 text-end">
-                        <p>Amount: $ {totalAmount}</p>
+                      <div className="col-8 text-end">
+                        <h2>Total Amount: $ {totalAmount}</h2>
                       </div>
                     </div>
                   </form>
