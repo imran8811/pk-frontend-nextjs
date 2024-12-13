@@ -80,8 +80,8 @@ const ShopComp : FC = (props:any) => {
               <div className="boxes">
                 {countByDeptCategories && countByDeptCategories.map((category, index) => {
                   return (
-                    <ul className="product-categories-pills px-5 mb-5">
-                      <li key={index}>
+                    <ul className="product-categories-pills px-5 mb-5" key={index}>
+                      <li>
                         <Link className="text-capitalize" href={'/men/'+category['category']}>
                         {category['category'].replace("-", " ")+'s'} ({ category['count']})
                         </Link>
