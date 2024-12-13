@@ -164,63 +164,6 @@ h3 { font-size: 1.4rem;}
 .menu-icon {
 	display: none;
 }
-
-@media screen and (max-width: 768px) {
-	.main-menu.desktop { display: none; }
-	.main-menu.mobile { display: block; }
-	.menu-icon {
-		display: block;
-		background-image: url('/images/opener.png');
-		background-repeat: no-repeat;
-		text-indent: 9999px;
-		overflow: hidden;
-		width: 40px;
-		height: 40px;
-		margin-left: 30px;
-	}
-	.main-menu {
-		overflow: visible;
-	}
-  .main-menu ul {
-    position: absolute;
-    right: 0;
-    left: auto;
-    top: 70px;
-    z-index: 999;
-    width: 100%;
-    background: #fff;
-  }
-  .main-menu ul li, .main-menu ul li:first-child {
-    border-bottom: 1px solid #ccc;
-    background: none;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    margin: 0;
-  }
-  .main-menu ul li:first-child {
-		background: #fff;
-    padding: 10px 0;
-  }
-	.loader { left: 35%; }
-	.products .boxes .box {
-		width: 100%;
-		border-top: 1px solid #ccc;
-	}
-}
-
-@media screen and (max-width: 767px) {
-	.main-menu {
-		border-bottom: 1px solid #f8f8f8;
-	}
-	.main-menu ul li, .main-menu ul li:first-child {
-		display: block;
-		background: none;
-		padding: 0;
-		margin: 0 0 10px;
-	}
-}
-
 .swiper-slide-container {
   display: flex;
   justify-content: center;
@@ -464,4 +407,78 @@ h3 { font-size: 1.4rem;}
 	top: 14px;
 	width: 20px;
 	height: 14px;
+}
+.product-categories-pills {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: start;
+}
+.product-categories-pills li {
+	background: #999;
+	padding: 10px;
+	border-radius: 20px;
+}
+.product-categories-pills li a { 
+	color: #fff;
+}
+@media screen and (max-width: 768px) {
+	.main-menu.desktop { display: none; }
+	.main-menu.mobile { display: block; }
+	.menu-icon {
+		display: block;
+		background-image: url('/images/opener.png');
+		background-repeat: no-repeat;
+		text-indent: 9999px;
+		overflow: hidden;
+		width: 40px;
+		height: 40px;
+		margin-left: 30px;
+	}
+	.main-menu {
+		overflow: visible;
+	}
+  .main-menu ul {
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: 70px;
+    z-index: 999;
+    width: 100%;
+    background: #fff;
+  }
+  .main-menu ul li, .main-menu ul li:first-child {
+    border-bottom: 1px solid #ccc;
+    background: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+  }
+  .main-menu ul li:first-child {
+		background: #fff;
+    padding: 10px 0;
+  }
+	.loader { left: 35%; }
+	.products .boxes .box {
+		width: 100%;
+		border-top: 1px solid #ccc;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+	.products .boxes .box {
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.main-menu {
+		border-bottom: 1px solid #f8f8f8;
+	}
+	.main-menu ul li, .main-menu ul li:first-child {
+		display: block;
+		background: none;
+		padding: 0;
+		margin: 0 0 10px;
+	}
 }

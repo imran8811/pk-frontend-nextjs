@@ -14,6 +14,7 @@ export const ADMIN_LOGOUT = `${baseRoute}/admin/logout`;
 export const GET_PRODUCTS_LISTING = `${baseRoute}/product-listing`;
 export const GET_ARTICLE_NO = `${baseRoute}/product/getLatestArticleNo`;
 export const UPDATE_PRODUCT_IMAGE_PATH = `${baseRoute}/product/updateImagePath`;
+export const PRODUCT_COUNT_BY_DEPT_CATEGORY = `${baseRoute}/product/productCountByDeptCategory`;
 
 //internal routes
 export const ORDER_CONFIRMED = '/order-confirmed';

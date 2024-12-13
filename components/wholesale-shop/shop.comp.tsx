@@ -2,16 +2,18 @@
 import { FC, useCallback, useEffect, useState } from "react"
 import cls from 'classnames'
 import styles from './shop.module.css'
-import { basePath, GET_PRODUCTS, PRODUCT_API } from "../../endpoints"
+import { basePath, GET_PRODUCTS, PRODUCT_API, PRODUCT_COUNT_BY_DEPT_CATEGORY } from "../../endpoints"
 import { IProduct } from "../../models"
 import { useForm } from 'react-hook-form'
 import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 import axiosInstance from "../../interceptors/axios.interceptor"
 import Link from "next/link";
 import ProductFiltersComp from "../product-filters.comp";
+import { ICategory } from "../../models/category.model";
 
 const ShopComp : FC = (props:any) => {
   const [products, setProducts] = useState<IProduct[]>();
+  const [countByDeptCategories, setCountByDeptCategories] = useState<ICategory[]>();
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -35,11 +37,18 @@ const ShopComp : FC = (props:any) => {
 
   useEffect(() => {
     getAllProducts();
+    productCountByDeptCategory();
   }, [searchParams])
 
   const getAllProducts = () => {
     axiosInstance.get(`${PRODUCT_API}${queryURL}`).then(res => {
       setProducts(res.data)
+    })
+  }
+
+  const productCountByDeptCategory = () => {
+    axiosInstance.post(`${PRODUCT_COUNT_BY_DEPT_CATEGORY}/${params.dept}`, []).then(res => {
+      setCountByDeptCategories(res.data)
     })
   }
 
@@ -69,7 +78,18 @@ const ShopComp : FC = (props:any) => {
             </div> */}
             <div className="products">
               <div className="boxes">
-                { products && products.map((product, index) => {
+                {countByDeptCategories && countByDeptCategories.map((category, index) => {
+                  return (
+                    <ul className="product-categories-pills px-5 mb-5">
+                      <li key={index}>
+                        <Link className="text-capitalize" href={'/men/'+category['category']}>
+                        {category['category'].replace("-", " ")+'s'} ({ category['count']})
+                        </Link>
+                      </li>
+                    </ul>
+                  )
+                })}
+                {products && products.map((product, index) => {
                   return (
                     <div className="box mb-5 text-center" key={index}>
                       <a href={`/${product.dept}/${product.category}/${product.p_id}`} className="d-block" rel="noreferrer">
@@ -82,7 +102,8 @@ const ShopComp : FC = (props:any) => {
                       <a className="small" href={`/${product.dept}/${product.category}/${product.p_id}`}>{'$'+ product.price + '-' + product.slug}</a>
                     </div>
                   )
-                })}
+                })
+               }
               </div>
               {products && products.length === 0 &&
                 <h4 className="text-center text-danger mb-5 mt-5">Products coming soon...</h4>
