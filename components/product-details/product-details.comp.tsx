@@ -326,7 +326,7 @@ const ProductDetails : FC = () => {
                   </li>
                   <li className="row mb-2">
                     <span className="col-6">Carton Dimensions:</span>
-                    <span className="col-6">24" x 24" x 40"</span>
+                    <span className="col-6">24&quot; x 24&quot; x 40&quot;</span>
                   </li>
                   <li className="row mb-2">
                     <span className="col-6">Shipping:</span>
