@@ -112,7 +112,7 @@ const ProductDetails : FC = () => {
       {productDetails && productDetails.map((product, index) => {
         setValue('productId', product.p_id);
         return (
-          <div>
+          <>
             <div className="mb-5" key={index}>
               <nav aria-label="breadcrumb" className="mt-4 mb-5 px-4">
                 <ol className="breadcrumb">
@@ -349,7 +349,7 @@ const ProductDetails : FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )})}
       <ToastContainer />
     </div>

@@ -160,7 +160,7 @@ const ManageAccountComp: FC = () => {
               <ul>
                 <li className="row mb-3">
                   <span className="col-6">Business Name: &nbsp;&nbsp;</span>
-                  <span className="col-6">{userAccount.businessName}</span>
+                  <span className="col-6">{userAccount.business_name}</span>
                 </li>
                 <li className="row mb-3">
                   <span className="col-6">Email: &nbsp;&nbsp;</span>
@@ -168,11 +168,11 @@ const ManageAccountComp: FC = () => {
                 </li>
                 <li className="row mb-3">
                   <span className="col-6">Contact No: &nbsp;&nbsp;</span>
-                  <span className="col-6">{userAccount.contactNo}</span>
+                  <span className="col-6">{userAccount.contact_no}</span>
                 </li>
                 <li className="row mb-3">
                   <span className="col-6">Member Since: &nbsp;&nbsp;</span>
-                  <span className="col-6">{dayjs(userAccount.createdAt).format('DD-MMM-YYYY')}</span>
+                  <span className="col-6">{dayjs(userAccount.created_at).format('DD-MMM-YYYY')}</span>
                 </li>
               </ul>
             </div>
