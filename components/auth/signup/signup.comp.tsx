@@ -11,6 +11,7 @@ import { ErrorMessage } from '@hookform/error-message';
 
 const SignupComp: FC = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [userExistError, setUserExistError] = useState(false);
   const [callingCode, setCallingCode] = useState(0);
   const router = useRouter();
   const { register, setError, handleSubmit, getValues, watch, formState: { errors }} = useForm();
@@ -30,6 +31,7 @@ const SignupComp: FC = () => {
 
   const onSubmit = async(data:any) => {
     setConfirmPasswordError(false);
+    setUserExistError(false);
     if(checkConfirmPassword(data)) {
       delete data.confirmPassword
       const res = await axios({
@@ -37,11 +39,15 @@ const SignupComp: FC = () => {
         url: USER_SIGN_UP,
         data: data,
       }).then((res:any) => {
+        console.log(res.data);
         if(res.data.type === 'success'){
           if (typeof localStorage !== 'undefined') {
             localStorage.setItem('userData', JSON.stringify(res.data.data));
           }
-          router.push('/');
+          toast.success(res.data.message);
+          // router.push('/');
+        } else if(res.data.type === 'error' && res.data.errorType === '11440'){
+          setUserExistError(true)
         }
       }).catch((err) => {
         toast.error(err.response.data.message)
@@ -66,19 +72,28 @@ const SignupComp: FC = () => {
     <div className='page-content'>
       <div className='row justify-content-center'>
         <h2 className='text-center mb-4'>Business Registration</h2>
+        { userExistError &&
+          <div className='mb-3 text-center'>
+            <p className='text-danger'>User already Exists</p>
+            <p>Try <Link href={'/login'}>Login</Link> or <Link href={'/forgot-password'}>Forgot Password</Link></p>
+          </div>
+        }
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-5 col-md-6 col-12'>
           <div className='mb-4'>
-            <input type="text"  {...register('business_name', {required: true})} placeholder='Business Name' className='form-control' />
+            <input type="text"  {...register('business_name', {required: 'Required'})} placeholder='Business Name' className='form-control' />
+            <ErrorMessage errors={errors} name="business_name" as={<small className="text-small text-danger"></small>} />
           </div>
           <div className='mb-4'>
-            <select className='select-input' {...register('business_type', {required: true})}>
-              <option>Business Type</option>
+            <select className='select-input' {...register('business_type', {required: 'Required'})}>
+              <option value=''>Business Type</option>
               <option value='retailer'>Retailer</option>
               <option value='wholesaler'>Wholesaler</option>
             </select>
+            <ErrorMessage errors={errors} name="business_type" as={<small className="text-small text-danger"></small>} />
           </div>
           <div className='mb-4'>
-            <input type="text"  {...register('user_email', {required: true})} placeholder='Email' className='form-control' />
+            <input type="text"  {...register('user_email', {required: 'Required', pattern: {value: /^\S+@\S+\.\S+$/, message: 'invalid email'}})} placeholder='Email' className='form-control' />
+            <ErrorMessage errors={errors} name="user_email" as={<small className="text-small text-danger"></small>} />
           </div>
           <div className='mb-4'>
             <input type="password" {...register('user_password', {required: 'Required', minLength: {value:10, message: 'Min 10 characters'}})} placeholder='Password' className='form-control' />
@@ -92,14 +107,15 @@ const SignupComp: FC = () => {
           </div>
           <div className='mb-4'>
             <div className='row'>
-              <div className='col-2'>
+              <div className='col-4'>
                 <select className='select-input' {...register('calling_code', {required: true})}>
                   <option value='1'>+1</option>
                   <option value='92'>+92</option>
                 </select>
+                <ErrorMessage errors={errors} name="contact_no" as={<small className="text-small text-danger"></small>} />
               </div>
-              <div className='col-10'>
-                <input type="number"  {...register('contact_no', {required: true})} placeholder='Contact No' className='form-control' />
+              <div className='col-8'>
+                <input type="number"  {...register('contact_no', {required: 'Required', minLength:{value: 8, message: 'Min length 8 numbers'}})} placeholder='Contact No' className='form-control' />
               </div>
             </div>
           </div>
