@@ -112,7 +112,7 @@ const ProductDetails : FC = () => {
       {productDetails && productDetails.map((product, index) => {
         setValue('productId', product.p_id);
         return (
-          <>
+          <div>
             <div className="mb-5" key={index}>
               <nav aria-label="breadcrumb" className="mt-4 mb-5 px-4">
                 <ol className="breadcrumb">
@@ -143,194 +143,213 @@ const ProductDetails : FC = () => {
                   </Carousel>
                 </div>
                 <div className="col-md-6">
-                  <h1 className="mb-3 border-bottom">{product.slug}</h1> 
-                  <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-                    <ul>
-                      <li className="mb-2">Order Quantity</li>
-                      <li className="row mb-2">
-                        <div className="col-6">
-                          <input 
-                            type="number" 
-                            className="form-control" 
-                            {...register('sizes.0', { required: "Required"})} 
-                            placeholder="Size" />
-                            <ErrorMessage errors={errors} name="sizes.0" as={<small className="text-small text-danger"></small>} />
-                        </div>
-                        <div className="col-6">
-                          <input 
-                            type="number" 
-                            className="col-9 form-control" 
-                            {...register('quantity.0', { required: 'Required'})}
-                            onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}} 
-                            placeholder="Quantity" />
-                            <ErrorMessage errors={errors} name="quantity.0" as={<small className="text-danger"></small>} />
-                        </div>
-                      </li>
-                      <li className="row mb-2">
-                        <div className="col-6">
-                          <input 
-                            type="number" 
-                            className="form-control" 
-                            {...register('sizes.1', { required: 'Required'})}
-                            placeholder="Size" />
-                            <ErrorMessage errors={errors} name="sizes.1" as={<small className="text-danger"></small>} />
-                        </div>
-                        <div className="col-6">
-                          <input 
-                            type="number"
-                            className="col-9 form-control"
-                            {...register('quantity.1', { required: 'Required'})} 
-                            onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}
-                            placeholder="Quantity" />
-                            <ErrorMessage errors={errors} name="quantity.1" as={<small className="text-danger"></small>} />
-                        </div>
-                      </li>
-                      <li className="row mb-2">
-                        <div className="col-6">
-                          <input 
-                            type="number" 
-                            className="form-control" 
-                            {...register('sizes.2', { required: 'Required'})} 
-                            placeholder="Size" />
-                            <ErrorMessage errors={errors} name="sizes.2" as={<small className="text-danger"></small>} />
-                        </div>
-                        <div className="col-6">
-                          <input 
-                            type="number" 
-                            className="col-9 form-control" 
-                            {...register('quantity.2', { required: 'Required'})}
-                            onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}  
-                            placeholder="Quantity" />
-                            <ErrorMessage errors={errors} name="quantity.2" as={<small className="text-danger"></small>} />
-                        </div>
-                      </li>
-                      <li className="row mb-2">
-                        <div className="col-6">
-                          <input 
-                            type="number" 
-                            className="form-control" 
-                            {...register('sizes.3', { required: 'Required'})} 
-                            placeholder="Size" />
-                            <ErrorMessage errors={errors} name="sizes.3" as={<small className="text-danger"></small>} />
-                        </div>
-                        <div className="col-6">
-                          <input 
-                            type="number" 
-                            className="col-9 form-control" 
-                            {...register('quantity.3', { required: 'Required'})}
-                            onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}  
-                            placeholder="Quantity" />
-                            <ErrorMessage errors={errors} name="quantity.3" as={<small className="text-danger"></small>} />
-                        </div>
-                      </li>
-                    </ul>
-                    <div className="order-instructions mb-3">
-                      <textarea 
-                        rows={5} 
-                        placeholder="Instructions" 
-                        {...register('instructions', { required: 'Required'})} 
-                        className="form-control">
-                        </textarea>
-                      <ErrorMessage errors={errors} name="instructions" as={<small className="text-danger"></small>} />
-                    </div>
-                    <div className="order-uploads mb-3">
-                      <div>
-                        <small>Upload documents (custom design, measurement chart etc.) to any online storage and share link below</small>
-                      </div>
-                      <div className="col-12 mb-3">
-                        <input type="text" className="form-control" {...register('documentLink')} />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-4">
-                        <button type="submit" className="btn btn-success text-right">Add to cart</button>
-                      </div>
-                      <div className="col-8 text-end">
-                        <h2>Total Amount: $ {totalAmount}</h2>
-                      </div>
-                    </div>
-                  </form>
+                  <h1 className="mb-3 border-bottom">{product.slug}</h1>
+                  <ul className="mb-5 p-0">
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Article No.</span>
+                      <span className="col-6 col-md-8 col-lg-9">{product.article_no}</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
+                      <span className="col-6 col-md-8 col-lg-9">{product.fabric + " " + product.fabric_weight}</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Colors</span>
+                      <span className="col-6 col-md-8 col-lg-9">{product.color}</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Waist Sizes</span>
+                      <span className="col-6 col-md-8 col-lg-9">{product.sizes}</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Wash Type</span>
+                      <span className="col-6 col-md-8 col-lg-9">{product.wash_type}</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Category</span>
+                      <span className="col-6  col-md-8 col-lg-9 text-capitalize">{product.category}</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Front Fly</span>
+                      <span className="col-6  col-md-8 col-lg-9 text-capitalize">Zip</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Delivery</span>
+                      <span className="col-6 col-md-8 col-lg-9">30 days</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">MOQ</span>
+                      <span className="col-6 col-md-8 col-lg-9">{product.moq} Pieces</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Price</span>
+                      <span className="col-6 col-md-8 col-lg-9">${product.price} Ex-factory</span>
+                    </li>
+                  </ul>
+                  <h4 className="mb-4">Packing / Shipping</h4>
+                  <ul className="px-0 pb-3 mb-3 border-bottom">
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Weight per piece:</span>
+                      <span className="col-6 col-md-4 col-lg-3">{product.piece_weight} grams</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Packing Assortment</span>
+                      <span className="col-6 col-md-4 col-lg-3">Size wise</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3"></span>
+                      <span className="col-6 col-md-4 col-lg-3">10 pieces in Blister</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3"></span>
+                      <span className="col-6 col-md-4 col-lg-3">6 blister in single carton</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Carton Dimensions:</span>
+                      <span className="col-6 col-md-4 col-lg-3">24&quot; x 24&quot; x 40&quot;</span>
+                    </li>
+                    <li className="row mb-2">
+                      <span className="col-6 col-md-4 col-lg-3">Shipping:</span>
+                      <span className="col-6 col-md-4 col-lg-3">By Air</span>
+                    </li>
+                  </ul>
+                  <div className="add-cart-wrap d-flex justify-content-end">
+                    <button 
+                      type="button" 
+                      data-bs-toggle="modal" 
+                      data-bs-target="#staticBackdrop" 
+                      className="btn btn-primary">Order Now</button>
+                  </div>
                 </div>
               </div>
             </div>
             <hr />
-            <div className="row details-wrap p-3">
-              <div className="col-md-6 col-12 ps-3 mb-5">
-                <h2 className="mb-4">Details</h2>
-                <ul>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Article No.</span>
-                    <span className="col-6 col-md-8 col-lg-9">{product.article_no}</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
-                    <span className="col-6 col-md-8 col-lg-9">{product.fabric + " " + product.fabric_weight}</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Colors</span>
-                    <span className="col-6 col-md-8 col-lg-9">{product.color}</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Waist Sizes</span>
-                    <span className="col-6 col-md-8 col-lg-9">{product.sizes}</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Wash Type</span>
-                    <span className="col-6 col-md-8 col-lg-9">{product.wash_type}</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Category</span>
-                    <span className="col-6  col-md-8 col-lg-9 text-capitalize">{product.category}</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Front Fly</span>
-                    <span className="col-6  col-md-8 col-lg-9 text-capitalize">Zip</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Delivery</span>
-                    <span className="col-6 col-md-8 col-lg-9">30 days</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">MOQ</span>
-                    <span className="col-6 col-md-8 col-lg-9">{product.moq} Pieces</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6 col-md-4 col-lg-3">Price</span>
-                    <span className="col-6 col-md-8 col-lg-9">${product.price} Ex-factory</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-md-5 col-12 ps-3">
-                <h2 className="mb-4">Packing / Shipping</h2>
-                <ul>
-                  <li className="row mb-2">
-                    <span className="col-6">Weight per piece:</span>
-                    <span className="col-6">{product.piece_weight} grams</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6">Packing Assortment</span>
-                    <span className="col-6">Size wise</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6"></span>
-                    <span className="col-6">10 pieces in Blister</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6"></span>
-                    <span className="col-6">6 blister in single carton</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6">Carton Dimensions:</span>
-                    <span className="col-6">24&quot; x 24&quot; x 40&quot;</span>
-                  </li>
-                  <li className="row mb-2">
-                    <span className="col-6">Shipping:</span>
-                    <span className="col-6">By Air</span>
-                  </li>
-                </ul>
+            <div 
+              className="modal" 
+              id="staticBackdrop" 
+              data-bs-backdrop="static" 
+              data-bs-keyboard="false" 
+              tab-index="-1" 
+              aria-labelledby="staticBackdropLabel" 
+              aria-hidden="true">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Enter Details</h1>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+                    <div className="modal-body">
+                      <ul className="p-0">
+                        <li className="row mb-2">
+                          <div className="col-6">
+                            <input 
+                              type="number" 
+                              className="form-control" 
+                              {...register('sizes.0', { required: "Required"})} 
+                              placeholder="Size" />
+                              <ErrorMessage errors={errors} name="sizes.0" as={<small className="text-small text-danger"></small>} />
+                          </div>
+                          <div className="col-6">
+                            <input 
+                              type="number" 
+                              className="col-9 form-control" 
+                              {...register('quantity.0', { required: 'Required'})}
+                              onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}} 
+                              placeholder="Quantity" />
+                              <ErrorMessage errors={errors} name="quantity.0" as={<small className="text-danger"></small>} />
+                          </div>
+                        </li>
+                        <li className="row mb-2">
+                          <div className="col-6">
+                            <input 
+                              type="number" 
+                              className="form-control" 
+                              {...register('sizes.1', { required: 'Required'})}
+                              placeholder="Size" />
+                              <ErrorMessage errors={errors} name="sizes.1" as={<small className="text-danger"></small>} />
+                          </div>
+                          <div className="col-6">
+                            <input 
+                              type="number"
+                              className="col-9 form-control"
+                              {...register('quantity.1', { required: 'Required'})} 
+                              onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}
+                              placeholder="Quantity" />
+                              <ErrorMessage errors={errors} name="quantity.1" as={<small className="text-danger"></small>} />
+                          </div>
+                        </li>
+                        <li className="row mb-2">
+                          <div className="col-6">
+                            <input 
+                              type="number" 
+                              className="form-control" 
+                              {...register('sizes.2', { required: 'Required'})} 
+                              placeholder="Size" />
+                              <ErrorMessage errors={errors} name="sizes.2" as={<small className="text-danger"></small>} />
+                          </div>
+                          <div className="col-6">
+                            <input 
+                              type="number" 
+                              className="col-9 form-control" 
+                              {...register('quantity.2', { required: 'Required'})}
+                              onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}  
+                              placeholder="Quantity" />
+                              <ErrorMessage errors={errors} name="quantity.2" as={<small className="text-danger"></small>} />
+                          </div>
+                        </li>
+                        <li className="row mb-2">
+                          <div className="col-6">
+                            <input 
+                              type="number" 
+                              className="form-control" 
+                              {...register('sizes.3', { required: 'Required'})} 
+                              placeholder="Size" />
+                              <ErrorMessage errors={errors} name="sizes.3" as={<small className="text-danger"></small>} />
+                          </div>
+                          <div className="col-6">
+                            <input 
+                              type="number" 
+                              className="col-9 form-control" 
+                              {...register('quantity.3', { required: 'Required'})}
+                              onBlur={() => {calculateTotalAmount(getValues('quantity'), productDetails[0].price)}}  
+                              placeholder="Quantity" />
+                              <ErrorMessage errors={errors} name="quantity.3" as={<small className="text-danger"></small>} />
+                          </div>
+                        </li>
+                      </ul>
+                      <div className="order-instructions mb-3">
+                        <textarea 
+                          rows={5} 
+                          placeholder="Instructions" 
+                          {...register('instructions', { required: 'Required'})} 
+                          className="form-control">
+                        </textarea>
+                        <ErrorMessage errors={errors} name="instructions" as={<small className="text-danger"></small>} />
+                      </div>
+                      <div className="order-uploads mb-3">
+                        <div>
+                          <small>Upload documents (custom design, measurement chart etc.) to any online storage and share link below</small>
+                        </div>
+                        <div className="col-12 mb-3">
+                          <input type="text" className="form-control" {...register('documentLink')} />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12 text-center">
+                          <h4>Total Amount: ${totalAmount}</h4>
+                        </div>
+                      </div>
+                  </div>
+                  <div className="modal-footer">
+                    {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
+                    <button type="submit" className="btn btn-primary">Add to Cart</button>
+                  </div>
+                  </form>
+                </div>
               </div>
             </div>
-          </>
+          </div>
         )})}
       <ToastContainer />
     </div>

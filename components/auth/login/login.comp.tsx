@@ -64,7 +64,8 @@ const LoginComp: FC = () => {
           </div>
           <div className='row mb-3'>
             <div className='col-6'>
-              <Link href={'/forgot-password'} className='btn-link d-block mb-2'>Forgot Password?</Link>
+              <Link href={'/forgot-password'} className='btn-link mb-2'>Forgot Password?</Link>
+              <span className='divider px-2'>|</span> 
               <Link href={'/signup'} className='btn-link'>Sign up</Link>
             </div>
             <div className='col-6 text-end'>

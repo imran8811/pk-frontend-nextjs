@@ -1,13 +1,15 @@
 
 export type IUser = {
-  _id : string,
-  businessName : string,
+  business_name : string,
+  business_type : string,
   email : string,
   password : string,
-  contactNo : string,
+  confirmPassword : string,
+  contact_no : string,
   token : string,
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
+  updated_at: string;
   userId: string;
   userType: string;
+  status: string;
 }
