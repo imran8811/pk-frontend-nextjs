@@ -31,10 +31,8 @@ export default function HeaderTop() {
       if (typeof localStorage !== 'undefined') {
         localStorage.removeItem('userData');
       }
-      router.replace('/');
-    })
-    // if(await UserLogout(userData.user_email)){
-    // }
+      router.refresh();
+    });
   }
 
   const getCartItemsCount = async() => {
