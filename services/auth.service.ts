@@ -29,13 +29,11 @@ export class AuthService {
     }
   }
 
-  public async userLogout(userId:string){
+  public async userLogout(userEmail:string){
     const userLogout = await axiosInstance({
       method: 'post',
       url: USER_LOGOUT,
-      data: {
-        userId
-      }
+      data: { userEmail }
     })
     return userLogout? true: false;
   }

@@ -45,7 +45,9 @@ const SignupComp: FC = () => {
             localStorage.setItem('userData', JSON.stringify(res.data.data));
           }
           toast.success(res.data.message);
-          // router.push('/');
+          setTimeout(() => {
+            router.push('/login');
+          }, 3000)
         } else if(res.data.type === 'error' && res.data.errorType === '11440'){
           setUserExistError(true)
         }
@@ -60,7 +62,6 @@ const SignupComp: FC = () => {
   const checkConfirmPassword = (data) => {
     const password = data.user_password;
     const confirmPassword = data.confirmPassword;
-    console.log(password, confirmPassword);
     if(password === confirmPassword){
       return true;
     } else {
@@ -70,7 +71,7 @@ const SignupComp: FC = () => {
 
   return (
     <div className='page-content'>
-      <div className='row justify-content-center'>
+      <div className='row justify-content-center px-3'>
         <h2 className='text-center mb-4'>Business Registration</h2>
         { userExistError &&
           <div className='mb-3 text-center'>

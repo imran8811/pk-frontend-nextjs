@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axiosInstance from '../../../interceptors/axios.interceptor';
 
 const LoginComp: FC = () => {
+  const [wrongCredentialsError, setWrongCredentialsError] = useState(false);
   const router = useRouter();
   const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
   
@@ -30,6 +31,7 @@ const LoginComp: FC = () => {
   }
 
   const onSubmit = async(data:any) => {
+    setWrongCredentialsError(false);
     await axios({
       method: 'post',
       url: USER_LOGIN,
@@ -47,24 +49,29 @@ const LoginComp: FC = () => {
         nextRoute? router.push(getQueryParamNextRoute): router.push('/')
       }
     }).catch((err) => {
-      toast.error(err.response.data.message);
+      setWrongCredentialsError(true);
     }) ;
   } 
 
   return (
     <div className='page-content'>
-      <div className='row justify-content-center'>
-        <h2 className='mb-3 text-center'>User Login</h2>
+      <div className='row justify-content-center px-3'>
+        <h2 className='mb-4 text-center'>User Login</h2>
+        { wrongCredentialsError &&
+          <div className='mb-3 text-center'>
+            <p className='text-danger'>Invalid Username/Password</p>
+          </div>
+        }
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-5 col-md-6 col-12'>
           <div className='mb-4'>
-            <input type="text"  {...register('email', {required: true})} placeholder='Email' className='form-control' />
+            <input type="text"  {...register('user_email', {required: true})} placeholder='Email' className='form-control' />
           </div>
           <div className='mb-4'>
-            <input type="password"  {...register('password', {required: true})} placeholder='Password' className='form-control' />
+            <input type="password"  {...register('user_password', {required: true})} placeholder='Password' className='form-control' />
           </div>
           <div className='row mb-3'>
             <div className='col-6'>
-              <Link href={'/forgot-password'} className='btn-link mb-2'>Forgot Password?</Link>
+              <Link href={'/forgot-password'} className='btn-link mb-2'>Forgot Password</Link>
               <span className='divider px-2'>|</span> 
               <Link href={'/signup'} className='btn-link'>Sign up</Link>
             </div>

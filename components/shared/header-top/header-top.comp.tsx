@@ -2,27 +2,48 @@
 import Link from 'next/link'
 import Script from 'next/script'
 import styles from './header-top.module.css'
-import { getUserSessionData, UserLogout } from '../../../services/auth.service'
+import { getUserSessionData, checkUserSession, UserLogout } from '../../../services/auth.service'
 import { usePathname, useRouter } from 'next/navigation'
-import { GET_CART_DETAILS, TOKEN_REFRESH } from '../../../endpoints'
+import { GET_CART_DETAILS, TOKEN_REFRESH, USER_LOGOUT } from '../../../endpoints'
 import cls from 'classnames';
 import { useEffect, useState } from 'react';
+import axiosInstance from '../../../interceptors/axios.interceptor';
+import axios from 'axios';
 
 export default function HeaderTop() {
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [hideShopLink, setHideShopLink] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  let userData, userLogout;
+  const userData = getUserSessionData();
+  const userSession = checkUserSession();
 
-  if (typeof localStorage !== 'undefined') {
-    userData = JSON.parse(localStorage.getItem('userData')!);
-    userLogout = async() => {
-      if(await UserLogout(userData.userId)){
+  // useEffect(() => {
+  //   console.log(userSession);
+  // })
+    
+  const userLogout = async() => {
+    const userLogout = await axios({
+      method: 'post',
+      url: USER_LOGOUT,
+      data: { userEmail: userData.user_email}
+    }).then(res => {
+      if (typeof localStorage !== 'undefined') {
         localStorage.removeItem('userData');
-        router.replace('/');
       }
-    }
+      router.replace('/');
+    })
+    // if(await UserLogout(userData.user_email)){
+    // }
+  }
+
+  const getCartItemsCount = async() => {
+    await axiosInstance({
+      method: "get",
+      url: `${GET_CART_DETAILS}?userId=${userData.userId}`
+    }).then(res => {
+      setCartItemsCount(res.data.length)
+    })
   }
 
   return (
@@ -39,25 +60,25 @@ export default function HeaderTop() {
           gtag('config', 'G-TTX4WPE230')`,
         }} />
       <div className={cls(styles.headerTop, 'row mt-2 pb-2 border-bottom')}>
-        <ul className='social-links col-md-5'>
+        <ul className='social-links col-6'>
           <li><a href='https://www.facebook.com/pkapparel1' target='_blank'><i className='bi bi-facebook'></i></a></li>
           <li><a href='https://www.instagram.com/pkapparel_official' target='_blank'><i className='bi bi-instagram'></i></a></li>
           <li><a href='https://www.tiktok.com/@pkapparel' target='_blank'><i className='bi bi-tiktok'></i></a></li>
           <li><a href='https://www.linkedin.com/company/pkapparel' target='_blank'><i className='bi bi-linkedin'></i></a></li>
         </ul>
-        <div className='col-md-7'>
+        <div className='col-6'>
         <div className={cls(styles.headerMenu, 'text-end')}>
           <ul>
             <li><Link href={'/cart'}>Cart ({cartItemsCount})</Link></li>
-            {!userData?.token &&
+            {!userSession &&
               <>
                 <li><Link href={'/login'}>Login</Link></li>
                 <li><Link href={'/signup'}>Signup</Link></li>
               </>
             }
-            {userData?.token &&
+            {userSession &&
               <li className={styles.headerMenuDropdown}> 
-                {userData.businessName} &nbsp;
+                <p className='text-info m-0 pb-2'>{userData.business_name} &nbsp;</p>
                 <ul>
                   <li><Link href={'/manage-account'}>Account</Link></li>
                   <li><Link href={'/orders'}>Orders</Link></li>
