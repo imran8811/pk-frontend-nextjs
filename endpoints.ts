@@ -19,7 +19,7 @@ export const PRODUCT_COUNT_BY_DEPT_CATEGORY = `${baseRoute}/product/productCount
 //internal routes
 export const ORDER_CONFIRMED = '/order-confirmed';
 
-//cart CRUD
+//cart 
 export const ADD_TO_CART = `${baseRoute}/cart/saveItem`;
 export const GET_CART_DETAILS = `${baseRoute}/cart/getAll`;
 export const GET_CART_ITEM_DETAILS = `${baseRoute}/cart/get`;
@@ -35,6 +35,7 @@ export const USER_LOGIN = `${baseRoute}/auth/login`;
 export const USER_SIGN_UP = `${baseRoute}/auth/signup`;
 export const USER_LOGOUT = `${baseRoute}/auth/logout`;
 export const TOKEN_REFRESH = `${baseRoute}/auth/refresh-token`;
+export const FORGOT_PASSWORD = `${baseRoute}/auth/forgot-password`;
 
 
 //user
