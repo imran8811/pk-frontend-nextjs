@@ -53,7 +53,7 @@ const ForgotPasswordComp: FC = () => {
         <h2 className='mb-4 text-center'>Forgot Password</h2>
         { wrongCredentialsError &&
           <div className='mb-3 text-center'>
-            <p className='text-danger'>User doesn't Exist!</p>
+            <p className='text-danger'>User doesn&apos;t Exist!</p>
           </div>
         }
         { passResetLinkSent &&
