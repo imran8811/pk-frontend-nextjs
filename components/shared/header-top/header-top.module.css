@@ -52,4 +52,7 @@
 	.headerMenu .headerMenuDropdown ul {
 		left: -35px;
 	}
+	.headerMenu ul li {
+		margin: 0;
+	}
 }

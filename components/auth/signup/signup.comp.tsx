@@ -106,7 +106,7 @@ const SignupComp: FC = () => {
               <span className='text-small text-danger'>Confirm password mismatch</span>
             }
           </div>
-          <div className='mb-4'>
+          <div className='mb-4 pb-4 border-bottom'>
             <div className='row'>
               <div className='col-4'>
                 <select className='select-input' {...register('calling_code', {required: true})}>

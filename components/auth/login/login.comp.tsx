@@ -72,13 +72,13 @@ const LoginComp: FC = () => {
             <input type="password"  {...register('user_password', {required: true})} placeholder='Password' className='form-control' />
           </div>
           <div className='row mb-3'>
-            <div className='col-6'>
+            <div className='col-8'>
               <Link href={'/forgot-password'} className='btn-link mb-2'>Forgot Password</Link>
               <span className='divider px-2'>|</span> 
               <Link href={'/signup'} className='btn-link'>Sign up</Link>
             </div>
-            <div className='col-6 text-end'>
-              <button type="submit" className='btn btn-primary col-4'>Login</button>
+            <div className='col-4 text-end'>
+              <button type="submit" className='btn btn-primary'>Login</button>
             </div>
           </div>
         </form>
