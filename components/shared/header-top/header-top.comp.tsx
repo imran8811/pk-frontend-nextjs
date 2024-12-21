@@ -58,13 +58,13 @@ export default function HeaderTop() {
           gtag('config', 'G-TTX4WPE230')`,
         }} />
       <div className={cls(styles.headerTop, 'row mt-2 pb-2 border-bottom')}>
-        <ul className='social-links col-6'>
+        <ul className='social-links col-5'>
           <li><a href='https://www.facebook.com/pkapparel1' target='_blank'><i className='bi bi-facebook'></i></a></li>
           <li><a href='https://www.instagram.com/pkapparel_official' target='_blank'><i className='bi bi-instagram'></i></a></li>
           <li><a href='https://www.tiktok.com/@pkapparel' target='_blank'><i className='bi bi-tiktok'></i></a></li>
           <li><a href='https://www.linkedin.com/company/pkapparel' target='_blank'><i className='bi bi-linkedin'></i></a></li>
         </ul>
-        <div className='col-6'>
+        <div className='col-7'>
         <div className={cls(styles.headerMenu, 'text-end')}>
           <ul>
             <li><Link href={'/cart'}>Cart ({cartItemsCount})</Link></li>

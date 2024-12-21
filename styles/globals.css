@@ -72,6 +72,7 @@ a:hover {
 	margin-top: 50px;
 	margin-bottom: 50px;
 	flex-grow: 1 !important;
+	min-height: 421px;
 }
 .inner-manufacture .product-category {
   display: block;
