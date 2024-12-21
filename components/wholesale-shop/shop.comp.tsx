@@ -10,6 +10,7 @@ import axiosInstance from "../../interceptors/axios.interceptor"
 import Link from "next/link";
 import ProductFiltersComp from "../product-filters.comp";
 import { ICategory } from "../../models/category.model";
+import axios from "axios";
 
 const ShopComp : FC = (props:any) => {
   const [products, setProducts] = useState<IProduct[]>();

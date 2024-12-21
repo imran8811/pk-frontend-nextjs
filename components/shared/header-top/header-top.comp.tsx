@@ -2,9 +2,9 @@
 import Link from 'next/link'
 import Script from 'next/script'
 import styles from './header-top.module.css'
-import { getUserSessionData, checkUserSession, UserLogout } from '../../../services/auth.service'
+import { getUserSessionData, checkUserSession } from '../../../services/auth.service'
 import { usePathname, useRouter } from 'next/navigation'
-import { GET_CART_DETAILS, TOKEN_REFRESH, USER_LOGOUT } from '../../../endpoints'
+import { GET_CART_DETAILS, USER_LOGOUT } from '../../../endpoints'
 import cls from 'classnames';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../../interceptors/axios.interceptor';
@@ -12,18 +12,17 @@ import axios from 'axios';
 
 export default function HeaderTop() {
   const [cartItemsCount, setCartItemsCount] = useState(0);
-  const [hideShopLink, setHideShopLink] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const userData = getUserSessionData();
   const userSession = checkUserSession();
 
-  // useEffect(() => {
-  //   console.log(userSession);
-  // })
+  useEffect(() => {
+    getCartItemsCount();
+  }, [])
     
   const userLogout = async() => {
-    const userLogout = await axios({
+    await axios({
       method: 'post',
       url: USER_LOGOUT,
       data: { userEmail: userData.user_email}
@@ -38,9 +37,9 @@ export default function HeaderTop() {
   const getCartItemsCount = async() => {
     await axiosInstance({
       method: "get",
-      url: `${GET_CART_DETAILS}?userId=${userData.userId}`
+      url: `${GET_CART_DETAILS}?user_id=${userData.user_id}`
     }).then(res => {
-      setCartItemsCount(res.data.length)
+      setCartItemsCount(res.data)
     })
   }
 
@@ -65,24 +64,24 @@ export default function HeaderTop() {
           <li><a href='https://www.linkedin.com/company/pkapparel' target='_blank'><i className='bi bi-linkedin'></i></a></li>
         </ul>
         <div className='col-7'>
-        <div className={cls(styles.headerMenu, 'text-end')}>
-          <ul>
-            <li><Link href={'/cart'}>Cart ({cartItemsCount})</Link></li>
-            {!userSession &&
-              <>
-                <li><Link href={'/login'}>Login</Link></li>
-                <li><Link href={'/signup'}>Signup</Link></li>
-              </>
-            }
-            {userSession &&
-              <li className={styles.headerMenuDropdown}> 
-                <p className='text-info m-0 pb-2'>{userData.business_name} &nbsp;</p>
-                <ul>
-                  <li><Link href={'/manage-account'}>Account</Link></li>
-                  <li><Link href={'/orders'}>Orders</Link></li>
-                  <li><Link href={'#'} onClick={() => {userLogout()}}>Logout</Link></li>
-                </ul>
-              </li>
+          <div className={cls(styles.headerMenu, 'text-end')}>
+            <ul>
+              <li><Link href={'/cart'}>Cart ({cartItemsCount})</Link></li>
+              {!userSession &&
+                <>
+                  <li><Link href={'/login'}>Login</Link></li>
+                  <li><Link href={'/signup'}>Signup</Link></li>
+                </>
+              }
+              {userSession &&
+                <li className={styles.headerMenuDropdown}> 
+                  <div className='text-info m-0 pb-2'>{userData.business_name} </div>
+                  <ul>
+                    <li><Link href={'/manage-account'}>Account</Link></li>
+                    <li><Link href={'/orders'}>Orders</Link></li>
+                    <li><Link href={'#'} onClick={() => {userLogout()}}>Logout</Link></li>
+                  </ul>
+                </li>
               }
             </ul>
           </div>

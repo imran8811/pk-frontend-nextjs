@@ -57,6 +57,7 @@ const ResetPasswordComp: FC = () => {
       }).then((res:any) => {
         if(res.data.type === 'success'){
           setPasswordResetConfirmation(true);
+          localStorage.removeItem('user_email');
         }
       }).catch((err) => {
         console.log(err);
