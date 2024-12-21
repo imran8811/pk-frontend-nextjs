@@ -65,11 +65,11 @@ const LoginComp: FC = () => {
         }
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className='col-lg-5 col-md-6 col-12'>
           <div className='mb-4'>
-            <input type="text"  {...register('user_email', {required: true, pattern: {value: /^\S+@\S+\.\S+$/, message: 'invalid email'}})} placeholder='Email' className='form-control' />
+            <input type="text"  {...register('user_email', {required: "required", pattern: {value: /^\S+@\S+\.\S+$/, message: 'invalid email'}})} placeholder='Email' className='form-control' />
             <ErrorMessage errors={errors} name="user_email" as={<small className="text-small text-danger"></small>} />
           </div>
           <div className='mb-4'>
-            <input type="password"  {...register('user_password', {required: true})} placeholder='Password' className='form-control' />
+            <input type="password"  {...register('user_password', {required: 'required'})} placeholder='Password' className='form-control' />
           </div>
           <div className='row mb-3'>
             <div className='col-8'>
