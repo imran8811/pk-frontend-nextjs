@@ -4,7 +4,7 @@ import Script from 'next/script'
 import styles from './header-top.module.css'
 import { getUserSessionData, checkUserSession } from '../../../services/auth.service'
 import { usePathname, useRouter } from 'next/navigation'
-import { GET_CART_DETAILS, USER_LOGOUT } from '../../../endpoints'
+import { GET_CART_COUNT, GET_CART_DETAILS, USER_LOGOUT } from '../../../endpoints'
 import cls from 'classnames';
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../../interceptors/axios.interceptor';
@@ -18,7 +18,9 @@ export default function HeaderTop() {
   const userSession = checkUserSession();
 
   useEffect(() => {
-    getCartItemsCount();
+    if(userSession){
+      getCartItemsCount();
+    }
   }, [])
     
   const userLogout = async() => {
@@ -29,6 +31,7 @@ export default function HeaderTop() {
     }).then(res => {
       if (typeof localStorage !== 'undefined') {
         localStorage.removeItem('userData');
+        setCartItemsCount(0);
       }
       router.refresh();
     });
@@ -37,9 +40,9 @@ export default function HeaderTop() {
   const getCartItemsCount = async() => {
     await axiosInstance({
       method: "get",
-      url: `${GET_CART_DETAILS}?user_id=${userData.user_id}`
+      url: `${GET_CART_COUNT}?user_id=${userData.user_id}`
     }).then(res => {
-      setCartItemsCount(res.data)
+      setCartItemsCount(res.data);
     })
   }
 
@@ -75,7 +78,7 @@ export default function HeaderTop() {
               }
               {userSession &&
                 <li className={styles.headerMenuDropdown}> 
-                  <div className='text-info m-0 pb-2'>{userData.business_name} </div>
+                  <div className='text-info m-0'>{userData.business_name} </div>
                   <ul>
                     <li><Link href={'/manage-account'}>Account</Link></li>
                     <li><Link href={'/orders'}>Orders</Link></li>

@@ -6,7 +6,7 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify";
-import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
+// import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 
 import axiosInstance from "../../interceptors/axios.interceptor";
 import { GET_ORDERS } from "../../endpoints";
@@ -67,7 +67,7 @@ const OrdersComp: FC = () => {
       <h1 className="text-center">Orders</h1>
       <div className="row">
         <div className="product-tabs">
-        <Tabs>
+        {/* <Tabs>
           <TabList>
             <Tab>Payment Pending ({pendingPaymentOrders.length})</Tab>
             <Tab>In Process ({inProcessOrders.length})</Tab>
@@ -218,7 +218,7 @@ const OrdersComp: FC = () => {
               <h3 className="text-danger text-center p-5">No Cancelled Order(s) Found</h3>
             }
           </TabPanel>
-        </Tabs>
+        </Tabs> */}
         </div>
       </div>
       <ToastContainer />

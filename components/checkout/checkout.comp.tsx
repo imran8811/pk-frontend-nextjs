@@ -2,18 +2,17 @@ import { FC, useEffect } from "react";
 import useState from 'react-usestateref'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
 import { CART_API, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, USER_ADDRESS } from "../../endpoints";
-import { Button, Modal } from 'antd';
 import styles from './checkout.module.css';
 import cls from 'classnames';
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { checkUserSession, guestUserExist } from "../../services/auth.service";
+import { checkUserSession, guestUserExist, getUserSessionData } from "../../services/auth.service";
 import { IUserAddress } from "../../models";
 import { ALLOWED_COUNTRIES, ORDER_STATUS } from "../../constants";
 import { ErrorMessage } from "@hookform/error-message";
@@ -28,32 +27,22 @@ const CheckoutComp: FC = () => {
   const [isCreateAddressModalOpen, setIsCreateAddressModalOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
   const { register, handleSubmit, getValues, setValue, reset, formState: { errors }} = useForm({ criteriaMode: 'all'});
-  let userData;
-  if (typeof localStorage !== 'undefined') {
-    userData = JSON.parse(localStorage.getItem('userData')!);
-  }
+
+  const pathname = usePathname();
+  const params = useParams();
+  const path = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const userData = getUserSessionData();
+  const userSession = checkUserSession();
 
   useEffect(() => {
-    if(searchParams.get('guestUserId')){
-      shiftCardItems();
-    }
-    console.log(searchParams.get('guestUserId'));
-    console.log(guestUserExist())
-    console.log(checkUserSession())
-    if(guestUserExist()) {
-      router.push(`/login?next=wholesale-shop/checkout?guestUserId=${userData.userId}`);
-      return;
-    }
     if(!checkUserSession()){
       router.push('/login?next=wholesale-shop/checkout')
     } else {
       getCartDetails();
-      getUserAddresses();
+      // getUserAddresses();
     }
   }, [])
 
@@ -129,7 +118,7 @@ const CheckoutComp: FC = () => {
   const deleteCartItem = async() => {
     await axiosInstance({
       method: 'delete',
-      url: `${CART_API}/${cartDetails[0]?.productId}`
+      url: `${CART_API}/${cartDetails[0]?.p_id}`
     }).then(res => {
       console.log(res);
       setIsDeleteCartItemModalOpen(false);
@@ -170,7 +159,7 @@ const CheckoutComp: FC = () => {
   const getCartDetails = async () => {
     const res = await axiosInstance({
       method: "get",
-      url: `${GET_CART_DETAILS}?userId=${userData.userId}`
+      url: `${GET_CART_DETAILS}?user_id=${userData.user_id}`
     }).then(res => {
       setCartDetails(res.data);
       calculateAmountQuantity();
@@ -207,18 +196,18 @@ const CheckoutComp: FC = () => {
                     return (
                       <tr key={index}>
                         <td>{index+1}</td>
-                        <td>{cart.productDetails.slug}</td>
+                        <td>{cart.slug}</td>
                         <td>
-                          <span>{cart.sizes.map(size => size.concat('-'))}</span><br></br>
+                          <span>{cart.cart_sizes}</span><br></br>
                         </td>
                         <td>
-                          <span>{cart.quantity.map(qty => qty.concat('-'))}</span>
+                          <span>{cart.quantity}</span>
                         </td>
                         <td>${parseInt(cart.amount).toFixed(2)}</td>
                         <td>{cart.instructions}</td>
                         <td>
                           <div className="row">
-                            <button type="button" className="btn col-6" onClick={() => {router.push(`/cart/edit/${cart.productId}`)}}>
+                            <button type="button" className="btn col-6" onClick={() => {router.push(`/cart/edit/${cart.cart_id}`)}}>
                               <FontAwesomeIcon icon={faEdit} className="fas fa-edit" />
                             </button>
                             <button type="button" className="btn col-6" onClick={deleteCartItemConfirmation}>
@@ -285,7 +274,7 @@ const CheckoutComp: FC = () => {
       <div className="col-12 text-end mb-3">
         <button type="button" className="btn btn-success" onClick={() => {openConfirmOderPopup()}}>Confirm Order</button>
       </div>
-      <Modal title="Delete Cart Item" open={isDeleteCartItemModalOpen} onOk={deleteCartItem} onCancel={handleCancel}>
+      {/* <Modal title="Delete Cart Item" open={isDeleteCartItemModalOpen} onOk={deleteCartItem} onCancel={handleCancel}>
         <p>Want to delete cart item?</p>
       </Modal>
       <Modal open={confirmOrderModalOpen} onOk={confirmOrder} onCancel={handleCancel}>
@@ -336,7 +325,7 @@ const CheckoutComp: FC = () => {
             </div>
           </form>
         </div>
-      </Modal>
+      </Modal> */}
       <ToastContainer />
     </>
   )

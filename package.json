@@ -20,7 +20,6 @@
     "@mui/material": "^6.2.1",
     "@reduxjs/toolkit": "^2.2.5",
     "@vercel/blob": "^0.22.1",
-    "antd": "^5.16.1",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
@@ -33,7 +32,6 @@
     "react-hook-form": "^7.51.0",
     "react-redux": "^9.1.2",
     "react-responsive-carousel": "^3.2.23",
-    "react-tabs": "^6.0.2",
     "react-toastify": "^10.0.4",
     "react-usestateref": "^1.0.8",
     "swiper": "^11.1.15"

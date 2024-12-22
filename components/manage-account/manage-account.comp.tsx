@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import dayjs from 'dayjs';
-import { Modal } from "antd";
+// import { Modal } from "antd";
 import { ErrorMessage } from "@hookform/error-message";
 
 import axiosInstance from "../../interceptors/axios.interceptor";
@@ -207,7 +207,7 @@ const ManageAccountComp: FC = () => {
           </div>
         </>
       }
-      <Modal open={isCreateAddressModalOpen} footer={null} onCancel={handleCancel}>
+      {/* <Modal open={isCreateAddressModalOpen} footer={null} onCancel={handleCancel}>
         <div className='row justify-content-center'>
           <h2 className='text-center mb-3'>Enter Address Details</h2>
           <form onSubmit={handleSubmit(createNewUserAddress)} autoComplete="off" className='col-12'>
@@ -299,7 +299,7 @@ const ManageAccountComp: FC = () => {
             </div>
           </form>
         </div>
-      </Modal>
+      </Modal> */}
       <ToastContainer />
     </div>
   )

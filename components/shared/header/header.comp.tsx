@@ -1,4 +1,3 @@
-"use client";
 import Link from 'next/link'
 import styles from '../header/header.module.css'
 import cls from 'classnames';

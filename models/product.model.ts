@@ -2,7 +2,7 @@ import { ProductReviews } from "./product-reviews.model"
 
 export type IProduct = {
   p_id : string,
-  sizes : string,
+  p_sizes : string,
   color : string,
   fitting : string,
   fabric: string,

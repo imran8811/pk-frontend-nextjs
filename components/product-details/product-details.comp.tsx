@@ -21,13 +21,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
 
 const ProductDetails : FC = () => {
   type FormInputs = {
     p_id:string,
-    sizes: string[],
+    cart_sizes: string[],
     quantity: string[],
+    price: number,
     instructions: string,
     document_link: string
   }
@@ -45,13 +45,13 @@ const ProductDetails : FC = () => {
     },
   }));
   
-  
   const params = useParams();
   const path = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
   const userData = getUserSessionData();
   const userSession = checkUserSession();
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -109,6 +109,7 @@ const ProductDetails : FC = () => {
     <div className="mb-5 page-content" key={1}>
       {productDetails && productDetails.map((product, index) => {
         setValue('p_id', product.p_id);
+        setValue('price', product.price);
         return (
           <div key={2}>
             <div className="mb-5" key={index}>
@@ -157,7 +158,7 @@ const ProductDetails : FC = () => {
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Waist Sizes</span>
-                      <span className="col-6 col-md-8 col-lg-9">{product.sizes}</span>
+                      <span className="col-6 col-md-8 col-lg-9">{product.p_sizes}</span>
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Wash Type</span>
@@ -244,9 +245,9 @@ const ProductDetails : FC = () => {
                           <input 
                             type="number" 
                             className="form-control" 
-                            {...register('sizes.0', { required: "Required"})} 
+                            {...register('cart_sizes.0', { required: "Required"})} 
                             placeholder="Size" />
-                            <ErrorMessage errors={errors} name="sizes.0" as={<small className="text-small text-danger"></small>} />
+                            <ErrorMessage errors={errors} name="cart_sizes.0" as={<small className="text-small text-danger"></small>} />
                         </div>
                         <div className="col-6">
                           <input 
@@ -263,9 +264,9 @@ const ProductDetails : FC = () => {
                           <input 
                             type="number" 
                             className="form-control" 
-                            {...register('sizes.1', { required: 'Required'})}
+                            {...register('cart_sizes.1', { required: 'Required'})}
                             placeholder="Size" />
-                            <ErrorMessage errors={errors} name="sizes.1" as={<small className="text-danger"></small>} />
+                            <ErrorMessage errors={errors} name="cart_sizes.1" as={<small className="text-danger"></small>} />
                         </div>
                         <div className="col-6">
                           <input 
@@ -282,9 +283,9 @@ const ProductDetails : FC = () => {
                           <input 
                             type="number" 
                             className="form-control" 
-                            {...register('sizes.2', { required: 'Required'})} 
+                            {...register('cart_sizes.2', { required: 'Required'})} 
                             placeholder="Size" />
-                            <ErrorMessage errors={errors} name="sizes.2" as={<small className="text-danger"></small>} />
+                            <ErrorMessage errors={errors} name="cart_sizes.2" as={<small className="text-danger"></small>} />
                         </div>
                         <div className="col-6">
                           <input 
@@ -301,9 +302,9 @@ const ProductDetails : FC = () => {
                           <input 
                             type="number" 
                             className="form-control" 
-                            {...register('sizes.3', { required: 'Required'})} 
+                            {...register('cart_sizes.3', { required: 'Required'})} 
                             placeholder="Size" />
-                            <ErrorMessage errors={errors} name="sizes.3" as={<small className="text-danger"></small>} />
+                            <ErrorMessage errors={errors} name="cart_sizes.3" as={<small className="text-danger"></small>} />
                         </div>
                         <div className="col-6">
                           <input 
