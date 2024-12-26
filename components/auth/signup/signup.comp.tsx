@@ -113,7 +113,7 @@ const SignupComp: FC = () => {
                 <select className='select-input' {...register('calling_code', {required: true})}>
                   {COUNTRY_CODES.map((code, index) => {
                     return (
-                      <option value={code}>{code}</option>
+                      <option value={code} key={index}>{code}</option>
                     )
                   })}
                 </select>
