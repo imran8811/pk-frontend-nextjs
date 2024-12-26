@@ -1,6 +1,14 @@
-.heightFull {
-    height: 80%;
-}
-.addressList {
+.addressCard {
+    border: 1px solid #ccc;
+    border-radius: 10px;
     cursor: pointer;
+}
+.addressCard:hover {
+    box-shadow: rgba(41, 42, 42, 0.3) 0px 4px 12px;
+}
+.addressCardSelected {
+    cursor: pointer;
+	border-radius: 10px;
+	border: 5px solid;
+	border-color: cornflowerblue;
 }

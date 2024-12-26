@@ -61,9 +61,6 @@ const ProductDetails : FC = () => {
 
   useEffect(() => {
     getProductDetails();
-    console.log('params', params);
-    console.log('searchparams', searchParams.get('next'));
-    console.log('path', path);
   }, [])
 
   const getProductDetails = async () => {
@@ -79,7 +76,7 @@ const ProductDetails : FC = () => {
     const data = {
       ...formData,
       user_id: userData.user_id,
-      amount: totalAmountRef.current
+      cart_amount: totalAmountRef.current
     }
     calculateTotalAmount(formData.quantity, productDetailsRef.current[0].price);
     const res = await axiosInstance({

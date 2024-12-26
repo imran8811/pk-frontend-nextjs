@@ -40,6 +40,6 @@ export const RESET_PASSWORD   = `${baseRoute}/auth/reset-password`;
 export const LINK_VALIDITY    = `${baseRoute}/auth/link-validity`;
 
 //user
-export const GET_USER_ACCOUNT         = `${baseRoute}/user-account`;
-export const USER_ADDRESS             = `${baseRoute}/user-account/user-address`;
-export const GET_USER_ADDRESS_BY_ID   = `${baseRoute}/user-account/user-address-by-id`;
+export const GET_USER_PROFILE         = `${baseRoute}/profile`;
+export const USER_ADDRESS             = `${baseRoute}/profile/address`;
+export const UPDATE_USER_ADDRESS             = `${baseRoute}/profile/address/update`;

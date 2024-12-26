@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-
+import 'react-toastify/dist/ReactToastify.css';
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
 import { ADD_TO_CART, basePath, CART_API, GET_CART_DETAILS } from "../../endpoints";
@@ -35,12 +35,12 @@ const CartComp: FC = () => {
   const userData      = getUserSessionData();
   const userSession   = checkUserSession();
 
-  const openEditCartDialog = (cart_id, user_id, sizes, quantity, instructions, document_link, amount) => {
+  const openEditCartDialog = (cart_id, user_id, sizes, quantity, instructions, document_link, cart_amount) => {
     setValue('cart_id', cart_id);
     setValue('user_id', user_id);
     setValue('instructions', instructions);
     setValue('document_link', document_link);
-    setValue('cart_amount', amount);
+    setValue('cart_amount', cart_amount);
     sizes = sizes.split(',')
     quantity = quantity.split(',')
     for(let i=0; i< sizes.length; i++){
@@ -78,12 +78,6 @@ const CartComp: FC = () => {
   };
 
   const onSubmit = async(formData:any) => {
-    // const data = {
-    //   ...formData,
-    //   // user_id: userData.user_id,
-    //   // amount: totalAmountRef.current
-    // }
-    calculateTotalAmount(formData.quantity, formData.price);
     await axiosInstance({
       method: "post",
       url: `${CART_API}/${formData.cart_id}`,
@@ -101,7 +95,6 @@ const CartComp: FC = () => {
 
   const calculateTotalAmount = (quantity:string[], price) => {
     const totalQuantity = quantity.reduce((a, b) => Number(a)+Number(b), 0);
-    // setTotalAmount(Number((totalQuantity * Number(price)).toFixed(2)));
     let totalAmount = (Number((totalQuantity * Number(price)).toFixed(2)));
     setValue('cart_amount', totalAmount);
   }
@@ -142,12 +135,12 @@ const CartComp: FC = () => {
                       <td>{cart.slug}</td>
                       <td><span>{cart.cart_sizes}</span></td>
                       <td><span>{cart.quantity}</span></td>
-                      <td>${parseInt(cart.amount).toFixed(2)}</td>
+                      <td>${parseInt(cart.cart_amount).toFixed(2)}</td>
                       <td>
                         <div className="row">
                           <button type="button" className="btn col-6" 
                             onClick={() => 
-                              openEditCartDialog(cart.cart_id, cart.user_id, cart.cart_sizes, cart.quantity, cart.instructions, cart.document_link, cart.amount)}>
+                              openEditCartDialog(cart.cart_id, cart.user_id, cart.cart_sizes, cart.quantity, cart.instructions, cart.document_link, cart.cart_amount)}>
                             <FontAwesomeIcon icon={faEdit} className="fas fa-edit" />
                           </button>
                           <button type="button" className="btn col-6" onClick={openDeleteCartDialog}>

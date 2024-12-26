@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 import { ErrorMessage } from "@hookform/error-message";
 
 import axiosInstance from "../../interceptors/axios.interceptor";
-import { USER_ADDRESS, GET_USER_ACCOUNT, GET_USER_ADDRESS_BY_ID } from "../../endpoints";
+import { USER_ADDRESS, GET_USER_PROFILE } from "../../endpoints";
 import { checkUserSession } from "../../services/auth.service";
 import { IUser, IUserAddress } from "../../models";
 import { ALLOWED_COUNTRIES } from "../../constants";
@@ -21,7 +21,7 @@ const ManageAccountComp: FC = () => {
   const [isCreateAddressModalOpen, setIsCreateAddressModalOpen] = useState(false);
   const [isEditAddressModalOpen, setIsEditAddressModalOpen] = useState(false);
   const [isDeleteAddressModalOpen, setIsDeleteAddressModalOpen] = useState(false);
-  const [addressId, setAddressId, addressIdRef] = useState('');
+  const [addressId, setAddressId, addressIdRef] = useState(0);
 
   const router = useRouter();
   const { register, handleSubmit, getValues, setValue, reset, formState: { errors }} = useForm({ criteriaMode: 'all'});
@@ -43,7 +43,7 @@ const ManageAccountComp: FC = () => {
     setIsCreateAddressModalOpen(true);
   };
 
-  const deleteAddressModalOpen = (addressId:string) => {
+  const deleteAddressModalOpen = (addressId:number) => {
     setIsDeleteAddressModalOpen(true);
     setAddressId(addressId);
   };
@@ -99,7 +99,7 @@ const ManageAccountComp: FC = () => {
     const userId = userData?.userId;
     await axiosInstance({
       method: 'delete',
-      url: `${GET_USER_ADDRESS_BY_ID}/${userId}/${addressId}`,
+      url: `${USER_ADDRESS}/${userId}/${addressId}`,
     }).then((res:any) => {
       if(res.data.type === 'success'){
         toast.success(res.data.message);
@@ -111,10 +111,10 @@ const ManageAccountComp: FC = () => {
     }) ;
   } 
 
-  const getAddressbyId = async(id:string) => {
+  const getAddressbyId = async(id:number) => {
     await axiosInstance({
       method: 'get',
-      url: `${GET_USER_ADDRESS_BY_ID}/${id}`
+      url: `${USER_ADDRESS}/${id}`
     }).then((res:any) => {
       if(res.data.type === 'success'){
         setValue('country', res.data.data[0].country);
@@ -134,7 +134,7 @@ const ManageAccountComp: FC = () => {
   const getUserAccount = async () => {
     const res = await axiosInstance({
       method: "get",
-      url: `${GET_USER_ACCOUNT}/${userData.userId}`
+      url: `${GET_USER_PROFILE}/${userData.userId}`
     }).then(res => {
       setUserAccount(res.data.data);
     })
@@ -182,13 +182,13 @@ const ManageAccountComp: FC = () => {
                 {userAddresses?.map((address, index) => {
                   return (
                     <div className="col-md-5 p-4 m-3 shodow-rounded mb-3" key={index}>
-                      <h2 className="text-capitalize text-primary mb-3">{address.addressType}</h2>
+                      <h2 className="text-capitalize text-primary mb-3">{address.add_type}</h2>
                       <address>
-                        {address.area+', '+address.city+', '+address.country+', '+address.postalCode }
+                        {address.add_area+', '+address.add_city+', '+address.add_country+', '+address.add_postal_code }
                       </address>
                       <ul>
-                        <li><button className="btn btn-link" onClick={() => {getAddressbyId(address._id)}}>Edit</button></li>
-                        <li><button className="btn btn-link" onClick={() => {deleteAddressModalOpen(address._id)}}>Delete</button></li>
+                        <li><button className="btn btn-link" onClick={() => {getAddressbyId(address.add_id)}}>Edit</button></li>
+                        <li><button className="btn btn-link" onClick={() => {deleteAddressModalOpen(address.add_id)}}>Delete</button></li>
                       </ul>
                     </div>
                   )

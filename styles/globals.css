@@ -26,6 +26,10 @@ a {
 a:hover {
 	text-decoration: underline !important;
 }
+table tr td {
+	vertical-align: middle;
+}
+address { line-height: 35px; }
 .main-wrapper {
 	max-width: 1920px;
 	margin: 0 auto;

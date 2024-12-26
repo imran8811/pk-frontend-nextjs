@@ -69,7 +69,7 @@ export default function HeaderTop() {
         <div className='col-7'>
           <div className={cls(styles.headerMenu, 'text-end')}>
             <ul>
-              <li><Link href={'/cart'}>Cart ({cartItemsCount})</Link></li>
+              <li><Link href={'/checkout'}>Checkout ({cartItemsCount})</Link></li>
               {!userSession &&
                 <>
                   <li><Link href={'/login'}>Login</Link></li>
