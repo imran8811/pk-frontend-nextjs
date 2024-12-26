@@ -6,7 +6,7 @@ import { useParams, usePathname, useRouter, useSearchParams } from "next/navigat
 
 import { ICart } from "../../models/cart.model";
 import axiosInstance from "../../interceptors/axios.interceptor";
-import { CART_API, GET_CART_DETAILS, NEW_ORDER, ORDER_CONFIRMED, UPDATE_USER_ADDRESS, USER_ADDRESS } from "../../endpoints";
+import { CART_API, GET_CART_DETAILS, ORDER_API, ORDER_PLACED, UPDATE_USER_ADDRESS, USER_ADDRESS } from "../../endpoints";
 import styles from './checkout.module.css';
 import cls from 'classnames';
 import Link from "next/link";
@@ -244,18 +244,20 @@ const CheckoutComp: FC = () => {
     }
     await axiosInstance({
       method: 'post',
-      url: `${NEW_ORDER}`,
+      url: ORDER_API,
       data: {
-        items: cartDetailsRef.current,
-        userId: userData.user_id,
-        shippingAddressId: selectUserAddressesRef.current,
-        totalAmount,
-        totalQuantity,
-        status: ORDER_STATUS.PAYMENT_PENDING
+        cart_items: cartDetailsRef.current,
+        user_id: userData.user_id,
+        add_id: selectUserAddressesRef.current,
+        total_amount: totalAmount,
+        total_quantity: totalQuantity,
+        order_status: ORDER_STATUS.PAYMENT_PENDING
       }
     }).then(res => {
-      closeConfirmOrderDialog();
-      router.push(`${ORDER_CONFIRMED}`);
+      if(res.data.type ==='success'){
+        closeConfirmOrderDialog();
+        router.push(`${ORDER_PLACED}?order_no=${res.data.order_no}`);
+      }
     }).catch((err) => {
       toast.error(err);
     })

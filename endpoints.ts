@@ -17,7 +17,7 @@ export const UPDATE_PRODUCT_IMAGE_PATH = `${baseRoute}/product/updateImagePath`;
 export const PRODUCT_COUNT_BY_DEPT_CATEGORY = `${baseRoute}/product/productCountByDeptCategory`;
 
 //internal routes
-export const ORDER_CONFIRMED      = '/order-confirmed';
+export const ORDER_PLACED      = '/order-placed';
 
 //cart 
 export const ADD_TO_CART              = `${baseRoute}/cart/addCartItem`;
@@ -28,7 +28,7 @@ export const CART_API                 = `${baseRoute}/cart`;
 
 //order CRUD
 export const GET_ORDERS   = `${baseRoute}/order/getAll`;
-export const NEW_ORDER    = `${baseRoute}/order/new`;
+export const ORDER_API    = `${baseRoute}/order`;
 
 //authentication
 export const USER_LOGIN       = `${baseRoute}/auth/login`;
