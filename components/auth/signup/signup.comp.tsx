@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import { IUser } from '../../../models';
 import { ErrorMessage } from '@hookform/error-message';
+import { COUNTRY_CODES } from '../../../constants';
 
 const SignupComp: FC = () => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
@@ -110,8 +111,11 @@ const SignupComp: FC = () => {
             <div className='row'>
               <div className='col-4'>
                 <select className='select-input' {...register('calling_code', {required: true})}>
-                  <option value='1'>+1</option>
-                  <option value='92'>+92</option>
+                  {COUNTRY_CODES.map((code, index) => {
+                    return (
+                      <option value={code}>{code}</option>
+                    )
+                  })}
                 </select>
                 <ErrorMessage errors={errors} name="contact_no" as={<small className="text-small text-danger"></small>} />
               </div>

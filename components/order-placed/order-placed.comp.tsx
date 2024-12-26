@@ -2,14 +2,22 @@
 import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { checkUserSession } from "../../services/auth.service";
+import { useRouter } from "next/navigation";
 
 const OrderPlacedComp : FC = () => {
   const [orderFound, setOrderFound] = useState<boolean>();
   const searchParam = useSearchParams();
+  const router = useRouter();
   const order_no = searchParam.get('order_no')
+  const userSession = checkUserSession();
   
   useEffect(() => {
-    order_no? setOrderFound(true) : setOrderFound(false);
+    if(userSession){
+      order_no? setOrderFound(true) : setOrderFound(false);
+    } else {
+      router.push('/login');
+    }
   }, [orderFound])
 
   return (
@@ -18,7 +26,7 @@ const OrderPlacedComp : FC = () => {
         <>
           <h1 className="mb-4">New order has been placed and order number is {order_no}</h1>
           <p>An invoice has been generated and email to you as an attachment.</p>
-          <p className="text-danger">Please bank transfer the invoice amount ASAP and confirm your deposit here:  
+          <p className="text-danger">Bank details are mentioned in invoice, bank transfer the invoice amount ASAP and confirm your deposit here:  
             <Link href={'/confirm-deposit'}> Confirm Deposit </Link>
           </p>
           <p>Once deposit has been verified, order processing will be started immediately.</p>
