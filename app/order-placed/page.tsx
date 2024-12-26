@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Header from '../../components/shared/header/header.comp';
 import Footer from '../../components/shared/footer/footer.comp';
 import OrderPlacedComp from '../../components/order-placed/order-placed.comp';
+import { Suspense } from 'react';
 
 const metadata: Metadata = {
   title: "Order Placed - PK Apparel",
@@ -11,10 +12,10 @@ const metadata: Metadata = {
 
 export default function OrderPlaced(){
   return (
-    <>
+    <Suspense>
       <Header></Header>
       <OrderPlacedComp></OrderPlacedComp>
       <Footer></Footer>
-    </>
+    </Suspense>
   )
 }
