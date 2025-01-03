@@ -50,12 +50,12 @@ const CheckoutComp: FC = () => {
   const userData      = getUserSessionData();
   const userSession   = checkUserSession();
   
-  const closeEditCartDialog   = () => {setEditCartDialogOpen(false)};
-  const openDeleteCartDialog  = () => {setDeleteCartDialogOpen(true)};
-  const closeDeleteCartDialog = () => {setDeleteCartDialogOpen(false)};
-  const openConfirmOrderDialog  = () => {setConfirmOrderDialogOpen(true)};
-  const closeConfirmOrderDialog = () => {setConfirmOrderDialogOpen(false)};
-  const openDeleteAddressDialog  = (add_id) => {
+  const closeEditCartDialog       = () => {setEditCartDialogOpen(false)};
+  const openDeleteCartDialog      = () => {setDeleteCartDialogOpen(true)};
+  const closeDeleteCartDialog     = () => {setDeleteCartDialogOpen(false)};
+  const openConfirmOrderDialog    = () => {setConfirmOrderDialogOpen(true)};
+  const closeConfirmOrderDialog   = () => {setConfirmOrderDialogOpen(false)};
+  const openDeleteAddressDialog   = (add_id) => {
     setValue2('add_id', add_id);
     setDeleteAddressDialogOpen(true)
   };
@@ -103,7 +103,7 @@ const CheckoutComp: FC = () => {
     setEditCartDialogOpen(true);
   };
 
-  const editUserAddress = (add_id, add_country, add_state, add_city, add_area, add_postal_code, add_type) => {
+  const editUserAddress = (add_id, add_country, add_state, add_city, add_area, add_postal_code) => {
     setAddressActionType('update');
     setValue2('add_id', Number(add_id));
     setValue2('add_country', add_country);
@@ -111,7 +111,6 @@ const CheckoutComp: FC = () => {
     setValue2('add_city', add_city);
     setValue2('add_area', add_area);
     setValue2('add_postal_code', Number(add_postal_code));
-    setValue2('add_type', add_type);
     openAddAddressDialog(addressActionTypeRef.current);
   };
 
@@ -176,7 +175,8 @@ const CheckoutComp: FC = () => {
         reset2()
       }
     }).catch(err =>{
-      toast.error(err);
+      console.log(err.response.data.message);
+      toast.error('Server Error');
     })
   }
 
@@ -221,7 +221,8 @@ const CheckoutComp: FC = () => {
         reset2();
       }
     }).catch((err) => {
-      toast.error(err.response.data.message);
+      console.log(err.response.data.message);
+      toast.error('Server Error');
     }) ;
   }
 
@@ -259,7 +260,8 @@ const CheckoutComp: FC = () => {
         router.push(`${ORDER_PLACED}?order_no=${res.data.order_no}`);
       }
     }).catch((err) => {
-      toast.error(err);
+      console.log(err);
+      toast.error('Server Error');
     })
   };
 
@@ -488,7 +490,7 @@ const CheckoutComp: FC = () => {
                             <IconButton 
                               aria-label="edit"
                               onClick={
-                                () => editUserAddress(address.add_id, address.add_country, address.add_state, address.add_city, address.add_area, address.add_postal_code, address.add_type)
+                                () => editUserAddress(address.add_id, address.add_country, address.add_state, address.add_city, address.add_area, address.add_postal_code)
                               }
                               title="Edit Address">
                               <EditIcon />
@@ -598,14 +600,6 @@ const CheckoutComp: FC = () => {
               <input type="number"  {...register2('add_postal_code', {required: 'Required'})} placeholder='Postal Code' className='form-control' />
               <ErrorMessage errors={errors2} name="add_postal_code" as={<small className="text-danger"></small>} />
             </div>
-            <div className='mb-3'>
-              <select className="select-input" {...register2('add_type', {required: 'Required'})}>
-                <option>Select address type</option>
-                <option value={'home'}>Home</option>
-                <option value={'work'}>Work</option>
-              </select>
-              <ErrorMessage errors={errors2} name="add_type" as={<small className="text-danger"></small>} />
-            </div>
           </div>
         </DialogContent>
         <DialogActions>
@@ -659,8 +653,8 @@ const CheckoutComp: FC = () => {
           </p>
         </DialogContent>
         <DialogActions className="justify-content-between">
-          <Button variant="contained" color="error" onClick={()=> closeConfirmOrderDialog()}>Don&apos;t Agree</Button>
-          <Button variant="contained" color="success" onClick={()=> confirmOrder()}>Agree</Button>
+          <Button variant="contained" onClick={()=> closeConfirmOrderDialog()}>Don&apos;t Agree</Button>
+          <Button variant="contained" onClick={()=> confirmOrder()}>Agree</Button>
         </DialogActions>
       </Dialog>
       <ToastContainer />

@@ -4,9 +4,9 @@ import cls from 'classnames'
 
 const ContactComp : FC = () => {
   return (
-    <div className="mb-3">
+    <div className="page-content mb-3">
       <strong className={cls(styles.pageTitle)}>Contact Us</strong>
-      <div className={cls(styles.contactWrap, 'row mb-3 pt-5 p-3')}>
+      <div className={cls(styles.contactWrap, 'row mb-3 mx-3 pt-5 p-3')}>
         <div className="col-lg-6">
           <div className="mb-5">
             <h2>Liaison Office</h2>
