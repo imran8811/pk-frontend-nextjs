@@ -78,10 +78,11 @@ export default function HeaderTop() {
               }
               {userSession &&
                 <li className={styles.headerMenuDropdown}> 
-                  <div className='text-info m-0'>{userData.business_name} </div>
+                  <div className='text-info m-0 pb-3'>{userData.business_name} </div>
                   <ul>
-                    <li><Link href={'/manage-account'}>Account</Link></li>
+                    <li><Link href={'/manage-account'}>Profile</Link></li>
                     <li><Link href={'/orders'}>Orders</Link></li>
+                    <li><Link href={'/invoices'}>Invoices</Link></li>
                     <li><Link href={'#'} onClick={() => {userLogout()}}>Logout</Link></li>
                   </ul>
                 </li>

@@ -17,6 +17,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import CustomTabPanel from "../shared/custom-tabs/custom-tabs.comp";
 import React from "react";
+import Link from "next/link";
 
 const OrdersComp: FC = () => {
   const [orders, setOrders, ordersRef] = useState<IOrder[]>([]);
@@ -77,7 +78,7 @@ const OrdersComp: FC = () => {
       <h1 className="text-center">Orders</h1>
       <div className="row">
         <div className="product-tabs">
-        <Tabs value={value} onChange={handleChange} centered>
+        <Tabs value={value} onChange={handleChange}>
           <Tab label={ORDER_STATUS.PAYMENT_PENDING} />
           <Tab label={ORDER_STATUS.IN_PROCESS} />
           <Tab label={ORDER_STATUS.SHIPPED} />
@@ -97,13 +98,14 @@ const OrdersComp: FC = () => {
                           <th className="col">Total Quantity</th>
                           <th className="col">Total Amount</th>
                           <th className="col">Shipping Address</th>
+                          <th className="col">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                       {pendingPaymentOrders.map((order, index) => {
                         return (
                           <tr key={index}>
-                            <td>{index+1}</td>
+                            <td>{order.order_no}</td>
                             <td>
                             {JSON.parse(order.cart_items).map((item, index) => {
                               return(
@@ -116,6 +118,13 @@ const OrdersComp: FC = () => {
                             <td>{order.total_quantity}</td>
                             <td>{order.total_amount}</td>
                             <td>{order.shipping_address}</td>
+                            <td>
+                              <tr className="row">
+                                <td className="col-12 mb-1"><Link href={'payment-deposit'}> Confirm Payment Deposit</Link></td>
+                                <td className="col-12 mb-1"><Link href={'invoices/'+'invoiceID'}> View Invoice</Link></td>
+                                <td className="col-12"><Link href={'order/cancel'} className="text-danger">Cancel</Link></td>
+                              </tr>
+                            </td>
                           </tr>
                         )})}
                       </tbody>

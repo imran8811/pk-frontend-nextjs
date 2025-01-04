@@ -32,11 +32,13 @@
 .headerMenu .headerMenuDropdown ul {
 	background-color: #fff;
 	position: absolute;
-	left: -8px;
-	top: 21px;
-	width: 110px;
+	left: -35px;
+	top: 32px;
+	width: 150px;
 	display: none;
 	z-index: 9999;
+	padding: 10px;
+	border-radius: 5px;
 }
 .headerMenu .headerMenuDropdown ul li {
 	display: block;

@@ -22,7 +22,7 @@ const Footer: FC = () => {
           </div>
           <div className="footer-bottom">
             <Keywords />
-            <p className="text-center pt-5 pb-5 mb-0"><strong>Copyrights&nbsp;&copy;&nbsp;PK Apparel Pvt. Ltd. | All Rights Reserved 2015-2024</strong></p>
+            <p className="text-center pt-5 pb-5 mb-0"><strong>Copyrights&nbsp;&copy;&nbsp;PK Apparel Pvt. Ltd. | All Rights Reserved 2015-2025</strong></p>
           </div>
         </div>
       </footer>

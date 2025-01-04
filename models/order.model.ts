@@ -3,6 +3,7 @@ import { IProduct } from "./product.model";
 
 export interface IOrder {
   order_id: string;
+  order_no: string;
   cart_items: string;
   shipping_address: string[];
   total_amount: string[];
