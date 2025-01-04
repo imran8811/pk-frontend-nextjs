@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 import styles from './home-banner.module.css'
+import Link from "next/link";
 
 const HomeBanner: FC = () => {
   return (
@@ -17,9 +18,14 @@ const HomeBanner: FC = () => {
           delay: 10000,
           disableOnInteraction: false,
         }}>
-        <SwiperSlide><img src="/images/gallery/chino-pant-banner2.jpg" className={styles.imgResponsive} /></SwiperSlide>
-        <SwiperSlide><img src="/images/gallery/jeans-pants-banner.jpg" className={styles.imgResponsive} /></SwiperSlide>
-        {/* <SwiperSlide><img src="/images/gallery/modern-slide1.jpg" className={styles.imgResponsive} /></SwiperSlide> */}
+        <SwiperSlide>
+          <Link href={'/men'}><img src="/images/gallery/chino-pant-banner2.jpg" className={styles.imgResponsive} /></Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link href={'/men'}>
+            <img src="/images/gallery/jeans-pants-banner.jpg" className={styles.imgResponsive} />
+          </Link>
+        </SwiperSlide>
       </Swiper>
     </div>
     
