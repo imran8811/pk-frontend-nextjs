@@ -14,12 +14,12 @@ const HomeBanner: FC = () => {
         slidesPerView={1} 
         loop={true} 
         autoplay={{
-          delay: 5000,
+          delay: 10000,
           disableOnInteraction: false,
         }}>
-        <SwiperSlide><img src="/images/gallery/slider-img1.jpg" className={styles.imgResponsive} /></SwiperSlide>
-        <SwiperSlide><img src="/images/gallery/modern-1-slide1.jpg" className={styles.imgResponsive} /></SwiperSlide>
-        <SwiperSlide><img src="/images/gallery/modern-slide1.jpg" className={styles.imgResponsive} /></SwiperSlide>
+        <SwiperSlide><img src="/images/gallery/chino-pant-banner2.jpg" className={styles.imgResponsive} /></SwiperSlide>
+        <SwiperSlide><img src="/images/gallery/jeans-pants-banner.jpg" className={styles.imgResponsive} /></SwiperSlide>
+        {/* <SwiperSlide><img src="/images/gallery/modern-slide1.jpg" className={styles.imgResponsive} /></SwiperSlide> */}
       </Swiper>
     </div>
     
