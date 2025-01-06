@@ -2,7 +2,7 @@
 import { FC, useCallback, useEffect, useState } from "react"
 import cls from 'classnames'
 import styles from './shop.module.css'
-import { basePath, GET_PRODUCTS, PRODUCT_API, PRODUCT_COUNT_BY_DEPT_CATEGORY } from "../../endpoints"
+import { basePath, GET_PRODUCTS, PRODUCT_API, PRODUCT_COUNT_BY_DEPT_CATEGORY, WHOLESALE_SHOP } from "../../endpoints"
 import { IProduct } from "../../models"
 import { useForm } from 'react-hook-form'
 import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -26,20 +26,16 @@ const ShopComp : FC = (props:any) => {
     queryURL = `/${params.dept}/${params.category}`;
   } else if(params.dept && !params.category) {
     queryURL = `/${params.dept}`;
-  } else if(searchParams.get('dept') && searchParams.get('category')) {
-    queryURL = `/${searchParams.get('dept')}/${searchParams.get('category')}`;
-  } else if(searchParams.get('dept') && !searchParams.get('category')) {
-    queryURL = `/${searchParams.get('dept')}`;
-  } else if(!searchParams.get('dept') && searchParams.get('category')) {
-    queryURL = `/men/${searchParams.get('category')}`;
   } else {
     queryURL = '/getAll';
   }
 
   useEffect(() => {
     getAllProducts();
-    productCountByDeptCategory();
-  }, [searchParams])
+    if(params.dept){
+      productCountByDeptCategory();
+    }
+  }, [params])
 
   const getAllProducts = () => {
     axiosInstance.get(`${PRODUCT_API}${queryURL}`).then(res => {
@@ -60,14 +56,14 @@ const ShopComp : FC = (props:any) => {
           <nav aria-label="breadcrumb" className="mt-4 px-4">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href={'/'}>Shop</Link>
+                <Link href={WHOLESALE_SHOP}>Wholesale Shop</Link>
               </li>
               <li className="breadcrumb-item text-capitalize">
-                <Link href={`/${params.dept}`}>{params.dept}</Link>
+                <Link href={`${WHOLESALE_SHOP}/${params.dept}`}>{params.dept}</Link>
               </li>
               {params.category && 
                 <li className="breadcrumb-item text-capitalize">
-                  <Link href={`/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link>
+                  <Link href={`${WHOLESALE_SHOP}/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link>
                 </li>
               }
             </ol>
@@ -84,7 +80,7 @@ const ShopComp : FC = (props:any) => {
                   {countByDeptCategories.map((category, index) => {
                     return (
                       <li className="mx-2 px-3" key={index}>
-                        <Link className="text-capitalize" href={'/men/'+category['category']}>
+                        <Link className="text-capitalize" href={'/wholesale-shop/men/'+category['category']}>
                         {category['category'].replace("-", " ")+'s'} ({ category['count']})
                         </Link>
                       </li>
@@ -95,7 +91,7 @@ const ShopComp : FC = (props:any) => {
                 {products && products.map((product, index) => {
                   return (
                     <div className="box mb-5 text-center" key={index}>
-                      <a href={`/${product.dept}/${product.category}/${product.p_id}`} className="d-block" rel="noreferrer">
+                      <a href={`${WHOLESALE_SHOP}/${product.dept}/${product.category}/${product.p_id}`} className="d-block" rel="noreferrer">
                         <img
                           src={product.image_front} 
                           alt={product.image_front}

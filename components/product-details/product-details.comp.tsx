@@ -1,7 +1,7 @@
 "use client";
 import { FC, useEffect } from "react"
 import useState from 'react-usestateref'
-import { PRODUCT_API, basePath, ADD_TO_CART, GET_PRODUCT_DETAILS } from "../../endpoints"
+import { PRODUCT_API, basePath, ADD_TO_CART, GET_PRODUCT_DETAILS, WHOLESALE_SHOP } from "../../endpoints"
 import { IProduct } from "../../models"
 import axiosInstance from "../../interceptors/axios.interceptor";
 import { ToastContainer, toast } from 'react-toastify';
@@ -112,9 +112,13 @@ const ProductDetails : FC = () => {
             <div className="mb-5" key={index}>
               <nav aria-label="breadcrumb" className="mb-5 px-4">
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><Link href={'/'}>Shop</Link></li>
-                  <li className="breadcrumb-item text-capitalize"><Link href={`/${params.dept}`}>{params.dept}</Link></li>
-                  <li className="breadcrumb-item text-capitalize"><Link href={`/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link></li>
+                  <li className="breadcrumb-item"><Link href={WHOLESALE_SHOP}>Wholesale Shop</Link></li>
+                  <li className="breadcrumb-item text-capitalize">
+                    <Link href={`${WHOLESALE_SHOP}/${params.dept}`}>{params.dept}</Link>
+                  </li>
+                  <li className="breadcrumb-item text-capitalize">
+                    <Link href={`${WHOLESALE_SHOP}/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link>
+                  </li>
                   <li className="breadcrumb-item active" aria-current="page">{product.article_no}</li>
                 </ol>
               </nav>
@@ -214,7 +218,7 @@ const ProductDetails : FC = () => {
                       <Button variant="contained" onClick={handleClickOpen}>Order Now</Button>
                     }
                     {!userSession &&
-                     <Link href={`/login?next=${params.dept}/${params.category}/${params.id}`} className="btn btn-primary">Order Now </Link>
+                     <Link href={`/login?next=${WHOLESALE_SHOP}/${params.dept}/${params.category}/${params.id}`} className="btn btn-primary">Order Now </Link>
                     }
                   </div>
                 </div>

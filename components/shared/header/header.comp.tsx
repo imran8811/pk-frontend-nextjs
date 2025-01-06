@@ -15,10 +15,10 @@ export default function Header() {
             </Link>
           </div>
           <ul className={cls(styles.headerMenu, 'col-md-8')}>
-            <li><Link href={'/men'}>Men</Link></li>
-            <li><Link href={'/women'}>Women</Link></li>
-            <li><Link href={'/boys'}>Boys</Link></li>
-            <li><Link href={'/girls'}>Girls</Link></li>
+            <li><Link href={'/wholesale-shop/men'}>Men</Link></li>
+            <li><Link href={'/wholesale-shop/women'}>Women</Link></li>
+            <li><Link href={'/wholesale-shop/boys'}>Boys</Link></li>
+            <li><Link href={'/wholesale-shop/girls'}>Girls</Link></li>
           </ul>
         </div>
       </header>

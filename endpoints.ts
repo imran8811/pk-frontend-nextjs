@@ -18,6 +18,7 @@ export const PRODUCT_COUNT_BY_DEPT_CATEGORY = `${baseRoute}/product/productCount
 
 //internal routes
 export const ORDER_PLACED      = '/order-placed';
+export const WHOLESALE_SHOP       = '/wholesale-shop';
 
 //cart 
 export const ADD_TO_CART              = `${baseRoute}/cart/addCartItem`;
@@ -42,4 +43,4 @@ export const LINK_VALIDITY    = `${baseRoute}/auth/link-validity`;
 //user
 export const GET_USER_PROFILE         = `${baseRoute}/profile`;
 export const USER_ADDRESS             = `${baseRoute}/profile/address`;
-export const UPDATE_USER_ADDRESS             = `${baseRoute}/profile/address/update`;
+export const UPDATE_USER_ADDRESS      = `${baseRoute}/profile/address/update`;

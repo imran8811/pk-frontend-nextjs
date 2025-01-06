@@ -19,10 +19,10 @@ const HomeBanner: FC = () => {
           disableOnInteraction: false,
         }}>
         <SwiperSlide>
-          <Link href={'/men'}><img src="/images/gallery/chino-pant-banner2.jpg" className={styles.imgResponsive} /></Link>
+          <Link href={'/wholesale-shop/men'}><img src="/images/gallery/chino-pant-banner2.jpg" className={styles.imgResponsive} /></Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link href={'/men'}>
+          <Link href={'/wholesale-shop/men'}>
             <img src="/images/gallery/jeans-pants-banner.jpg" className={styles.imgResponsive} />
           </Link>
         </SwiperSlide>
