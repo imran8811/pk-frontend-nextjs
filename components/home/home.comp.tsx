@@ -14,13 +14,13 @@ const HomeComponent : FC = () => {
         <div className={styles.subCatSection}>
           <div className={styles.shopNowOverlay}>
             <h3>Men</h3>
-            <Link href={'/men'} className="btn btn-primary">Shop Now</Link>
+            <Link href={'wholesale-shop/men'} className="btn btn-primary">Shop Now</Link>
           </div>
         </div>
         <div className={styles.subCatSection}>
           <div className={styles.shopNowOverlay}>
             <h3>Women</h3>
-            <Link href={'/women'} className="btn btn-primary">Shop Now</Link>
+            <Link href={'wholesale-shop/women'} className="btn btn-primary">Shop Now</Link>
           </div>
         </div>
       </div>
