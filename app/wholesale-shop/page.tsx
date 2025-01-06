@@ -5,9 +5,9 @@ import { Suspense } from 'react';
 import ShopComp from '../../components/wholesale-shop/shop.comp';
 
 export const metadata: Metadata = {
-  title: "Wholesale Shop - Factory Shop for Jeans Products",
-  keywords: "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Wholesale",
-  description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
+  title: "Garments Wholesale Shop - PK Apparel",
+  keywords: "Jeans manufacturers, T Shirts Manufacturers, Hoodie Wholesale",
+  description: "Manufacturer and exporter of garments including denim products, hosiery products for men, women, boys and girls"
 }
 
 const ShopPage = () => {

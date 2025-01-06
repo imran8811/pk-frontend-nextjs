@@ -69,6 +69,7 @@ const ProductDetails : FC = () => {
       url: GET_PRODUCT_DETAILS+"/"+params.id,
     }).then(res => {
       setproductDetails(res.data);
+
     })
   }
 
