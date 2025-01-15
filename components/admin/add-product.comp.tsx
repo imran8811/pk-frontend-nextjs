@@ -21,13 +21,15 @@ const AddProduct: FC = () => {
       dept: "men",
       category: "jeans-pant",
       article_no: "",
-      slug: "",
-      sizes: "",
+      p_sizes: "30-32-34-36-38-40",
       fitting: "slim",
-      fabric: "",
+      fabric_type: "",
+      fabric_stretch: "stretch",
       fabric_weight: "",
+      fabric_content: "98% Cotton 2%Spandex",
+      front_fly: "zipper",
       wash_type: "",
-      moq: "",
+      moq: "300",
       price: "",
       color: "",
       piece_weight: "",
@@ -72,11 +74,14 @@ const AddProduct: FC = () => {
       const data = res.data;
       setValue('dept', data[0].dept);
       setValue('category', data[0].category);
-      setValue('slug', data[0].slug);
-      setValue('sizes', data[0].sizes);
-      setValue('fabric', data[0].fabric);
+      setValue('p_sizes', data[0].p_sizes);
+      setValue('fabric_type', data[0].fabric_type);
+      setValue('fabric_stretch', data[0].fabric_stretch);
       setValue('fabric_weight', data[0].fabric_weight);
+      setValue('fabric_content', data[0].fabric_content);
+      setValue('front_fly', data[0].front_fly);
       setValue('wash_type', data[0].wash_type);
+      setValue('fitting', data[0].fitting);
       setValue('moq', data[0].moq);
       setValue('color', data[0].color);
       setValue('price', data[0].price);
@@ -215,7 +220,6 @@ const AddProduct: FC = () => {
                     <option value='girls'>Girls</option>
                   </select>
                 </div>
-                {/* <input type='hidden' {...register('p_id')} /> */}
                 <div className='col-4 mb-3'>
                   <label htmlFor='category'>Category</label>
                   <select {...register('category', { required: true })} className="select-input">
@@ -225,25 +229,18 @@ const AddProduct: FC = () => {
                     <option value='biker-jeans'>Biker Jeans</option>
                   </select>
                 </div>
-                {/* <div className='col-4'>
-                  <label htmlFor='length'>Product Length</label>
-                  <select {...register('length', { required: true })} className="select-input">
-                    <option value='long'>Long</option>
-                    <option value='short'>Short</option>
-                  </select>
-                </div> */}
                 <div className='col-4 mb-3'>
                   <label htmlFor='article-no'>Article No.</label>
                   <input type="text" id='article-no' {...register('article_no', {required: true, valueAsNumber : false})} className='form-control' />
                 </div>
-                <div className='col-4 mb-3'>
-                  <label htmlFor='product-slug'>Product Slug</label>
-                  <input type="text" id='product-slug' {...register('slug', {required: true})} className='form-control' />
-                </div>
                 <div className='col-4'>
                   <label htmlFor='sizes'>Sizes</label>
-                  <input type="text" id='sizes' {...register('sizes', {required: true})} className='form-control' />
+                  <input type="text" id='sizes' {...register('p_sizes', {required: true})} className='form-control' />
                 </div>
+                <div className='col-4 mb-3'>
+                  <label htmlFor='color'>Color</label>
+                  <input type="text" id='colors' {...register('color', {required: true})} className='form-control' />
+                </div>                                                                          
                 <div className='col-4 mb-3'>
                   <label htmlFor='fitting'>Fitting</label>
                   <select id='fitting' {...register('fitting', { required: true })} className="select-input">
@@ -254,31 +251,45 @@ const AddProduct: FC = () => {
                     <option value='ankle'>Ankle</option>
                   </select>
                 </div>
-                <div className='col-4'>
-                  <label htmlFor='fabric'>Fabric Content</label>
-                  <input type="text" id='fabric' {...register('fabric', {required: true})} className='form-control' />
+                <div className='col-4 mb-3'>
+                  <label htmlFor='fabric-type'>Fabric Type</label>
+                  <input type="text" id='fabric-type' {...register('fabric_type', {required: true})} className='form-control' />
+                </div>
+                <div className='col-4 mb-3'>
+                  <label htmlFor='fabric-stretch'>Stretchable</label>
+                  <select id='fabric-stretch' {...register('fabric_stretch', { required: true })} className="select-input">
+                    <option value='stretch'>Stretch</option>
+                    <option value='non-stretch'>Non-stretch</option>
+                  </select>
                 </div>
                 <div className='col-4 mb-3'>
                   <label htmlFor='fabric-weight'>Fabric Weight</label>
                   <input type="text" id='fabric-weight' {...register('fabric_weight', {required: true})} className='form-control' />
                 </div>
-                <div className='col-4'>
+                <div className='col-4 mb-3'>
+                  <label htmlFor='fabric-content'>Fabric Content</label>
+                  <input type="text" id='fabric-content' {...register('fabric_content', {required: true})} className='form-control' />
+                </div>
+                <div className='col-4 mb-3'>
+                  <label htmlFor='front-fly'>Front Fly</label>
+                  <select id='front-fly' {...register('front_fly', { required: true })} className="select-input">
+                    <option value='zipper'>Zipper</option>
+                    <option value='button'>Button</option>
+                  </select>
+                </div>
+                <div className='col-4 mb-3'>
                   <label htmlFor='wash-type'>Wash Type</label>
                   <input type="text" id='wash-type' {...register('wash_type', {required: true})} className='form-control' />
                 </div>
-                <div className='col-4'>
+                <div className='col-4 mb-3'>
                   <label htmlFor='moq'>MOQ</label>
                   <input type="text" id='moq' {...register('moq', {required: true})} className='form-control' />
                 </div>
                 <div className='col-4 mb-3'>
-                  <label htmlFor='color'>Color</label>
-                  <input type="text" id='colors' {...register('color', {required: true})} className='form-control' />
-                </div>                                                                          
-                <div className='col-4'>
                   <label htmlFor='price'>Price</label>
                   <input type="text" id='price' {...register('price', {required: true})} className='form-control' />
                 </div>
-                <div className='col-4'>
+                <div className='col-4 mb-3'>
                   <label htmlFor='piece-weight'>Weight per piece</label>
                   <input type="text" id='piece-weight' {...register('piece_weight', {required: true})} className='form-control' />
                 </div>

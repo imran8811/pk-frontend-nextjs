@@ -63,7 +63,10 @@ const ShopComp : FC = (props:any) => {
               </li>
               {params.category && 
                 <li className="breadcrumb-item text-capitalize">
-                  <Link href={`${WHOLESALE_SHOP}/${params.dept}/${params.category}`}>{(params.category).toString().replace('-', ' ')}</Link>
+                  <Link 
+                    href={`${WHOLESALE_SHOP}/${params.dept}/${params.category}`}>
+                      {(params.category).toString().replace('-', ' ')}
+                  </Link>
                 </li>
               }
             </ol>
@@ -90,15 +93,19 @@ const ShopComp : FC = (props:any) => {
                 }
                 {products && products.map((product, index) => {
                   return (
-                    <div className="box mb-5 text-center" key={index}>
-                      <a href={`${WHOLESALE_SHOP}/${product.dept}/${product.category}/${product.p_id}`} className="d-block" rel="noreferrer">
+                    <div className="box mb-5" key={index}>
+                      <Link href={`${WHOLESALE_SHOP}/${product.dept}/${product.category}/${product.slug}-${product.article_no}`} className="d-block" rel="noreferrer">
                         <img
                           src={product.image_front} 
                           alt={product.image_front}
                           height="370"
                           className={styles.img} />
-                      </a>
-                      <a className="small" href={`/${product.dept}/${product.category}/${product.p_id}`}>{'$'+ product.price + '-' + product.slug}</a>
+                      </Link>
+                      <Link className="text-capitalize d-block px-3 text-dark" href={`${WHOLESALE_SHOP}/${product.slug}-${product.article_no}`}>
+                        <span>{product.article_no}-</span>
+                        <span>{product.product_name}</span><br />
+                        <span className="text-danger">Price: ${product.price}</span>
+                      </Link>
                     </div>
                   )
                 })

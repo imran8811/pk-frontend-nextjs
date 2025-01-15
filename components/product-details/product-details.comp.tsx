@@ -60,13 +60,14 @@ const ProductDetails : FC = () => {
   };
 
   useEffect(() => {
-    getProductDetails();
+    const article_no = path.split("-").pop();
+    getProductDetails(article_no);
   }, [])
 
-  const getProductDetails = async () => {
+  const getProductDetails = async (article_no) => {
     const res = await axiosInstance({
       method: "get",
-      url: GET_PRODUCT_DETAILS+"/"+params.id,
+      url: GET_PRODUCT_DETAILS+"/"+article_no,
     }).then(res => {
       setproductDetails(res.data);
 
@@ -144,7 +145,7 @@ const ProductDetails : FC = () => {
                   </Carousel>
                 </div>
                 <div className="col-md-6">
-                  <h1 className="mb-3 border-bottom">{product.slug}</h1>
+                  <h1 className="mb-3 border-bottom text-capitalize">{product.product_name}</h1>
                   <ul className="mb-5 p-0">
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Article No.</span>
@@ -152,11 +153,11 @@ const ProductDetails : FC = () => {
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Fabric Details</span>
-                      <span className="col-6 col-md-8 col-lg-9">{product.fabric + " " + product.fabric_weight}</span>
+                      <span className="col-6 col-md-8 col-lg-9">{product.fabric_type+"/"+product.fabric_content +"/"+ product.fabric_weight}</span>
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Colors</span>
-                      <span className="col-6 col-md-8 col-lg-9">{product.color}</span>
+                      <span className="col-6 col-md-8 col-lg-9 text-capitalize">{product.color}</span>
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Waist Sizes</span>
@@ -172,7 +173,7 @@ const ProductDetails : FC = () => {
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Front Fly</span>
-                      <span className="col-6  col-md-8 col-lg-9 text-capitalize">Zip</span>
+                      <span className="col-6  col-md-8 col-lg-9 text-capitalize">{product.front_fly}</span>
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Delivery</span>
@@ -184,7 +185,7 @@ const ProductDetails : FC = () => {
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Price</span>
-                      <span className="col-6 col-md-8 col-lg-9">${product.price} Ex-factory</span>
+                      <span className="col-6 col-md-8 col-lg-9 text-danger">USD{product.price} Ex-W</span>
                     </li>
                   </ul>
                   <h4 className="mb-4">Packing / Shipping</h4>

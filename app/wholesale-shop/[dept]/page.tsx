@@ -13,7 +13,7 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
   const dept = (await params).dept.charAt(0).toUpperCase()+(await params).dept.slice(1);
  
   return {
-    title: `${dept} Garments Wholesale Shop`
+    title: dept
   }
 }
 

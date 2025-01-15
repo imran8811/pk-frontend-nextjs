@@ -8,7 +8,7 @@ import { Suspense } from 'react'
 const AddProductPage: NextPage = () => {
   return (
     <Suspense>
-      <div className='container'>
+      <div className='container-fluid'>
         <div className='row'>
           <AdminHeader></AdminHeader>
           <AddProduct></AddProduct>

@@ -6,17 +6,18 @@ import axiosInstance from '../../../../../interceptors/axios.interceptor';
 import { GET_PRODUCT_DETAILS } from '../../../../../endpoints';
 
 type Props = {
-  params: Promise<{ id: string }>
+  params: Promise<{ slug: string }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
  
+let slug:string;
 export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   // read route params
-  const id = (await params).id
+  slug = (await params).slug
 
   const res = await axiosInstance({
     method: "get",
-    url: GET_PRODUCT_DETAILS+"/"+id,
+    url: GET_PRODUCT_DETAILS+"/"+slug,
   }).then(res => {
     return res.data;
   })
@@ -26,8 +27,7 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
   }
 }
 
-const ShopPage = () => {
-
+const ShopPage = (slug) => {
   return (
     <>
       <Header />

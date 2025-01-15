@@ -58,11 +58,11 @@ const Products: FC = () => {
         { productsRef.current && productsRef.current.map((product:any, index) => {
             return (
               <div className='box' key={index}>
-                <Link href={"/admin/edit-product/"+product.p_id}>
+                <Link href={"/admin/edit-product/"+product.article_no}>
                   <img src={product.image_front} alt="Product Front Image" width={200} height={250} />
                 </Link>
                 <ul className='list-group'>
-                  <li className='list-item'>{product.slug}</li>
+                  <li className='list-item text-capitalize'>{product.product_name}</li>
                   <li className='list-item'>{product.article_no}-${product.price}</li>
                   <li className='list-item'>{product.category}-{product.color}</li>
                   <li className='list-item'>{product.fabric}-{product.fabric_weight}</li>
