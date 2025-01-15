@@ -156,7 +156,7 @@ const ProductDetails : FC = () => {
                       <span className="col-6 col-md-8 col-lg-9">{product.fabric_type+"/"+product.fabric_content +"/"+ product.fabric_weight}</span>
                     </li>
                     <li className="row mb-2">
-                      <span className="col-6 col-md-4 col-lg-3">Colors</span>
+                      <span className="col-6 col-md-4 col-lg-3">Color(s)</span>
                       <span className="col-6 col-md-8 col-lg-9 text-capitalize">{product.color}</span>
                     </li>
                     <li className="row mb-2">
