@@ -89,8 +89,8 @@ const ProductDetails : FC = () => {
       if(res.data.type === 'success') {
         toast.success('Item Added to cart');
         setTimeout(()=> {
-          router.push(`${basePath}/${params.dept}/${params.category}`);
-        },2000)
+          router.push(`${basePath}${WHOLESALE_SHOP}/${params.dept}/${params.category}`);
+        },1000)
       }
     }).catch(err =>{
       if(err.response.data.errorCode === 960){
@@ -212,7 +212,7 @@ const ProductDetails : FC = () => {
                     </li>
                     <li className="row mb-2">
                       <span className="col-6 col-md-4 col-lg-3">Shipping:</span>
-                      <span className="col-6 col-md-4 col-lg-3">By Air</span>
+                      <span className="col-6 col-md-4 col-lg-3">By Air/Sea</span>
                     </li>
                   </ul>
                   <div className="add-cart-wrap d-flex justify-content-end">
@@ -347,7 +347,7 @@ const ProductDetails : FC = () => {
               <DialogActions>
                 <Button type="submit" variant="contained">Add to Cart</Button>
               </DialogActions>
-                </form>
+            </form>
             </Dialog>
           </div>
         )})}
