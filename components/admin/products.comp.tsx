@@ -78,7 +78,7 @@ const Products: FC = () => {
                         product.image_other_one, 
                         product.image_other_two
                       ])}>Delete</button>
-                    <a href={'/admin/add-product?action=d&pid='+product.p_id} target='_blank'>Duplicate</a>
+                    <a href={'/admin/add-product?action=d&article_no='+product.article_no} target='_blank'>Duplicate</a>
                 </div>
               </div>
             )

@@ -46,8 +46,8 @@ const AddProduct: FC = () => {
 
   useEffect(() => {
     getArticleNo();
-    const getpid = searchParams.get('pid');
-    if(getpid){
+    const get_article_no = searchParams.get('article_no');
+    if(get_article_no){
       getProductDetails()
     }
   }, [])
@@ -68,7 +68,7 @@ const AddProduct: FC = () => {
   const getProductDetails = async() => {
     await axiosInstance({
       method: 'get',
-      url: GET_PRODUCT_DETAILS+"/"+searchParams.get('pid'),
+      url: GET_PRODUCT_DETAILS+"/"+searchParams.get('article_no'),
     }).then((res) => {
       setProductDetails(res.data);
       const data = res.data;
