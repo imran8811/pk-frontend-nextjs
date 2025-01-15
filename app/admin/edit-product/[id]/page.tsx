@@ -7,11 +7,9 @@ import EditProduct from '../../../../components/admin/edit-product.comp';
 const AddProductPage: NextPage = () => {
   return (
     <>
-      <div className='container'>
-        <div className='row'>
-          <AdminHeader></AdminHeader>
-          <EditProduct></EditProduct>
-        </div>
+      <div className='container-fluid'>
+        <AdminHeader></AdminHeader>
+        <EditProduct></EditProduct>
       </div>
       <AdminFooter></AdminFooter>
     </>

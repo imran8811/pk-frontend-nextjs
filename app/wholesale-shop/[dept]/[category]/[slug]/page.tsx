@@ -10,24 +10,25 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
  
-let slug:string;
+let slug:any;
 export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   // read route params
-  slug = (await params).slug
+  slug = (await params).slug;
+  const article_no = slug.split("-").pop();
 
   const res = await axiosInstance({
     method: "get",
-    url: GET_PRODUCT_DETAILS+"/"+slug,
+    url: GET_PRODUCT_DETAILS+"/"+article_no,
   }).then(res => {
     return res.data;
   })
  
   return {
-    title: res[0].slug
+    title: res[0].product_name
   }
 }
 
-const ShopPage = (slug) => {
+const ShopPage = () => {
   return (
     <>
       <Header />
