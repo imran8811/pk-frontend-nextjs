@@ -60,11 +60,11 @@ const ProductDetails : FC = () => {
   };
 
   useEffect(() => {
-    const article_no = path.split("-").pop();
-    getProductDetails(article_no);
+    getProductDetails();
   }, [])
-
-  const getProductDetails = async (article_no) => {
+  
+  const getProductDetails = async () => {
+    const article_no = path.split("-").pop();
     const res = await axiosInstance({
       method: "get",
       url: GET_PRODUCT_DETAILS+"/"+article_no,
@@ -220,7 +220,7 @@ const ProductDetails : FC = () => {
                       <Button variant="contained" onClick={handleClickOpen}>Order Now</Button>
                     }
                     {!userSession &&
-                     <Link href={`/login?next=${WHOLESALE_SHOP}/${params.dept}/${params.category}/${params.id}`} className="btn btn-primary">Order Now </Link>
+                     <Link href={`/login?next=${WHOLESALE_SHOP}/${params.dept}/${params.category}/${params.slug}`} className="btn btn-primary">Order Now </Link>
                     }
                   </div>
                 </div>
