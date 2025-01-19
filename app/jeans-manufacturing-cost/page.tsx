@@ -5,8 +5,8 @@ import JeansManufacturingCostComp from '../../components/landing-pages/jeans-man
 
 export const metadata: Metadata = {
   title: "Jeans Manufacturing Cost",
-  keywords:  "Jeans Manufacturing Cost, Jeans Manufacturing Process, Jeans Wholesale",
-  description: "Clothing brands need to know the actual jeans manufacturing cost if they go with custom production, so it costs around 3.5$ to 4.3$."
+  keywords:  "Jeans Manufacturing Cost, cost to make a jeans, cost to make a pair of jeans",
+  description: "Good quality jeans manufacturing cost is between $3.5 to $5.2, depending on the material, sizes, styling and washing affects."
 }
 
 const JeansManufacturers = () => {
