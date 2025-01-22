@@ -5,11 +5,11 @@ const Keywords: FC = () => {
   return (
       <div className="row p-5 border-bottom border-info">
         <ul className="col-12 col-md-6 col-lg-3 mb-3">
-          <li><Link href="/wholesale-shop/men/jeans-pants">Men Jeans Pants</Link></li>
-          <li><Link href="/wholesale-shop/women/jeans-pants">Women Jeans Pants</Link></li>
-          <li><Link href="/wholesale-shop/men/t-shirts">Men T-shirts</Link></li>
-          <li><Link href="/wholesale-shop/girls/jeans-pants">Girls Jeans Pants</Link></li>
-          <li><Link href="/wholesale-shop/men/chino-pants">Men Chino Pants</Link></li>
+          <li><Link href="/wholesale-shop/men/jeans-pant">Men Jeans Pants</Link></li>
+          <li><Link href="/wholesale-shop/women/jeans-pant">Women Jeans Pants</Link></li>
+          <li><Link href="/wholesale-shop/men/t-shirt">Men T-shirts</Link></li>
+          <li><Link href="/wholesale-shop/girls/jeans-pant">Girls Jeans Pants</Link></li>
+          <li><Link href="/wholesale-shop/men/chino-pant">Men Chino Pants</Link></li>
         </ul>
         <ul className="col-12 col-md-6 col-lg-3 mb-3">
           <li><Link href="/bulk-jeans">Bulk Jeans</Link></li>
