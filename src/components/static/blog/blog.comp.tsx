@@ -8,7 +8,7 @@ const BlogComp: FC = () => {
     <div className="row">
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/jeans-manufacturers" title="jeans manufacturers">Jeans Manufacturers</a>
+          <a href="/jeans-manufacturers" title="jeans manufacturers">Jeans Manufacturers</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
@@ -22,7 +22,7 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/bulk-jeans" title="bulk-jeans">Bulk Jeans</a>
+          <a href="/bulk-jeans" title="bulk-jeans">Bulk Jeans</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
@@ -36,7 +36,7 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/denim-manufacturers" title="denim-manufacturers">Denim Manufacturers</a>
+          <a href="/denim-manufacturers" title="denim-manufacturers">Denim Manufacturers</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
@@ -50,7 +50,7 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/motorcycle-jeans-manufacturers" title="motorcycle-jeans-manufacturers">Motorcycle Jeans</a>
+          <a href="/motorcycle-jeans-manufacturers" title="motorcycle-jeans-manufacturers">Motorcycle Jeans</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
@@ -64,7 +64,7 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/wholesale-jeans-bulk" title="wholesale-jeans-bulk">Wholsale Jeans Bulk</a>
+          <a href="/wholesale-jeans-bulk" title="wholesale-jeans-bulk">Wholsale Jeans Bulk</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
@@ -78,7 +78,7 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/wholesale-women-jeans" title="Wholesale women jeans">Wholesale Women Jeans</a>
+          <a href="/wholesale-women-jeans" title="Wholesale women jeans">Wholesale Women Jeans</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
@@ -92,7 +92,7 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/jeans-manufacturing-cost" title="Jeans manufacturing cost">Jeans Manufacturing Cost</a>
+          <a href="/jeans-manufacturing-cost" title="Jeans manufacturing cost">Jeans Manufacturing Cost</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
@@ -106,7 +106,7 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/jeans-pants-manufacturers" title="jeans pants manufacturers">Jeans Pants Manufacturers</a>
+          <a href="/jeans-pants-manufacturers" title="jeans pants manufacturers">Jeans Pants Manufacturers</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
@@ -120,7 +120,7 @@ const BlogComp: FC = () => {
       </div>
       <div className="single-post col-12 mb-5">
         <h2>
-          <a href="/post/jeans-wholesale" title="jeans wholesale">Jeans Wholesale</a>
+          <a href="/jeans-wholesale" title="jeans wholesale">Jeans Wholesale</a>
         </h2>
         <div className="row">
           <div className="col-lg-4 mb-3">
