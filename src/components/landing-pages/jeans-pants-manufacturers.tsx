@@ -6,12 +6,6 @@ import ProductListing from '../product-listing/product-listing.comp'
 import { ITaglineProps } from '../../models'
 import { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: "Jeans Pants Manufacturers",
-  keywords:  "Jeans manufacturers, Jeans Pants Manufacturers, Jeans Wholesale",
-  description: "Manufacturer and exporter of denim products, jeans pants, jeans jackets, jeans shorts for men, women and kids"
-}
-
 const JeansPantsManufacturersComp: FC<ITaglineProps> = ({title, description}) => {
   return (
     <div className="row">
