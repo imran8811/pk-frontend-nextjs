@@ -3,7 +3,7 @@ import styles from "./factory.module.css"
 
 const FactoryComp : FC = () => {
   return (
-    <div className="col-12 page-about">
+    <div className="col-12 page-content">
       <div className="row">
         <div className="col-12 mb-5">
           <h2 className="text-info">Fabric Store</h2>
@@ -43,10 +43,10 @@ const FactoryComp : FC = () => {
           </ul>
           <div className="row">
             <div className="col-lg-6 p-2">
-              <img src="/images/jeans-manufacturers.jpg" alt="jeans-manufacturers" className="img-fluid" />
+              <img src="/images/jeans-manufacturers.jpg" alt="jeans-manufacturers" className="w-100" />
             </div>
             <div className="col-lg-6 p-2">
-              <img src="/images/denim-shirts-wholesaler.jpg" alt="denim-shirts-wholesaler" className="img-fluid" />
+              <img src="/images/denim-shirts-wholesaler.jpg" alt="denim-shirts-wholesaler" className="w-100" />
             </div>
           </div>
         </div>
@@ -61,10 +61,10 @@ const FactoryComp : FC = () => {
           </ul>
           <div className="row">
             <div className="col-lg-6">
-              <img src="/images/denim-manufacturers.jpg" alt="denim-manufacturers" className="img-fluid" />
+              <img src="/images/denim-manufacturers.jpg" alt="denim-manufacturers" className="w-100" />
             </div>
             <div className="col-lg-6">
-              <img src="/images/pk-washing2.jpg" alt="pk-washing-department" className="img-fluid" />
+              <img src="/images/pk-washing2.jpg" alt="pk-washing-department" className="w-100" />
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ const FactoryComp : FC = () => {
           </ul>
           <div className="row">
             <div className="col-lg-6">
-              <img src="/images/jeans-quality.jpg" alt="jeans-pants-wholesalers" className="img-fluid" />
+              <img src="/images/jeans-quality.jpg" alt="jeans-pants-wholesalers" className="w-100" />
             </div>
           </div>
         </div>
@@ -89,10 +89,10 @@ const FactoryComp : FC = () => {
           </ul>
           <div className="row">
               <div className="col-lg-6">
-                <img src="/images/jeans-shirts-manufacturers.jpg" alt="jeans-shirts-manufacturers" className="img-fluid" />
+                <img src="/images/jeans-shirts-manufacturers.jpg" alt="jeans-shirts-manufacturers" className="w-100" />
               </div>
               <div className="col-lg-6">
-                <img src="/images/jeans-wholesalers.jpg" alt="jeans-wholesalers" className="img-fluid" />
+                <img src="/images/jeans-wholesalers.jpg" alt="jeans-wholesalers" className="w-100" />
               </div>
           </div>
         </div>
