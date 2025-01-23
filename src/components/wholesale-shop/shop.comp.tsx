@@ -1,25 +1,18 @@
 "use client";
-import { FC, useCallback, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import cls from 'classnames'
 import styles from './shop.module.css'
-import { basePath, GET_PRODUCTS, PRODUCT_API, PRODUCT_COUNT_BY_DEPT_CATEGORY, WHOLESALE_SHOP } from "../../endpoints"
+import { PRODUCT_API, PRODUCT_COUNT_BY_DEPT_CATEGORY, WHOLESALE_SHOP } from "../../endpoints"
 import { IProduct } from "../../models"
-import { useForm } from 'react-hook-form'
-import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import axiosInstance from "../../interceptors/axios.interceptor"
 import Link from "next/link";
-import ProductFiltersComp from "../product-filters.comp";
 import { ICategory } from "../../models/category.model";
-import axios from "axios";
 
-const ShopComp : FC = (props:any) => {
+const ShopComp : FC = () => {
   const [products, setProducts] = useState<IProduct[]>();
   const [countByDeptCategories, setCountByDeptCategories] = useState<ICategory[]>();
-  const { register, handleSubmit, getValues, watch, formState: { errors }} = useForm();
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const params = useParams();
-  const pathname = usePathname();
 
   let queryURL:string;
   if(params.dept && params.category){
@@ -71,11 +64,7 @@ const ShopComp : FC = (props:any) => {
               }
             </ol>
           </nav>
-          {/* <h1 className="text-center mb-4">Wholesale Shop</h1> */}
           <div className="products-outer">
-            {/* <div className="col-lg-2 d-lg-block d-md-none">
-              <ProductFiltersComp />
-            </div> */}
             <div className="products">
               <div className="boxes">
                 {countByDeptCategories && countByDeptCategories.length > 0 &&
@@ -101,7 +90,7 @@ const ShopComp : FC = (props:any) => {
                           height="370"
                           className={styles.img} />
                       </Link>
-                      <Link className="text-capitalize d-block px-3 text-dark" href={`${WHOLESALE_SHOP}/${product.slug}-${product.article_no}`}>
+                      <Link className="text-capitalize d-block pt-3 px-3 text-dark" href={`${WHOLESALE_SHOP}/${product.slug}-${product.article_no}`}>
                         <span>{product.article_no}-</span>
                         <span>{product.product_name}</span><br />
                         <span className="text-danger">Price: ${product.price}</span>
