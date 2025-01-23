@@ -3,7 +3,7 @@ import styles from "./factory.module.css"
 
 const FactoryComp : FC = () => {
   return (
-    <div className="col-12 page-content">
+    <div className="container page-content">
       <div className="row">
         <div className="col-12 mb-5">
           <h2 className="text-info">Fabric Store</h2>

@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 const Factory = () => {
   return (
-    <div className='container'>
+    <>
       <Header></Header>
       <FactoryComp></FactoryComp>
       <Footer></Footer>
-    </div>
+    </>
   )
 }
 
