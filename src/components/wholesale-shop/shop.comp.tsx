@@ -90,7 +90,7 @@ const ShopComp : FC = () => {
                           height="370"
                           className={styles.img} />
                       </Link>
-                      <Link className="text-capitalize d-block pt-3 px-3 text-dark" href={`${WHOLESALE_SHOP}/${product.slug}-${product.article_no}`}>
+                      <Link href={`${WHOLESALE_SHOP}/${product.dept}/${product.category}/${product.slug}-${product.article_no}`} className="text-capitalize d-block pt-3 px-3 text-dark">
                         <span>{product.article_no}-</span>
                         <span>{product.product_name}</span><br />
                         <span className="text-danger">Price: ${product.price}</span>
