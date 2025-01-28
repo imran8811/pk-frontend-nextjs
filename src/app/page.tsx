@@ -9,7 +9,7 @@ import WhyChooseUs from '../components/why-choose-us/why-choose-us.comp';
 
 export const metadata: Metadata = {
   title : "Garments Manufacturer and Wholesaler - Jeans Pants, T-shirts, Hoodie",
-  description : "PK Apparel Specializes in jeans pants manufacturing and wholesale, jeans Jackets wholesale, Jeans Shirt and all other denim products. We stand behind all of the products that we handle and we are the company that stand behind the quality and performance of the products they build",
+  description : "All kind of garments manufacturer and wholesaler including Jeans Pants, T-shirts, Hoodies, Cotton Pants, Cargo Trousers, Chino Pants and Jackets.",
   keywords : "Jeans pants Manufacturers, Jeans pants Wholesalers, Jeans Pants suppliers"
 }
 
