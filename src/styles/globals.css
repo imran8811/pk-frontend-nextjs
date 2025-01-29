@@ -83,7 +83,7 @@ address { line-height: 35px; }
   padding: 10px 0;
   border-top: 1px solid #ccc;
 }
-.shodow-rounded {
+.shadow-rounded {
 	border-radius: 5px;
 	box-shadow: 0 0 5px 0.5px #C2C2C2;
 }

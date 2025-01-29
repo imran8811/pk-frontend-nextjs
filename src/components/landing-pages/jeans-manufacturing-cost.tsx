@@ -9,19 +9,12 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
     <div className="row">
       <Tagline headingText={title} paraText={description} />
       <div className='mb-5'>
-        
         <p className='mb-4'>Every person knows that jeans are one of the most common apparel everyone uses. Whether it is party dress or worker apparel, jeans are easily worn in every type of clothing. Jeans have their importance. However, clothing brands must know the actual jeans cost, especially when they need custom designing and styling. Production of these jeans involves a complex interplay of material, technology, labor, washing, and packaging costs. Every clothing brand needs competitive jeans manufacturing costs without compromising the quality of jeans. PK Apparel understands all these elements and presents a fair distribution of the cost of manufacturing jeans.</p>
-
-        <h3>Jeans manufacturing cost: The ultimate guide</h3>
-        
+        <h2 className='h2'>Jeans manufacturing cost: The ultimate guide</h2>
         <p className='mb-4'>Welcome to actionable insights and a practical understanding of jeans manufacturing cost. This detailed discussion will teach you how to calculate the cost of jeans manufacturing at the factory.</p>
-
-        <h3>Understand the manufacturing cost from scratch.</h3>
-
+        <h3 className='h3'>Understand the manufacturing cost from scratch.</h3>
         <p className='mb-4'>Several brands want to get the lowest <strong>jeans manufacturing cost</strong> to make the overall pricing of their clothing competitive. So, we present a fair view of the cost of manufacturing jeans in the factory. This cost is variable as the rate of each factor is not fixed. Here is a complete distribution of the cost incurred to produce one denim and jeans.</p>
-        
         <h3>Jeans manufacturing cost as a whole:</h3>
-
         <ol>
           <li>Raw Material</li>
           <li>Average fabric consumption calculation</li>
@@ -33,15 +26,10 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
           <li>Packaging</li>
           <li>Shipping</li>
         </ol>
-
         <p className='mb-4'>All the costs are discussed in detail in the following discussion, and you will get an idea of each. However, these are the basic costs required to produce denim and jeans.</p>
-        
         <ProductListing dept="men" category="jeans-pant" numberOfRecords={6} />
-        
-        <h3>Step 1: Raw material</h3>
-        
+        <h3 className="section-heading">Step 1: Raw material</h3>
         <h3>What is the raw material for jeans?</h3>
-
         <p className='mb-4'>The jeans material is created in different versions; sometimes, brands are required to create jeans using 100 percent cotton. So, different denim and jeans fabric variations are available at different prices in the market. The most commonly available type of jeans fabric contains 60 percent cotton and 40 percent polyester. Mixing the polyester makes the cotton denim fabric more elastic and stretchable. However, elastane, also known as spandex, is used to make cotton more flexible in factories. Here are a few more types of denim fabric.</p>
         <ul>
           <li>Cotton Rayon</li>
@@ -50,23 +38,14 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
           <li>Cotton Spandex</li>
           <li>Cotton Polyester</li>
         </ul>
-
         <p className='mb-4'>So, every material version varies in cost based on quality and content.</p>
-
         <h3>Different sizes of jeans and denim for different categories</h3>
-
         <p className='mb-4'>Everyone knows that jeans and denim are available in several sizes. These sizes vary not only in terms of gender but also in terms of waist sizes. So, a few standard sizes that are available in the market are:</p>
-
         <h3>Normal Sizes:</h3>
-
         <p className='mb-4'>28 to 38 are the standard sizes created per the waistband sizes, as it is understood that 28 is the size for the smallest waistband and 38 is for the large waistband.</p>
-        
         <h3>American Sizes:</h3>
-
         <p className='mb-4'>American sizes, also known as big-size denim, are created for waistband sizes starting from 40 and going to 50. These sizes are created to cater to broader body sizes.</p>
-
         <h3>Step 2: Average fabric consumption</h3>
-
         <p className='mb-4'>The average consumption for each category must be determined first to determine the cost of denim for various types of denim. So, here we describe average fabric consumption for men, women, boys, and girls.</p>
         
         <div className='row justify-content-center'>
@@ -99,11 +78,8 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
             </table>
           </div>
         </div>
-
-        <h3>Step 3: Fabric Cost</h3>
-
+        <h3 className="section-heading">Step 3: Fabric Cost</h3>
         <p className='mb-4'>Fabric cost, is one of the primary costs in manufacturing jeans. Produced jeans require denim fabric, which we calculate in meters. The cost of 1 meter of jean fabric is 2.14$. So, to find out the cost of fabric for jeans, we need to find out the product of average material consumption and per meter Cost of fabric:</p>
-
         <div className='row justify-content-center'>
           <div className='col-6'>
             <table className='table table-light'>
@@ -144,10 +120,8 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
             </table>
           </div>
         </div>
-        <p className='mb-3'>These are the primary and raw material costs for denim. On the other hand, if the brands need any unique raw material like cotton denim, then the cost of fabric may vary. </p>
-
-        <h3>Step 4: Fabric Cutting</h3>
-
+        <p className='mb-3'>These are the primary and raw material costs for denim. On the other hand, if the brands need any unique raw material like cotton/poly mixed denim, then the cost of fabric may vary. </p>
+        <h3 className="section-heading">Step 4: Fabric Cutting</h3>
         <p className='mb-3'>Fabric is layered on cutting table and cut as per the design and pattern, patterns are put on fabric layer and cutter is used alongside pattern to cut fabric. <br /> There are two costs involved in this step:
           <ul className='pk-list-item mb-3'>
             <li>Pattern Making Cost</li>
@@ -156,7 +130,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
           <p>Cost for above two processes is $0.7 per piece</p>
         </p>
         
-        <h3>Step 5: Stitching</h3>
+        <h3 className="section-heading">Step 5: Stitching</h3>
         
         <p className='mb-3'>This cost includes labor costs for stitching the denims. This cost also varies based on the efficiency of the factory. If there is automated machinery, stitching costs are lower than those of non-automated processes. A single denim stitching costs 0.21$. So, we need to add the cost of raw material and stitching to get the total cost after stitching. Here is the distribution of cost after stitching.</p>
         <div className='row justify-content-center'>
@@ -206,7 +180,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
         </div>
         <p>So, this is the cost of men&apos;s, women&apos;s, boy&apos;s, and girl&apos;s jeans. After stitching, you need to wash these denims to make them soft and provide them with colors that fit your taste.</p>
         
-        <h3>Step 6: Washing</h3>
+        <h3 className="section-heading">Step 6: Washing</h3>
         <p className='mb-3'>Now, your denim jeans are ready to wash and colorize. This step is required to achieve the look and texture of denim. Washing is a technique that involves:</p>
         <ul className='pk-list-item'>
           <li>Stone Wash</li>
@@ -257,8 +231,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
           </div>
         </div>
         <p className='mb-3'>Now, your denim and jeans are fully prepared, and if you want to add any accessories, then some additional costs for customization are added to this step as per the client&apos;s need.</p>
-
-        <h3>Step 7: Packaging</h3>
+        <h3 className="section-heading">Step 7: Packaging</h3>
         <p className='mb-3'>It is the right time to pack the denim, and the packaging cost is added to the <strong>jeans manufacturing cost</strong>. The brands need to pay for packaging to provide safety and a proper outlook. So, the packaging cost of each pair of denim is approximately 0.17$.</p>
         
         <h3>Quality Issurance</h3>
@@ -326,7 +299,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
             </table>
           </div>
         </div>
-        <h3>Step 8: Overhead</h3>
+        <h3 className="section-heading">Step 8: Factory Overheads</h3>
         <p>The overhead cost is also a significant cost that the factory pays. It is not directly spent on jeans and denim but encompasses a range of expenses. All such expenses are needed to run a production facility smoothly. Such indirect expenses are inclusive of:</p>
         <ul className='pk-list-item'>
           <li>Water and Electricity</li>
@@ -376,10 +349,10 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
           </div>
         </div>
         <p>After charging this overhead cost, we can get the ex-factory cost. Overhead is the cost you must pay to take your jeans and denim from the factory. On the other hand, if you want your jeans and denim delivered to the nearest port, another expense is added to the cost, which is freight on the boat.</p>
-        <h4>Step 9: Shipping</h4>
+        <h4 className="section-heading">Step 9: Shipping</h4>
         <p className='mb-3'>Shipping cost to be added in final cost based on shipping decided shipping terms with client, below are few commonly used shipping terms:
           <ul className='pk-list-item'>
-            <li>EXW</li>
+            <li>EX-W</li>
             <li>FOB</li>
             <li>CIF</li>
             <li>DDP</li>
@@ -388,8 +361,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
         
         <h4>I want to know how much it costs to create jeans.</h4>
         
-        <p className='mb-3'>At PK Apparel, Managing the Cost of jeans is one of our top priorities as we know it would affect the pricing of the brand&apos;s overall apparel. Clothing brands and designers searching for competitive pricing for jeans can consider PK Apparel as we offer highly competitive prices for any jeans. Moreover, the cost of men&apos;s jeans is 4.233$, women&apos;s jeans are 3.591$, the cost of boy&apos;s jeans is 3.163$, and the cost of girl&apos;s jeans is 3.056$.</p>
-
+        <p className='mb-3'>At PK Apparel, Managing the Cost of jeans is one of our top priorities as we know it would affect the pricing of the brand&apos;s overall apparel. Clothing brands and designers searching for competitive pricing for jeans can consider PK Apparel as we offer highly competitive prices for any jeans. Moreover, the cost of men&apos;s jeans is $4.3, women&apos;s jeans are $3.60, the cost of boy&apos;s jeans is $3.17, and the cost of girl&apos;s jeans is $3.2</p>
         <h4>Factors that influence jeans manufacturing cost</h4>
         <p className='mb-3'>Some factors affect the overall cost of jeans and denim. It would help minimize the overall jeans manufacturing cost but also help manage a large volume of jeans production orders. These two costs are inclusive:
           <ul className='pk-list-item'>
@@ -401,5 +373,4 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
     </div>
     </div>
   )}
-
 export default JeansManufacturingCostComp;

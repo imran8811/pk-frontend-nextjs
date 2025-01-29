@@ -155,7 +155,7 @@ const ManageAccountComp: FC = () => {
       {userAccount && 
         <>
           <div className="row justify-content-center">
-            <div className="col-md-3 p-5 m-3 shodow-rounded">
+            <div className="col-md-3 p-5 m-3 shadow-rounded">
               <h2 className="mb-4">Personal profile</h2>
               <ul>
                 <li className="row mb-3">
@@ -176,12 +176,12 @@ const ManageAccountComp: FC = () => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-8 p-5 m-3 shodow-rounded">
+            <div className="col-md-8 p-5 m-3 shadow-rounded">
               <h2>Address Book</h2>
               <div className="row justify-content-start">
                 {userAddresses?.map((address, index) => {
                   return (
-                    <div className="col-md-5 p-4 m-3 shodow-rounded mb-3" key={index}>
+                    <div className="col-md-5 p-4 m-3 shadow-rounded mb-3" key={index}>
                       <h2 className="text-capitalize text-primary mb-3">{address.add_type}</h2>
                       <address>
                         {address.add_area+', '+address.add_city+', '+address.add_country+', '+address.add_postal_code }
@@ -200,7 +200,7 @@ const ManageAccountComp: FC = () => {
             </div>
           </div>
           <div className="row justify-centent-center">
-            <div className="col-11 m-3 shodow-rounded p-3">
+            <div className="col-11 m-3 shadow-rounded p-3">
               <h2>Recent Orders</h2>
 
             </div>
