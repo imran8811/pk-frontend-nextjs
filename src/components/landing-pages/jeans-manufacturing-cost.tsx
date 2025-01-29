@@ -39,8 +39,15 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
           <li>Cotton Polyester</li>
         </ul>
         <p className='mb-4'>So, every material version varies in cost based on quality and content.</p>
-        <h3>Different sizes of jeans and denim for different categories</h3>
-        <p className='mb-4'>Everyone knows that jeans and denim are available in several sizes. These sizes vary not only in terms of gender but also in terms of waist sizes. So, a few standard sizes that are available in the market are:</p>
+        <h3 className='h3 mb-3'>Different sizes of jeans and denim for different categories</h3>
+        <div className='row mb-5'>
+          <div className='col-md-6 col-12'>
+            <img src='images/img6.jpg' className='w-100' alt="jeans manufacturing cost" />
+          </div>
+          <div className='col-md-6 col-12 px-5 text-center'>
+            <p className='h2 lh-lg text-primary'>Everyone knows that jeans and denim are available in several sizes. These sizes vary not only in terms of gender but also in terms of waist sizes. So, a few standard sizes that are available in the market are:</p>
+          </div>
+        </div>
         <h3>Normal Sizes:</h3>
         <p className='mb-4'>28 to 38 are the standard sizes created per the waistband sizes, as it is understood that 28 is the size for the smallest waistband and 38 is for the large waistband.</p>
         <h3>American Sizes:</h3>
@@ -359,12 +366,11 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
           </ul>
         </p>
         
-        <h4>I want to know how much it costs to create jeans.</h4>
-        
-        <p className='mb-3'>At PK Apparel, Managing the Cost of jeans is one of our top priorities as we know it would affect the pricing of the brand&apos;s overall apparel. Clothing brands and designers searching for competitive pricing for jeans can consider PK Apparel as we offer highly competitive prices for any jeans. Moreover, the cost of men&apos;s jeans is $4.3, women&apos;s jeans are $3.60, the cost of boy&apos;s jeans is $3.17, and the cost of girl&apos;s jeans is $3.2</p>
-        <h4>Factors that influence jeans manufacturing cost</h4>
-        <p className='mb-3'>Some factors affect the overall cost of jeans and denim. It would help minimize the overall jeans manufacturing cost but also help manage a large volume of jeans production orders. These two costs are inclusive:
-          <ul className='pk-list-item'>
+        <h4 className='h2 mb-3'>I want to know how much it costs to create jeans.</h4>
+        <p className='h4 lh-lg mb-3'>At PK Apparel, Managing the Cost of jeans is one of our top priorities as we know it would affect the pricing of the brand&apos;s overall apparel. Clothing brands and designers searching for competitive pricing for jeans can consider PK Apparel as we offer highly competitive prices for any jeans. Moreover, the cost of men&apos;s jeans is $4.3, women&apos;s jeans are $3.60, the cost of boy&apos;s jeans is $3.17, and the cost of girl&apos;s jeans is $3.2</p>
+        <h4 className='h2 mb-3'>Factors that influence jeans manufacturing cost</h4>
+        <p className='mb-5 h4 lh-lg'>Some factors affect the overall cost of jeans and denim. It would help minimize the overall jeans manufacturing cost but also help manage a large volume of jeans production orders. These two costs are inclusive:
+          <ul className='pk-list-item mt-3 mb-3'>
             <li>Large order volumes</li>
             <li>Manufacturing capacity</li>
           </ul>
