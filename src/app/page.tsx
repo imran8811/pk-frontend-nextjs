@@ -2875,11 +2875,12 @@ const Page = () => {
   
     if (timezone === "" || !timezone) {
       return null;
+    } else {
+      const _country = timezones[timezone]?.c[0];
+      const country = countries[_country];
+      return country;
     }
   
-    const _country = timezones[timezone].c[0];
-    const country = countries[_country];
-    return country;
   }
 
   console.log(getCountry());
