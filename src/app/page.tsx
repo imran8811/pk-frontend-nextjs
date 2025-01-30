@@ -555,7 +555,8 @@ const Page = () => {
       },
       "America/Argentina/ComodRivadavia": {
         a: "America/Argentina/Catamarca",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Argentina/Cordoba": {
         u: -180,
@@ -614,7 +615,8 @@ const Page = () => {
       },
       "America/Atka": {
         a: "America/Adak",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Bahia": {
         u: -180,
@@ -657,7 +659,8 @@ const Page = () => {
       },
       "America/Buenos_Aires": {
         a: "America/Argentina/Buenos_Aires",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Cambridge_Bay": {
         u: -420,
@@ -678,7 +681,8 @@ const Page = () => {
       },
       "America/Catamarca": {
         a: "America/Argentina/Catamarca",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Cayenne": {
         u: -180,
@@ -706,7 +710,8 @@ const Page = () => {
       },
       "America/Cordoba": {
         a: "America/Argentina/Cordoba",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Costa_Rica": {
         u: -360,
@@ -768,7 +773,8 @@ const Page = () => {
       },
       "America/Ensenada": {
         a: "America/Tijuana",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Fort_Nelson": {
         u: -420,
@@ -776,7 +782,8 @@ const Page = () => {
       },
       "America/Fort_Wayne": {
         a: "America/Indiana/Indianapolis",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Fortaleza": {
         u: -180,
@@ -789,7 +796,8 @@ const Page = () => {
       },
       "America/Godthab": {
         a: "America/Nuuk",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Goose_Bay": {
         u: -240,
@@ -879,7 +887,8 @@ const Page = () => {
       },
       "America/Indianapolis": {
         a: "America/Indiana/Indianapolis",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Inuvik": {
         u: -420,
@@ -897,7 +906,8 @@ const Page = () => {
       },
       "America/Jujuy": {
         a: "America/Argentina/Jujuy",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Juneau": {
         u: -540,
@@ -916,7 +926,8 @@ const Page = () => {
       },
       "America/Knox_IN": {
         a: "America/Indiana/Knox",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Kralendijk": {
         a: "America/Puerto_Rico",
@@ -938,7 +949,8 @@ const Page = () => {
       },
       "America/Louisville": {
         a: "America/Kentucky/Louisville",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Lower_Princes": {
         a: "America/Puerto_Rico",
@@ -1107,7 +1119,8 @@ const Page = () => {
       },
       "America/Porto_Acre": {
         a: "America/Rio_Branco",
-        r: 1
+        r: 1,
+        c: ["US"]
       },
       "America/Porto_Velho": {
         u: -240,
@@ -1866,7 +1879,8 @@ const Page = () => {
       },
       "Australia/LHI": {
         a: "Australia/Lord_Howe",
-        r: 1
+        r: 1,
+        c: ["AU"]
       },
       "Australia/Lindeman": {
         u: 600,
@@ -1949,11 +1963,13 @@ const Page = () => {
       },
       "Canada/Atlantic": {
         a: "America/Halifax",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       "Canada/Central": {
         a: "America/Winnipeg",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       "Canada/Eastern": {
         a: "America/Toronto",
@@ -1962,35 +1978,43 @@ const Page = () => {
       },
       "Canada/Mountain": {
         a: "America/Edmonton",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       "Canada/Newfoundland": {
         a: "America/St_Johns",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       "Canada/Pacific": {
         a: "America/Vancouver",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       "Canada/Saskatchewan": {
         a: "America/Regina",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       "Canada/Yukon": {
         a: "America/Whitehorse",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       "Chile/Continental": {
         a: "America/Santiago",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       "Chile/EasterIsland": {
         a: "Pacific/Easter",
-        r: 1
+        r: 1,
+        c: ["CA"],
       },
       Cuba: {
         a: "America/Havana",
-        r: 1
+        r: 1,
+        c: ["US"],
       },
       EET: {
         u: 120,
@@ -2872,15 +2896,14 @@ const Page = () => {
     };
   
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  
+    console.log(timezones[timezone].c);
     if (timezone === "" || !timezone) {
       return null;
-    } else {
-      const _country = timezones[timezone]?.c[0];
-      const country = countries[_country];
-      return country;
     }
   
+    const _country = timezones[timezone].c[0];
+    const country = countries[_country];
+    return country;
   }
 
   console.log(getCountry());
