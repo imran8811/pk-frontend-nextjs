@@ -2900,7 +2900,7 @@ const Page = () => {
     if (timezone === "" || !timezone) {
       return null;
     }
-    if(timezones[timezone]){
+    if(timezones[timezone].c){
       const _country = timezones[timezone].c[0];
       const country = countries[_country];
       return country;
