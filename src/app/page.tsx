@@ -2900,10 +2900,13 @@ const Page = () => {
     if (timezone === "" || !timezone) {
       return null;
     }
-  
-    const _country = timezones[timezone].c[0];
-    const country = countries[_country];
-    return country;
+    if(timezones[timezone]){
+      const _country = timezones[timezone].c[0];
+      const country = countries[_country];
+      return country;
+    } else {
+      return "";
+    }
   }
 
   console.log(getCountry());
