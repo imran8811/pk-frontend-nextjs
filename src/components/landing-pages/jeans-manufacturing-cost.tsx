@@ -42,7 +42,7 @@ const JeansManufacturingCostComp: FC<ITaglineProps> = ({title, description}) => 
         <h3 className='h3 mb-3'>Different sizes of jeans and denim for different categories</h3>
         <div className='row mb-5'>
           <div className='col-md-6 col-12'>
-            <img src='images/img6.jpg' className='w-100' alt="jeans manufacturing cost" />
+            <img src='/images/img6.jpg' className='w-100' alt="jeans manufacturing cost" />
           </div>
           <div className='col-md-6 col-12 px-5 text-center'>
             <p className='h2 lh-lg text-primary'>Everyone knows that jeans and denim are available in several sizes. These sizes vary not only in terms of gender but also in terms of waist sizes. So, a few standard sizes that are available in the market are:</p>
